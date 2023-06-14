@@ -5,9 +5,10 @@
   <title>JSP - Hello World</title>
 </head>
 <body>
-<h1><%= "Hello World!" %>
-</h1>
-<br/>
-<a href="views/loan_join.jsp">loan join으로 가자</a>
+  <h1><%= "Hello World!" %>
+  </h1>
+  <br/>
+  <a href="views/loan_join.jsp">loan join으로 가자</a> <br>
+  <a href="views/financialinstruments_inquery.jsp">금융상품 조회로 가자 </a>
 </body>
 </html>
