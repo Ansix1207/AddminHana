@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <nav id="layoutSidenav_nav">
-  <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+  <nav class="sb-sidenav accordion sb-sidenav-dark">
     <div class="sb-sidenav-logo">AddMin 하나</div>
     <div class="sb-sidenav-menu">
       <div class="nav">
