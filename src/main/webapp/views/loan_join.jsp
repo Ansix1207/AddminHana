@@ -12,39 +12,40 @@
   <title>JSP - Hello World</title>
 </head>
 <body>
-<h1><%= "Hello World!" %>
-</h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
+  <nav>
 
-<h1>대출가입</h1>
-<table>
-  <tr>
-    <td>이름</td>
-    <td><input type="name"></td>
-  </tr>
-  <tr>
-    <td>직장</td>
-    <td><input type="job"></td>
-  </tr>
-  <tr>
-    <td>연소득</td>
-    <td><input type="income"></td>
-  </tr>
-  <tr>
-    <td>담보</td>
-    <td><input type="guarantee"></td>
-  </tr>
-  <tr>
-    <td>신용등급</td>
-    <td><input type="credit_rate"></td>
-  </tr>
-  <tr>
-    <td>가입할 상품</td>
-    <td><input type="financial_product"></td>
-  </tr>
-</table>
+  </nav>
 
-<button> 대출 심사</button>
+  <main>
+    <h1>대출가입</h1>
+    <table>
+      <tr>
+        <td>이름</td>
+        <td><input type="name"></td>
+      </tr>
+      <tr>
+        <td>직장</td>
+        <td><input type="job"></td>
+      </tr>
+      <tr>
+        <td>연소득</td>
+        <td><input type="income"></td>
+      </tr>
+      <tr>
+        <td>담보</td>
+        <td><input type="guarantee"></td>
+      </tr>
+      <tr>
+        <td>신용등급</td>
+        <td><input type="credit_rate"></td>
+      </tr>
+      <tr>
+        <td>가입할 상품</td>
+        <td><input type="financial_product"></td>
+      </tr>
+    </table>
+    <button> 대출 심사</button>
+
+  </main>
 </body>
 </html>
