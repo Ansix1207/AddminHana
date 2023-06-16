@@ -3,22 +3,6 @@
 /*    src: url("./font/Hana2-Heavy.ttf");*/
 /*}*/
 
-h1 {
-    font-family: sans-serif;
-    font-size: 50px;
-    text-align: center;
-}
-
-table {
-    font-family: sans-serif;
-    font-size: 30px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    margin-top: auto;
-    margin-bottom: auto;
-
-}
 
 input {
     width: 800px;
@@ -26,43 +10,27 @@ input {
     font-size: 30px;
 }
 
-button1 {
-    width: 200px;
-    height: 100px;
-    font-size: 20px;
-    display: block;
-    justify-content: center;
-    margin-top: 150px;
-    margin-bottom: auto;
-    text-align: center;
-}
 
-
-btn {
-    position: absolute;
-    clip: rect(0, 0, 0, 0);
-    pointer-events: none;
-}
-
-.btn-block {
-    display: block;
+.btn {
+    height: 80px; /* 원하는 크기로 조정 */
+    margin: 0 auto; /* 수평 가운데 정렬 */
     width: 50%;
+    margin-top: 70px;
+    font-size: 25px; /* 폰트 크기 조절 */
+    text-align: center; /* 가운데 정렬 */
+
+
 }
 
+.form-control {
+    display: block;
+    width: 60%;
+    margin-left: 200px;
+    margin-right: auto;
 
-btn-primary {
-    --bs-btn-color: #fff;
-    --bs-btn-bg: #0d6efd;
-    --bs-btn-border-color: #0d6efd;
-    --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #0b5ed7;
-    --bs-btn-hover-border-color: #0a58ca;
-    --bs-btn-focus-shadow-rgb: 49, 132, 253;
-    --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: #0a58ca;
-    --bs-btn-active-border-color: #0a53be;
-    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    --bs-btn-disabled-color: #fff;
-    --bs-btn-disabled-bg: #0d6efd;
-    --bs-btn-disabled-border-color: #0d6efd;
+
+}
+
+.card-body {
+    font-size: 20px;
 }
