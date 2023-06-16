@@ -1,51 +1,42 @@
 <%--
   Created by IntelliJ IDEA.
   User: 하나로H012
-  Date: 2023-06-14
-  Time: 오후 5:03
+  Date: 2023-06-16
+  Time: 오후 3:22
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-  <title>JSP - Hello World</title>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Title</title>
+  <link rel="stylesheet" href="../resources/css/reset.css">
+  <link rel="stylesheet" href="../resources/css/nav.css?after">
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+    crossorigin="anonymous"
+  />
+  <script
+    src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+    crossorigin="anonymous"
+  ></script>
 </head>
 <body>
-  <nav>
+  <div class="wrap">
+    <%@ include file="common/navbar.jsp" %>
+    <main>
 
-  </nav>
-
-  <main>
-    <h1>대출가입</h1>
-    <table>
-      <tr>
-        <td>이름</td>
-        <td><input type="name"></td>
-      </tr>
-      <tr>
-        <td>직장</td>
-        <td><input type="job"></td>
-      </tr>
-      <tr>
-        <td>연소득</td>
-        <td><input type="income"></td>
-      </tr>
-      <tr>
-        <td>담보</td>
-        <td><input type="guarantee"></td>
-      </tr>
-      <tr>
-        <td>신용등급</td>
-        <td><input type="credit_rate"></td>
-      </tr>
-      <tr>
-        <td>가입할 상품</td>
-        <td><input type="financial_product"></td>
-      </tr>
-    </table>
-    <button> 대출 심사</button>
-
-  </main>
+    </main>
+  </div>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"
+  ></script>
 </body>
 </html>
