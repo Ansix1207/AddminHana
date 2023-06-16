@@ -13,7 +13,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Title</title>
-  <link rel="stylesheet" href="../resources/css/reset.css">
   <link rel="stylesheet" href="../resources/css/nav.css">
   <link href="../resources/css/loan_situation.css" rel="stylesheet">
   <link
@@ -29,7 +28,7 @@
 </head>
 <body>
 <div class="wrap">
-  <%--<%@ include file="common/nav.jsp" %>--%>
+  <%@ include file="common/navbar.jsp" %>
   <main>
     <div class="container">
       <div class="row">
