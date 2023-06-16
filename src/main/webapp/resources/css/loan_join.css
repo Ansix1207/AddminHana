@@ -27,9 +27,19 @@ input {
     width: 60%;
     margin-left: 200px;
     margin-right: auto;
-
+    padding-top: 0px;
+    padding-bottom: 0px;
 
 }
+
+.form-floating > .form-control-plaintext:focus,
+.form-floating > .form-control-plaintext:not(:placeholder-shown),
+.form-floating > .form-control:focus,
+.form-floating > .form-control:not(:placeholder-shown) {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
 
 .card-body {
     font-size: 20px;
