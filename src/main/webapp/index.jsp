@@ -9,5 +9,6 @@
   </h1>
   <br/>
   <a href="hello-servlet">Hello Servlet</a>
+  <a href="loanInfo.do">대출 현황</a>
 </body>
-</html> 
+</html>
