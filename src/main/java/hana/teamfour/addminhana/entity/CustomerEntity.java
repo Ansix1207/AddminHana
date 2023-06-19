@@ -11,7 +11,7 @@ import lombok.*;
 public class CustomerEntity {
     private Integer c_id;
     private String c_name;
-    private String c_rnn;
+    private String c_rrn;
     private Character c_gender;
     private String c_address;
     private String c_mobile;
