@@ -21,7 +21,7 @@ public class LoanInfoDAO {
         return con;
     }
 
-    public String showLoanAccount(HttpServletRequest request, HttpServletResponse response) {
+    public ArrayList<AccountInfo> getLoanInfoList() {
         ArrayList<AccountInfo> list = new ArrayList<AccountInfo>();
 
         try {
@@ -34,7 +34,7 @@ public class LoanInfoDAO {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
 
-            System.out.println("DAO 호출 성공");
+            System.out.println("LoanInfoDAO 호출 성공");
 
             while (rs.next()) {
                 AccountInfo accInfo = new AccountInfo();
@@ -47,7 +47,6 @@ public class LoanInfoDAO {
                 list.add(accInfo);
             }
 
-            request.setAttribute("accInfo", list);
             conn.close();
             ps.close();
             rs.close();
@@ -55,6 +54,6 @@ public class LoanInfoDAO {
             e.printStackTrace();
         }
 
-        return "views/sessionOnAccInfo.jsp";
+        return list;
     }
 }
