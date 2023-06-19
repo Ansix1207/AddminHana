@@ -1,15 +1,11 @@
 package hana.teamfour.addminhana.DAO;
 
-import hana.teamfour.addminhana.entity.AccountInfo;
 import hana.teamfour.addminhana.entity.AssetInfo;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 
 public class LoanAssetDAO {
     Connection conn = null;
@@ -22,8 +18,8 @@ public class LoanAssetDAO {
         return con;
     }
 
-    public ArrayList<AssetInfo> getLoanAsset() {
-        ArrayList<AssetInfo> list = new ArrayList<>();
+    public AssetInfo getLoanAsset() {
+        AssetInfo assetInfo = new AssetInfo();
 
         try {
             conn = getConnection();
@@ -37,20 +33,14 @@ public class LoanAssetDAO {
 
             System.out.println("LoanAssetDAO 로드 성공");
 
-            while (rs.next()) {
-                AssetInfo assetInfo = new AssetInfo();
-                assetInfo.setAss_loan(rs.getInt(1));
-                list.add(assetInfo);
-            }
+            assetInfo.setAss_loan(rs.getInt(1));
 
             conn.close();
             ps.close();
             rs.close();
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return list;
+        return assetInfo;
     }
 }
