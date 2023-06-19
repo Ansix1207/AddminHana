@@ -31,26 +31,28 @@
             <h3 class="text-center font-weight-light my-4">AddMin 하나</h3>
           </div>
           <div class="card-body">
-            <form>
+            <form name="frm" method="post">
               <div class="form-floating mb-3">
                 <input
                         class="form-control"
-                        id="inputEmail"
-                        type="email"
+                        id="inputId"
+                        name="id"
+                        type="text"
                         placeholder="행원 Id"/>
-                <label for="inputEmail">행원 Id</label>
+                <label for="inputId">행원 Id</label>
               </div>
               <div class="form-floating mb-3">
                 <input
                         class="form-control"
                         id="inputPassword"
+                        name="pw"
                         type="password"
                         placeholder="비밀번호"/>
                 <label for="inputPassword">비밀번호</label>
               </div>
 
               <div class="d-flex align-items-center justify-content-end mt-4 mb-0">
-                <a class="btn btn-dark" href="index.html">Login</a>
+                <input class="btn btn-dark" type="submit" value="로그인"/>
               </div>
             </form>
           </div>
@@ -61,5 +63,10 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
           crossorigin="anonymous"></script>
+  <script>
+      <% if(request.getAttribute("isLoginSuccess") == "false") {%>
+      alert("로그인 정보가 올바르지 않습니다.");
+      <%}%>
+  </script>
 </body>
 </html>
