@@ -122,28 +122,28 @@
           neque hic blanditiis culpa corporis animi, ratione quis? Odio, velit
           placeat?
         </p>
-        <hr />
+        <hr/>
         <p class="mb-0">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
           et magni quas ducimus quisquam tempore error qui. Veniam accusamus
           neque hic blanditiis culpa corporis animi, ratione quis? Odio, velit
           placeat?
         </p>
-        <hr />
+        <hr/>
         <p class="mb-0">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
           et magni quas ducimus quisquam tempore error qui. Veniam accusamus
           neque hic blanditiis culpa corporis animi, ratione quis? Odio, velit
           placeat?
         </p>
-        <hr />
+        <hr/>
         <p class="mb-0">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
           et magni quas ducimus quisquam tempore error qui. Veniam accusamus
           neque hic blanditiis culpa corporis animi, ratione quis? Odio, velit
           placeat?
         </p>
-        <hr />
+        <hr/>
         <p class="mb-0">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
           et magni quas ducimus quisquam tempore error qui. Veniam accusamus
@@ -156,6 +156,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
           crossorigin="anonymous"></script>
-  <script src="../resources/js/main.js"></script>
+  <script src="<%=contextPath%>/resources/js/main.js"></script>
 </body>
 </html>
