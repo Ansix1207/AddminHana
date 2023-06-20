@@ -14,7 +14,7 @@ public class MainController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
-        
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("./views/main.jsp");
         dispatcher.forward(request, response);
     }
