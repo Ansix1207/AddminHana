@@ -33,8 +33,6 @@ public class CustomerDAO {
             pstmt = conn.prepareStatement(query);
             pstmt.setInt(1, _c_id);
             ResultSet rs = pstmt.executeQuery();
-            System.out.println("rs 전");
-
             if (rs.next()) {
                 Integer c_id = rs.getInt("c_id");
                 String c_name = rs.getString("c_name");
@@ -53,7 +51,6 @@ public class CustomerDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("customerEntity = " + customerEntity);
         return customerEntity;
     }
 }
