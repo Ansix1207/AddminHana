@@ -9,8 +9,8 @@
   </h1>
   <br/>
   <a href="hello-servlet">Hello Servlet</a>
-  <a href="loanInfo.do">대출 현황</a>
-  <a href="depositInfo.do">예금 현황</a>
-  <a href="savingsInfo.do">적금 현황</a>
+  <form method="post" action="loanInfo.do"><input type="submit" value="대출 현황"></form>
+  <form method="get" action="depositInfo.do"><input type="submit" value="예금 현황"></form>
+  <form method="post" action="savingsInfo.do"><input type="submit" value="적금 현황"></form>
 </body>
 </html>
