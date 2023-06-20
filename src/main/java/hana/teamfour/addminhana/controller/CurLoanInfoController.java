@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 @WebServlet("/loanInfo.do")
-public class SessionOnAccInfoController extends HttpServlet {
+public class CurLoanInfoController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
