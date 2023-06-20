@@ -1,5 +1,7 @@
 <%@ page import="hana.teamfour.addminhana.entity.AccountInfo" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="hana.teamfour.addminhana.entity.AccountEntity" %>
+<%@ page import="hana.teamfour.addminhana.entity.AssetEntity" %><%--
 Created by IntelliJ IDEA.
 User: jiyou
 Date: 2023-06-17
@@ -11,10 +13,31 @@ To change this template use File | Settings | File Templates.
   request.setCharacterEncoding("UTF-8");
   String contextPath = request.getContextPath();
 
-  ArrayList<AccountInfo> accInfo = new ArrayList<AccountInfo>();
-  accInfo = (ArrayList<AccountInfo>) request.getAttribute("accInfo");
+  // 계좌 정보
+  ArrayList<AccountEntity> accountEntity = (ArrayList<AccountEntity>) request.getAttribute("accountEntity");
 
-  String productType = accInfo.get(0).getAcc_type();
+  // 계좌 type (예금/적금/대출)
+  String productType = accountEntity.get(0).getAcc_p_category().substring(2);
+
+  // 자산
+  AssetEntity assetEntity = (AssetEntity) request.getAttribute("assetEntity");
+  Integer asset = 0;
+
+  // 계좌 자산 비율
+  Integer[] accountRate;
+
+  if (productType.equals("대출")) {
+    accountRate = (Integer[]) request.getAttribute("loanRate");
+    if (assetEntity.getAss_loan() != null) asset = assetEntity.getAss_loan();
+  }
+  else if (productType.equals("예금")) {
+    accountRate = (Integer[]) request.getAttribute("depositRate");
+    if (assetEntity.getAss_deposit() != null) asset = assetEntity.getAss_deposit();
+  }
+  else {
+    accountRate = (Integer[]) request.getAttribute("savingsRate");
+    if (assetEntity.getAss_savings() != null) asset = assetEntity.getAss_savings();
+  }
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -41,9 +64,12 @@ To change this template use File | Settings | File Templates.
               <h1 class="card-title"><%-- 손님 이름 --%>님의 <%=productType%> 현황</h1>
               <div class="asset_info">
                 <h3>자산 정보</h3>
-                <p><span>총 <%=productType%>액</span> <span>₩<%-- 손님의 대출 자산 --%></span></p>
+                <p><span>총 <%=productType%>액</span> <span>₩ <%=asset%></span></p>
                 <div class="statistics_graph">
                   <%-- 손님의 대출 자산 현황 그래프 --%>
+                  <%for (int i=0; i<accountRate.length; i++) {%>
+                  <div><%=accountRate[i]%></div>
+                  <%}%>
                   <div class="chartWrap">
                     <div class="chart">
                       <div class="chart-bar" data-deg="50"></div>
@@ -59,13 +85,13 @@ To change this template use File | Settings | File Templates.
                 <div>
                   <%-- 가입된 상품 리스트 --%>
                   <%
-                    for (int i = 0; i < accInfo.size(); i++) {
+                    for (int i = 0; i < accountEntity.size(); i++) {
                   %>
                   <div>
-                    <span><%=accInfo.get(i).getAcc_pname()%></span>
-                    <span>만기일 <%=accInfo.get(i).getAcc_maturitydate()%></span>
-                    <span>이자율 <%=accInfo.get(i).getAcc_interestrate()%></span>
-                    <span>잔고 <%=accInfo.get(i).getAcc_balance()%></span>
+                    <span><%=accountEntity.get(i).getAcc_pname()%></span>
+                    <span>만기일 <%=accountEntity.get(i).getAcc_maturitydate()%></span>
+                    <span>이자율 <%=accountEntity.get(i).getAcc_interestrate()%></span>
+                    <span>잔고 <%=accountEntity.get(i).getAcc_balance()%></span>
                   </div>
                   <%
                     }
