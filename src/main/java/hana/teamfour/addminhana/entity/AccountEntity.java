@@ -19,7 +19,7 @@ public class AccountEntity {
     private Integer acc_pid;
     private String acc_p_category;
     private String acc_pname;
-    private Integer acc_interestrate;
+    private Double acc_interestrate;
     private Integer acc_collateralvalue;
     private Integer acc_interest_day;
     private Integer acc_contract_month;
