@@ -12,7 +12,7 @@ public class LoginDAO {
     public static Connection getConnection() throws Exception {
         Class.forName("oracle.jdbc.OracleDriver");
         Connection con = DriverManager.getConnection
-                ("jdbc:oracle:thin:@//localhost:1521/xe", "system", "1234");
+                ("jdbc:oracle:thin:@//localhost:1521/xe", "admin_hana", "1234");
         return con;
     }
 
@@ -24,7 +24,7 @@ public class LoginDAO {
         try {
             conn = getConnection();
 
-            String sql = "SELECT e_id, e_name, e_password  FROM employee WHERE e_name = ? AND e_password = ?";
+            String sql = "SELECT e_id, e_name, e_password  FROM system.employee WHERE e_name = ? AND e_password = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, id);
             ps.setString(2, pw);
