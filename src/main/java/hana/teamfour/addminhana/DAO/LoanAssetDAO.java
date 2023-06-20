@@ -1,6 +1,6 @@
 package hana.teamfour.addminhana.DAO;
 
-import hana.teamfour.addminhana.entity.AssetInfo;
+import hana.teamfour.addminhana.entity.AssetEntity;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,12 +14,12 @@ public class LoanAssetDAO {
 
     public static Connection getConnection() throws Exception {
         Class.forName("oracle.jdbc.OracleDriver");
-        Connection con = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/xe", "jyp", "1234");
+        Connection con = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/xe", "admin_hana", "1234");
         return con;
     }
 
-    public AssetInfo getLoanAsset() {
-        AssetInfo assetInfo = new AssetInfo();
+    public AssetEntity getLoanAsset() {
+        AssetEntity assetEntity = new AssetEntity();
 
         try {
             conn = getConnection();
@@ -33,7 +33,9 @@ public class LoanAssetDAO {
 
             System.out.println("LoanAssetDAO 로드 성공");
 
-            assetInfo.setAss_loan(rs.getInt(1));
+            while (rs.next()) {
+                assetEntity.setAss_loan(rs.getInt(1));
+            }
 
             conn.close();
             ps.close();
@@ -41,6 +43,6 @@ public class LoanAssetDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return assetInfo;
+        return assetEntity;
     }
 }
