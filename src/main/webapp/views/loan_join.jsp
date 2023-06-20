@@ -15,16 +15,17 @@
   <title>Title</title>
   <link rel="stylesheet" href="../resources/css/nav.css">
   <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
-    crossorigin="anonymous"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+          crossorigin="anonymous"
   />
   <link rel="stylesheet" href="../resources/css/loan_join.css ">
+  <link rel="stylesheet" href="../resources/css/base.css ">
 
   <script
-    src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
-    crossorigin="anonymous"
+          src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+          crossorigin="anonymous"
   ></script>
 </head>
 <body>
@@ -42,10 +43,15 @@
                 <form>
 
                   <div class="form-floating mb-3" style="margin-top: 50px">
-                    <label for="inputEmail">이름</label>
+                    <label for="inputEmail">상품명</label>
                     <input class="form-control" name="inputEmail" type="email" id="inputEmail">
                   </div>
-  
+
+                  <div class="form-floating mb-3">
+                    <label for="inputName">이름</label>
+                    <input class="form-control" name="inputName" type="text">
+                  </div>
+
                   <div class="form-floating mb-3">
                     <label for="inputName">직장</label>
                     <input class="form-control" name="inputName" type="text">
@@ -64,6 +70,7 @@
                     <input class="form-control" name="inputName" type="text">
                   </div>
 
+
                   <div class="mt-4 mb-0">
                     <div class="d-grid"><a class="btn btn-primary btn-block" href="login.html">가입 심사</a></div>
                   </div>
@@ -80,9 +87,9 @@
 
   </div>
   <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-    crossorigin="anonymous"
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+          crossorigin="anonymous"
   ></script>
 </body>
 </html>
