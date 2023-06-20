@@ -24,6 +24,7 @@ public class LoginDAO {
         try {
             conn = getConnection();
 
+
             String sql = "SELECT e_id, e_name, e_password  FROM system.employee WHERE e_name = ? AND e_password = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, id);
