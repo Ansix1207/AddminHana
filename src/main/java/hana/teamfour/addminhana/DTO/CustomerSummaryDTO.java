@@ -14,4 +14,5 @@ public class CustomerSummaryDTO {
     private Character c_gender;
     private String c_job;
     private String c_description;
+    private Integer c_age;
 }
