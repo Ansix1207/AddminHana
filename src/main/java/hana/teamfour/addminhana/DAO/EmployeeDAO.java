@@ -7,7 +7,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class LoginDAO {
+public class EmployeeDAO {
 
     public static Connection getConnection() throws Exception {
         Class.forName("oracle.jdbc.OracleDriver");
@@ -25,7 +25,7 @@ public class LoginDAO {
             conn = getConnection();
 
 
-            String sql = "SELECT e_id, e_name, e_password  FROM system.employee WHERE e_id = ? AND e_password = ?";
+            String sql = "SELECT e_id, e_name, e_password  FROM admin_hana.employee WHERE e_id = ? AND e_password = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, id);
             ps.setString(2, pw);
