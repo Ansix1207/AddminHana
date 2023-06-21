@@ -28,6 +28,7 @@
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/nav.css">
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/financialinstruments_inquery.css">
+  <link rel="stylesheet" href="<%=contextPath%>/resources/css/base.css ">
   <title>Title</title>
 </head>
 <body>
@@ -55,6 +56,7 @@
       <div class=list>
         <div class="card-header">
           <h4> &nbsp; 추천 대출 상품 리스트</h4>
+
           <%
             for (int i = 0; i < productEntity.size(); i++) {
           %>
