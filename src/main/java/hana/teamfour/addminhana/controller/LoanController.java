@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 @WebServlet("/loaninquery")
-public class LoanController extends HttpServlet { //extends HttpServlet 이기 때문에 servlet이 되었음
+public class LoanController extends HttpServlet {
     private LoanProductService loanProductService;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -17,7 +17,7 @@ public class LoanProductDAO {
     public static Connection getConnection() throws Exception {
         Class.forName("oracle.jdbc.OracleDriver");
         Connection con = DriverManager.getConnection
-                ("jdbc:oracle:thin:@//localhost:1521/xe", "DB1", "1234");
+                ("jdbc:oracle:thin:@//localhost:1521/xe", "admin_hana", "1234");
         return con;
     }
 
@@ -28,14 +28,12 @@ public class LoanProductDAO {
         try {
             conn = getConnection();
 
-            String sql = "select p_name, p_limit, p_interestrate from product where p_category in (?, ?)";
-<<<<<<< HEAD
-=======
+            String sql = "select p_name, p_limit, p_interestrate from admin_hana.product";
+//            String sql = "select p_name, p_limit, p_interestrate from product where p_category in (?, ?)";
 
->>>>>>> 12da167e2b1aea03f8ea188586fe5585d5cbf46c
             ps = conn.prepareStatement(sql);
-            ps.setString(1, "신용대출");
-            ps.setString(2, "담보대출");
+//            ps.setString(1, "신용대출");
+//            ps.setString(2, "담보대출");
             rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -45,13 +43,14 @@ public class LoanProductDAO {
                 productEntity.setP_interestrate(rs.getDouble(3));
                 productEntityList.add(productEntity);
             }
-
+            System.out.println("productEntityList = " + productEntityList);
             conn.close();
             ps.close();
             rs.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println("productEntityList = " + productEntityList);
         return productEntityList;
     }
 }
