@@ -1,0 +1,35 @@
+input {
+    width: 800px;
+    height: 50px;
+    font-size: 30px;
+}
+
+.btn {
+    height: 80px; /* 원하는 크기로 조정 */
+    margin: 0 auto; /* 수평 가운데 정렬 */
+    width: 50%;
+    margin-top: 70px;
+    font-size: 25px; /* 폰트 크기 조절 */
+    text-align: center; /* 가운데 정렬 */
+}
+
+.form-control {
+    display: block;
+    width: 60%;
+    margin-left: 200px;
+    margin-right: auto;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.form-floating > .form-control-plaintext:focus,
+.form-floating > .form-control-plaintext:not(:placeholder-shown),
+.form-floating > .form-control:focus,
+.form-floating > .form-control:not(:placeholder-shown) {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.card-body {
+    font-size: 20px;
+}
