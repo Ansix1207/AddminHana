@@ -20,18 +20,6 @@ import java.util.ArrayList;
 @WebServlet("/loanInfo")
 public class CurLoanInfoController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        requestPro(request, response);
-    }
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        requestPro(request, response);
-    }
-
-
-    protected void requestPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         LoanAccountDAO loanAccountDAO = new LoanAccountDAO();
         LoanAssetDAO loanAssetDAO = new LoanAssetDAO();
 
