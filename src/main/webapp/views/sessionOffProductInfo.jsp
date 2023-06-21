@@ -31,6 +31,8 @@
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/base.css ">
   <title>Title</title>
 </head>
+
+
 <body>
   <div class="wrap">
     <%@ include file="common/navbar.jsp" %>
