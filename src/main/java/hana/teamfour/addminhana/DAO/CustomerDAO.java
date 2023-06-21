@@ -2,32 +2,26 @@ package hana.teamfour.addminhana.DAO;
 
 import hana.teamfour.addminhana.entity.CustomerEntity;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.sql.DataSource;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class CustomerDAO {
-    private DataSource dataFactory;
     private Connection conn;
     private PreparedStatement pstmt;
 
-    public CustomerDAO() {
-        try {
-            Context ctx = new InitialContext();
-            Context envContext = (Context) ctx.lookup("java:/comp/env");
-            dataFactory = (DataSource) envContext.lookup("jdbc/oracle");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    private static Connection getConnection() throws Exception {
+        Class.forName("oracle.jdbc.OracleDriver");
+        Connection con = DriverManager.getConnection
+                ("jdbc:oracle:thin:@//localhost:1521/xe", "admin_hana", "1234");
+        return con;
     }
 
     public CustomerEntity findById(Integer _c_id) {
         CustomerEntity customerEntity = null;
         try {
-            conn = dataFactory.getConnection();
+            conn = getConnection();
             String query = "select * from customer where c_id = ? ";
             System.out.println("query = " + query);
             pstmt = conn.prepareStatement(query);
