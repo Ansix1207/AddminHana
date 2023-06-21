@@ -2,18 +2,26 @@ package hana.teamfour.addminhana.DAO;
 
 import hana.teamfour.addminhana.entity.EmployeeEntity;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class EmployeeDAO {
+    private DataSource dataFactory;
+    private Connection conn;
+    private PreparedStatement pstmt;
 
-    public static Connection getConnection() throws Exception {
-        Class.forName("oracle.jdbc.OracleDriver");
-        Connection con = DriverManager.getConnection
-                ("jdbc:oracle:thin:@//localhost:1521/xe", "admin_hana", "1234");
-        return con;
+    public EmployeeDAO() {
+        try {
+            Context ctx = new InitialContext();
+            Context envContext = (Context) ctx.lookup("java:/comp/env");
+            dataFactory = (DataSource) envContext.lookup("jdbc/oracle");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public EmployeeEntity login(String id, String pw) {
@@ -22,7 +30,7 @@ public class EmployeeDAO {
         ResultSet rs = null; //검색 결과를 담을 것
         EmployeeEntity employee = null;
         try {
-            conn = getConnection();
+            conn = dataFactory.getConnection();
 
 
             String sql = "SELECT e_id, e_name, e_password  FROM admin_hana.employee WHERE e_id = ? AND e_password = ?";

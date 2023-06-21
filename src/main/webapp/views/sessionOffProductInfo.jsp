@@ -27,7 +27,8 @@
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"/>
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/nav.css">
-  <link rel="stylesheet" href="<%=contextPath%>/resources/css/financialinstruments_inquery.css">
+  <link rel="stylesheet" href="<%=contextPath%>/resources/css/sessionOffProductInfo.css">
+  <link rel="stylesheet" href="<%=contextPath%>/resources/css/base.css ">
   <title>Title</title>
 </head>
 <body>
