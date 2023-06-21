@@ -56,7 +56,6 @@
       <div class=list>
         <div class="card-header">
           <h4> &nbsp; 추천 대출 상품 리스트</h4>
-
           <%
             for (int i = 0; i < productEntity.size(); i++) {
           %>
