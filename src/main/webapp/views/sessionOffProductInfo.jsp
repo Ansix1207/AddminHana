@@ -39,7 +39,6 @@
                aria-describedby="btnNavbarSearch"/>
         <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
       </div>
-
       <div class="col-lg-6">
         <div class="card mb-4">
           <div class="card-header">
