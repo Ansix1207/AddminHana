@@ -73,7 +73,6 @@ To change this template use File | Settings | File Templates.
             }
           %>
         </div>
-        <a href="board.jsp"> 게시판 </a>
         <ol class="list-group list-group-numbered">
           <li class="list-group-item d-flex justify-content-between align-items-start">
             <div class="ms-2 me-auto">
