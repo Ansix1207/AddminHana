@@ -6,7 +6,7 @@ import hana.teamfour.addminhana.entity.AccountEntity;
 import hana.teamfour.addminhana.entity.AssetEntity;
 import hana.teamfour.addminhana.service.LoanAssetService;
 import hana.teamfour.addminhana.service.LoanAccountService;
-import hana.teamfour.addminhana.service.LoanRateService;
+import hana.teamfour.addminhana.service.LoanBalanceService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,15 +37,15 @@ public class CurLoanInfoController extends HttpServlet {
 
         LoanAccountService loanAccountService = new LoanAccountService(loanAccountDAO);
         LoanAssetService loanAssetService = new LoanAssetService(loanAssetDAO);
-        LoanRateService loanRateService = new LoanRateService(loanAccountDAO);
-
+        LoanBalanceService loanBalanceService = new LoanBalanceService(loanAccountDAO);
+        // loan?porductType=대출
         AssetEntity assetEntity = loanAssetService.getLoanAsset();
         ArrayList<AccountEntity> accountEntity = loanAccountService.getLoanInfoList();
-        Integer[] loanRate = loanRateService.getLoanRate();
+        Integer[] loanBalance = loanBalanceService.getLoanBalance();
 
         request.setAttribute("accountEntity", accountEntity);
         request.setAttribute("assetEntity", assetEntity);
-        request.setAttribute("loanRate", loanRate);
+        request.setAttribute("loanBalance", loanBalance);
         request.setAttribute("productType", "대출");
 
         String site = "views/sessionOnAccInfo.jsp";

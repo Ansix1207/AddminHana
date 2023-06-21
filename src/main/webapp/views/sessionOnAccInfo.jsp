@@ -28,21 +28,23 @@ To change this template use File | Settings | File Templates.
   Integer asset = 0;
 
   // 계좌 자산 비율
-  Integer[] accountRate;
+  Integer[] accountBalance;
   String[] assetCategory;
+  String balance = "잔액";
 
   if (productType.equals("대출")) {
-    accountRate = (Integer[]) request.getAttribute("loanRate");
+    accountBalance = (Integer[]) request.getAttribute("loanBalance");
     assetCategory = new String[]{"신용", "담보"};
     if (assetEntity.getAss_loan() != null) asset = assetEntity.getAss_loan();
+    balance = "대출잔액";
   }
   else if (productType.equals("예금")) {
-    accountRate = (Integer[]) request.getAttribute("depositRate");
+    accountBalance = (Integer[]) request.getAttribute("depositBalance");
     assetCategory = new String[] {"보통", "정기"};
     if (assetEntity.getAss_deposit() != null) asset = assetEntity.getAss_deposit();
   }
   else {
-    accountRate = (Integer[]) request.getAttribute("savingsRate");
+    accountBalance = (Integer[]) request.getAttribute("savingsBalance");
     assetCategory = new String[] {"자유", "정기"};
     if (assetEntity.getAss_savings() != null) asset = assetEntity.getAss_savings();
   }
@@ -58,13 +60,16 @@ To change this template use File | Settings | File Templates.
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"/>
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" type="text/css" href="<%=contextPath%>/resources/css/base.css">
   <link rel="stylesheet" type="text/css" href="<%=contextPath%>/resources/css/nav.css">
   <link rel="stylesheet" type="text/css" href="<%=contextPath%>/resources/css/sessionOnAccInfo.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 <div class="wrap">
+  <nav id="layoutSidenav_nav">
   <%@ include file="common/navbar.jsp" %>
+  </nav>
   <main class="grid grid-cols-2 w-full">
     <div class="col-span-1 p-4">
       <div class="card statisticsSituation">
@@ -89,7 +94,7 @@ To change this template use File | Settings | File Templates.
                 <div class="productName"><%=accountEntity.get(i).getAcc_pname()%></div>
                 <span>만기일 <fmt:formatDate pattern="yyyy-MM-dd" value="${accountEntity.get(i).getAcc_maturitydate()}"/></span>
                 <span>이자율 <%=accountEntity.get(i).getAcc_interestrate()%>%</span>
-                <span>잔고 <%=accountEntity.get(i).getAcc_balance()%>원</span>
+                <span><%=balance%> <fmt:formatNumber type="number" maxFractionDigits="3" value="${accountEntity.get(i).getAcc_balance()}" />원</span>
               </li>
               <%
                 }
@@ -153,7 +158,7 @@ To change this template use File | Settings | File Templates.
     data = {
         datasets: [{
             backgroundColor: ['#BF5AD8','#9E37D1'],
-            data: [<%=accountRate[0]%>, <%=accountRate[1]%>]
+            data: [<%=accountBalance[0]%>, <%=accountBalance[1]%>]
         }],
         // 라벨의 이름이 툴팁처럼 마우스가 근처에 오면 나타남
         labels: ['<%=assetCategory[0]%>', '<%=assetCategory[1]%>']

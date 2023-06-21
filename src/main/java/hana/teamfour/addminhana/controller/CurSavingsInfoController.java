@@ -6,7 +6,7 @@ import hana.teamfour.addminhana.entity.AccountEntity;
 import hana.teamfour.addminhana.entity.AssetEntity;
 import hana.teamfour.addminhana.service.SavingsAccountService;
 import hana.teamfour.addminhana.service.SavingsAssetService;
-import hana.teamfour.addminhana.service.SavingsRateService;
+import hana.teamfour.addminhana.service.SavingsBalanceService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,15 +37,15 @@ public class CurSavingsInfoController extends HttpServlet {
 
         SavingsAccountService savingsAccountService = new SavingsAccountService(savingsAccountDAO);
         SavingsAssetService savingsAssetService = new SavingsAssetService(savingsAssetDAO);
-        SavingsRateService savingsRateService = new SavingsRateService(savingsAccountDAO);
+        SavingsBalanceService savingsBalanceService = new SavingsBalanceService(savingsAccountDAO);
 
         AssetEntity assetEntity = savingsAssetService.getSavingsAsset();
         ArrayList<AccountEntity> accountEntity = savingsAccountService.getSavingsInfoList();
-        Integer[] savingsRate = savingsRateService.getSavingsRate();
+        Integer[] savingsBalance = savingsBalanceService.getSavingsBalance();
 
         request.setAttribute("accountEntity", accountEntity);
         request.setAttribute("assetEntity", assetEntity);
-        request.setAttribute("savingsRate", savingsRate);
+        request.setAttribute("savingsBalance", savingsBalance);
         request.setAttribute("productType", "적금");
 
         String site = "views/sessionOnAccInfo.jsp";

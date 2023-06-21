@@ -6,7 +6,7 @@ import hana.teamfour.addminhana.entity.AccountEntity;
 import hana.teamfour.addminhana.entity.AssetEntity;
 import hana.teamfour.addminhana.service.DepositAssetService;
 import hana.teamfour.addminhana.service.DepositAccountService;
-import hana.teamfour.addminhana.service.DepositRateService;
+import hana.teamfour.addminhana.service.DepositBalanceService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -38,15 +38,15 @@ public class CurDepositInfoController extends HttpServlet {
 
         DepositAccountService depositAccountService = new DepositAccountService(depositAccountDAO);
         DepositAssetService depositAssetService = new DepositAssetService(depositAssetDAO);
-        DepositRateService depositRateService = new DepositRateService(depositAccountDAO);
+        DepositBalanceService depositBalanceService = new DepositBalanceService(depositAccountDAO);
 
         AssetEntity assetEntity = depositAssetService.getDepositAsset();
         ArrayList<AccountEntity> accountEntity = depositAccountService.getDepositInfoList();
-        Integer[] depositRate = depositRateService.getDepositRate();
+        Integer[] depositBalance = depositBalanceService.getDepositBalance();
 
         request.setAttribute("accountEntity", accountEntity);
         request.setAttribute("assetEntity", assetEntity);
-        request.setAttribute("depositRate", depositRate);
+        request.setAttribute("depositBalance", depositBalance);
         request.setAttribute("productType", "예금");
 
         String site = "views/sessionOnAccInfo.jsp";
