@@ -12,16 +12,9 @@ public class ${Class_Name} {
     private Connection conn;
     private PreparedStatement pstmt;
 
-    public ${Class_Name}() {
-        try {
-            Context ctx = new InitialContext();
-            Context envContext = (Context) ctx.lookup("java:/comp/env");
-            dataFactory = (DataSource) envContext.lookup("jdbc/oracle");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public List<ArticleVO> selectAllArticles() {
+    private static Connection getConnection() throws Exception {
+        Class.forName("oracle.jdbc.OracleDriver");
+        Connection con = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/xe", "admin_hana", "1234");
+        return con;
     }
 }
