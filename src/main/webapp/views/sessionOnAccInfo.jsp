@@ -104,7 +104,7 @@ To change this template use File | Settings | File Templates.
       </div>
     </div>
     <div class="col-span-1 p-4">
-      <div class="recommend_product card">
+      <div class="recommendProduct card">
         <div class="card-body">
           <span class="componentTitle">추천 <%=productType%> 상품</span>
           <h5 class="card-title mt-1 mb-2">추천</h5>
