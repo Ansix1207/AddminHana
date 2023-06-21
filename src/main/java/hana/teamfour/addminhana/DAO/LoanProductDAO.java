@@ -29,6 +29,10 @@ public class LoanProductDAO {
             conn = getConnection();
 
             String sql = "select p_name, p_limit, p_interestrate from product where p_category in (?, ?)";
+<<<<<<< HEAD
+=======
+
+>>>>>>> 12da167e2b1aea03f8ea188586fe5585d5cbf46c
             ps = conn.prepareStatement(sql);
             ps.setString(1, "신용대출");
             ps.setString(2, "담보대출");

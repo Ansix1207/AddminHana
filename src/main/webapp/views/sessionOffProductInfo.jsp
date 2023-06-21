@@ -56,7 +56,10 @@
       <div class=list>
         <div class="card-header">
           <h4> &nbsp; 추천 대출 상품 리스트</h4>
+          <<<<<<< HEAD
 
+          =======
+          >>>>>>> 12da167e2b1aea03f8ea188586fe5585d5cbf46c
           <%
             for (int i = 0; i < productEntity.size(); i++) {
           %>
