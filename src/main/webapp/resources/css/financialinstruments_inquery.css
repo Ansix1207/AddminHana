@@ -1,4 +1,3 @@
-
 .form-control {
     margin: 50px;
     font-size: 30px;
@@ -7,7 +6,6 @@
 .btn {
     margin: 50px;
     --bs-btn-padding-x: 2.5rem;
-
 }
 
 .join {
@@ -15,7 +13,6 @@
     color: #ffffff;
     background-color: #0d6efd;
     border-color: #0d6efd;
-
 }
 
 .col-lg-6 {
@@ -24,7 +21,6 @@
     margin-top: 10px;
     margin-bottom: 70px;
 }
-
 
 .list {
     margin: 30px;

@@ -21,20 +21,7 @@ public class LoanProductDAO {
         return con;
     }
 
-    //public static Connection getConnection() throws Exception: getConnection이라는 이름의 public, static 메서드를 선언합니다.
-// 이 메서드는 Connection 객체를 반환하며, 예외(Exception)를 처리할 수 있습니다.
-//
-//Class.forName("oracle.jdbc.OracleDriver");: JDBC 드라이버 클래스를 동적으로 로드합니다. 이 예시에서는 Oracle JDBC 드라이버를 사용하고 있습니다.
-// 해당 드라이버를 로드해야만 데이터베이스에 연결할 수 있습니다.
-//
-//Connection con = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/xe", "db1", "1234");: DriverManager 클래스를 사용하여 데이터베이스에 연결하는 Connection 객체를 생성합니다.
-// 이 예시에서는 Oracle 데이터베이스에 "jdbc:oracle:thin:@//localhost:1521/xe" URL로 연결하고, "db1" 사용자명과 "1234" 비밀번호로 인증합니다.
-// 이 정보는 해당 데이터베이스에 맞게 수정되어야 합니다.
-//
-//return con;: 생성된 Connection 객체를 반환합니다. 이를 통해 다른 코드에서 해당 연결을 활용할 수 있습니다.
-//
-//이 코드는 getConnection 메서드를 사용하여 Oracle 데이터베이스에 연결하는 Connection 객체를 반환하는 기능을 제공합니다.
-// 이를 통해 다른 클래스나 메서드에서 데이터베이스와의 연결을 간편하게 활용할 수 있습니다.
+
     public ArrayList<ProductEntity> getLoanProductList() {
         ArrayList<ProductEntity> productEntityList = new ArrayList<>();
 

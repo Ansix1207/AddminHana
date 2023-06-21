@@ -1,18 +1,13 @@
-<%@ page import="hana.teamfour.addminhana.entity.ProductEntity" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: 하나로H012
   Date: 2023-06-19
   Time: 오후 5:38
   To change this template use File | Settings | File Templates.
 --%>
-<%--
-Created by IntelliJ IDEA.
-User: ${USER}
-Date: ${DATE}
-Time: ${TIME}
-To change this template use File | Settings | File Templates.
---%>
+
+<%@ page import="hana.teamfour.addminhana.entity.ProductEntity" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%
   request.setCharacterEncoding("UTF-8");
@@ -32,7 +27,7 @@ To change this template use File | Settings | File Templates.
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"/>
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/nav.css">
-  <link rel="stylesheet" href="../resources/css/financialinstruments_inquery.css">
+  <link rel="stylesheet" href="<%=contextPath%>/resources/css/financialinstruments_inquery.css">
   <title>Title</title>
 </head>
 <body>

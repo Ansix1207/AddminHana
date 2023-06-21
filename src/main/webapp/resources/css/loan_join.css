@@ -1,15 +1,8 @@
-/*@font-face {*/
-/*    font-family: 'Hana2-Heavy';*/
-/*    src: url("./font/Hana2-Heavy.ttf");*/
-/*}*/
-
-
 input {
     width: 800px;
     height: 50px;
     font-size: 30px;
 }
-
 
 .btn {
     height: 80px; /* 원하는 크기로 조정 */
@@ -18,8 +11,6 @@ input {
     margin-top: 70px;
     font-size: 25px; /* 폰트 크기 조절 */
     text-align: center; /* 가운데 정렬 */
-
-
 }
 
 .form-control {
@@ -29,7 +20,6 @@ input {
     margin-right: auto;
     padding-top: 0px;
     padding-bottom: 0px;
-
 }
 
 .form-floating > .form-control-plaintext:focus,
@@ -39,7 +29,6 @@ input {
     padding-top: 0;
     padding-bottom: 0;
 }
-
 
 .card-body {
     font-size: 20px;
