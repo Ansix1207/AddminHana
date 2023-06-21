@@ -2,32 +2,39 @@ package hana.teamfour.addminhana.DAO;
 
 import hana.teamfour.addminhana.entity.AccountEntity;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class SavingsAccountDAO {
-    Connection conn = null;
-    PreparedStatement ps = null;
-    ResultSet rs = null;
+    private DataSource dataFactory;
+    private Connection conn = null;
+    private PreparedStatement ps = null;
+    private ResultSet rs = null;
 
-    public static Connection getConnection() throws Exception {
-        Class.forName("oracle.jdbc.OracleDriver");
-        Connection con = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/xe", "admin_hana", "1234");
-        return con;
+    public SavingsAccountDAO() {
+        try {
+            Context ctx = new InitialContext();
+            Context envContext = (Context) ctx.lookup("java:/comp/env");
+            dataFactory = (DataSource) envContext.lookup("jdbc/oracle");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public ArrayList<AccountEntity> getSavingsInfoList() {
         ArrayList<AccountEntity> list = new ArrayList<AccountEntity>();
 
         try {
-            conn = getConnection();
+            conn = dataFactory.getConnection();
 
-            String sql = "SELECT ACC_P_CATEGORY, ACC_PNAME, ACC_MATURITYDATE, ACC_INTERESTRATE, ACC_BALANCE ";
-            sql += "FROM ACCOUNT ";
-            sql += "WHERE ACC_CID = 37 AND ACC_P_CATEGORY IN ('자유적금', '정기적금') AND ACC_ISACTIVE = 'Y'";
+            String sql = "SELECT ACC_P_CATEGORY, ACC_PNAME, ACC_MATURITYDATE, ACC_INTERESTRATE, ACC_BALANCE " +
+                    "FROM ACCOUNT " +
+                    "WHERE ACC_CID = 37 AND ACC_P_CATEGORY IN ('자유적금', '정기적금') AND ACC_ISACTIVE = 'Y'";
 
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
