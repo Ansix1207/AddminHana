@@ -1,0 +1,33 @@
+main {
+  padding: 3rem;
+}
+.card {
+  margin: 1rem;
+  width: 100%;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5);
+}
+.card-title {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+#assetChart {
+  width: 300px!important;
+  height: auto!important;
+  padding: 1rem;
+}
+.searchBox {
+  margin: 1rem;
+  width: 100%;
+  border-radius: 20px;
+}
+.componentTitle {
+  font-size: 1.25rem;
+  margin-right: 1rem;
+  font-weight: bold;
+}
+.signedupProduct > ul > li {
+  line-height: 2rem;
+}
+.productName {
+  font-weight: bold;
+}
