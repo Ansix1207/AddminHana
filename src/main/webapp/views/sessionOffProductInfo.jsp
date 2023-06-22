@@ -60,7 +60,7 @@
         </div>
       </div>
 
-      <div class=list>
+      <div class="list1">
         <div class="card-header">
           <h4> &nbsp 추천 대출 상품 리스트</h4>
 
