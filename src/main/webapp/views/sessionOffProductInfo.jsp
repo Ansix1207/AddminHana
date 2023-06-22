@@ -37,13 +37,13 @@
     <%@ include file="common/navbar.jsp" %>
     <main>
       <div class="input-group">
-        <select name='f'>
-          <option value='title'> 제목</option>
-          <option value='writeId'> 작성자</option>
-        </select>
+        <%--        <select name='f'>--%>
+        <%--          <option value='title'> 제목</option>--%>
+        <%--          <option value='writeId'> 작성자</option>--%>
+        <%--        </select>--%>
 
 
-        <input class="form-control" type="text" value="검색" name="q" value=""
+        <input class="form-control" type="text" value="검색" name="q"
                aria-describedby="btnNavbarSearch"/>
         <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
       </div>
