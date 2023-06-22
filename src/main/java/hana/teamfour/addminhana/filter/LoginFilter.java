@@ -1,4 +1,4 @@
-package hana.teamfour.addminhana;
+package hana.teamfour.addminhana.filter;
 
 
 import javax.servlet.*;
@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter("/*")
+@WebFilter(filterName = "LoginFilter", urlPatterns = "/*")
 public class LoginFilter implements Filter {
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws ServletException, IOException {
@@ -19,7 +19,6 @@ public class LoginFilter implements Filter {
 
         boolean loggedIn = session != null && session.getAttribute("login") != null;
         boolean loginRequest = request.getRequestURI().equals(loginURI);
-
         if (loggedIn || loginRequest) {
             chain.doFilter(request, response);
         } else {
