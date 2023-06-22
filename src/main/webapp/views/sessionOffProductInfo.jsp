@@ -30,13 +30,20 @@
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/sessionOffProductInfo.css">
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/base.css ">
   <title>Title</title>
+
 </head>
 <body>
   <div class="wrap">
     <%@ include file="common/navbar.jsp" %>
     <main>
       <div class="input-group">
-        <input class="form-control" type="text"
+        <select name='f'>
+          <option value='title'> 제목</option>
+          <option value='writeId'> 작성자</option>
+        </select>
+
+
+        <input class="form-control" type="text" value="검색" name="q" value=""
                aria-describedby="btnNavbarSearch"/>
         <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
       </div>
@@ -55,42 +62,32 @@
 
       <div class=list>
         <div class="card-header">
-          <h4> &nbsp; 추천 대출 상품 리스트</h4>
+          <h4> &nbsp 추천 대출 상품 리스트</h4>
+
+        </div>
+        <ol class="list-group list-group-numbered" id="pages">
+
           <%
             for (int i = 0; i < productEntity.size(); i++) {
           %>
-          <div>
-            <span>상품 이름 <%=productEntity.get(i).getP_name()%></span>
-            <span>금리 <%=productEntity.get(i).getP_interestrate()%></span>
-            <span>한도액 <%=productEntity.get(i).getP_limit()%></span>
-          </div>
+          <li class="productItem list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto ">
+              <div class="fw-bold">
+                <div>
+                  <h4><span><%=productEntity.get(i).getP_name()%></span></h4>
+                  <span>금리 <%=productEntity.get(i).getP_interestrate()%> %</span><br>
+                  <span><%=productEntity.get(i).getP_description()%></span>
+                </div>
+              </div>
+            </div>
+            <button class="modify">수정</button>
+          </li>
           <%
             }
           %>
-        </div>
-        <ol class="list-group list-group-numbered">
-          <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-              <div class="fw-bold">Subheading</div>
-              Content for list item
-            </div>
-            <button class="join">가입</button>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-              <div class="fw-bold">Subheading</div>
-              Content for list item
-            </div>
-            <button class="join">가입</button>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-              <div class="fw-bold">Subheading</div>
-              Content for list item
-            </div>
-            <button class="join">가입</button>
-          </li>
+
         </ol>
+
       </div>
     </main>
   </div>

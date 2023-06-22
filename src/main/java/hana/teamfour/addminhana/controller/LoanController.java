@@ -20,6 +20,16 @@ public class LoanController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=utf-8");
+        
+        //list?=title&q
+//        사용자가 변수를 할지안할지모르니 임시변수
+        String
+        
+        String field_ = request.getParameter("f");
+        String query = request.getParameter("q");
+        
+        NoticeService sevice = new NoticeService();
+        List<Notice> list = service.getNoticeList(field, query, 1);
 
         setProductEntity(request, response);
 

@@ -1,27 +1,40 @@
 .form-control {
-    margin: 50px;
-    font-size: 30px;
+  margin: 50px;
+  font-size: 30px;
 }
 
 .btn {
-    margin: 50px;
-    --bs-btn-padding-x: 2.5rem;
+  margin: 50px;
+  --bs-btn-padding-x: 2.5rem;
 }
 
-.join {
-    width: 70px;
-    color: #ffffff;
-    background-color: #0d6efd;
-    border-color: #0d6efd;
+.productItem {
+  display: flex;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.modify {
+  /*display: flex;*/
+  flex-shrink: 0;
+  /*align-items: center;*/
+  /*justify-content: flex-end;*/
+  vertical-align: middle;
+  margin-left: 150px;
+  height: 40px;
+  width: 70px;
+  color: #ffffff;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
 }
 
 .col-lg-6 {
-    display: block;
-    margin: auto;
-    margin-top: 10px;
-    margin-bottom: 70px;
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 70px;
 }
 
 .list {
-    margin: 30px;
+  margin: 30px;
 }

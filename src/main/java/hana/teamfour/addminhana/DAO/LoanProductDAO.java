@@ -21,15 +21,14 @@ public class LoanProductDAO {
         return con;
     }
 
-
     public ArrayList<ProductEntity> getLoanProductList() {
         ArrayList<ProductEntity> productEntityList = new ArrayList<>();
 
         try {
             conn = getConnection();
 
-            String sql = "select p_name, p_limit, p_interestrate from admin_hana.product";
-//            String sql = "select p_name, p_limit, p_interestrate from product where p_category in (?, ?)";
+            String sql = "select p_name, p_description, p_interestrate from admin_hana.product";
+//            String sql = "select p_name, p_description, p_interestrate from product where p_category in (?, ?)";
 
             ps = conn.prepareStatement(sql);
 //            ps.setString(1, "신용대출");
@@ -39,17 +38,17 @@ public class LoanProductDAO {
             while (rs.next()) {
                 ProductEntity productEntity = new ProductEntity();
                 productEntity.setP_name(rs.getString(1));
-                productEntity.setP_limit(rs.getInt(2));
+                productEntity.setP_description(rs.getString(2));
                 productEntity.setP_interestrate(rs.getDouble(3));
                 productEntityList.add(productEntity);
             }
-            System.out.println("productEntityList = " + productEntityList);
             conn.close();
             ps.close();
             rs.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println("들렸다갑니다");
         System.out.println("productEntityList = " + productEntityList);
         return productEntityList;
     }
