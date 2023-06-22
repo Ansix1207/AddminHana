@@ -1,0 +1,27 @@
+create or replace PROCEDURE select_by_eid(
+    p_eid IN NUMBER,
+    p_password IN varchar2,
+    p_name OUT employee.e_name%TYPE,
+    p_success OUT NUMBER
+) IS
+BEGIN
+    -- SELECT 문을 사용하여 데이터 조회
+    SELECT e_name
+    INTO p_name
+    FROM employee
+    WHERE e_id = p_eid
+      and e_password = p_password;
+
+    -- 결과 출력
+    DBMS_OUTPUT.PUT_LINE('ID: ' || p_eid);
+    DBMS_OUTPUT.PUT_LINE('이름: ' || p_name);
+    DBMS_OUTPUT.PUT_LINE('비밀번호: ' || p_password);
+    -- 성공 상태를 설정
+    p_success := 1;
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        -- 해당하는 데이터를 찾지 못한 경우 실패 상태를 설정
+        p_success := 0;
+        DBMS_OUTPUT.PUT_LINE('해당하는 데이터를 찾을 수 없습니다.');
+END;
+/
