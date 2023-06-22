@@ -24,7 +24,7 @@
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
           crossorigin="anonymous"
   />
-  <link rel="stylesheet" href="<%=contextPath%>/resources/css/loan_join.css ">
+  <link rel="stylesheet" href="<%=contextPath%>/resources/css/loanJoin.css ">
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/base.css ">
 
   <script
