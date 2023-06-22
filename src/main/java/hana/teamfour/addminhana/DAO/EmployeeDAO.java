@@ -5,14 +5,13 @@ import hana.teamfour.addminhana.entity.EmployeeEntity;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Types;
 
 public class EmployeeDAO {
     private DataSource dataFactory;
-    private Connection conn;
-    private PreparedStatement pstmt;
 
     public EmployeeDAO() {
         try {
@@ -25,29 +24,36 @@ public class EmployeeDAO {
     }
 
     public EmployeeEntity login(String id, String pw) {
-        Connection conn = null; //변수선언 DB와 연결
-        PreparedStatement ps = null; //SQL문 담당
+        Connection conn; //변수선언 DB와 연결
+        CallableStatement cs; //SQL 프로시저 담당
         ResultSet rs = null; //검색 결과를 담을 것
         EmployeeEntity employee = null;
+
         try {
             conn = dataFactory.getConnection();
 
+            String sql = "{CALL select_by_eid(?, ?, ?, ?)}";
+            cs = conn.prepareCall(sql);
 
-            String sql = "SELECT e_id, e_name, e_password  FROM admin_hana.employee WHERE e_id = ? AND e_password = ?";
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, id);
-            ps.setString(2, pw);
+            cs.setInt(1, Integer.parseInt(id)); // 예시로 100을 사용
+            cs.setString(2, pw); // p_password
+            cs.registerOutParameter(3, Types.VARCHAR); // p_name
+            cs.registerOutParameter(4, Types.NUMERIC); // p_success
+            cs.execute();
 
-            rs = ps.executeQuery();
+            // 결과 값 가져오기
+            String e_name = cs.getString(3);
+            int success = cs.getInt(4);
 
-            while (rs.next()) {
-                int e_id = rs.getInt("e_id");
-                String e_name = rs.getString("e_name");
-                String e_password = rs.getString("e_password");
-                employee = new EmployeeEntity(e_id, e_password, e_name);
+            // success 값으로 성공 여부 확인 후 결과 사용 (1: 성공)
+            if (success == 1) {
+                employee = new EmployeeEntity(Integer.valueOf(id), pw, e_name);
+            } else {
+                throw new Exception("해당하는 데이터를 찾을 수 없습니다.");
             }
+
             conn.close();
-            ps.close();
+            cs.close();
             rs.close();
         } catch (Exception e) {
             e.printStackTrace();
