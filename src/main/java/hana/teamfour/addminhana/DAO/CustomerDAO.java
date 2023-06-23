@@ -1,5 +1,6 @@
 package hana.teamfour.addminhana.DAO;
 
+import hana.teamfour.addminhana.DTO.CustomerSummaryDTO;
 import hana.teamfour.addminhana.entity.CustomerEntity;
 
 import javax.naming.Context;
@@ -52,5 +53,35 @@ public class CustomerDAO {
             e.printStackTrace();
         }
         return customerEntity;
+    }
+
+    public boolean updateCustomerSummary(CustomerSummaryDTO customerSummaryDTO) {
+        Integer c_id = customerSummaryDTO.getC_id();
+        String c_name = customerSummaryDTO.getC_name();
+        String c_rrn = customerSummaryDTO.getC_rrn();
+        Character c_gender = customerSummaryDTO.getC_gender();
+        String c_job = customerSummaryDTO.getC_job();
+        String c_description = customerSummaryDTO.getC_description();
+        try {
+            conn = dataFactory.getConnection();
+            String query = "update customer set c_name=?, c_rrn=?," +
+                    " c_gender=?, c_job=?, c_description=? " +
+                    " where c_id=? ";
+            System.out.println("query = " + query);
+            pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, c_name);
+            pstmt.setString(2, c_rrn);
+            pstmt.setString(3, c_gender.toString());
+            pstmt.setString(4, c_job);
+            pstmt.setString(5, c_description);
+            pstmt.setInt(6, c_id);
+            pstmt.executeUpdate();
+            pstmt.close();
+            conn.close();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }
