@@ -56,4 +56,7 @@ public class CustomerService {
         }
         return rrn;
     }
+
+    public Character getGenderFromRRN(String c_rrn) {
+    }
 }
