@@ -1,6 +1,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="hana.teamfour.addminhana.entity.AccountEntity" %>
 <%@ page import="hana.teamfour.addminhana.entity.AssetEntity" %>
+<%@ page import="hana.teamfour.addminhana.entity.ProductEntity" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
 Created by IntelliJ IDEA.
@@ -48,6 +49,9 @@ To change this template use File | Settings | File Templates.
     assetCategory = new String[] {"자유", "정기"};
     if (assetEntity.getAss_savings() != null) asset = assetEntity.getAss_savings();
   }
+
+  // 추천 상품
+  ArrayList<ProductEntity> recProducts = (ArrayList<ProductEntity>) request.getAttribute("recByJob");
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -115,6 +119,18 @@ To change this template use File | Settings | File Templates.
           <h5 class="card-title mt-1 mb-2">추천</h5>
           <div>
             <%-- 추천 대출 상품 리스트 --%>
+            <ul>
+              <%
+                for (int i = 0; i < recProducts.size(); i++) {
+              %>
+              <li>
+                <div class="productName"><%=recProducts.get(i).getP_name()%></div>
+                <span>이자율 <%=recProducts.get(i).getP_interestrate()%>%</span>
+              </li>
+              <%
+                }
+              %>
+            </ul>
           </div>
         </div>
       </div>
