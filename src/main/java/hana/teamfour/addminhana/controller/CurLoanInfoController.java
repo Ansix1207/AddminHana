@@ -21,11 +21,13 @@ import java.util.ArrayList;
 public class CurLoanInfoController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+        System.out.println("get에 들어옴 loaninfo");
         requestPro(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+        System.out.println("post에 들어옴 loaninfo");
         requestPro(request, response);
     }
 

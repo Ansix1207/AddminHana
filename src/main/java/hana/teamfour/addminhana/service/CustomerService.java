@@ -1,6 +1,7 @@
 package hana.teamfour.addminhana.service;
 
 import hana.teamfour.addminhana.DAO.CustomerDAO;
+import hana.teamfour.addminhana.DTO.CustomerSignDTO;
 import hana.teamfour.addminhana.DTO.CustomerSummaryDTO;
 import hana.teamfour.addminhana.entity.CustomerEntity;
 
@@ -9,7 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CustomerService {
-    CustomerDAO customerDAO;
+    private CustomerDAO customerDAO;
 
     private final static Pattern rrn_pattern = Pattern.compile("^(\\d{6}\\D?\\d{1})(\\d{6})$");
 
@@ -57,6 +58,26 @@ public class CustomerService {
         return rrn;
     }
 
-    public Character getGenderFromRRN(String c_rrn) {
+    public static char getGenderFromRRN(String rrn) {
+        //001026-1
+        int partRRN = Integer.parseInt(rrn.substring(7,8));
+        if(partRRN==1 || partRRN==3){
+            return 'M';
+        } else if (partRRN==1 || partRRN==3) {
+            return 'F';
+        }
+        return 'M';
+    }
+    public String signCustomer(CustomerSignDTO customerSignDTO){
+        try {
+            if(customerDAO.insertCustomer(CustomerSignDTO.toEntity(customerSignDTO)).getC_name().equals(customerSignDTO.getC_name()))
+                return"CustomerService - signCustomer : 회원 가입 성공!";
+            else{
+                return "CustomerService - signCustomer : 회원 가입 실패!";
+            }
+        } catch (Throwable e) {
+            System.out.println(e.toString() + " | CustomerService - signCustomer : 회원 가입 실패!");
+        }
+        return null;
     }
 }

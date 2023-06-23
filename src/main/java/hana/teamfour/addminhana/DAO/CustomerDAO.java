@@ -1,5 +1,6 @@
 package hana.teamfour.addminhana.DAO;
 
+import hana.teamfour.addminhana.DTO.CustomerSignDTO;
 import hana.teamfour.addminhana.DTO.CustomerSummaryDTO;
 import hana.teamfour.addminhana.entity.CustomerEntity;
 
@@ -9,12 +10,13 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class CustomerDAO {
     private DataSource dataFactory;
     private Connection conn;
     private PreparedStatement pstmt;
-
+    Throwable occuredException = null;
     public CustomerDAO() {
         try {
             Context ctx = new InitialContext();
@@ -53,6 +55,94 @@ public class CustomerDAO {
             e.printStackTrace();
         }
         return customerEntity;
+    }
+
+    public CustomerEntity findByRrn(String _rrn){
+        CustomerEntity customerEntity = null;
+        try {
+            Connection conn = dataFactory.getConnection();
+            String query = "SELECT * FROM customer WHERE C_RRN = ?";
+            System.out.println("query = " + query);
+            pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, _rrn);
+            ResultSet rs = pstmt.executeQuery();
+            System.out.println("findByRRN");
+            if (rs.next()) {
+                Integer c_id = rs.getInt("c_id");
+                String c_name = rs.getString("c_name");
+                String c_rrn = rs.getString("c_rrn");
+                Character c_gender = rs.getString("c_gender").charAt(0);
+                String c_job = rs.getString("c_job");
+                String c_address = rs.getString("c_address");
+                String c_mobile = rs.getString("c_mobile");
+                String c_description = rs.getString("c_description");
+                Integer e_id = rs.getInt("e_id");
+                customerEntity = new CustomerEntity(c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return customerEntity;
+    }
+
+//    View <-> Controller <-> service <-> dao <-> db
+//    dto             dto        dto     entity
+    public CustomerEntity insertCustomer(CustomerEntity customerEntity){
+        try {
+            Connection conn = dataFactory.getConnection();
+            conn.setAutoCommit(false); //트랜잭션 처리를 위한 AutoCommit off, 트랜잭션 시작
+            String query = "INSERT INTO CUSTOMER VALUES(-6,?,?,?,?,?,?,?,?)";
+            System.out.println("query = " + query);
+            pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, customerEntity.getC_name());//String name
+            pstmt.setString(2, customerEntity.getC_rrn());//String 주민번호 rrn
+            pstmt.setString(3, String.valueOf(customerEntity.getC_gender()));//String  성별 gender (M,F)
+            pstmt.setString(4, customerEntity.getC_address());//String 주소 address
+            pstmt.setString(5, customerEntity.getC_mobile());//String 주소 mobile
+            pstmt.setString(6, customerEntity.getC_job());//String 직업(공무원,직장인,전문직,사업자,일반) job
+            pstmt.setString(7, customerEntity.getC_description());//String 설명 description
+            pstmt.setInt(8, customerEntity.getE_id());//int 주소 e_id
+            System.out.println(pstmt.toString());
+            if (pstmt.executeUpdate() == 1) {
+                System.out.println("삽입 성공");
+                conn.commit();
+                return findByRrn(customerEntity.getC_rrn());
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("SQLException e.getErrorCode = " + e.getErrorCode());
+            System.out.println("SQLException e.getMessage = " + e.getMessage());
+            System.out.println("SQLException e.getCause = " + e.getCause());
+        } catch (Throwable e) {
+            if (conn != null) {
+                try {
+                    conn.rollback();
+                } catch (SQLException ex) {
+                    System.out.println("CustomerDAO rollback error : " + ex.getMessage());
+                }
+            }
+            occuredException = e;
+            System.out.println("CustomerDAO in Throwable error : " + e.getMessage());
+        } finally {
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    System.out.println("IN CustomerDAO pstmt close Exception : " + e.getMessage());
+                }
+            }
+            if (conn != null) {
+                try {
+                    System.out.println("클로즈 들어옴");
+                    conn.setAutoCommit(true);
+                    conn.close();
+                } catch (SQLException e) {
+                    System.out.println("IN CustomerDAO conn close Exception : " + e.getMessage());
+                }
+            }
+        }
+        return new CustomerEntity();
     }
 
     public boolean updateCustomerSummary(CustomerSummaryDTO customerSummaryDTO) {
