@@ -7,6 +7,7 @@ Settings | File Templates. --%>
   request.setCharacterEncoding("UTF-8");
   String contextPath = request.getContextPath();
   CustomerSummaryDTO customerSummaryDTO = (CustomerSummaryDTO) request.getAttribute("customerSummaryDTO");
+  Boolean hasUpdatedDescription = (Boolean) request.getAttribute("hasUpdatedDescription");
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -57,6 +58,31 @@ Settings | File Templates. --%>
       display: flex;
       justify-content: space-between;
     }
+
+    .descriptionTextarea {
+      resize: none;
+    }
+
+    .btn-primary {
+      background-color: #0d6efd;
+    }
+
+    .grid-cols-12 {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+
+    .col-span-4 {
+      grid-column: span 4 / span 4;
+    }
+
+    .col-span-8 {
+      grid-column: span 8 / span 8;
+    }
+
+    .w-full {
+      width: 100%;
+    }
+
   </style>
 </head>
 <body>
@@ -64,7 +90,20 @@ Settings | File Templates. --%>
     <nav id="layoutSidenav_nav">
       <%@ include file="common/navbar.jsp" %>
     </nav>
-    <main class="grid grid-cols-12 w-full">
+
+    <jsp:include page="common/toastSuccess.jsp" flush="false">
+      <jsp:param name="title" value="업데이트 성공"/>
+      <jsp:param name="subtitle" value="Success"/>
+      <jsp:param name="description" value="업데이트에 성공했습니다. "/>
+    </jsp:include>
+
+    <jsp:include page="common/toastFail.jsp" flush="false">
+      <jsp:param name="title" value="업데이트 실패"/>
+      <jsp:param name="subtitle" value="Fail"/>
+      <jsp:param name="description" value="업데이트에 실패했습니다. "/>
+    </jsp:include>
+
+    <main class="d-grid grid-cols-12 w-full">
       <div class="col-span-8 p-4">
         <div class="card profileSummary">
           <div class="card-body">
@@ -86,10 +125,20 @@ Settings | File Templates. --%>
           </div>
         </div>
 
-        <div class="card customerSpecial">
+        <div class="card customerDescriptionContainer">
           <div class="card-body">
             <h5 class="card-title">특이사항</h5>
-            <p class="card-text customerDescriptions"></p>
+            <p class="card-text customerDescriptions">
+            <form class="descriptionForm" name="descriptionFrom" method="post" action="profile"
+                  accept-charset="utf-8">
+              <textarea name="descriptionText" class="descriptionTextarea" cols="76" rows="10"
+                        maxlength="300">${customerSummaryDTO.c_description}</textarea>
+              <input type="hidden" name="action" value="description">
+              <div class="d-grid mt-4">
+                <button class="btn btn-primary" style="background-color: #0d6efd" type="submit">수정</button>
+              </div>
+            </form>
+            </p>
           </div>
         </div>
       </div>
@@ -154,14 +203,32 @@ Settings | File Templates. --%>
           crossorigin="anonymous"
   ></script>
   <script>
-      const descriptions = JSON.parse(JSON.stringify(${customerSummaryDTO.c_description}));
-      const $customerDescriptions = document.querySelector(".customerDescriptions");
-      let innerHTML = `<ul>`;
-      for (let i = 0; i < descriptions.length; i++) {
-          innerHTML += '<li>' + descriptions[i] + '</li>';
+      const hasUpdated = <%=hasUpdatedDescription%>;
+      const $descriptionForm = document.querySelector('.descriptionForm')
+      const $toastSuccess = document.getElementById('toastSuccess')
+      const $toastFailure = document.getElementById('toastFail')
+      
+      document.addEventListener("DOMContentLoaded", () => {
+          if (hasUpdated == null) {
+              return;
+          } else if (hasUpdated) {
+              triggerToast($toastSuccess);
+          } else {
+              triggerToast($toastFailure);
+          }
+      })
+
+      const triggerToast = ($target) => {
+          const toast = new bootstrap.Toast($target);
+          toast.show();
       }
-      innerHTML += `</ul>`;
-      $customerDescriptions.innerHTML = innerHTML;
+
+      window.onkeydown = function (event) {
+          const kcode = event.key;
+          if (kcode == "refresh") {
+              history.replaceState({}.null, location.pathname);
+          }
+      }
   </script>
 </body>
 </html>
