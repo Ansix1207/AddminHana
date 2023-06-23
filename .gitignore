@@ -36,3 +36,10 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### 배포 관련 ###
+.idea/artifacts/*
+.idea/sshConfigs.xml
+.idea/webServers.xml
+.idea/deployment.xml
+out
