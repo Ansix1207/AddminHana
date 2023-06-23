@@ -1,300 +1,600 @@
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (1, 'Salome de Guerre', '123-73-0785', 'M', '96 Becker Circle', '9836703438', '일반', 'Salome de Guerre님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (2, 'Keene Metts', '264-42-7343', 'F', '4285 Autumn Leaf Park', '2294794909', '직장인', 'Keene Metts님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (3, 'Carlee Dinkin', '551-25-6713', 'F', '4 Grover Plaza', '2228605525', '직장인', 'Carlee Dinkin님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (4, 'Bev Thornewell', '144-43-4103', 'F', '992 Harper Center', '8302036224', '사업자', 'Bev Thornewell님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (5, 'Rurik Sorsbie', '171-18-1080', 'M', '289 Brickson Park Crossing', '4927397686', '직장인', 'Rurik Sorsbie님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (6, 'Gracia Ivain', '698-65-5704', 'F', '48 Cambridge Alley', '1432471374', '일반', 'Gracia Ivain님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (7, 'Samuele Grogona', '204-42-9548', 'F', '7 Merrick Street', '5754937033', '전문직', 'Samuele Grogona님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (8, 'Wolfgang Kupper', '357-45-7874', 'M', '50787 Gateway Street', '4717847852', '직장인', 'Wolfgang Kupper님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (9, 'Norina Merriday', '239-35-7402', 'M', '8408 Brentwood Street', '2138484170', '직장인', 'Norina Merriday님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (10, 'Sterne Paulack', '629-14-6164', 'M', '833 Everett Trail', '8781743230', '전문직', 'Sterne Paulack님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (11, 'Bessy Somerville', '679-29-9849', 'F', '80 Iowa Way', '1243091184', '직장인', 'Bessy Somerville님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (12, 'Shirleen Rollings', '657-63-6370', 'M', '6034 Stephen Alley', '8026137272', '직장인', 'Shirleen Rollings님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (13, 'Licha Heggs', '556-95-1920', 'F', '313 Northland Way', '4935435208', '전문직', 'Licha Heggs님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (14, 'Cody Smeed', '705-64-6103', 'M', '672 Loeprich Park', '9488559011', '일반', 'Cody Smeed님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (15, 'Koo Diamond', '675-52-2119', 'F', '6 Warbler Pass', '7559916704', '직장인', 'Koo Diamond님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (16, 'Austine Nardi', '820-94-7959', 'F', '16 Blaine Parkway', '3149950368', '전문직', 'Austine Nardi님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (17, 'Archaimbaud Brabham', '376-37-1613', 'F', '1668 Grasskamp Plaza', '5167819397', '전문직', 'Archaimbaud Brabham님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (18, 'Konstance Elcocks', '239-07-3631', 'M', '1542 Superior Way', '1462528107', '사업자', 'Konstance Elcocks님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (19, 'Madelyn Warters', '836-06-3943', 'M', '52154 Reinke Court', '2471704834', '공무원', 'Madelyn Warters님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (20, 'Mort Fitzhenry', '725-86-4529', 'M', '7 Scoville Circle', '2045581141', '일반', 'Mort Fitzhenry님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (21, 'Holly Wigin', '521-07-5223', 'F', '063 Farragut Trail', '2103167170', '전문직', 'Holly Wigin님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (22, 'Henri Perry', '610-44-9454', 'F', '14 Norway Maple Road', '9817817324', '공무원', 'Henri Perry님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (23, 'Phylys Capozzi', '675-87-7928', 'F', '74 Canary Point', '2069293674', '공무원', 'Phylys Capozzi님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (24, 'Ozzie Stannas', '433-18-8020', 'M', '84 West Court', '6057450598', '공무원', 'Ozzie Stannas님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (25, 'Antonia Camilli', '489-61-0654', 'M', '551 Bunker Hill Junction', '9042222025', '공무원', 'Antonia Camilli님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (26, 'Tris Leadbeatter', '767-66-2148', 'M', '1 Summer Ridge Trail', '7101242263', '일반', 'Tris Leadbeatter님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (27, 'Cynde Jeffs', '841-52-3254', 'F', '62 Graedel Way', '7844706821', '직장인', 'Cynde Jeffs님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (28, 'Kaila Doneld', '521-28-1638', 'M', '00 Roxbury Terrace', '2319365867', '일반', 'Kaila Doneld님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (29, 'Jackie Daws', '892-60-3330', 'F', '1 Sage Parkway', '6749471171', '사업자', 'Jackie Daws님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (30, 'Sigismund Pavelka', '688-06-6888', 'M', '606 American Plaza', '6482512560', '일반', 'Sigismund Pavelka님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (31, 'Wolfie Whitfeld', '673-26-4183', 'M', '9 Johnson Junction', '9555352371', '일반', 'Wolfie Whitfeld님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (32, 'Shena Deam', '866-02-2567', 'M', '3216 Southridge Center', '5841031639', '공무원', 'Shena Deam님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (33, 'Vasili Brundale', '425-91-3098', 'M', '51989 Pepper Wood Drive', '3933493396', '공무원', 'Vasili Brundale님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (34, 'Vincenz Faustin', '421-86-3810', 'M', '60 Pawling Trail', '2009247054', '일반', 'Vincenz Faustin님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (35, 'Ilyse Phant', '232-25-7204', 'M', '7 Utah Point', '9952597492', '공무원', 'Ilyse Phant님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (36, 'Dee Fowell', '853-14-0451', 'M', '8974 Donald Park', '7146677033', '전문직', 'Dee Fowell님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (37, 'Linell Dizlie', '486-36-1796', 'M', '3 Fulton Hill', '9907229307', '사업자', 'Linell Dizlie님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (38, 'Merrielle Streatfeild', '364-77-7783', 'F', '38 Stuart Place', '8534389547', '공무원', 'Merrielle Streatfeild님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (39, 'Desiree Boddam', '439-96-8338', 'F', '5 Maywood Crossing', '4942089828', '전문직', 'Desiree Boddam님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (40, 'Carter Scurrey', '103-69-4582', 'F', '61049 Eagle Crest Court', '1651098278', '사업자', 'Carter Scurrey님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (41, 'Amelia McCallum', '272-29-5659', 'F', '98 Clemons Terrace', '1042484858', '공무원', 'Amelia McCallum님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (42, 'Valera Skrines', '502-06-7171', 'F', '903 Bellgrove Center', '1673763435', '직장인', 'Valera Skrines님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (43, 'Roslyn Strangward', '112-26-0292', 'F', '0 Maple Lane', '5586806881', '공무원', 'Roslyn Strangward님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (44, 'Gawain Guy', '521-27-4922', 'F', '3 Rigney Park', '8048177349', '직장인', 'Gawain Guy님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (45, 'Burgess Hugueville', '692-44-1945', 'F', '24081 Sunfield Plaza', '1502778576', '사업자', 'Burgess Hugueville님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (46, 'Ag Harrinson', '508-77-4934', 'F', '43945 Vahlen Place', '8176822466', '사업자', 'Ag Harrinson님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (47, 'Shaine Coudray', '446-33-8498', 'F', '1454 Linden Crossing', '5621006709', '공무원', 'Shaine Coudray님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (48, 'Alwin Blaszczynski', '186-66-5508', 'M', '57634 Melvin Terrace', '3283839343', '직장인', 'Alwin Blaszczynski님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (49, 'Townsend Georgius', '390-85-7717', 'F', '129 Morningstar Center', '8063540831', '직장인', 'Townsend Georgius님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (50, 'Corrie Petch', '768-46-2378', 'M', '8 Prentice Circle', '7126802587', '일반', 'Corrie Petch님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (51, 'Harley Maskelyne', '424-18-7162', 'M', '50 Mccormick Terrace', '5225481319', '일반', 'Harley Maskelyne님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (52, 'Loralie Lorryman', '240-01-7597', 'F', '7 Pierstorff Alley', '4841679619', '전문직', 'Loralie Lorryman님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (53, 'Etheline Sextie', '369-98-5319', 'M', '2169 Miller Hill', '5574573870', '일반', 'Etheline Sextie님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (54, 'Bartlett Barrell', '836-81-3016', 'F', '94271 Upham Court', '5642831853', '전문직', 'Bartlett Barrell님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (55, 'Myrta Vignal', '280-54-8030', 'F', '4967 Lawn Terrace', '3235942316', '일반', 'Myrta Vignal님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (56, 'Tiffany Parrish', '513-30-0158', 'M', '36512 Crownhardt Court', '5726104790', '공무원', 'Tiffany Parrish님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (57, 'Leonelle Mortell', '641-69-1887', 'M', '3175 Macpherson Circle', '9812866089', '전문직', 'Leonelle Mortell님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (58, 'Ab Fontanet', '744-71-4315', 'F', '3 Banding Street', '5225056319', '일반', 'Ab Fontanet님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (59, 'Lindon Lamers', '226-95-5272', 'F', '4260 Blackbird Plaza', '8884349872', '공무원', 'Lindon Lamers님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (60, 'Grethel Forten', '147-75-9819', 'F', '303 Sutherland Drive', '1634698651', '전문직', 'Grethel Forten님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (61, 'Dasha Claxton', '611-32-5717', 'F', '379 Golf Course Center', '3868277033', '직장인', 'Dasha Claxton님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (62, 'Fayth Bridgett', '219-96-4091', 'M', '985 Barby Trail', '2488398413', '공무원', 'Fayth Bridgett님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (63, 'Ban Brunsden', '135-30-9051', 'F', '5989 Burrows Place', '6212334729', '직장인', 'Ban Brunsden님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (64, 'Pippo Riha', '119-03-8475', 'F', '69 Hudson Point', '2729999185', '사업자', 'Pippo Riha님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (65, 'Elia Lansly', '882-23-8211', 'F', '045 Bonner Plaza', '2658370399', '사업자', 'Elia Lansly님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (66, 'Karlen Cordall', '875-61-3159', 'M', '4 Karstens Avenue', '9097389586', '사업자', 'Karlen Cordall님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (67, 'Kathrine Dalman', '193-07-2751', 'F', '9 Melody Hill', '3146726624', '사업자', 'Kathrine Dalman님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (68, 'Beryle Attaway', '552-54-7318', 'F', '0 Declaration Center', '8761843594', '일반', 'Beryle Attaway님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (69, 'Marlane Keston', '639-70-1614', 'F', '44 Express Circle', '8954413082', '사업자', 'Marlane Keston님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (70, 'Alic Milsap', '446-52-0289', 'F', '1 Rusk Terrace', '3524016221', '일반', 'Alic Milsap님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (71, 'Tate Hierro', '857-37-2149', 'F', '01965 Helena Alley', '8934479438', '사업자', 'Tate Hierro님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (72, 'Sherlock Siggers', '411-40-8911', 'F', '61 Westport Street', '7459221552', '공무원', 'Sherlock Siggers님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (73, 'Diann Kefford', '800-48-5675', 'F', '7 Hollow Ridge Trail', '3985724418', '직장인', 'Diann Kefford님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (74, 'Keelby Palombi', '536-21-4895', 'M', '92978 Lillian Alley', '2533810280', '사업자', 'Keelby Palombi님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (75, 'Benedict Behrendsen', '182-44-8427', 'M', '0379 Express Court', '7379033701', '사업자', 'Benedict Behrendsen님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (76, 'Pris Eshelby', '329-59-0488', 'F', '41959 Anniversary Way', '6189454831', '직장인', 'Pris Eshelby님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (77, 'Dominique McCormick', '880-10-9587', 'F', '11453 Dottie Center', '4919746273', '전문직', 'Dominique McCormick님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (78, 'Thatcher Pennoni', '362-18-2421', 'F', '26 Pierstorff Junction', '6377849903', '직장인', 'Thatcher Pennoni님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (79, 'Amerigo Espadas', '620-33-8758', 'M', '9 Melby Lane', '3996612230', '사업자', 'Amerigo Espadas님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (80, 'Cleve Sture', '551-84-6162', 'F', '7 Lillian Crossing', '9301272829', '일반', 'Cleve Sture님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (81, 'Hamlen Purches', '103-02-1246', 'M', '42181 Warbler Plaza', '5843878523', '사업자', 'Hamlen Purches님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (82, 'Jeremiah Gravell', '208-83-5454', 'F', '75492 Barnett Alley', '3653931802', '공무원', 'Jeremiah Gravell님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (83, 'Velvet Kenward', '695-79-0358', 'M', '53963 Summit Plaza', '7135831573', '공무원', 'Velvet Kenward님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (84, 'Kate Mountfort', '150-52-8793', 'F', '118 Oakridge Court', '2727105554', '직장인', 'Kate Mountfort님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (85, 'Corney Vakhrushev', '441-30-6880', 'M', '262 Mallard Avenue', '1564193742', '직장인', 'Corney Vakhrushev님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (86, 'Gaspard Sneaker', '707-34-9725', 'F', '1372 Valley Edge Alley', '8876973268', '사업자', 'Gaspard Sneaker님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (87, 'Farlay Cullimore', '534-25-9333', 'M', '0 Bartelt Way', '2525939515', '직장인', 'Farlay Cullimore님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (88, 'Maris Ballsdon', '596-30-3387', 'F', '58 Fair Oaks Center', '9003657812', '전문직', 'Maris Ballsdon님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (89, 'Ysabel Blakeden', '205-74-8712', 'F', '7577 Homewood Pass', '4123557341', '공무원', 'Ysabel Blakeden님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (90, 'Westley Thebeaud', '811-20-1067', 'M', '69 Hanson Park', '3595480538', '직장인', 'Westley Thebeaud님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (91, 'Monica Ennion', '194-98-4945', 'F', '6551 Lakewood Gardens Trail', '3163481830', '일반', 'Monica Ennion님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (92, 'Virgie Bennellick', '318-95-5807', 'F', '346 Truax Pass', '1658606308', '사업자', 'Virgie Bennellick님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (93, 'Nada Durbin', '482-66-3237', 'F', '4409 5th Alley', '5404525461', '직장인', 'Nada Durbin님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (94, 'Abbe Huskinson', '168-47-9131', 'M', '3589 Forest Dale Center', '3278964304', '공무원', 'Abbe Huskinson님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (95, 'Matias Glennon', '721-52-4820', 'M', '95 Oak Valley Center', '4812215338', '일반', 'Matias Glennon님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (96, 'Daniel Valsler', '791-67-8466', 'M', '72 Tennessee Road', '3465517563', '직장인', 'Daniel Valsler님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (97, 'Amos Forlong', '314-45-2411', 'F', '685 8th Parkway', '4017777710', '직장인', 'Amos Forlong님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (98, 'Nathalie Roseblade', '187-03-5959', 'F', '31 Homewood Circle', '6997841085', '전문직', 'Nathalie Roseblade님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (99, 'Tracey Spencer', '867-45-3684', 'F', '0 Mccormick Circle', '2648894145', '직장인', 'Tracey Spencer님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (100, 'Luelle Dradey', '621-34-9869', 'F', '408 Prairie Rose Trail', '9304242711', '공무원', 'Luelle Dradey님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (101, 'Merry Delia', '492-18-8752', 'M', '62209 Luster Trail', '4885430858', '전문직', 'Merry Delia님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (102, 'Gray Stonard', '409-35-3875', 'F', '2178 Jenifer Center', '5006475777', '일반', 'Gray Stonard님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (103, 'Jimmy O''Hanley', '864-72-4850', 'F', '6 Ruskin Plaza', '9843557532', '사업자', 'Jimmy O''Hanley님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (104, 'Steffie Cawthorne', '644-42-8802', 'M', '2 Fieldstone Alley', '8235209003', '공무원', 'Steffie Cawthorne님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (105, 'Michele Pickance', '485-04-5031', 'M', '24 Dixon Point', '3354516953', '직장인', 'Michele Pickance님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (106, 'Adah Van der Kruys', '215-83-3321', 'F', '2869 Harbort Alley', '2704359903', '전문직', 'Adah Van der Kruys님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (107, 'Merrili Mattimoe', '896-95-4358', 'M', '272 North Pass', '9458460502', '사업자', 'Merrili Mattimoe님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (108, 'Casar Chester', '831-01-0893', 'F', '63 Straubel Road', '1868370449', '사업자', 'Casar Chester님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (109, 'Ax Randlesome', '889-60-2498', 'M', '3 Morning Court', '1548511880', '직장인', 'Ax Randlesome님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (110, 'Taddeusz Swadlinge', '718-01-3029', 'F', '7863 Anderson Trail', '1461043804', '전문직', 'Taddeusz Swadlinge님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (111, 'Janey Aspinwall', '828-14-9320', 'F', '26 Mariners Cove Parkway', '8617614146', '공무원', 'Janey Aspinwall님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (112, 'Ardith Wanless', '284-85-7942', 'M', '326 Merry Alley', '7954920040', '직장인', 'Ardith Wanless님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (113, 'Hermione Dudney', '192-20-8971', 'M', '45640 Lake View Way', '9649872648', '직장인', 'Hermione Dudney님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (114, 'Lurleen Giacopini', '731-61-5313', 'F', '5631 Buena Vista Drive', '6656995119', '전문직', 'Lurleen Giacopini님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (115, 'Cull Aldred', '448-67-3240', 'M', '89046 Scoville Pass', '8107827568', '사업자', 'Cull Aldred님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (116, 'Olly Raithbie', '741-69-0871', 'M', '42405 Waubesa Point', '8681461156', '공무원', 'Olly Raithbie님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (117, 'Perri Belt', '434-81-7698', 'M', '05 Hanover Court', '2508776584', '전문직', 'Perri Belt님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (118, 'Zena Coghlan', '597-25-6137', 'F', '4483 Dakota Parkway', '7418166606', '전문직', 'Zena Coghlan님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (119, 'Dalt Tillard', '452-20-5327', 'F', '54 Clove Terrace', '8548805893', '사업자', 'Dalt Tillard님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (120, 'Orrin Ervin', '373-67-3686', 'M', '19419 Buell Parkway', '7493591636', '직장인', 'Orrin Ervin님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (121, 'Milicent Bissex', '762-53-0983', 'M', '1970 Meadow Valley Parkway', '7557630541', '공무원', 'Milicent Bissex님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (122, 'Erl Clemmen', '893-19-3243', 'M', '941 Farragut Avenue', '1498365039', '직장인', 'Erl Clemmen님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (123, 'Gael Ewestace', '284-61-2310', 'F', '56 Carey Street', '2869821075', '일반', 'Gael Ewestace님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (124, 'Konrad Geibel', '641-66-2599', 'F', '867 Spenser Plaza', '5901065988', '일반', 'Konrad Geibel님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (125, 'Marsh Cuxson', '247-10-1263', 'M', '24 Lerdahl Parkway', '8574254551', '공무원', 'Marsh Cuxson님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (126, 'Sergio Gowar', '773-23-9346', 'F', '6 Spenser Hill', '1298552897', '전문직', 'Sergio Gowar님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (127, 'Tedi Hornbuckle', '874-12-0121', 'F', '5711 Stang Hill', '7137658768', '직장인', 'Tedi Hornbuckle님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (128, 'Rogerio Lofthouse', '532-31-7762', 'F', '6867 Sutherland Hill', '4176020166', '직장인', 'Rogerio Lofthouse님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (129, 'Jonie Dogg', '650-25-8562', 'M', '56613 Linden Point', '9338560996', '공무원', 'Jonie Dogg님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (130, 'Thornton Dutnall', '406-45-2436', 'M', '433 Messerschmidt Road', '5298451950', '일반', 'Thornton Dutnall님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (131, 'Shep Mouat', '395-84-6503', 'F', '89674 Sunfield Pass', '3711847698', '직장인', 'Shep Mouat님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (132, 'Melantha Holleran', '154-35-2460', 'F', '82 Hallows Road', '3965914986', '전문직', 'Melantha Holleran님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (133, 'Shelby Gottschalk', '722-20-2882', 'M', '87 Lake View Drive', '5879783901', '직장인', 'Shelby Gottschalk님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (134, 'Farand Gobbet', '411-04-1605', 'F', '01 Scott Park', '6522143599', '전문직', 'Farand Gobbet님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (135, 'Freedman Koenraad', '767-25-2735', 'F', '65016 Ramsey Terrace', '1889949842', '사업자', 'Freedman Koenraad님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (136, 'Brannon Fandrich', '796-05-1306', 'M', '3 Sachs Pass', '2545737991', '사업자', 'Brannon Fandrich님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (137, 'Peggy Jore', '236-51-3847', 'F', '5 Annamark Center', '2175627998', '전문직', 'Peggy Jore님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (138, 'Gianina McGenn', '102-14-9704', 'F', '53027 Doe Crossing Junction', '4734855116', '전문직', 'Gianina McGenn님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (139, 'Rosabella Ohanessian', '603-79-7428', 'M', '9627 Scott Crossing', '5429916146', '직장인', 'Rosabella Ohanessian님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (140, 'Ram Tidbald', '686-31-8330', 'M', '1 Graedel Drive', '3732874585', '직장인', 'Ram Tidbald님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (141, 'Haslett Wake', '733-70-7913', 'F', '4099 Barnett Pass', '8349630162', '사업자', 'Haslett Wake님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (142, 'Raynor Antos', '287-28-9527', 'M', '2991 Tennyson Way', '2022857308', '일반', 'Raynor Antos님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (143, 'Inesita Soff', '287-10-3932', 'M', '4558 Kingsford Trail', '2394225975', '직장인', 'Inesita Soff님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (144, 'Royce Fursland', '751-64-1265', 'M', '03 Corry Hill', '4388973499', '일반', 'Royce Fursland님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (145, 'Mata Humble', '133-90-9945', 'F', '13 Sage Pass', '9945149854', '직장인', 'Mata Humble님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (146, 'Arlie Jackman', '320-04-4850', 'M', '27 Eastlawn Way', '5619142772', '전문직', 'Arlie Jackman님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (147, 'Margery O''Carran', '469-65-3401', 'F', '1934 Myrtle Place', '4863053856', '전문직', 'Margery O''Carran님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (148, 'Joellen Swinyard', '508-41-9117', 'M', '2 Nobel Pass', '8858685488', '사업자', 'Joellen Swinyard님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (149, 'Derek Ditch', '340-98-5611', 'M', '8260 Main Place', '8587597439', '전문직', 'Derek Ditch님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (150, 'Shaughn Grinsted', '181-64-5262', 'M', '16100 Kropf Terrace', '2362133781', '직장인', 'Shaughn Grinsted님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (151, 'Ignacio Freeman', '188-59-7603', 'M', '8 Ohio Street', '5168196534', '공무원', 'Ignacio Freeman님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (152, 'Cookie Guttridge', '718-32-1531', 'F', '57711 Dahle Terrace', '1555649235', '직장인', 'Cookie Guttridge님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (153, 'Jean Caldecutt', '484-79-0967', 'M', '8719 Meadow Vale Pass', '7836288692', '직장인', 'Jean Caldecutt님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (154, 'Jessika Lidgate', '291-18-3260', 'M', '82 Alpine Road', '5489729898', '전문직', 'Jessika Lidgate님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (155, 'Atlante Quinnelly', '309-40-4921', 'F', '902 Calypso Center', '1032777560', '전문직', 'Atlante Quinnelly님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (156, 'Rhodia Tims', '854-34-8176', 'M', '9379 Eliot Park', '6448418892', '공무원', 'Rhodia Tims님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (157, 'Bria Bortoletti', '501-77-9486', 'F', '02056 Florence Center', '6855291945', '전문직', 'Bria Bortoletti님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (158, 'Hall Casebourne', '475-10-7749', 'M', '23 Anderson Lane', '2987455860', '일반', 'Hall Casebourne님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (159, 'Korry Wilkennson', '225-33-7371', 'F', '78 Westridge Way', '3477041824', '공무원', 'Korry Wilkennson님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (160, 'Tobi Guile', '382-81-6176', 'F', '291 Sundown Point', '4244231732', '사업자', 'Tobi Guile님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (161, 'Vite Darley', '386-59-9919', 'F', '76635 Beilfuss Circle', '3974894391', '전문직', 'Vite Darley님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (162, 'Zared Stutard', '772-63-8677', 'M', '187 Dunning Street', '7176901752', '전문직', 'Zared Stutard님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (163, 'Estel Saiz', '709-34-5453', 'M', '354 Morningstar Point', '9075470505', '일반', 'Estel Saiz님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (164, 'Lila Gebbie', '372-30-8677', 'F', '90832 Buhler Road', '7714010629', '공무원', 'Lila Gebbie님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (165, 'Nancee Quare', '182-54-0281', 'M', '47 Service Pass', '3554213998', '공무원', 'Nancee Quare님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (166, 'Karine Cullivan', '599-43-7068', 'F', '858 Warrior Junction', '8226523703', '사업자', 'Karine Cullivan님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (167, 'Brit Weine', '297-47-4209', 'F', '3 Fairview Crossing', '2616568915', '일반', 'Brit Weine님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (168, 'Chelsey Narbett', '439-27-6910', 'M', '52220 Melby Lane', '9838140122', '사업자', 'Chelsey Narbett님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (169, 'Willow Linskill', '435-32-4880', 'F', '4526 Shopko Park', '1369638030', '전문직', 'Willow Linskill님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (170, 'Stearn Tomasoni', '828-83-4229', 'M', '06 Farwell Lane', '3142474727', '직장인', 'Stearn Tomasoni님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (171, 'Roxy Biddy', '824-55-2155', 'M', '3 Granby Avenue', '4352889774', '일반', 'Roxy Biddy님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (172, 'Glori Rubinsky', '541-29-1163', 'M', '0 Maple Wood Parkway', '4659425427', '전문직', 'Glori Rubinsky님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (173, 'Filia Orehead', '333-93-2847', 'M', '9 Pleasure Court', '4827651628', '공무원', 'Filia Orehead님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (174, 'Dukey Kirvell', '214-73-0583', 'M', '1 Kennedy Court', '8321102684', '일반', 'Dukey Kirvell님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (175, 'Beatrisa Lowery', '576-42-6675', 'F', '9700 Anderson Parkway', '2372302585', '전문직', 'Beatrisa Lowery님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (176, 'Mora Laible', '201-44-4160', 'M', '3382 Fisk Parkway', '1042621938', '직장인', 'Mora Laible님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (177, 'Shermy Lukasik', '877-04-2464', 'M', '891 Farragut Terrace', '7395209005', '사업자', 'Shermy Lukasik님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (178, 'Sean Ogle', '154-81-5167', 'F', '86769 Annamark Avenue', '4378959425', '직장인', 'Sean Ogle님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (179, 'Coralyn Blazevic', '118-63-2463', 'F', '36 Coleman Place', '5772933489', '일반', 'Coralyn Blazevic님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (180, 'Jaimie Blueman', '759-36-4713', 'F', '75 Algoma Way', '7545415545', '전문직', 'Jaimie Blueman님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (181, 'Gert Blincoe', '826-19-5477', 'F', '92495 Oak Center', '3175991713', '전문직', 'Gert Blincoe님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (182, 'Dane Fish', '882-96-7514', 'F', '271 Grim Place', '1192016999', '사업자', 'Dane Fish님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (183, 'Deeann Hiddy', '383-88-8908', 'M', '78 Buena Vista Hill', '7365572993', '전문직', 'Deeann Hiddy님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (184, 'Winifield Parmeter', '668-75-4975', 'M', '6 Westend Lane', '6913023283', '직장인', 'Winifield Parmeter님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (185, 'Danell Olexa', '606-52-5970', 'F', '1291 Ridgeway Parkway', '9803178856', '전문직', 'Danell Olexa님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (186, 'Bruno Mabey', '856-45-6334', 'M', '817 Donald Road', '7496328364', '사업자', 'Bruno Mabey님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (187, 'Ursa Witchalls', '389-64-0682', 'M', '57397 Fieldstone Lane', '8514279954', '공무원', 'Ursa Witchalls님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (188, 'Adler Dudding', '437-52-6368', 'M', '20 Haas Trail', '3294464969', '공무원', 'Adler Dudding님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (189, 'Halsey Martellini', '336-76-3410', 'F', '2 Forest Park', '1812218508', '공무원', 'Halsey Martellini님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (190, 'Yuma Livings', '466-09-5507', 'M', '29177 Nevada Street', '6274241454', '직장인', 'Yuma Livings님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (191, 'Preston Elldred', '679-23-7983', 'M', '6 Bartillon Court', '3755953497', '전문직', 'Preston Elldred님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (192, 'Horatia Corkell', '810-47-7130', 'M', '8 Clove Pass', '8671601035', '일반', 'Horatia Corkell님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (193, 'Lion Dundridge', '272-55-4681', 'M', '91140 Carey Road', '7406987015', '일반', 'Lion Dundridge님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (194, 'Wolfie Rodenhurst', '823-48-7541', 'M', '0794 Dwight Court', '7656913102', '직장인', 'Wolfie Rodenhurst님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (195, 'Valentijn MacKay', '229-48-0661', 'F', '47550 Logan Place', '4943527792', '일반', 'Valentijn MacKay님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (196, 'Gladi Warton', '258-84-5686', 'M', '55201 Badeau Parkway', '7169788691', '공무원', 'Gladi Warton님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (197, 'Warner Woodwind', '810-03-7783', 'M', '946 Golf Course Way', '3815233983', '공무원', 'Warner Woodwind님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (198, 'Silas Greenhouse', '460-24-0334', 'M', '84861 Westend Park', '8853005374', '공무원', 'Silas Greenhouse님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (199, 'Silvana Boolsen', '883-67-6053', 'M', '524 Spenser Park', '9544077959', '사업자', 'Silvana Boolsen님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (200, 'Chickie Girodin', '457-45-3085', 'M', '2633 Brown Alley', '1087214347', '일반', 'Chickie Girodin님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (201, 'Tobe Gudde', '456-20-2858', 'M', '978 Main Junction', '5718824700', '직장인', 'Tobe Gudde님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (202, 'Chauncey Bouchier', '632-45-4477', 'M', '6 Claremont Alley', '9588521466', '공무원', 'Chauncey Bouchier님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (203, 'Modesta De Brett', '831-40-8996', 'M', '7 Carey Street', '3218455901', '사업자', 'Modesta De Brett님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (204, 'Nial Wakenshaw', '724-44-4677', 'M', '4483 Northwestern Court', '4904027593', '일반', 'Nial Wakenshaw님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (205, 'Upton Sambidge', '657-92-1717', 'M', '81421 Katie Terrace', '4666026755', '공무원', 'Upton Sambidge님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (206, 'Hersh Pruvost', '569-39-9476', 'M', '685 Gateway Road', '7517367791', '공무원', 'Hersh Pruvost님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (207, 'Waneta Pevreal', '478-78-9063', 'M', '7 Lotheville Park', '1573492928', '직장인', 'Waneta Pevreal님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (208, 'Junette Ostler', '693-09-1969', 'M', '84798 Graedel Street', '6414208328', '사업자', 'Junette Ostler님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (209, 'Andria McKernan', '491-78-2378', 'F', '56425 Nevada Trail', '6687019127', '공무원', 'Andria McKernan님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (210, 'Esma Epsly', '663-82-9909', 'F', '508 Sheridan Plaza', '1959827555', '사업자', 'Esma Epsly님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (211, 'Davidde Negus', '234-96-8743', 'F', '3 Ridgeview Center', '1294573002', '사업자', 'Davidde Negus님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (212, 'Asia Hele', '797-57-0234', 'F', '35 Farwell Park', '7243189711', '사업자', 'Asia Hele님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (213, 'Maud Fintoph', '236-50-0312', 'F', '38 Riverside Center', '3708247604', '직장인', 'Maud Fintoph님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (214, 'Hugo Josipovitz', '277-55-0771', 'F', '243 Southridge Avenue', '3306692368', '공무원', 'Hugo Josipovitz님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (215, 'Gillan Prestwich', '100-13-8351', 'F', '9 Huxley Hill', '7627648682', '공무원', 'Gillan Prestwich님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (216, 'Becky Fairn', '460-63-9228', 'M', '5 Utah Lane', '7145889494', '직장인', 'Becky Fairn님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (217, 'Mavra Licciardi', '661-80-2942', 'F', '81538 Saint Paul Junction', '2091727738', '공무원', 'Mavra Licciardi님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (218, 'Shelton Barlas', '331-79-8183', 'F', '6 Kropf Court', '1579265538', '일반', 'Shelton Barlas님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (219, 'Crissy le Keux', '539-58-0540', 'F', '4 Hermina Street', '1632197790', '공무원', 'Crissy le Keux님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (220, 'Bertie Loughren', '440-89-8530', 'F', '446 Northwestern Street', '8636303594', '공무원', 'Bertie Loughren님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (221, 'Johnath Lefridge', '346-17-0102', 'M', '9 Warbler Lane', '1969876051', '공무원', 'Johnath Lefridge님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (222, 'Edi Setterfield', '838-27-0466', 'F', '90360 Lakeland Alley', '6402950728', '공무원', 'Edi Setterfield님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (223, 'Gasparo Cancelier', '719-65-6017', 'M', '1595 Sachtjen Plaza', '6877972235', '공무원', 'Gasparo Cancelier님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (224, 'Stacee Rowlinson', '469-33-2043', 'F', '73 Birchwood Crossing', '6376689235', '전문직', 'Stacee Rowlinson님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (225, 'Dorisa Lansly', '105-67-3219', 'F', '35817 Scott Place', '7037198907', '공무원', 'Dorisa Lansly님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (226, 'Rosaleen Stockoe', '618-92-8978', 'F', '13 Hagan Parkway', '4376624359', '직장인', 'Rosaleen Stockoe님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (227, 'Fair Meriton', '573-43-4067', 'M', '6 Mcguire Point', '9773594352', '일반', 'Fair Meriton님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (228, 'Amitie Bladon', '358-37-3463', 'M', '0448 Menomonie Pass', '8727628174', '전문직', 'Amitie Bladon님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (229, 'Daryle Stroulger', '842-97-1701', 'F', '42970 Iowa Circle', '8918722327', '직장인', 'Daryle Stroulger님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (230, 'Gracie Robroe', '404-64-6212', 'M', '59 Harper Plaza', '5952451176', '직장인', 'Gracie Robroe님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (231, 'Filberto Votier', '620-61-5415', 'M', '6 Londonderry Way', '6381028106', '공무원', 'Filberto Votier님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (232, 'Gerrard Roderick', '732-69-8424', 'F', '7 Dennis Circle', '7144285841', '공무원', 'Gerrard Roderick님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (233, 'Roseann Ivanusyev', '171-16-0626', 'F', '0217 Mariners Cove Drive', '3345353609', '전문직', 'Roseann Ivanusyev님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (234, 'Shirlene Fifield', '123-70-7906', 'M', '4062 Haas Trail', '9738176668', '일반', 'Shirlene Fifield님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (235, 'Emmott Sall', '205-55-2731', 'M', '99 Vahlen Place', '9095801401', '공무원', 'Emmott Sall님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (236, 'Pinchas Luxen', '221-19-5909', 'F', '39795 Crescent Oaks Avenue', '9647858758', '공무원', 'Pinchas Luxen님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (237, 'Leroy Bedinham', '150-93-8768', 'M', '8394 Autumn Leaf Court', '6794025449', '전문직', 'Leroy Bedinham님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (238, 'Karole Giddy', '571-16-6536', 'M', '95944 Hanson Avenue', '1732493080', '사업자', 'Karole Giddy님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (239, 'Orelee Eyden', '630-42-2304', 'M', '01481 Mayfield Court', '1314477635', '일반', 'Orelee Eyden님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (240, 'Yetta Drewet', '412-63-0610', 'F', '550 Fieldstone Place', '7215615742', '공무원', 'Yetta Drewet님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (241, 'Fancy Crocetto', '614-85-1159', 'M', '4602 Packers Lane', '1666950996', '공무원', 'Fancy Crocetto님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (242, 'Naoma Dubbin', '436-79-7349', 'M', '76882 Redwing Avenue', '5436915852', '직장인', 'Naoma Dubbin님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (243, 'Dody Leroux', '576-07-2444', 'M', '60780 Forest Dale Place', '3282054625', '직장인', 'Dody Leroux님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (244, 'Neils Dawbury', '624-56-3295', 'M', '5547 Trailsway Way', '7287614530', '전문직', 'Neils Dawbury님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (245, 'Ajay Delafont', '255-88-0275', 'M', '69 Caliangt Court', '4198636210', '공무원', 'Ajay Delafont님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (246, 'Abbie Sibbson', '646-19-1449', 'M', '963 Westend Place', '1851898572', '일반', 'Abbie Sibbson님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (247, 'Aida Salsberg', '842-92-5869', 'F', '7 Towne Place', '1811265781', '공무원', 'Aida Salsberg님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (248, 'Rosalynd McInility', '349-36-7089', 'M', '95 Fairfield Point', '5401901914', '전문직', 'Rosalynd McInility님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (249, 'Charyl Nardi', '854-64-2986', 'F', '8 Colorado Drive', '6382306791', '일반', 'Charyl Nardi님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (250, 'Trip Georgel', '851-64-6662', 'F', '815 Heath Lane', '8026812451', '공무원', 'Trip Georgel님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (251, 'Alfred Gosling', '792-74-5257', 'M', '3522 Village Green Pass', '8827100503', '공무원', 'Alfred Gosling님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (252, 'Miller Matijevic', '382-83-8649', 'F', '61 Moland Circle', '5998734144', '일반', 'Miller Matijevic님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (253, 'Dickie Hartwright', '157-65-1155', 'F', '2997 Service Center', '7239339090', '공무원', 'Dickie Hartwright님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (254, 'Tannie Hartless', '682-78-6408', 'F', '655 Oneill Crossing', '5252332294', '공무원', 'Tannie Hartless님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (255, 'Venus Adin', '324-92-3931', 'M', '160 Westridge Plaza', '3198633861', '일반', 'Venus Adin님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (256, 'Annnora Steptow', '691-55-2067', 'M', '51923 Heffernan Road', '5673891800', '공무원', 'Annnora Steptow님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (257, 'Katina Egel', '632-72-9200', 'M', '92708 Blackbird Lane', '1422531390', '공무원', 'Katina Egel님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (258, 'Kenn Dyball', '420-80-5113', 'F', '253 Pearson Road', '1607416917', '일반', 'Kenn Dyball님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (259, 'Ada Ogan', '565-73-6886', 'M', '9 Gulseth Street', '1266906277', '일반', 'Ada Ogan님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (260, 'Rhiamon Toderbrugge', '832-39-4982', 'M', '92585 Gulseth Street', '7918233554', '일반', 'Rhiamon Toderbrugge님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (261, 'Donaugh Varren', '402-81-5419', 'M', '83522 Mandrake Plaza', '7049286437', '사업자', 'Donaugh Varren님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (262, 'Davin Collen', '481-22-2716', 'F', '519 Nancy Parkway', '3572508754', '일반', 'Davin Collen님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (263, 'Taffy Lening', '668-68-1567', 'M', '36081 Main Trail', '2457227061', '공무원', 'Taffy Lening님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (264, 'Celisse Prott', '439-59-4263', 'F', '77 Lien Plaza', '2887693156', '직장인', 'Celisse Prott님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (265, 'Donnell Cypler', '655-94-6230', 'F', '9827 Tennessee Center', '6801263124', '공무원', 'Donnell Cypler님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (266, 'Anni Revening', '541-19-2289', 'M', '4314 Jay Alley', '1202021430', '공무원', 'Anni Revening님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (267, 'Marabel Boorman', '364-87-5867', 'F', '25297 Kings Center', '7128009526', '공무원', 'Marabel Boorman님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (268, 'Cam Medmore', '339-26-7099', 'F', '53 Texas Pass', '3042256670', '전문직', 'Cam Medmore님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (269, 'Gerek Azam', '346-74-9907', 'M', '07 Fulton Parkway', '5766569660', '공무원', 'Gerek Azam님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (270, 'Orsola Laidlaw', '729-68-8669', 'M', '76 Northview Hill', '6752609608', '직장인', 'Orsola Laidlaw님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (271, 'Stepha Dymidowicz', '714-01-1723', 'F', '166 Old Shore Center', '8571292968', '일반', 'Stepha Dymidowicz님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (272, 'Daisy Goude', '130-37-1215', 'M', '64 Lunder Trail', '4898956298', '직장인', 'Daisy Goude님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (273, 'Yolane Pinkney', '778-10-1824', 'M', '63 Colorado Road', '5959185290', '직장인', 'Yolane Pinkney님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (274, 'Marney Evered', '297-30-8972', 'M', '14102 Talisman Point', '5625389969', '사업자', 'Marney Evered님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (275, 'Sammy Siddon', '684-31-5100', 'M', '316 Esch Center', '5053873981', '공무원', 'Sammy Siddon님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (276, 'Shir Bau', '438-08-3419', 'F', '51 Hauk Crossing', '4325671459', '직장인', 'Shir Bau님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (277, 'Eartha MacKee', '440-27-5941', 'F', '82463 Becker Pass', '3844612766', '사업자', 'Eartha MacKee님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (278, 'Dyna Mary', '384-44-5113', 'F', '50 Fieldstone Plaza', '9068643626', '전문직', 'Dyna Mary님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (279, 'Duffie Sterling', '840-50-6425', 'F', '89488 Jay Park', '4105233420', '공무원', 'Duffie Sterling님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (280, 'Noemi Holley', '734-82-3826', 'M', '69164 Westport Circle', '4916166504', '일반', 'Noemi Holley님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (281, 'Matelda Robbeke', '882-39-8929', 'M', '4145 Parkside Alley', '2533740763', '공무원', 'Matelda Robbeke님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (282, 'Layton Karlmann', '631-12-5384', 'F', '91747 Annamark Road', '4644486729', '공무원', 'Layton Karlmann님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (283, 'Minny Halliburton', '238-18-0699', 'M', '386 Esch Pass', '9562662964', '직장인', 'Minny Halliburton님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (284, 'Trueman Arenson', '546-73-4773', 'F', '76955 Vidon Plaza', '7615286435', '전문직', 'Trueman Arenson님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (285, 'Garrick Syddall', '824-15-3691', 'F', '09 Burrows Road', '2473833782', '직장인', 'Garrick Syddall님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (286, 'Kyla Hadwick', '276-93-2905', 'F', '215 Lillian Place', '1007116975', '공무원', 'Kyla Hadwick님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (287, 'Stearn Oldcote', '795-52-2789', 'F', '948 Blackbird Pass', '1184765112', '공무원', 'Stearn Oldcote님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (288, 'Cleveland Domsalla', '615-17-9787', 'F', '160 Farwell Circle', '5064829098', '전문직', 'Cleveland Domsalla님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (289, 'Leona Semrad', '590-54-1433', 'M', '9 Transport Way', '9013617964', '사업자', 'Leona Semrad님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (290, 'Teresina Shouler', '634-61-1442', 'F', '52461 Eagan Place', '5177174252', '직장인', 'Teresina Shouler님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (291, 'Sauncho Frede', '507-35-0782', 'F', '7 Main Terrace', '6217796531', '공무원', 'Sauncho Frede님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (292, 'Filippa Bascomb', '869-73-1600', 'F', '225 Springview Plaza', '8999326533', '전문직', 'Filippa Bascomb님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (293, 'Linn Canon', '891-80-8642', 'F', '0 Florence Court', '9821711341', '직장인', 'Linn Canon님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (294, 'Hewet Tatchell', '326-88-1838', 'M', '8 Butterfield Center', '5595911438', '전문직', 'Hewet Tatchell님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (295, 'Teador Giacopini', '803-16-7734', 'F', '25935 Donald Hill', '2246392191', '일반', 'Teador Giacopini님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (296, 'Elset Clougher', '890-95-5914', 'M', '8 Merry Alley', '8058572037', '일반', 'Elset Clougher님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (297, 'Mellisa Escolme', '877-08-3718', 'M', '47 Lakeland Terrace', '4975179071', '사업자', 'Mellisa Escolme님의 특이사항 존재시 메모', 3);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (298, 'Eugenio Crippin', '684-38-5304', 'M', '707 Michigan Park', '7311638788', '일반', 'Eugenio Crippin님의 특이사항 존재시 메모', 1);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (299, 'Cherianne Hustler', '618-04-9678', 'F', '275 Eagle Crest Way', '7169080687', '사업자', 'Cherianne Hustler님의 특이사항 존재시 메모', 2);
-insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id) values (300, 'Roch Younglove', '894-82-9773', 'F', '72 Johnson Trail', '3745052436', '사업자', 'Roch Younglove님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박식아', '091128-1568943', 'M', '32509 Lotheville Trail', '010-7902-8636', '전문직','박식아님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박현동', '810828-3317326', 'F', '270 Badeau Street', '010-6560-5303', '직장인','박현동님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박민유', '641028-2967219', 'M', '9863 Portage Avenue', '010-8345-5557', '일반','박민유님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김혜민', '580922-3766813', 'M', '27 Manley Avenue', '010-3365-0872', '사업자','김혜민님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박은선', '211128-2315628', 'F', '4128 Eliot Pass', '010-0909-5482', '직장인','박은선님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박서은', '480928-2466437', 'F', '0578 Ryan Alley', '010-4601-4657', '전문직','박서은님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이민미', '821228-3471485', 'F', '4445 Vera Hill', '010-4201-8559', '사업자','이민미님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이경미', '271107-4531516', 'M', '8396 Shelley Trail', '010-6828-7612', '전문직','이경미님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김미서', '760927-3716499', 'M', '6891 Dapin Place', '010-5769-5964', '공무원','김미서님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이은한', '351201-1596386', 'F', '2659 Esker Hill', '010-7065-2567', '공무원','이은한님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김승강', '840714-1789340', 'M', '05 Holmberg Pass', '010-4270-8833', '직장인','김승강님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박서정', '100418-1047831', 'F', '374 Utah Road', '010-5514-2906', '전문직','박서정님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이강진', '900301-2877291', 'M', '68 Grayhawk Park', '010-4123-6921', '일반','이강진님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이예서', '850517-2194168', 'M', '86 Mandrake Place', '010-8380-7093', '일반','이예서님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박채서', '281006-2610414', 'M', '14 Melrose Center', '010-0875-1967', '공무원','박채서님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박혜재', '171128-4433634', 'M', '2 Sycamore Lane', '010-5749-2718', '전문직','박혜재님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김은승', '091128-2713238', 'M', '4981 Birchwood Trail', '010-8614-5999', '공무원','김은승님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김예민', '860627-2105829', 'M', '58 Haas Plaza', '010-8202-6286', '직장인','김예민님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이경미', '471103-3081304', 'M', '59014 Roxbury Terrace', '010-9519-0758', '직장인','이경미님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이민현', '340722-1085822', 'F', '15 Shasta Pass', '010-7009-1687', '직장인','이민현님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김재예', '391228-1443434', 'M', '67243 Katie Plaza', '010-6480-2636', '직장인','김재예님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박채민', '150703-3860868', 'M', '509 Oakridge Lane', '010-8196-4142', '일반','박채민님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이주은', '040108-1345525', 'F', '37 Schmedeman Drive', '010-9151-8451', '일반','이주은님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박연윤', '411208-1316747', 'F', '38908 Nova Road', '010-7315-3957', '직장인','박연윤님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박현주', '890328-4465939', 'M', '415 Butternut Hill', '010-0967-5948', '공무원','박현주님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김혜진', '160802-4233514', 'F', '07995 Green Ridge Pass', '010-0836-9925', '공무원','김혜진님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박서서', '600128-2080865', 'M', '09425 Saint Paul Trail', '010-6233-2324', '사업자','박서서님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이주예', '921222-1253757', 'F', '05 Hanover Plaza', '010-9984-7269', '전문직','이주예님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김예경', '881128-4778994', 'F', '94 Northfield Way', '010-0244-9672', '사업자','김예경님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박슬미', '201128-4675150', 'M', '5717 Gerald Pass', '010-9140-3040', '직장인','박슬미님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김주슬', '420817-1731785', 'F', '056 Drewry Pass', '010-7233-5224', '일반','김주슬님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이서미', '000811-2954036', 'M', '8445 Miller Plaza', '010-5195-6199', '공무원','이서미님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이희혜', '420820-2074741', 'M', '4185 Oak Valley Parkway', '010-7547-2851', '전문직','이희혜님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박희서', '291114-4057552', 'F', '97 Hollow Ridge Point', '010-3812-1751', '일반','박희서님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이경준', '030303-3475533', 'F', '7932 Texas Center', '010-1525-3630', '직장인','이경준님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이중경', '820528-4616979', 'M', '68 Lyons Trail', '010-7175-9884', '일반','이중경님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김연유', '961205-2227648', 'F', '6288 Carberry Alley', '010-7215-9723', '전문직','김연유님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이미은', '431128-2655872', 'M', '63 Riverside Pass', '010-8083-4180', '일반','이미은님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이미한', '921006-4956520', 'M', '25365 Quincy Trail', '010-6438-8576', '공무원','이미한님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이주은', '080528-1869415', 'F', '105 Nevada Hill', '010-2212-0225', '직장인','이주은님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박준안', '441222-3325564', 'F', '18800 Golf View Drive', '010-7374-2834', '직장인','박준안님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이윤서', '630811-3599750', 'M', '10263 Annamark Way', '010-4351-9941', '공무원','이윤서님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김미주', '630120-3192023', 'M', '24012 Hermina Avenue', '010-5346-6831', '전문직','김미주님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김현경', '690709-3055880', 'M', '05287 Anzinger Circle', '010-0207-0271', '전문직','김현경님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김하서', '521128-2410722', 'F', '43 Arizona Terrace', '010-0093-4696', '일반','김하서님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박현아', '310807-2931096', 'M', '77 Clyde Gallagher Drive', '010-3179-9844', '직장인','박현아님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박서진', '511006-3344372', 'M', '75 Sherman Alley', '010-6834-6324', '사업자','박서진님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박미미', '451128-3903399', 'M', '12346 Meadow Vale Junction', '010-5876-6801', '공무원','박미미님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박혜경', '140828-3611921', 'F', '32 Thierer Terrace', '010-0320-7714', '사업자','박혜경님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박미경', '801207-4875886', 'M', '6614 Lakeland Junction', '010-4138-4770', '직장인','박미경님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이하혜', '810413-4080044', 'M', '5 Loftsgordon Terrace', '010-5832-8216', '사업자','이하혜님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이희혜', '120802-1875388', 'M', '3297 Ryan Lane', '010-2098-2271', '전문직','이희혜님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이유은', '551001-4283229', 'M', '75140 Jenna Street', '010-5128-2440', '직장인','이유은님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이강혜', '891128-1843020', 'M', '42481 Oxford Hill', '010-2149-5511', '공무원','이강혜님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이미승', '090426-3639351', 'F', '1692 Johnson Road', '010-0983-4901', '사업자','이미승님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박미주', '941227-2538523', 'M', '481 Warrior Crossing', '010-9773-1945', '일반','박미주님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이서은', '210928-3071693', 'M', '26 Independence Drive', '010-4306-8372', '사업자','이서은님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이아승', '040322-3954782', 'F', '4694 Ramsey Point', '010-3217-3273', '사업자','이아승님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이예예', '631128-4448782', 'M', '7 Shasta Junction', '010-3396-7505', '공무원','이예예님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박은혜', '740901-2497435', 'F', '02840 Green Trail', '010-0181-5485', '직장인','박은혜님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김준민', '471103-4875765', 'F', '49406 Marcy Avenue', '010-5869-1110', '사업자','김준민님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박서중', '440523-3525101', 'F', '79 Melrose Center', '010-1136-4758', '일반','박서중님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김민예', '611024-1144010', 'M', '87 Fremont Point', '010-6547-2881', '사업자','김민예님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김서은', '571104-1512404', 'F', '6 Prairie Rose Lane', '010-2583-4333', '전문직','김서은님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이희정', '761128-2612634', 'M', '12 Walton Drive', '010-2191-4932', '전문직','이희정님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김준미', '231104-4295167', 'F', '3 Talmadge Court', '010-5157-8216', '사업자','김준미님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박진혜', '110821-1132038', 'F', '29 Grayhawk Alley', '010-9269-2856', '공무원','박진혜님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박현채', '590528-1910517', 'F', '72 Surrey Street', '010-8311-8710', '사업자','박현채님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김안예', '110906-3571056', 'F', '5367 School Terrace', '010-7209-8426', '사업자','김안예님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박지민', '441228-2165873', 'F', '30 Meadow Vale Park', '010-9709-6608', '공무원','박지민님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이예희', '971217-3986704', 'M', '048 Ronald Regan Terrace', '010-0038-8476', '일반','이예희님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김경정', '330319-4881983', 'M', '01 Browning Hill', '010-7914-7542', '직장인','김경정님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김민정', '300719-3751853', 'M', '92 Thierer Circle', '010-0970-1306', '공무원','김민정님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박진혜', '511028-3328759', 'F', '63 Village Green Plaza', '010-6539-7425', '사업자','박진혜님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이한동', '500728-2126543', 'M', '8954 Buena Vista Point', '010-2274-2604', '일반','이한동님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박미예', '160928-3960901', 'F', '98397 Scofield Junction', '010-8056-4668', '사업자','박미예님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김민선', '200414-2763085', 'F', '656 Northwestern Drive', '010-5207-0017', '직장인','김민선님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김지설', '031228-2140822', 'F', '8 Vermont Crossing', '010-3771-2149', '사업자','김지설님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김민아', '190201-2298742', 'M', '6 Spohn Lane', '010-5867-3845', '일반', '김민아님의 특이사항 존재시 메모',1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이서현', '101109-2670735', 'F', '12488 Sunfield Circle', '010-7349-7330', '전문직','이서현님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이유희', '871028-3447228', 'F', '506 Mayfield Alley', '010-8634-4864', '일반','이유희님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김현민', '471228-1022355', 'F', '807 Waywood Parkway', '010-3570-2773', '전문직','김현민님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이현민', '901128-1378471', 'M', '38 Gale Way', '010-4013-9824', '전문직', '이현민님의 특이사항 존재시 메모',2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박중연', '190707-1466455', 'F', '15273 Northland Trail', '010-0948-0648', '직장인','박중연님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이준지', '811002-2076083', 'M', '2 Oriole Avenue', '010-4317-0771', '사업자','이준지님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김은혜', '920905-1619083', 'M', '0003 Onsgard Lane', '010-9482-9890', '직장인','김은혜님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박미진', '511128-3805752', 'M', '5825 North Parkway', '010-9094-8617', '전문직','박미진님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이연진', '970328-2828310', 'F', '189 Clyde Gallagher Center', '010-5758-4734', '직장인','이연진님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김희민', '310911-2383612', 'M', '8 Kensington Drive', '010-7787-0979', '사업자','김희민님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이강한', '490328-2248642', 'M', '2 Village Trail', '010-3132-6730', '직장인','이강한님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박준윤', '740920-3977094', 'F', '20 Lillian Park', '010-8383-7173', '사업자','박준윤님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박민예', '100428-2374723', 'F', '61227 2nd Alley', '010-5798-7335', '전문직','박민예님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이미연', '481015-4284521', 'F', '201 Bellgrove Point', '010-3957-5519', '전문직','이미연님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박윤예', '291215-3043659', 'F', '77263 Crowley Plaza', '010-0581-9049', '일반','박윤예님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김식하', '550302-4413934', 'F', '6 Karstens Point', '010-5728-0226', '직장인','김식하님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박아희', '430328-2383977', 'F', '30 Express Way', '010-5975-6595', '사업자','박아희님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박미승', '441128-2722330', 'M', '02 Tennessee Road', '010-7485-0791', '공무원','박미승님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박하은', '351028-2776449', 'F', '80418 Russell Park', '010-2068-0567', '전문직','박하은님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박예예', '101119-1256758', 'F', '34 Northwestern Junction', '010-8355-6434', '전문직','박예예님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박혜예', '011017-2259469', 'M', '208 Commercial Hill', '010-5962-8377', '일반','박혜예님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이혜희', '471003-1158652', 'M', '4 Katie Parkway', '010-3228-9830', '공무원','이혜희님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김유서', '290928-1962436', 'M', '9802 Bultman Terrace', '010-8535-5527', '직장인','김유서님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김미채', '770726-2848962', 'F', '87682 Main Lane', '010-5620-7654', '사업자','김미채님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이예현', '300628-1745686', 'M', '0 Village Green Terrace', '010-9704-1639', '사업자','이예현님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이혜현', '540328-4949662', 'F', '63345 Carberry Street', '010-1198-3722', '공무원','이혜현님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박은은', '320310-1477594', 'M', '3500 Tony Road', '010-2836-8016', '일반','박은은님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박서은', '520228-4179692', 'F', '71 Sommers Terrace', '010-5348-9739', '직장인','박서은님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박민동', '600205-3889356', 'F', '490 Linden Hill', '010-9743-2786', '전문직','박민동님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이동강', '751028-3221887', 'M', '40 North Way', '010-5604-0815', '전문직', '이동강님의 특이사항 존재시 메모',1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이연수', '020601-2135658', 'M', '700 Melvin Crossing', '010-4092-4430', '직장인','이연수님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박은윤', '230528-3058070', 'F', '144 Parkside Pass', '010-0779-7164', '전문직','박은윤님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이식은', '391208-2734212', 'F', '604 Hanson Trail', '010-8310-4002', '사업자','이식은님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김설민', '830613-4739546', 'F', '01572 Everett Avenue', '010-7412-4694', '직장인','김설민님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김희한', '030727-3561355', 'M', '40 Lawn Point', '010-1228-5780', '사업자','김희한님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박현미', '841203-3368730', 'F', '1 Hoard Way', '010-2962-8683', '공무원', '박현미님의 특이사항 존재시 메모',1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박하진', '970817-1739009', 'F', '1 Graedel Road', '010-0936-3388', '전문직','박하진님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이서서', '860204-1855094', 'M', '9 Sunfield Park', '010-8195-6530', '직장인','이서서님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이민미', '551017-3985743', 'M', '2 Mccormick Drive', '010-0288-1216', '공무원','이민미님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박안민', '260128-4986427', 'F', '488 Eastlawn Terrace', '010-5256-0813', '직장인','박안민님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이유혜', '450603-3037564', 'M', '86 Corben Park', '010-8817-4543', '일반','이유혜님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박한현', '370428-4897105', 'F', '62838 American Road', '010-3762-7640', '사업자','박한현님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박한현', '301205-1151661', 'F', '2 Sunnyside Alley', '010-1902-4963', '일반','박한현님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박예경', '480824-2543655', 'F', '1 Westridge Place', '010-3098-4654', '전문직','박예경님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이안주', '280815-2271372', 'M', '1 Oxford Lane', '010-8624-8843', '전문직','이안주님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박연경', '831001-4324186', 'F', '78961 Sheridan Trail', '010-9828-3947', '직장인','박연경님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이슬미', '840403-4297503', 'M', '1450 Oneill Circle', '010-6444-9736', '공무원','이슬미님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김설서', '711207-2463525', 'M', '23 Messerschmidt Junction', '010-8249-4707', '직장인','김설서님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박미경', '740201-1433178', 'M', '85003 Blaine Crossing', '010-0170-5461', '직장인','박미경님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이승민', '330706-2101886', 'M', '60 Northwestern Street', '010-4681-0359', '직장인','이승민님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박선은', '691108-4748529', 'F', '4 Hintze Drive', '010-7837-4122', '사업자','박선은님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이안현', '701026-4702913', 'F', '72 Eagle Crest Point', '010-5628-6560', '일반','이안현님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이설경', '021028-4480159', 'F', '48773 Hayes Street', '010-8190-7215', '일반','이설경님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김주재', '370602-2307730', 'F', '45 Lunder Crossing', '010-2521-2092', '전문직','김주재님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이윤하', '260817-2454325', 'F', '7 Dovetail Way', '010-4415-1604', '일반','이윤하님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이준혜', '101128-2101916', 'M', '49301 Pond Terrace', '010-5943-2173', '전문직','이준혜님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김혜채', '311007-2439193', 'M', '664 Bayside Point', '010-9362-7177', '일반','김혜채님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박하혜', '380924-1711244', 'F', '529 Morningstar Alley', '010-5723-4430', '공무원','박하혜님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이수윤', '981121-4749885', 'F', '844 Ludington Center', '010-6579-8445', '사업자','이수윤님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김미현', '701128-3300813', 'M', '0 Mandrake Way', '010-8486-5405', '직장인','김미현님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김은현', '000505-1802995', 'M', '1137 School Plaza', '010-5363-2112', '사업자','김은현님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이서미', '001128-1254941', 'M', '9019 Bellgrove Drive', '010-6020-4739', '일반','이서미님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박윤예', '000203-4620932', 'F', '555 Farmco Pass', '010-7064-7541', '공무원','박윤예님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박진미', '411215-2744460', 'F', '659 Jenna Point', '010-8987-3776', '사업자','박진미님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박예중', '761106-1682266', 'F', '24 Beilfuss Road', '010-4177-9124', '직장인','박예중님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김하식', '410906-1884051', 'M', '9907 Duke Alley', '010-5662-1566', '전문직','김하식님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김하설', '620724-3826206', 'F', '2 Gulseth Junction', '010-5370-9256', '직장인','김하설님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김진강', '881228-2943327', 'M', '180 Hollow Ridge Avenue', '010-2265-4016', '사업자','김진강님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이지예', '511128-1809981', 'F', '71731 Almo Plaza', '010-1298-9358', '직장인','이지예님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박은진', '230208-2438429', 'M', '162 Bultman Plaza', '010-1737-6847', '일반','박은진님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이지경', '410528-2918490', 'M', '96799 Loeprich Street', '010-7561-0454', '전문직','이지경님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김승민', '651206-3236546', 'F', '30 Kenwood Trail', '010-6901-8041', '일반','김승민님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김희하', '831128-2073844', 'M', '35254 Mesta Point', '010-5264-8539', '일반','김희하님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박혜민', '971228-2856681', 'M', '01 Alpine Terrace', '010-2702-5860', '공무원','박혜민님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박희현', '301222-4743842', 'M', '0 Anniversary Hill', '010-3843-2532', '사업자','박희현님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김서하', '671028-1942761', 'F', '3443 Arapahoe Hill', '010-1503-0320', '직장인','김서하님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김은준', '870421-1755343', 'F', '6 Goodland Lane', '010-5115-6742', '직장인','김은준님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박현예', '670728-4098671', 'M', '325 Schurz Road', '010-7392-3890', '사업자','박현예님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박연선', '070126-2098581', 'M', '94625 Eagle Crest Street', '010-5774-7105', '직장인','박연선님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박중한', '640706-3220659', 'M', '1 Kinsman Circle', '010-5263-3312', '직장인','박중한님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김미예', '650308-2663540', 'F', '85151 Bartelt Drive', '010-0757-5682', '사업자','김미예님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김서예', '541028-1631448', 'M', '6968 Mallard Center', '010-3843-3362', '공무원','김서예님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이희민', '811018-2199053', 'M', '52 Killdeer Trail', '010-4013-8144', '공무원','이희민님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김은수', '691016-3376677', 'F', '60 Mandrake Crossing', '010-6750-6213', '직장인','김은수님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김미예', '901214-3141826', 'F', '8776 Cambridge Trail', '010-1524-5160', '사업자','김미예님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이혜민', '640418-4642047', 'M', '794 Maryland Alley', '010-0126-1404', '공무원','이혜민님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박정희', '120704-1607742', 'F', '2 Paget Drive', '010-8343-9541', '사업자','박정희님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이서민', '350828-3655969', 'F', '4 Dorton Alley', '010-9101-6887', '일반','이서민님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이경희', '170822-2837745', 'F', '7190 Southridge Crossing', '010-1787-1302', '일반','이경희님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김주은', '461109-4413744', 'F', '98518 Cascade Avenue', '010-5783-4403', '일반','김주은님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이동한', '511128-2186956', 'M', '74 Armistice Court', '010-2717-6694', '사업자','이동한님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이한하', '201216-4462877', 'F', '34 Lunder Court', '010-8487-5904', '일반','이한하님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김하주', '861028-3720180', 'M', '31680 Haas Alley', '010-7595-9231', '전문직','김하주님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김서미', '851102-2524300', 'F', '317 Lakewood Gardens Point', '010-8666-6719', '공무원','김서미님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김서서', '460222-3504304', 'F', '3145 Park Meadow Crossing', '010-4128-3570', '공무원','김서서님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박은수', '751201-2113496', 'F', '68744 Forster Plaza', '010-0026-1535', '사업자','박은수님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김서민', '710923-2752477', 'M', '3596 Eagle Crest Road', '010-5404-9764', '사업자','김서민님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박경서', '890828-2654618', 'M', '9886 Prairie Rose Junction', '010-2073-6407', '전문직','박경서님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박민하', '000628-1607778', 'F', '6 Weeping Birch Hill', '010-4135-4587', '일반','박민하님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이서정', '040428-4806172', 'F', '54 Basil Way', '010-2540-6087', '공무원', '이서정님의 특이사항 존재시 메모',2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박은예', '731128-3766943', 'M', '4374 Corscot Circle', '010-1451-0352', '전문직','박은예님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이서연', '761228-4897474', 'F', '57559 4th Lane', '010-9199-5740', '공무원','이서연님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박은진', '151003-3326231', 'F', '5697 Old Gate Trail', '010-6025-4203', '직장인','박은진님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박민채', '060128-4036065', 'F', '879 Express Point', '010-6870-2206', '일반','박민채님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김준슬', '111225-2379058', 'F', '5279 Comanche Trail', '010-8628-0561', '일반','김준슬님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박혜슬', '130603-2776390', 'F', '2 Texas Junction', '010-4768-8818', '직장인','박혜슬님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박혜희', '561128-4796039', 'M', '10780 Anhalt Court', '010-5956-2658', '직장인','박혜희님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이하채', '921010-3303036', 'M', '06456 Longview Park', '010-7625-0565', '공무원','이하채님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박하한', '550828-3974643', 'F', '0265 Dixon Road', '010-9038-7317', '사업자','박하한님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김민민', '611028-3985469', 'F', '72 Old Shore Junction', '010-0173-9579', '사업자','김민민님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박은혜', '100807-2076946', 'M', '4 Michigan Street', '010-8317-6192', '사업자','박은혜님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박서채', '390203-3965091', 'M', '09389 Caliangt Circle', '010-5337-1313', '직장인','박서채님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박예수', '860502-1959456', 'F', '6 Spohn Drive', '010-9183-9669', '직장인','박예수님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김혜윤', '770528-2728926', 'M', '0777 Roth Pass', '010-8458-3631', '공무원','김혜윤님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이식경', '971008-2898215', 'M', '8516 Steensland Lane', '010-0568-6274', '사업자','이식경님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이지예', '801028-3402641', 'M', '5241 Meadow Vale Street', '010-6621-8729', '공무원','이지예님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김주준', '480828-3119706', 'F', '46773 Carpenter Street', '010-9759-5448', '공무원','김주준님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이선미', '870225-4071893', 'M', '9562 Gina Plaza', '010-7787-7600', '일반','이선미님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이은혜', '200905-2419611', 'M', '817 Mifflin Pass', '010-0490-6567', '사업자','이은혜님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이민민', '920618-3083605', 'M', '01462 Oriole Road', '010-5466-6596', '일반','이민민님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박재진', '901009-2407558', 'M', '236 Northport Terrace', '010-6267-8750', '사업자','박재진님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김지미', '110128-4363922', 'M', '595 Talisman Lane', '010-3104-5259', '공무원','김지미님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박하지', '631018-3808735', 'M', '8 Toban Junction', '010-0821-7428', '일반','박하지님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박현경', '500607-1765777', 'M', '79 Almo Trail', '010-1395-6346', '직장인','박현경님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김주은', '800724-1782527', 'F', '21608 Tennyson Road', '010-2258-6967', '사업자','김주은님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박진한', '980207-2023196', 'M', '8098 Schiller Court', '010-0792-2549', '직장인','박진한님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박채경', '410704-4099014', 'F', '73 Lighthouse Bay Road', '010-3017-2198', '전문직','박채경님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김혜정', '621107-2159847', 'F', '141 Fair Oaks Hill', '010-3455-9111', '일반','김혜정님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박한윤', '441028-3271091', 'M', '8446 Loftsgordon Place', '010-9640-4401', '사업자','박한윤님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이미경', '110211-1436043', 'M', '516 Sutteridge Court', '010-9619-8560', '일반','이미경님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박현승', '601006-4512923', 'F', '2 Lyons Way', '010-0157-9361', '일반', '박현승님의 특이사항 존재시 메모',3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김미하', '691128-1726917', 'M', '9 Mesta Road', '010-9710-5331', '공무원', '김미하님의 특이사항 존재시 메모',1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이동예', '871211-3610742', 'F', '9 Anthes Point', '010-7844-9903', '공무원','이동예님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박정지', '300818-1303687', 'F', '64618 Weeping Birch Center', '010-7863-5551', '공무원','박정지님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박희진', '780528-1761614', 'F', '51 Londonderry Center', '010-3851-0146', '사업자','박희진님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이서식', '871207-2195829', 'M', '0959 Brentwood Alley', '010-2755-8926', '직장인','이서식님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이윤중', '341228-2892187', 'F', '8442 Thierer Point', '010-3885-6581', '전문직','이윤중님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김은수', '141011-2369476', 'F', '43022 Pleasure Terrace', '010-7182-5287', '일반','김은수님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이안준', '871028-2647931', 'M', '2463 Alpine Point', '010-0909-5483', '전문직','이안준님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이슬희', '710928-4427612', 'F', '72 Bluestem Lane', '010-5168-1505', '일반','이슬희님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박주경', '810727-4344653', 'F', '1 Waxwing Street', '010-5235-3524', '공무원','박주경님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이예현', '700728-2091739', 'M', '62 Mccormick Circle', '010-2508-7131', '일반','이예현님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김윤서', '121028-1299010', 'F', '0086 Spaight Court', '010-3728-5006', '공무원','김윤서님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박미지', '461219-2583962', 'M', '89655 Toban Alley', '010-6287-2534', '일반','박미지님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이은중', '770528-3798197', 'M', '6 Golf Course Pass', '010-1892-8206', '전문직','이은중님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박서서', '191122-4968993', 'M', '75 Chinook Plaza', '010-4582-6867', '일반','박서서님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김서은', '581209-2097713', 'F', '01808 Lake View Crossing', '010-3298-9369', '사업자','김서은님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이현혜', '071119-4401087', 'M', '77 Stephen Alley', '010-7184-5838', '전문직','이현혜님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박민주', '170708-1059418', 'M', '335 Hudson Plaza', '010-2847-6621', '직장인','박민주님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박경미', '380228-3763709', 'F', '2 Springview Parkway', '010-9828-9100', '사업자','박경미님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이윤슬', '020108-3122150', 'M', '5989 Mesta Way', '010-5322-8199', '전문직','이윤슬님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이미민', '910328-3312669', 'M', '48509 Lien Street', '010-2510-1305', '사업자','이미민님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박미중', '770728-1476954', 'F', '20 Amoth Place', '010-5575-5262', '직장인','박미중님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이서준', '690628-2420477', 'F', '78 Macpherson Trail', '010-8722-7185', '사업자','이서준님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박지중', '920117-1931877', 'F', '1 Fairview Pass', '010-8404-2028', '직장인','박지중님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박식민', '270307-1098221', 'F', '5755 Bultman Pass', '010-8871-3647', '전문직','박식민님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이중민', '220923-3793623', 'M', '6 Bashford Place', '010-6097-6289', '전문직','이중민님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김수유', '431218-1518931', 'M', '1 Dovetail Pass', '010-2705-2728', '일반','김수유님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김서희', '611110-4058782', 'M', '5 Browning Circle', '010-7863-1908', '공무원','김서희님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김현은', '511003-3787855', 'F', '4155 Prairieview Plaza', '010-6828-3143', '전문직','김현은님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이현수', '891215-4556328', 'M', '614 Ryan Crossing', '010-7376-5707', '사업자','이현수님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김진식', '411104-2310760', 'M', '90256 Meadow Ridge Junction', '010-8022-5798', '공무원','김진식님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김미하', '000707-1236683', 'M', '01376 Dorton Pass', '010-9261-7351', '직장인','김미하님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박경설', '870301-2233636', 'M', '90425 Heffernan Drive', '010-6522-5213', '공무원','박경설님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박민경', '101125-4139014', 'F', '9 Columbus Pass', '010-7166-8851', '일반','박민경님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이진연', '740528-2096804', 'M', '9 Elka Place', '010-8054-8706', '사업자', '이진연님의 특이사항 존재시 메모',2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김주아', '501105-3367826', 'F', '8 Fremont Park', '010-6704-9111', '사업자','김주아님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박주선', '781028-3200130', 'M', '069 Schlimgen Circle', '010-1509-6289', '사업자','박주선님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김재혜', '491228-1510203', 'M', '64080 American Pass', '010-9965-7319', '전문직','김재혜님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박주경', '510724-4499995', 'M', '2389 Spenser Lane', '010-0908-5173', '공무원','박주경님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김경미', '261128-2190490', 'M', '0 Debra Pass', '010-5544-4136', '공무원', '김경미님의 특이사항 존재시 메모',1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이경예', '511228-2175438', 'F', '3 Schlimgen Alley', '010-0947-0130', '일반','이경예님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이지준', '870422-2189819', 'M', '433 Hollow Ridge Junction', '010-6471-6074', '공무원','이지준님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김연예', '630401-4870254', 'M', '1522 Dakota Plaza', '010-9460-8152', '전문직','김연예님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김안현', '221121-1732102', 'F', '3921 Delladonna Pass', '010-4009-2866', '직장인','김안현님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이선하', '190903-4267058', 'F', '15804 Pankratz Place', '010-0395-9907', '직장인','이선하님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이진선', '341218-4027606', 'F', '55 Stone Corner Road', '010-3893-9838', '전문직','이진선님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박미민', '991211-1848294', 'M', '88 Springview Parkway', '010-1925-2176', '공무원','박미민님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김은윤', '311007-3432711', 'M', '2 Bobwhite Plaza', '010-1774-0696', '사업자','김은윤님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박슬민', '021028-2505214', 'M', '0166 Melby Alley', '010-0590-5631', '일반','박슬민님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김연연', '361113-3377349', 'F', '462 Utah Lane', '010-1395-3800', '직장인','김연연님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이혜민', '211128-3044977', 'F', '82654 Grim Place', '010-2393-1084', '전문직','이혜민님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이예식', '121228-1952757', 'F', '98 Nevada Crossing', '010-1581-2676', '공무원','이예식님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김윤설', '060402-4515970', 'F', '3 Crownhardt Crossing', '010-0758-4133', '직장인','김윤설님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김민혜', '091210-4463125', 'F', '213 2nd Place', '010-2701-8348', '전문직','김민혜님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이희진', '350103-2220282', 'F', '0043 Chinook Court', '010-9498-0154', '사업자','이희진님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김정민', '341213-2976097', 'M', '6 Bunting Park', '010-3612-4726', '일반','김정민님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이아경', '281104-3695289', 'M', '7828 Arkansas Place', '010-8774-8284', '일반','이아경님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이희진', '711005-1187972', 'M', '560 Myrtle Park', '010-3382-0586', '사업자','이희진님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이한경', '340903-3245792', 'F', '1 Reinke Point', '010-9336-8199', '전문직','이한경님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이경설', '620728-4561898', 'F', '90022 Melby Park', '010-9340-0236', '공무원','이경설님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김수연', '311208-1760933', 'M', '0 Merrick Street', '010-3697-2318', '일반','김수연님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박슬민', '510405-1578523', 'F', '23 Hoffman Terrace', '010-9081-8956', '전문직','박슬민님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박아진', '380208-3274924', 'F', '9 Fairview Place', '010-7261-6299', '사업자','박아진님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김하하', '530228-4079110', 'F', '95378 5th Way', '010-7089-3923', '공무원','김하하님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이현미', '641128-2729091', 'M', '9 Bluestem Circle', '010-4693-9390', '직장인','이현미님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김현서', '021207-3507035', 'F', '067 Atwood Road', '010-2104-9390', '직장인','김현서님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김서안', '900706-2411298', 'M', '5 Kingsford Hill', '010-9439-1339', '직장인','김서안님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박서서', '131118-2512847', 'M', '669 Elmside Drive', '010-1205-1105', '일반','박서서님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이미혜', '871207-4690436', 'M', '5 Montana Trail', '010-4271-4906', '직장인','이미혜님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이민미', '890506-1179988', 'M', '24 Grim Point', '010-9384-2275', '일반', '이민미님의 특이사항 존재시 메모',1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이예진', '981128-3441926', 'F', '4 Vahlen Lane', '010-9982-1906', '일반', '이예진님의 특이사항 존재시 메모',2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박현지', '951016-1791605', 'M', '5 Lighthouse Bay Terrace', '010-2175-6073', '전문직','박현지님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김미윤', '220528-2107318', 'F', '27069 Kings Point', '010-8598-8369', '공무원','김미윤님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이예진', '311211-3366708', 'M', '5 Almo Avenue', '010-8091-8609', '사업자','이예진님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이윤윤', '661128-1525414', 'F', '960 Vera Park', '010-2028-2352', '사업자','이윤윤님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김현슬', '330603-3299671', 'M', '90359 Evergreen Road', '010-8885-9088', '일반','김현슬님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이하민', '731201-1181167', 'M', '63 Basil Road', '010-4219-8217', '전문직','이하민님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박지아', '521003-3201950', 'F', '94181 Springs Lane', '010-2990-1960', '일반','박지아님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김예혜', '460813-3624752', 'M', '49 5th Alley', '010-1010-4213', '직장인', '김예혜님의 특이사항 존재시 메모',1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박슬미', '260928-2951981', 'M', '9863 Lindbergh Road', '010-7176-1738', '직장인','박슬미님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박주미', '251014-3402756', 'M', '896 Lighthouse Bay Pass', '010-5398-3362', '일반','박주미님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김한서', '691228-2741074', 'M', '10 Tennyson Junction', '010-9523-5489', '일반','김한서님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박경민', '880428-1765250', 'F', '87334 Anniversary Circle', '010-6132-3290', '전문직','박경민님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이유미', '800704-4544213', 'F', '6 Boyd Drive', '010-4723-2972', '전문직', '이유미님의 특이사항 존재시 메모',3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이경윤', '820214-1014135', 'F', '4690 Valley Edge Pass', '010-9424-6958', '사업자','이경윤님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '김한예', '670903-1783006', 'F', '72 Ridgeway Avenue', '010-2058-3655', '일반','김한예님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이서현', '390304-4781088', 'F', '0728 Coleman Way', '010-2340-9069', '사업자','이서현님의 특이사항 존재시 메모', 3);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이하예', '511108-4346933', 'M', '3532 Butternut Parkway', '010-9695-5420', '전문직','이하예님의 특이사항 존재시 메모', 1);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '박예현', '400807-1266308', 'M', '049 South Hill', '010-7086-5652', '일반','박예현님의 특이사항 존재시 메모', 2);
+insert into CUSTOMER (c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id)
+values (customer_seq.nextval, '이민희', '860205-4516400', 'F', '5 Lawn Place', '010-1922-4692', '일반', '이민희님의 특이사항 존재시 메모',3);
