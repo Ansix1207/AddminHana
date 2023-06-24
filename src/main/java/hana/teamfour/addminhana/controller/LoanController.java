@@ -30,19 +30,13 @@ public class LoanController extends HttpServlet {
 
         String query = request.getParameter("q");
         System.out.println(query);
-
         if (query != null && !query.isEmpty()) {
             setSearchProductEntity(request, response);
             System.out.println("path");
-
         } else {
             setProductEntity(request, response);
             System.out.println("else");
         }
-        ;
-
-//        request, response 를 이용하여 PE의데이터를 신청
-
         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/sessionOffProductInfo.jsp");
         dispatcher.forward(request, response);
     }

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: 하나로H012
@@ -76,10 +77,20 @@
             </div>
             <button class="modify">조회</button>
           </li>
+
           <%
             }
           %>
         </ol>
+        <ul class="-list- center">
+          <c:forEach var="i" begin="1" end="5">
+            <li><a class="-text- orange bold " href="?p=1&q="> ${i}</a></li>
+          </c:forEach>
+        </ul>
+        <div>
+          <span class="btn btn-next" onclick="alert('디음페이지가 없습니다')"> </span>
+        </div>
+
       </div>
     </main>
   </div>

@@ -58,9 +58,7 @@ public class LoanProductDAO {
 //    실험중입니다 
 
     public ArrayList<ProductEntity> getSearchLoanProductList(String query, int page) {
-
         ArrayList<ProductEntity> productEntityList = new ArrayList<>();
-
         try {
             conn = dataFactory.getConnection();
             String sql = "SELECT p_name, p_description, p_interestrate " +
