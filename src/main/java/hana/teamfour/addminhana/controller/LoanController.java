@@ -21,22 +21,26 @@ public class LoanController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=utf-8");
 
-
-//        if (path.equals("search")) {
-//            setSearchProductEntity();
-//        } else {
-//            setProductEntity();
-//        }
-
         String query = request.getParameter("q");
+//        page가 int가 아니라 정수를 받는 이유 : null을 받을수도 있어서
+        String page_ = request.getParameter("p");
+
         System.out.println(query);
         if (query != null && !query.isEmpty()) {
             setSearchProductEntity(request, response);
+            int page = 1;
+            if (page_ != null)
+                page = Integer.parseInt(page_);
             System.out.println("path");
         } else {
             setProductEntity(request, response);
+            int page = 1;
+            if (page_ != null && !query.isEmpty())
+                page = Integer.parseInt(page_);
             System.out.println("else");
         }
+
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/sessionOffProductInfo.jsp");
         dispatcher.forward(request, response);
     }

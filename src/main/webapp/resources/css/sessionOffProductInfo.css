@@ -3,9 +3,8 @@
   font-size: 30px;
 }
 
-.btn {
-  margin: 50px;
-  --bs-btn-padding-x: 2.5rem;
+.btn1 {
+  margin: 10px;
 }
 
 .productItem {
