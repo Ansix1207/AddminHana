@@ -25,7 +25,7 @@ public class RecByAgeDAO {
         }
     }
 
-    public ArrayList<ProductEntity> getRecProduct(Integer id, Integer ageRange) {
+    public ArrayList<ProductEntity> getRecProduct(Integer id, String productType, Integer ageRange) {
         ArrayList<ProductEntity> productList = new ArrayList<>();
         Connection conn = null;
         PreparedStatement ps = null;
@@ -33,13 +33,14 @@ public class RecByAgeDAO {
         try {
             conn = dataFactory.getConnection();
 
-            String sql = "select pro.p_id, pro.p_name, pro.p_interestrate, pro.p_liimit " +
+            String sql = "select pro.p_id, pro.p_name, pro.p_interestrate, pro.p_limit " +
                     "from customer cus, account acc, product pro " +
-                    "where cus.c_id = acc.acc_cid and acc.acc_pid = pro.p_id and acc.acc_cid <> ? and pro.p_isactive = 'Y' " +
+                    "where cus.c_id = acc.acc_cid and acc.acc_pid = pro.p_id and acc.acc_cid <> ? and substr(pro.p_category, 3, 2) = ? and pro.p_isactive = 'Y' " +
                     "and FLOOR((TRUNC(MONTHS_BETWEEN(sysdate, to_date(to_char(TO_DATE(substr(cus.c_rrn, 1, 6), 'rrmmdd'), 'yyyy-mm-dd')))/12))/10)*10 = ?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
-            ps.setInt(2, ageRange);
+            ps.setString(2, productType);
+            ps.setInt(3, ageRange);
 
 
             rs = ps.executeQuery();
@@ -47,6 +48,9 @@ public class RecByAgeDAO {
             while (rs.next()) {
                 ProductEntity productEntity = new ProductEntity();
                 productEntity.setP_id(rs.getInt(1));
+                productEntity.setP_name(rs.getString(2));
+                productEntity.setP_interestrate(rs.getDouble(3));
+                productEntity.setP_limit(rs.getInt(4));
                 productList.add(productEntity);
             }
             conn.close();

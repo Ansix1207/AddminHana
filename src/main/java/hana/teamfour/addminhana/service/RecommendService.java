@@ -21,7 +21,7 @@ public class RecommendService {
     HashSet<Integer> joinedIdSet = new HashSet<>();
 
     public RecommendService(Integer id) {
-        System.out.println("RecommendService 로드 완료");
+        System.out.println("RecommendService 로드 성공");
         this.userId = id;
         this.productDAO = new ProductDAO();
         this.recByAgeDAO = new RecByAgeDAO();
@@ -38,39 +38,49 @@ public class RecommendService {
         for (ProductEntity product : joinedProducts) {
             joinedIdSet.add(product.getP_id());
         }
+        System.out.println("가입된 상품 id 추가");
     }
 
-    public ArrayList<ProductEntity> getRecByJob() {
+    public ArrayList<ProductEntity> getRecByJob(String productType) {
         String job = customerSummaryDTO.getC_job();
-        ArrayList<ProductEntity> recProducts = recByJobDAO.getRecProduct(userId, job);
+        ArrayList<ProductEntity> recProducts = recByJobDAO.getRecProduct(userId, productType, job);
+        ArrayList<ProductEntity> resultProducts = new ArrayList<>();
         for (ProductEntity product : recProducts) {
             if (!joinedIdSet.contains(product.getP_id())) {
-                recProducts.add(product);
+                joinedIdSet.add(product.getP_id());
+                resultProducts.add(product);
             }
         }
-        return recProducts;
+        System.out.println("Job 추천 상품 추가");
+        return resultProducts;
     }
 
-    public ArrayList<ProductEntity> getRecByGender() {
+    public ArrayList<ProductEntity> getRecByGender(String productType) {
         Character gender = customerSummaryDTO.getC_gender();
-        ArrayList<ProductEntity> recProducts = recByGenderDAO.getRecProduct(userId, gender);
+        ArrayList<ProductEntity> recProducts = recByGenderDAO.getRecProduct(userId, productType, gender);
+        ArrayList<ProductEntity> resultProducts = new ArrayList<>();
         for (ProductEntity product : recProducts) {
             if (!joinedIdSet.contains(product.getP_id())) {
-                recProducts.add(product);
+                joinedIdSet.add(product.getP_id());
+                resultProducts.add(product);
             }
         }
-        return recProducts;
+        System.out.println("gender 추천 상품 추가");
+        return resultProducts;
     }
 
-    public ArrayList<ProductEntity> getRecByAge() {
+    public ArrayList<ProductEntity> getRecByAge(String productType) {
         Integer age = customerSummaryDTO.getC_age();
         Integer ageRange = ((int) age / 10) * 10;
-        ArrayList<ProductEntity> recProducts = recByAgeDAO.getRecProduct(userId, ageRange);
+        ArrayList<ProductEntity> recProducts = recByAgeDAO.getRecProduct(userId, productType, ageRange);
+        ArrayList<ProductEntity> resultProducts = new ArrayList<>();
         for (ProductEntity product : recProducts) {
             if (!joinedIdSet.contains(product.getP_id())) {
-                recProducts.add(product);
+                joinedIdSet.add(product.getP_id());
+                resultProducts.add(product);
             }
         }
-        return recProducts;
+        System.out.println("Age 추천 상품 추가");
+        return resultProducts;
     }
 }

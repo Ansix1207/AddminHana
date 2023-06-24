@@ -1,12 +1,12 @@
 package hana.teamfour.addminhana.controller;
 
-import hana.teamfour.addminhana.DAO.DepositAssetDAO;
 import hana.teamfour.addminhana.DAO.DepositAccountDAO;
+import hana.teamfour.addminhana.DAO.DepositAssetDAO;
 import hana.teamfour.addminhana.entity.AccountEntity;
 import hana.teamfour.addminhana.entity.AssetEntity;
 import hana.teamfour.addminhana.entity.ProductEntity;
-import hana.teamfour.addminhana.service.DepositAssetService;
 import hana.teamfour.addminhana.service.DepositAccountService;
+import hana.teamfour.addminhana.service.DepositAssetService;
 import hana.teamfour.addminhana.service.DepositBalanceService;
 import hana.teamfour.addminhana.service.RecommendService;
 
@@ -23,6 +23,9 @@ import java.util.ArrayList;
 public class CurDepositInfoController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String productType = "예금";
+        Integer uid = 37;
+
         DepositAccountDAO depositAccountDAO = new DepositAccountDAO();
         DepositAssetDAO depositAssetDAO = new DepositAssetDAO();
 
@@ -34,14 +37,14 @@ public class CurDepositInfoController extends HttpServlet {
         AssetEntity assetEntity = depositAssetService.getDepositAsset();
         ArrayList<AccountEntity> accountEntity = depositAccountService.getDepositInfoList();
         Integer[] depositBalance = depositBalanceService.getDepositBalance();
-        ArrayList<ProductEntity> recByJobProducts = recommendService.getRecByJob();
-        ArrayList<ProductEntity> recByGenderProducts = recommendService.getRecByGender();
-        ArrayList<ProductEntity> recByAgeProducts = recommendService.getRecByAge();
+        ArrayList<ProductEntity> recByJobProducts = recommendService.getRecByJob(productType);
+        ArrayList<ProductEntity> recByGenderProducts = recommendService.getRecByGender(productType);
+        ArrayList<ProductEntity> recByAgeProducts = recommendService.getRecByAge(productType);
 
         request.setAttribute("accountEntity", accountEntity);
         request.setAttribute("assetEntity", assetEntity);
         request.setAttribute("depositBalance", depositBalance);
-        request.setAttribute("productType", "예금");
+        request.setAttribute("productType", productType);
         request.setAttribute("recByJob", recByJobProducts);
         request.setAttribute("recByGender", recByGenderProducts);;
         request.setAttribute("recByAge", recByAgeProducts);
