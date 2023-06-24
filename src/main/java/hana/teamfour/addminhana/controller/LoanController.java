@@ -21,27 +21,50 @@ public class LoanController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=utf-8");
 
-        //list?=title&q
-//        사용자가 변수를 할지안할지모르니 임시변수
 
-//        String field_ = request.getParameter("f");
-//        String query = request.getParameter("q");
-//        
-//        NoticeService sevice = new NoticeService();
-//        List<Notice> list = service.getNoticeList(field, query, 1);
+//        if (path.equals("search")) {
+//            setSearchProductEntity();
+//        } else {
+//            setProductEntity();
+//        }
 
-        setProductEntity(request, response);
+        String query = request.getParameter("q");
+        System.out.println(query);
 
-        //dispatcher를 통해서 원하는 jsp를 보여준다.
+        if (query != null && !query.isEmpty()) {
+            setSearchProductEntity(request, response);
+            System.out.println("path");
+
+        } else {
+            setProductEntity(request, response);
+            System.out.println("else");
+        }
+        ;
+
+//        request, response 를 이용하여 PE의데이터를 신청
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/sessionOffProductInfo.jsp");
         dispatcher.forward(request, response);
     }
 
-    // LoanProductDAO 및 LoanProductService 객체 생성: DAO와 Service 클래스를 생성하여 데이터베이스 작업을 수행하기 위해 사용됩니다.
-    // openLoanProductView() 메서드: ProductEntity 객체를 생성하고, 해당 객체를 request 객체에 저장합니다. 그 후, /views/sessionOffProductInfo.jsp 뷰 페이지로 이동합니다.
+
     private void setProductEntity(HttpServletRequest request, HttpServletResponse response) {
         LoanProductDAO loanProductDAO = new LoanProductDAO();
         ArrayList<ProductEntity> productEntity = loanProductDAO.getLoanProductList();
-        request.setAttribute("productEntity", productEntity);
+        request.setAttribute("productEntity", productEntity); /* 이름설정 */
+    }
+
+    private void setSearchProductEntity(HttpServletRequest request, HttpServletResponse response) {
+        LoanProductDAO loanProductDAO = new LoanProductDAO();
+        String query_ = request.getParameter("q");
+        String query = "";
+        int page = 1;
+        if (query_ != null) {
+            query = query_;
+        }
+        ArrayList<ProductEntity> productEntity = loanProductDAO.getSearchLoanProductList(query, page);
+        request.setAttribute("productEntity", productEntity); /* 이름설정 */
+
+
     }
 }

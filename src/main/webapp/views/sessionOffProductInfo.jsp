@@ -29,24 +29,21 @@
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/nav.css">
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/sessionOffProductInfo.css">
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/base.css ">
-  <title>Title</title>
+  <title>금융상품조회</title>
 
 </head>
 <body>
   <div class="wrap">
     <%@ include file="common/navbar.jsp" %>
     <main>
-      <div class="input-group">
-        <%--        <select name='f'>--%>
-        <%--          <option value='title'> 제목</option>--%>
-        <%--          <option value='writeId'> 작성자</option>--%>
-        <%--        </select>--%>
+      <form action="loaninquery" method="GET">
+        <div class="input-group">
 
-
-        <input class="form-control" type="text" value="검색" name="q"
-               aria-describedby="btnNavbarSearch"/>
-        <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-      </div>
+          <input class="form-control" type="text" name="q" value="${param.q}" aria-describedby="btnNavbarSearch"/>
+          <input class="btn btn-search" type="submit" value="검색"/>
+          <%--          <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>--%>
+        </div>
+      </form>
       <div class="col-lg-6">
         <div class="card mb-4">
           <div class="card-header">
@@ -59,14 +56,11 @@
           <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
       </div>
-
       <div class="list1">
         <div class="card-header">
           <h4> &nbsp 추천 대출 상품 리스트</h4>
-
         </div>
         <ol class="list-group list-group-numbered" id="pages">
-
           <%
             for (int i = 0; i < productEntity.size(); i++) {
           %>
@@ -80,14 +74,12 @@
                 </div>
               </div>
             </div>
-            <button class="modify">수정</button>
+            <button class="modify">조회</button>
           </li>
           <%
             }
           %>
-
         </ol>
-
       </div>
     </main>
   </div>
