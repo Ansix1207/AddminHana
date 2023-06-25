@@ -48,18 +48,36 @@ public class LoanController extends HttpServlet {
 
     private void setProductEntity(HttpServletRequest request, HttpServletResponse response) {
         LoanProductDAO loanProductDAO = new LoanProductDAO();
-        ArrayList<ProductEntity> productEntity = loanProductDAO.getLoanProductList();
-        request.setAttribute("productEntity", productEntity); /* 이름설정 */
+        String query_ = request.getParameter("q");
+        String query = "";
+        String page_ = request.getParameter("p");
+
+        if (query_ != null) {
+            query = query_;
+        }
+
+        int page = 1;
+        if (page_ != null)
+            page = Integer.parseInt(page_);
+        ArrayList<ProductEntity> productEntity = loanProductDAO.getLoanProductList(query, page);
+        request.setAttribute("productEntity", productEntity);
     }
 
     private void setSearchProductEntity(HttpServletRequest request, HttpServletResponse response) {
         LoanProductDAO loanProductDAO = new LoanProductDAO();
         String query_ = request.getParameter("q");
         String query = "";
-        int page = 1;
+        String page_ = request.getParameter("p");
+
         if (query_ != null) {
             query = query_;
         }
+
+        int page = 1;
+        if (page_ != null)
+            page = Integer.parseInt(page_);
+
+
         ArrayList<ProductEntity> productEntity = loanProductDAO.getSearchLoanProductList(query, page);
         request.setAttribute("productEntity", productEntity); /* 이름설정 */
 

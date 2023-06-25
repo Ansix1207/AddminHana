@@ -12,21 +12,21 @@ public class LoanProductService {
         this.loanProductDao = loanProductDao;
     }
 
-    public ArrayList<ProductEntity> getLoanProductList() {
-        return loanProductDao.getLoanProductList();
-//        원래는 return loanProductDao.getLoanProductList()
-    }
+//    public ArrayList<ProductEntity> getLoanProductList() {
+//        return loanProductDao.getLoanProductList();
+////        원래는 return loanProductDao.getLoanProductList()
+//    }
 
 
 //    여기서부터는 실험중
 
 
-    public ArrayList<ProductEntity> getLoanProductList(int page) {
-        return loanProductDao.getLoanProductList();
+    public ArrayList<ProductEntity> getLoanProductList(String query, int page) {
+        return loanProductDao.getLoanProductList(query, page);
     }
 
-    public ArrayList<ProductEntity> getLoaProductList(String field, String query /*A*/, int page) {
-        return loanProductDao.getLoanProductList();
+    public ArrayList<ProductEntity> getLoanProductList(String field, String query, int page) {
+        return loanProductDao.getLoanProductList(query, page);
     }
 
 

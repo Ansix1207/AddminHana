@@ -27,14 +27,24 @@ public class LoanProductDAO {
 
     }
 
-    public ArrayList<ProductEntity> getLoanProductList() {
+    public ArrayList<ProductEntity> getLoanProductList(String query, int page) {
         ArrayList<ProductEntity> productEntityList = new ArrayList<>();
         try {
             conn = dataFactory.getConnection();
-            String sql = "select p_name, p_description, p_interestrate from admin_hana.product where p_category in (?, ?)";
+            String sql = "select p_name, p_description, p_interestrate " +
+                    "FROM (SELECT rownum AS num, p.*" +
+                    "      FROM (SELECT *" +
+                    "            FROM admin_hana.product" +
+                    "            WHERE p_description LIKE ? or p_name LIKE ? ) p)" +
+                    "where p_category in (?, ?)"
+                    + "WHERE num BETWEEN ? AND ?";
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, "신용대출");
-            pstmt.setString(2, "담보대출");
+            pstmt.setString(1, "%" + query + "%");
+            pstmt.setString(2, "%" + query + "%");
+            pstmt.setString(3, "신용대출");
+            pstmt.setString(4, "담보대출");
+            pstmt.setInt(5, 1 + (page - 1) * 5);
+            pstmt.setInt(6, page * 5);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 ProductEntity productEntity = new ProductEntity();
