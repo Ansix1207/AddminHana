@@ -66,9 +66,13 @@ public class CustomerService {
     public static char getGenderFromRRN(String rrn) {
         //001026-1
         int partRRN = Integer.parseInt(rrn.substring(7,8));
+        System.out.println("getGenderFromRRN : " + rrn);
+        String[] stk = rrn.split("-");
+        int partRRN = Integer.parseInt(stk[1].substring(0,1));
         if(partRRN==1 || partRRN==3){
             return 'M';
         } else if (partRRN==1 || partRRN==3) {
+        } else if (partRRN==2 || partRRN==4) {
             return 'F';
         }
         return 'M';

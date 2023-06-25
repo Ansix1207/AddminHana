@@ -127,7 +127,7 @@ public class CustomerDAO {
         try {
             Connection conn = dataFactory.getConnection();
             conn.setAutoCommit(false); //트랜잭션 처리를 위한 AutoCommit off, 트랜잭션 시작
-            String query = "INSERT INTO CUSTOMER VALUES(-6,?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO CUSTOMER VALUES(customer_seq.nextval,?,?,?,?,?,?,?,?)";
             System.out.println("query = " + query);
             pstmt = conn.prepareStatement(query);
             pstmt.setString(1, customerEntity.getC_name());//String name
@@ -142,7 +142,7 @@ public class CustomerDAO {
             if (pstmt.executeUpdate() == 1) {
                 System.out.println("삽입 성공");
                 conn.commit();
-                return findByRrn(customerEntity.getC_rrn());
+                return findByRRN(customerEntity.getC_rrn());
             }
         }
         catch (SQLException e) {
