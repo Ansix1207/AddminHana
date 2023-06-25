@@ -57,7 +57,35 @@ public class CustomerDAO {
         return customerEntity;
     }
 
-    public CustomerEntity findByRrn(String _rrn){
+    public boolean checkDuplicateByRRN(String rrn){
+        try {
+            Connection conn = dataFactory.getConnection();
+            String query = "SELECT * FROM customer WHERE C_RRN = ?";
+            System.out.println("query = " + query);
+            pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, rrn);
+            ResultSet rs = pstmt.executeQuery();
+            System.out.println("checkDuplicateByRRN");
+            if (rs.next()){
+                System.out.println("checkDuplicateByRRN : 성공!(중복 됨)");
+                rs.close();
+                return true;
+            }
+            rs.close();
+            return false;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            try {
+                closeConn(conn);
+                closePstmt(pstmt);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public CustomerEntity findByRRN(String _rrn){
         CustomerEntity customerEntity = null;
         try {
             Connection conn = dataFactory.getConnection();
@@ -79,8 +107,16 @@ public class CustomerDAO {
                 Integer e_id = rs.getInt("e_id");
                 customerEntity = new CustomerEntity(c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id);
             }
+            rs.close();
         } catch (Exception e) {
             e.printStackTrace();
+        }finally {
+            try {
+                closeConn(conn);
+                closePstmt(pstmt);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return customerEntity;
     }
@@ -111,9 +147,6 @@ public class CustomerDAO {
         }
         catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("SQLException e.getErrorCode = " + e.getErrorCode());
-            System.out.println("SQLException e.getMessage = " + e.getMessage());
-            System.out.println("SQLException e.getCause = " + e.getCause());
         } catch (Throwable e) {
             if (conn != null) {
                 try {
@@ -122,24 +155,13 @@ public class CustomerDAO {
                     System.out.println("CustomerDAO rollback error : " + ex.getMessage());
                 }
             }
-            occuredException = e;
             System.out.println("CustomerDAO in Throwable error : " + e.getMessage());
         } finally {
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    System.out.println("IN CustomerDAO pstmt close Exception : " + e.getMessage());
-                }
-            }
-            if (conn != null) {
-                try {
-                    System.out.println("클로즈 들어옴");
-                    conn.setAutoCommit(true);
-                    conn.close();
-                } catch (SQLException e) {
-                    System.out.println("IN CustomerDAO conn close Exception : " + e.getMessage());
-                }
+            try {
+                closePstmt(pstmt);
+                closeConn(conn);
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         }
         return new CustomerEntity();
@@ -173,5 +195,16 @@ public class CustomerDAO {
             e.printStackTrace();
         }
         return false;
+    }
+    private void closeConn(Connection conn) throws SQLException {
+        if (conn != null) {
+            conn.setAutoCommit(true);
+            conn.close();
+        }
+    }
+    private void closePstmt(PreparedStatement pstmt) throws SQLException{
+        if (pstmt != null) {
+            pstmt.close();
+        }
     }
 }

@@ -6,6 +6,7 @@ import hana.teamfour.addminhana.DTO.CustomerSummaryDTO;
 import hana.teamfour.addminhana.entity.CustomerEntity;
 
 import java.util.Calendar;
+import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -39,6 +40,10 @@ public class CustomerService {
         return new CustomerSummaryDTO(c_id, c_name, c_rrn, c_gender, c_job, c_description, c_age);
     }
 
+    private CustomerSignDTO setCustomerSignDTO(CustomerEntity customerEntity) {
+        return CustomerSignDTO.from(customerEntity);
+    }
+
     private int getAgeFromRRN(String rrn) {
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
@@ -68,16 +73,15 @@ public class CustomerService {
         }
         return 'M';
     }
-    public String signCustomer(CustomerSignDTO customerSignDTO){
         try {
-            if(customerDAO.insertCustomer(CustomerSignDTO.toEntity(customerSignDTO)).getC_name().equals(customerSignDTO.getC_name()))
-                return"CustomerService - signCustomer : 회원 가입 성공!";
             else{
-                return "CustomerService - signCustomer : 회원 가입 실패!";
             }
         } catch (Throwable e) {
             System.out.println(e.toString() + " | CustomerService - signCustomer : 회원 가입 실패!");
         }
-        return null;
+
+    public boolean checkDuplicateByRRN(String rrn) {
+        System.out.println("Service checkDuplicateByRRN : " + rrn);
+        return customerDAO.checkDuplicateByRRN(rrn);
     }
 }
