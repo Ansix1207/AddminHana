@@ -65,24 +65,30 @@ public class CustomerService {
 
     public static char getGenderFromRRN(String rrn) {
         //001026-1
-        int partRRN = Integer.parseInt(rrn.substring(7,8));
         System.out.println("getGenderFromRRN : " + rrn);
         String[] stk = rrn.split("-");
         int partRRN = Integer.parseInt(stk[1].substring(0,1));
         if(partRRN==1 || partRRN==3){
             return 'M';
-        } else if (partRRN==1 || partRRN==3) {
         } else if (partRRN==2 || partRRN==4) {
             return 'F';
         }
         return 'M';
     }
+    public boolean signCustomer(CustomerSignDTO customerSignDTO){
+        CustomerSignDTO responseDTO = setCustomerSignDTO(customerDAO.insertCustomer(CustomerSignDTO.toEntity(customerSignDTO)));
         try {
+            if(responseDTO.getC_name()
+                    .equals(customerDAO.findByRRN(customerSignDTO.getC_rrn()).getC_name()))
+                return true;
             else{
+                return false;
             }
         } catch (Throwable e) {
             System.out.println(e.toString() + " | CustomerService - signCustomer : 회원 가입 실패!");
         }
+        return false;
+    }
 
     public boolean checkDuplicateByRRN(String rrn) {
         System.out.println("Service checkDuplicateByRRN : " + rrn);

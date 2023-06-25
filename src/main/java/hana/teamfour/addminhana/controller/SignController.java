@@ -56,6 +56,16 @@ public class SignController extends HttpServlet {
                     dispatcher.forward(request, response);
                 }
                 else{
+                    System.out.println("가입 시도");
+                    String res = doSign(request);
+                    request.setAttribute("message",res);
+                    response.setContentType("text/html");
+                    PrintWriter out = response.getWriter();
+                    out.println("<html>");
+                    out.println("<body>");
+                    out.println("<script>alert('" + res + ".'); window.location.href='" + request.getContextPath() + "';</script>");
+                    out.println("</body>");
+                    out.println("</html>");
                 }
                 System.out.println("POST 요청 처리 끝");
                 break;
@@ -71,6 +81,17 @@ public class SignController extends HttpServlet {
             res = "중복되지 않았습니다";
         }
         request.setAttribute("customerSignDTO",makeSignDTO(request));
+        return res;
+    }
+    private String doSign(HttpServletRequest request){
+        String res = "가입에 실패했습니다";
+        CustomerSignDTO customerSignDTO = makeSignDTO(request);
+        System.out.println("doSign 진입");
+        System.out.println("customerSignDTO = " + customerSignDTO.toString());
+        if(customerService.signCustomer(customerSignDTO)){
+            System.out.println("In doSign : 성공");
+            res = "가입에 성공했습니다";
+        }
         return res;
     }
     /** request로 전달받은 값들을 통해 CustomerSignDTO를 만들고 반환합니다. */
