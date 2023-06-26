@@ -5,8 +5,8 @@ import hana.teamfour.addminhana.DTO.CustomerSignDTO;
 import hana.teamfour.addminhana.DTO.CustomerSummaryDTO;
 import hana.teamfour.addminhana.entity.CustomerEntity;
 
+import java.sql.SQLException;
 import java.util.Calendar;
-import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -67,24 +67,25 @@ public class CustomerService {
         //001026-1
         System.out.println("getGenderFromRRN : " + rrn);
         String[] stk = rrn.split("-");
-        int partRRN = Integer.parseInt(stk[1].substring(0,1));
-        if(partRRN==1 || partRRN==3){
+        int partRRN = Integer.parseInt(stk[1].substring(0, 1));
+        if (partRRN == 1 || partRRN == 3) {
             return 'M';
-        } else if (partRRN==2 || partRRN==4) {
+        } else if (partRRN == 2 || partRRN == 4) {
             return 'F';
         }
         return 'M';
     }
-    public boolean signCustomer(CustomerSignDTO customerSignDTO){
-        CustomerSignDTO responseDTO = setCustomerSignDTO(customerDAO.insertCustomer(CustomerSignDTO.toEntity(customerSignDTO)));
+
+    public boolean signCustomer(CustomerSignDTO customerSignDTO) {
         try {
-            if(responseDTO.getC_name()
+            CustomerSignDTO responseDTO = setCustomerSignDTO(customerDAO.insertCustomer(CustomerSignDTO.toEntity(customerSignDTO)));
+            if (responseDTO.getC_name()
                     .equals(customerDAO.findByRRN(customerSignDTO.getC_rrn()).getC_name()))
                 return true;
-            else{
+            else {
                 return false;
             }
-        } catch (Throwable e) {
+        } catch (SQLException e) {
             System.out.println(e.toString() + " | CustomerService - signCustomer : 회원 가입 실패!");
         }
         return false;
