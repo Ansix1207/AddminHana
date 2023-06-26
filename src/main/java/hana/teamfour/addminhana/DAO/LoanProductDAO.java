@@ -27,16 +27,14 @@ public class LoanProductDAO {
 
     }
 
-    public ArrayList<ProductEntity> getLoanProductList(String query, int page) {
+    public ArrayList<ProductEntity> getLoanProductList(int page) {
         ArrayList<ProductEntity> productEntityList = new ArrayList<>();
         try {
             conn = dataFactory.getConnection();
             String sql = "select p_name, p_description, p_interestrate " +
                     "FROM (SELECT rownum AS num, p.*" +
-                    "      FROM (SELECT *" +
-                    "            FROM admin_hana.product" +
-                    "            ) p)"
-                    + "WHERE num BETWEEN ? AND ?";
+                    "FROM (SELECT * FROM admin_hana.product) p)" +
+                    "WHERE num BETWEEN ? AND ?";
 
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, 1 + (page - 1) * 5);
@@ -55,7 +53,6 @@ public class LoanProductDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("들렸다갑니다");
         System.out.println("productEntityList = " + productEntityList);
         return productEntityList;
     }
@@ -66,11 +63,9 @@ public class LoanProductDAO {
             conn = dataFactory.getConnection();
             String sql = "SELECT p_name, p_description, p_interestrate " +
                     "FROM (SELECT rownum AS num, p.* " +
-                    "      FROM (SELECT * " +
-                    "            FROM admin_hana.product " +
-                    "            WHERE p_description LIKE ? or p_name LIKE ? ) p) " +
+                    "FROM (SELECT * FROM admin_hana.product " +
+                    "WHERE p_description LIKE ? or p_name LIKE ? ) p) " +
                     "WHERE num BETWEEN ? AND ?";
-            System.out.println(sql);
             pstmt = conn.prepareStatement(sql); /* ?를 채우는것 */
             pstmt.setString(1, "%" + query + "%");
             pstmt.setString(2, "%" + query + "%");
@@ -90,7 +85,6 @@ public class LoanProductDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("들렸다갑니다");
         System.out.println("productEntityList = " + productEntityList);
         return productEntityList;
     }

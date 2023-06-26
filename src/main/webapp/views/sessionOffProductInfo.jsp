@@ -31,7 +31,6 @@
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/sessionOffProductInfo.css">
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/base.css ">
   <title>금융상품조회</title>
-
 </head>
 <body>
   <div class="wrap">
@@ -41,7 +40,6 @@
         <div class="input-group">
           <input class="form-control" type="text" name="q" value="${param.q}" aria-describedby="btnNavbarSearch"/>
           <input class="btn btn-search" type="submit" value="검색"/>
-          <%--          <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>--%>
         </div>
       </form>
       <div class="col-lg-6">

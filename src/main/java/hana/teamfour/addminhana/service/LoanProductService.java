@@ -12,12 +12,8 @@ public class LoanProductService {
         this.loanProductDao = loanProductDao;
     }
 
-    public ArrayList<ProductEntity> getLoanProductList(String query, int page) {
-        return loanProductDao.getLoanProductList(query, page);
-    }
-
-    public ArrayList<ProductEntity> getLoanProductList(String field, String query, int page) {
-        return loanProductDao.getLoanProductList(query, page);
+    public ArrayList<ProductEntity> getLoanProductList(int page) {
+        return loanProductDao.getLoanProductList(page);
     }
 
     public ArrayList<ProductEntity> getSearchLoanProductList(String field, String query, int page) {

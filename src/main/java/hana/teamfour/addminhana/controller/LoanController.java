@@ -20,23 +20,21 @@ public class LoanController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=utf-8");
-
         String query = request.getParameter("q");
-//        page가 int가 아니라 정수를 받는 이유 : null을 받을수도 있어서
+//        page가 int가 아니라 String를 받는 이유 : null을 받을수도 있어서
         String page_ = request.getParameter("p");
-        System.out.println(query);
         if (query != null && !query.isEmpty()) {
             setSearchProductEntity(request, response);
             int page = 1;
-            if (page_ != null)
+            if (page_ != null) {
                 page = Integer.parseInt(page_);
-            System.out.println("path");
+            }
         } else {
             setProductEntity(request, response);
             int page = 1;
-            if (page_ != null && !query.isEmpty())
+            if (page_ != null && !query.isEmpty()) {
                 page = Integer.parseInt(page_);
-            System.out.println("else");
+            }
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/sessionOffProductInfo.jsp");
         dispatcher.forward(request, response);
@@ -45,16 +43,12 @@ public class LoanController extends HttpServlet {
 
     private void setProductEntity(HttpServletRequest request, HttpServletResponse response) {
         LoanProductDAO loanProductDAO = new LoanProductDAO();
-        String query_ = request.getParameter("q");
-        String query = "";
         String page_ = request.getParameter("p");
-        if (query_ != null) {
-            query = query_;
-        }
         int page = 1;
-        if (page_ != null)
+        if (page_ != null) {
             page = Integer.parseInt(page_);
-        ArrayList<ProductEntity> productEntity = loanProductDAO.getLoanProductList(query, page);
+        }
+        ArrayList<ProductEntity> productEntity = loanProductDAO.getLoanProductList(page);
         request.setAttribute("productEntity", productEntity);
     }
 
@@ -67,8 +61,9 @@ public class LoanController extends HttpServlet {
             query = query_;
         }
         int page = 1;
-        if (page_ != null)
+        if (page_ != null) {
             page = Integer.parseInt(page_);
+        }
         ArrayList<ProductEntity> productEntity = loanProductDAO.getSearchLoanProductList(query, page);
         request.setAttribute("productEntity", productEntity); /* 이름설정 */
     }
