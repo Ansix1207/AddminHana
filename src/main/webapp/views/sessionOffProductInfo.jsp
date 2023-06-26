@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: 하나로H012
@@ -29,17 +30,20 @@
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/nav.css">
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/sessionOffProductInfo.css">
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/base.css ">
-  <title>Title</title>
+  <title>금융상품조회</title>
 </head>
 <body>
   <div class="wrap">
-    <%@ include file="common/navbar.jsp" %>
+    <nav id="layoutSidenav_nav">
+      <%@ include file="common/navbar.jsp" %>
+    </nav>
     <main>
-      <div class="input-group">
-        <input class="form-control" type="text"
-               aria-describedby="btnNavbarSearch"/>
-        <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-      </div>
+      <form action="loaninquery" method="GET">
+        <div class="input-group">
+          <input class="form-control" type="text" name="q" value="${param.q}" aria-describedby="btnNavbarSearch"/>
+          <input class="btn btn-sunghee btn-search" type="submit" value="검색"/>
+        </div>
+      </form>
       <div class="col-lg-6">
         <div class="card mb-4">
           <div class="card-header">
@@ -52,45 +56,57 @@
           <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
       </div>
-
-      <div class=list>
+      <div class="list1">
         <div class="card-header">
-          <h4> &nbsp; 추천 대출 상품 리스트</h4>
+          <h4> &nbsp 추천 금융상품 리스트</h4>
+        </div>
+        <ol class="list-group list-group-numbered" id="pages">
           <%
             for (int i = 0; i < productEntity.size(); i++) {
           %>
-          <div>
-            <span>상품 이름 <%=productEntity.get(i).getP_name()%></span>
-            <span>금리 <%=productEntity.get(i).getP_interestrate()%></span>
-            <span>한도액 <%=productEntity.get(i).getP_limit()%></span>
-          </div>
+          <li class="productItem list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto ">
+              <div class="fw-bold">
+                <div>
+                  <h4><span><%=productEntity.get(i).getP_name()%></span></h4>
+                  <span>금리 <%=productEntity.get(i).getP_interestrate()%> %</span><br>
+                  <span><%=productEntity.get(i).getP_description()%></span>
+                </div>
+              </div>
+            </div>
+            <button class="modify">조회</button>
+          </li>
           <%
             }
           %>
-        </div>
-        <ol class="list-group list-group-numbered">
-          <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-              <div class="fw-bold">Subheading</div>
-              Content for list item
-            </div>
-            <button class="join">가입</button>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-              <div class="fw-bold">Subheading</div>
-              Content for list item
-            </div>
-            <button class="join">가입</button>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-              <div class="fw-bold">Subheading</div>
-              Content for list item
-            </div>
-            <button class="join">가입</button>
-          </li>
         </ol>
+        <div class=center-content>
+          <%--        페이지네이션--%>
+          <c:set var="page" value="${(param.p == null)?1:param.p}"/>
+          <c:set var="startNum" value="${page-(page-1)%5}"/>
+          <c:set var="lastNum" value="17"/>
+          <%--          이전 페이지--%>
+          <ul class="-list- center">
+            <c:if test="${startNum>1}">
+              <a class="btn-next" href="?p=${startNum-5}&q=${param.q}"> <</a>
+            </c:if>
+            <c:if test="${startNum<=1}">
+              <span class="btn-next" onclick="alert('디음페이지가 없습니다')"><</span>
+            </c:if>
+            <%--페이지 번호--%>
+            <c:forEach var="i" begin="0" end="4">
+              <li class="pagination"><a class="orange bold" style="text-decoration: none;"
+                                        href="?p=${startNum+i}&q=${param.q}"> ${startNum+i}</a></li>
+            </c:forEach>
+            <%--          다음 페이지--%>
+            <c:if test="${startNum+5<lastNum}">
+              <a href="?p=${startNum+5}&q=${param.q}" class="btn-next"> > </a>
+            </c:if>
+            <c:if test="${startNum+5>=lastNum}">
+              <span class="btn-next" onclick="alert('디음페이지가 없습니다')">> </span>
+            </c:if>
+          </ul>
+        </div>
       </div>
     </main>
   </div>
