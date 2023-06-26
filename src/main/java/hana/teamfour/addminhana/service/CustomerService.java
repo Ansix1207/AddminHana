@@ -1,15 +1,17 @@
 package hana.teamfour.addminhana.service;
 
 import hana.teamfour.addminhana.DAO.CustomerDAO;
+import hana.teamfour.addminhana.DTO.CustomerSignDTO;
 import hana.teamfour.addminhana.DTO.CustomerSummaryDTO;
 import hana.teamfour.addminhana.entity.CustomerEntity;
 
+import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CustomerService {
-    CustomerDAO customerDAO;
+    private CustomerDAO customerDAO;
 
     private final static Pattern rrn_pattern = Pattern.compile("^(\\d{6}\\D?\\d{1})(\\d{6})$");
 
@@ -38,6 +40,10 @@ public class CustomerService {
         return new CustomerSummaryDTO(c_id, c_name, c_rrn, c_gender, c_job, c_description, c_age);
     }
 
+    private CustomerSignDTO setCustomerSignDTO(CustomerEntity customerEntity) {
+        return CustomerSignDTO.from(customerEntity);
+    }
+
     private int getAgeFromRRN(String rrn) {
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
@@ -55,5 +61,38 @@ public class CustomerService {
             return new StringBuffer(matcher.group(1)).append("******").toString();
         }
         return rrn;
+    }
+
+    public static char getGenderFromRRN(String rrn) {
+        //001026-1
+        System.out.println("getGenderFromRRN : " + rrn);
+        String[] stk = rrn.split("-");
+        int partRRN = Integer.parseInt(stk[1].substring(0, 1));
+        if (partRRN == 1 || partRRN == 3) {
+            return 'M';
+        } else if (partRRN == 2 || partRRN == 4) {
+            return 'F';
+        }
+        return 'M';
+    }
+
+    public boolean signCustomer(CustomerSignDTO customerSignDTO) {
+        try {
+            CustomerSignDTO responseDTO = setCustomerSignDTO(customerDAO.insertCustomer(CustomerSignDTO.toEntity(customerSignDTO)));
+            if (responseDTO.getC_name()
+                    .equals(customerDAO.findByRRN(customerSignDTO.getC_rrn()).getC_name()))
+                return true;
+            else {
+                return false;
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString() + " | CustomerService - signCustomer : 회원 가입 실패!");
+        }
+        return false;
+    }
+
+    public boolean checkDuplicateByRRN(String rrn) {
+        System.out.println("Service checkDuplicateByRRN : " + rrn);
+        return customerDAO.checkDuplicateByRRN(rrn);
     }
 }
