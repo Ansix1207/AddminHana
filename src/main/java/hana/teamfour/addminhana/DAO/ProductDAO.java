@@ -25,31 +25,23 @@ public class ProductDAO {
 
     public ArrayList<ProductEntity> getProduct(Integer id, String productType, String _sql) {
         ArrayList<ProductEntity> productList = new ArrayList<>();
-        Connection conn = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
 
-        try {
-            conn = dataFactory.getConnection();
+        try (Connection connection = dataFactory.getConnection();
+             PreparedStatement statement = connection.prepareStatement(_sql)){
 
-            String sql = _sql;
-            ps = conn.prepareStatement(sql);
-            ps.setInt(1, id);
-            ps.setString(2, productType);
+            statement.setInt(1, id);
+            statement.setString(2, productType);
 
-            rs = ps.executeQuery();
-
-            while (rs.next()) {
-                ProductEntity productEntity = new ProductEntity();
-                productEntity.setP_id(rs.getInt(1));
-                productEntity.setP_name(rs.getString(2));
-                productEntity.setP_interestrate(rs.getDouble(3));
-                productEntity.setP_limit(rs.getInt(4));
-                productList.add(productEntity);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    ProductEntity productEntity = new ProductEntity();
+                    productEntity.setP_id(resultSet.getInt(1));
+                    productEntity.setP_name(resultSet.getString(2));
+                    productEntity.setP_interestrate(resultSet.getDouble(3));
+                    productEntity.setP_limit(resultSet.getInt(4));
+                    productList.add(productEntity);
+                }
             }
-            conn.close();
-            ps.close();
-            rs.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

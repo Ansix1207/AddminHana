@@ -8,12 +8,10 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class SavingsAssetDAO {
     private DataSource dataFactory;
-    private Connection conn = null;
-    private PreparedStatement ps = null;
-    private ResultSet rs = null;
 
     public SavingsAssetDAO() {
         try {
@@ -27,28 +25,21 @@ public class SavingsAssetDAO {
 
     public AssetEntity getSavingsAsset(Integer id) {
         AssetEntity assetEntity = new AssetEntity();
+        String query = "select ass_savings " +
+                "from asset " +
+                "WHERE C_ID = ?";
+        
+        try (Connection connection = dataFactory.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)){
 
-        try {
-            conn = dataFactory.getConnection();
+            statement.setInt(1, id);
 
-            String sql = "select ass_savings " +
-                    "from asset " +
-                    "WHERE C_ID = ?";
-
-            ps = conn.prepareStatement(sql);
-            ps.setInt(1, id);
-            rs = ps.executeQuery();
-
-            System.out.println("SavingsAssetDAO 로드 성공");
-
-            while (rs.next()) {
-                assetEntity.setAss_savings(rs.getInt(1));
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    assetEntity.setAss_savings(resultSet.getInt(1));
+                }
             }
-
-            conn.close();
-            ps.close();
-            rs.close();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return assetEntity;

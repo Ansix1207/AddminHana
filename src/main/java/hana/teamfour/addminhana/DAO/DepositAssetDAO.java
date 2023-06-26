@@ -8,12 +8,10 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class DepositAssetDAO {
     private DataSource dataFactory;
-    private Connection conn = null;
-    private PreparedStatement ps = null;
-    private ResultSet rs = null;
 
     public DepositAssetDAO() {
         try {
@@ -27,28 +25,20 @@ public class DepositAssetDAO {
 
     public AssetEntity getDepositAsset(Integer id) {
         AssetEntity assetEntity = new AssetEntity();
+        String query = "select ass_deposit " +
+                "from asset " +
+                "WHERE C_ID = ?";
 
-        try {
-            conn = dataFactory.getConnection();
+        try (Connection connection = dataFactory.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)){
 
-            String sql = "select ass_deposit " +
-                    "from asset " +
-                    "WHERE C_ID = ?";
-
-            ps = conn.prepareStatement(sql);
-            ps.setInt(1, id);
-            rs = ps.executeQuery();
-
-            System.out.println("DepositAssetDAO 로드 성공");
-
-            while (rs.next()) {
-                assetEntity.setAss_loan(rs.getInt(1));
+            statement.setInt(1, id);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    assetEntity.setAss_loan(resultSet.getInt(1));
+                }
             }
-
-            conn.close();
-            ps.close();
-            rs.close();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return assetEntity;
