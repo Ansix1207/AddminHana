@@ -82,12 +82,12 @@ To change this template use File | Settings | File Templates.
   <%@ include file="common/navbar.jsp" %>
   </nav>
   <main class="grid grid-cols-2 w-full">
-    <div class="col-span-1 p-4">
-      <div class="card statisticsSituation">
+    <div class="col-span-1 p-4 h-full">
+      <div class="card statisticsSituation h-full">
         <div class="card-body">
           <span class="componentTitle"><%=customerName%> 님의 <%=productType%> 현황</span>
           <div class="mb-4 assetInfo">
-            <h5 class="card-title mt-1 mb-2">자산 정보</h5>
+            <h5 class="card-title mt-3 mb-2">자산 정보</h5>
             <p><span>총 <%=productType%>액</span> <span class="card-text">₩ <%=asset%></span></p>
             <div class="statisticsChart">
               <%-- 손님의 대출 자산 현황 그래프 --%>
@@ -95,7 +95,7 @@ To change this template use File | Settings | File Templates.
             </div>
           </div>
           <div class="signedupProduct">
-            <h5 class="card-title mt-1 mb-2">가입 상품</h5>
+            <h5 class="card-title mt-3 mb-2">가입 상품</h5>
             <%-- 가입된 상품 리스트 --%>
             <ul>
               <%
@@ -114,19 +114,15 @@ To change this template use File | Settings | File Templates.
           </div>
         </div>
       </div>
-      <div class="searchBox">
-        <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
-             aria-describedby="btnNavbarSearch"/>
-      </div>
     </div>
-    <div class="col-span-1 p-4">
-      <div class="recommendProduct card">
+    <div class="col-span-1 p-4 h-full">
+      <div class="recommendProduct card h-full">
         <div class="card-body">
           <span class="componentTitle">추천 <%=productType%> 상품</span>
           <div>
             <%-- 추천 대출 상품 리스트 --%>
-            <ul>
-              <li class="mt-3 mb-2"><%=ageRange%>대가 가장 많이 가입한</li>
+            <ul class="recommendList">
+              <li class="recommendTitle mt-3 mb-2"><%=ageRange%>대가 가장 많이 가입한</li>
               <%
                 for (int i = 0; i < recByAge.size(); i++) {
               %>
@@ -138,32 +134,32 @@ To change this template use File | Settings | File Templates.
                 }
               %>
             </ul>
-              <ul>
-                <li class="mt-3 mb-2"><%=gender%>이 가장 많이 가입한</li>
-                <%
-                  for (int i = 0; i < recByGender.size(); i++) {
-                %>
-                <li>
-                  <div class="productName"><%=recByGender.get(i).getP_name()%></div>
-                  <span>이자율 <%=recByGender.get(i).getP_interestrate()%>%</span>
-                </li>
-                <%
-                  }
-                %>
-              </ul>
-              <ul>
-                <li class="mt-3 mb-2"><%=job%> 손님을 위한</li>
-                <%
-                  for (int i = 0; i < recByJob.size(); i++) {
-                %>
-                <li>
-                  <div class="productName"><%=recByJob.get(i).getP_name()%></div>
-                  <span>이자율 <%=recByJob.get(i).getP_interestrate()%>%</span>
-                </li>
-                <%
-                  }
-                %>
-              </ul>
+            <ul class="recommendList">
+              <li class="recommendTitle mt-3 mb-2"><%=gender%>이 가장 많이 가입한</li>
+              <%
+                for (int i = 0; i < recByGender.size(); i++) {
+              %>
+              <li>
+                <div class="productName"><%=recByGender.get(i).getP_name()%></div>
+                <span>이자율 <%=recByGender.get(i).getP_interestrate()%>%</span>
+              </li>
+              <%
+                }
+              %>
+            </ul>
+            <ul class="recommendList">
+              <li class="recommendTitle mt-3 mb-2"><%=job%> 손님을 위한</li>
+              <%
+                for (int i = 0; i < recByJob.size(); i++) {
+              %>
+              <li>
+                <div class="productName"><%=recByJob.get(i).getP_name()%></div>
+                <span>이자율 <%=recByJob.get(i).getP_interestrate()%>%</span>
+              </li>
+              <%
+                }
+              %>
+            </ul>
           </div>
         </div>
       </div>
