@@ -21,6 +21,10 @@ public class CustomerService {
         return setCustomerSummaryDTO(customerDAO.findById(_c_id));
     }
 
+    public boolean updateCustomerDescription(CustomerSummaryDTO customerSummaryDTO) {
+        return customerDAO.updateCustomerSummary(customerSummaryDTO);
+    }
+
     private CustomerSummaryDTO setCustomerSummaryDTO(CustomerEntity customerEntity) {
         Integer c_id = customerEntity.getC_id();
         String c_name = customerEntity.getC_name();
