@@ -34,12 +34,14 @@
 </head>
 <body>
   <div class="wrap">
-    <%@ include file="common/navbar.jsp" %>
+    <nav id="layoutSidenav_nav">
+      <%@ include file="common/navbar.jsp" %>
+    </nav>
     <main>
       <form action="loaninquery" method="GET">
         <div class="input-group">
           <input class="form-control" type="text" name="q" value="${param.q}" aria-describedby="btnNavbarSearch"/>
-          <input class="btn btn-search" type="submit" value="검색"/>
+          <input class="btn btn-sunghee btn-search" type="submit" value="검색"/>
         </div>
       </form>
       <div class="col-lg-6">
@@ -56,7 +58,7 @@
       </div>
       <div class="list1">
         <div class="card-header">
-          <h4> &nbsp 추천 대출 상품 리스트</h4>
+          <h4> &nbsp 추천 금융상품 리스트</h4>
         </div>
         <ol class="list-group list-group-numbered" id="pages">
           <%
