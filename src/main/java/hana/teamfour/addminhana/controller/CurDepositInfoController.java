@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class CurDepositInfoController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String productType = "..";
+        String productType = "예금";
         Integer uid = 37;
 
         DepositAccountService depositAccountService = new DepositAccountService(uid);
