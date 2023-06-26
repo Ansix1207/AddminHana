@@ -2,6 +2,9 @@ package hana.teamfour.addminhana.DAO;
 
 import hana.teamfour.addminhana.entity.AccountEntity;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,9 +15,21 @@ public class SavingsAccountDAO {
     Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
+    private DataSource dataFactory;
+    private PreparedStatement pstmt;
 
+    public SavingsAccountDAO() {
+        try {
+            Context ctx = new InitialContext();
+            Context envContext = (Context) ctx.lookup("java:/comp/env");
+            dataFactory = (DataSource) envContext.lookup("jdbc/oracle");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public static Connection getConnection() throws Exception {
         Class.forName("oracle.jdbc.OracleDriver");
+
         Connection con = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/xe", "admin_hana", "1234");
         return con;
     }
@@ -23,7 +38,7 @@ public class SavingsAccountDAO {
         ArrayList<AccountEntity> list = new ArrayList<AccountEntity>();
 
         try {
-            conn = getConnection();
+            conn = dataFactory.getConnection();
 
             String sql = "SELECT ACC_P_CATEGORY, ACC_PNAME, ACC_MATURITYDATE, ACC_INTERESTRATE, ACC_BALANCE ";
             sql += "FROM ACCOUNT ";
