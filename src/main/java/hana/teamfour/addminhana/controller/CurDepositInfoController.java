@@ -1,14 +1,10 @@
 package hana.teamfour.addminhana.controller;
 
-import hana.teamfour.addminhana.DAO.DepositAccountDAO;
-import hana.teamfour.addminhana.DAO.DepositAssetDAO;
+import hana.teamfour.addminhana.DTO.CustomerSummaryDTO;
 import hana.teamfour.addminhana.entity.AccountEntity;
 import hana.teamfour.addminhana.entity.AssetEntity;
 import hana.teamfour.addminhana.entity.ProductEntity;
-import hana.teamfour.addminhana.service.DepositAccountService;
-import hana.teamfour.addminhana.service.DepositAssetService;
-import hana.teamfour.addminhana.service.DepositBalanceService;
-import hana.teamfour.addminhana.service.RecommendService;
+import hana.teamfour.addminhana.service.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,24 +19,24 @@ import java.util.ArrayList;
 public class CurDepositInfoController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String productType = "예금";
+        String productType = "..";
         Integer uid = 37;
 
-        DepositAccountDAO depositAccountDAO = new DepositAccountDAO();
-        DepositAssetDAO depositAssetDAO = new DepositAssetDAO();
+        DepositAccountService depositAccountService = new DepositAccountService(uid);
+        DepositAssetService depositAssetService = new DepositAssetService(uid);
+        DepositBalanceService depositBalanceService = new DepositBalanceService(uid);
+        RecommendService recommendService = new RecommendService(uid, productType);
+        CustomerService customerService = new CustomerService();
 
-        DepositAccountService depositAccountService = new DepositAccountService(depositAccountDAO);
-        DepositAssetService depositAssetService = new DepositAssetService(depositAssetDAO);
-        DepositBalanceService depositBalanceService = new DepositBalanceService(depositAccountDAO);
-        RecommendService recommendService = new RecommendService(37);
-
+        CustomerSummaryDTO customerSummaryDTO = customerService.getCustomerSummaryDTOById(uid);
         AssetEntity assetEntity = depositAssetService.getDepositAsset();
         ArrayList<AccountEntity> accountEntity = depositAccountService.getDepositInfoList();
         Integer[] depositBalance = depositBalanceService.getDepositBalance();
-        ArrayList<ProductEntity> recByJobProducts = recommendService.getRecByJob(productType);
-        ArrayList<ProductEntity> recByGenderProducts = recommendService.getRecByGender(productType);
-        ArrayList<ProductEntity> recByAgeProducts = recommendService.getRecByAge(productType);
+        ArrayList<ProductEntity> recByJobProducts = recommendService.getRecByJob();
+        ArrayList<ProductEntity> recByGenderProducts = recommendService.getRecByGender();
+        ArrayList<ProductEntity> recByAgeProducts = recommendService.getRecByAge();
 
+        request.setAttribute("customerSummaryDTO", customerSummaryDTO);
         request.setAttribute("accountEntity", accountEntity);
         request.setAttribute("assetEntity", assetEntity);
         request.setAttribute("depositBalance", depositBalance);

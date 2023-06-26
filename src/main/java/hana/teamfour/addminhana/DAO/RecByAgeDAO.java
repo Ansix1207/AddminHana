@@ -35,11 +35,12 @@ public class RecByAgeDAO {
 
             String sql = "select pro.p_id, pro.p_name, pro.p_interestrate, pro.p_limit " +
                     "from customer cus, account acc, product pro " +
-                    "where cus.c_id = acc.acc_cid and acc.acc_pid = pro.p_id and acc.acc_cid <> ? and substr(pro.p_category, 3, 2) = ? and pro.p_isactive = 'Y' " +
+                    "where cus.c_id = acc.acc_cid and acc.acc_pid = pro.p_id and acc.acc_cid <> ? and pro.p_isactive = 'Y' " +
+                    "and REGEXP_SUBSTR(substr(pro.p_category, 3, 2), ?) = substr(pro.p_category, 3, 2) " +
                     "and FLOOR((TRUNC(MONTHS_BETWEEN(sysdate, to_date(to_char(TO_DATE(substr(cus.c_rrn, 1, 6), 'rrmmdd'), 'yyyy-mm-dd')))/12))/10)*10 = ?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
-            ps.setString(2, productType);
+            ps.setString(2, productType);   // productType을 지정하지 않는 경우 '..'
             ps.setInt(3, ageRange);
 
 

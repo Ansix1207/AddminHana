@@ -35,13 +35,14 @@ public class RecByGenderDAO {
 
             String sql = "select pro.p_id, pro.p_name, pro.p_interestrate, pro.p_limit " +
                     "from customer cus, account acc, product pro " +
-                    "where cus.c_id = acc.acc_cid and acc.acc_pid = pro.p_id and cus.c_gender = ? and acc.acc_cid <> ? and substr(pro.p_category, 3, 2) = ? and pro.p_isactive = 'Y' " +
+                    "where cus.c_id = acc.acc_cid and acc.acc_pid = pro.p_id and cus.c_gender = ? and acc.acc_cid <> ? and pro.p_isactive = 'Y' " +
+                    "and REGEXP_SUBSTR(substr(pro.p_category, 3, 2), ?) = substr(pro.p_category, 3, 2) " +
                     "group by pro.p_id, pro.p_name, pro.p_interestrate, pro.p_limit " +
                     "order by count(*) desc";
             ps = conn.prepareStatement(sql);
             ps.setString(1, String.valueOf(gender));
             ps.setInt(2, id);
-            ps.setString(3, productType);
+            ps.setString(3, productType);   // productType을 지정하지 않는 경우 '..'
 
             rs = ps.executeQuery();
 
