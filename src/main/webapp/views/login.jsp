@@ -9,7 +9,6 @@
 <%
   request.setCharacterEncoding("UTF-8");
   String contextPath = request.getContextPath();
-
 %>
 <!DOCTYPE html>
 <html lang="ko">
