@@ -1,6 +1,5 @@
 package hana.teamfour.addminhana.DAO;
 
-import hana.teamfour.addminhana.DTO.CustomerSignDTO;
 import hana.teamfour.addminhana.DTO.CustomerSummaryDTO;
 import hana.teamfour.addminhana.entity.CustomerEntity;
 
@@ -17,6 +16,7 @@ public class CustomerDAO {
     private Connection conn;
     private PreparedStatement pstmt;
     Throwable occuredException = null;
+
     public CustomerDAO() {
         try {
             Context ctx = new InitialContext();
@@ -57,16 +57,15 @@ public class CustomerDAO {
         return customerEntity;
     }
 
-    public boolean checkDuplicateByRRN(String rrn){
-        try {
-            Connection conn = dataFactory.getConnection();
-            String query = "SELECT * FROM customer WHERE C_RRN = ?";
+    public boolean checkDuplicateByRRN(String rrn) {
+        String query = "SELECT * FROM customer WHERE C_RRN = ?";
+        try (Connection connection = dataFactory.getConnection(); PreparedStatement statement = connection.prepareStatement(query)) {
             System.out.println("query = " + query);
-            pstmt = conn.prepareStatement(query);
+            pstmt = connection.prepareStatement(query);
             pstmt.setString(1, rrn);
             ResultSet rs = pstmt.executeQuery();
             System.out.println("checkDuplicateByRRN");
-            if (rs.next()){
+            if (rs.next()) {
                 System.out.println("checkDuplicateByRRN : 성공!(중복 됨)");
                 rs.close();
                 return true;
@@ -75,7 +74,7 @@ public class CustomerDAO {
             return false;
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }finally {
+        } finally {
             try {
                 closeConn(conn);
                 closePstmt(pstmt);
@@ -85,7 +84,7 @@ public class CustomerDAO {
         }
     }
 
-    public CustomerEntity findByRRN(String _rrn){
+    public CustomerEntity findByRRN(String _rrn) {
         CustomerEntity customerEntity = null;
         try {
             Connection conn = dataFactory.getConnection();
@@ -110,7 +109,7 @@ public class CustomerDAO {
             rs.close();
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 closeConn(conn);
                 closePstmt(pstmt);
@@ -121,9 +120,9 @@ public class CustomerDAO {
         return customerEntity;
     }
 
-//    View <-> Controller <-> service <-> dao <-> db
+    //    View <-> Controller <-> service <-> dao <-> db
 //    dto             dto        dto     entity
-    public CustomerEntity insertCustomer(CustomerEntity customerEntity){
+    public CustomerEntity insertCustomer(CustomerEntity customerEntity) {
         try {
             Connection conn = dataFactory.getConnection();
             conn.setAutoCommit(false); //트랜잭션 처리를 위한 AutoCommit off, 트랜잭션 시작
@@ -144,8 +143,7 @@ public class CustomerDAO {
                 conn.commit();
                 return findByRRN(customerEntity.getC_rrn());
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         } catch (Throwable e) {
             if (conn != null) {
@@ -196,13 +194,15 @@ public class CustomerDAO {
         }
         return false;
     }
+
     private void closeConn(Connection conn) throws SQLException {
         if (conn != null) {
             conn.setAutoCommit(true);
             conn.close();
         }
     }
-    private void closePstmt(PreparedStatement pstmt) throws SQLException{
+
+    private void closePstmt(PreparedStatement pstmt) throws SQLException {
         if (pstmt != null) {
             pstmt.close();
         }
