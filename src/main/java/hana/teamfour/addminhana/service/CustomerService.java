@@ -18,7 +18,19 @@ public class CustomerService {
     }
 
     public CustomerSummaryDTO getCustomerSummaryDTOById(Integer _c_id) {
-        return setCustomerSummaryDTO(customerDAO.findById(_c_id));
+        CustomerEntity customerEntity = customerDAO.findById(_c_id);
+        if (customerEntity == null) {
+            return null;
+        }
+        return setCustomerSummaryDTO(customerEntity);
+    }
+
+    public CustomerSummaryDTO getCustomerSummaryDTOByRrn(String _c_rrn) {
+        CustomerEntity customerEntity = customerDAO.findByRrn(_c_rrn);
+        if (customerEntity == null) {
+            return null;
+        }
+        return setCustomerSummaryDTO(customerEntity);
     }
 
     public boolean updateCustomerDescription(CustomerSummaryDTO customerSummaryDTO) {
