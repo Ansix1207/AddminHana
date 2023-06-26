@@ -39,7 +39,6 @@
     <main>
       <form action="loaninquery" method="GET">
         <div class="input-group">
-
           <input class="form-control" type="text" name="q" value="${param.q}" aria-describedby="btnNavbarSearch"/>
           <input class="btn btn-search" type="submit" value="검색"/>
           <%--          <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>--%>
@@ -77,47 +76,37 @@
             </div>
             <button class="modify">조회</button>
           </li>
-
           <%
             }
           %>
         </ol>
         <div class=center-content>
-
-
           <%--        페이지네이션--%>
           <c:set var="page" value="${(param.p == null)?1:param.p}"/>
           <c:set var="startNum" value="${page-(page-1)%5}"/>
           <c:set var="lastNum" value="17"/>
-
-
           <%--          이전 페이지--%>
           <ul class="-list- center">
             <c:if test="${startNum>1}">
-              <a class="btn-next" href="?p=${startNum-1}&q="> <</a>
+              <a class="btn-next" href="?p=${startNum-5}&q=${param.q}"> <</a>
             </c:if>
             <c:if test="${startNum<=1}">
               <span class="btn-next" onclick="alert('디음페이지가 없습니다')"><</span>
             </c:if>
-
             <%--페이지 번호--%>
             <c:forEach var="i" begin="0" end="4">
               <li class="pagination"><a class="orange bold" style="text-decoration: none;"
                                         href="?p=${startNum+i}&q=${param.q}"> ${startNum+i}</a></li>
             </c:forEach>
-
-
             <%--          다음 페이지--%>
             <c:if test="${startNum+5<lastNum}">
-              <a href="?p=${startNum+5}&q=" class="btn-next"> > </a>
+              <a href="?p=${startNum+5}&q=${param.q}" class="btn-next"> > </a>
             </c:if>
             <c:if test="${startNum+5>=lastNum}">
               <span class="btn-next" onclick="alert('디음페이지가 없습니다')">> </span>
             </c:if>
           </ul>
-
         </div>
-
       </div>
     </main>
   </div>
