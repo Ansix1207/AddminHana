@@ -25,7 +25,7 @@ public class DepositAssetDAO {
         }
     }
 
-    public AssetEntity getDepositAsset() {
+    public AssetEntity getDepositAsset(Integer id) {
         AssetEntity assetEntity = new AssetEntity();
 
         try {
@@ -33,9 +33,10 @@ public class DepositAssetDAO {
 
             String sql = "select ass_deposit " +
                     "from asset " +
-                    "WHERE C_ID = 37";
+                    "WHERE C_ID = ?";
 
             ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
             rs = ps.executeQuery();
 
             System.out.println("DepositAssetDAO 로드 성공");

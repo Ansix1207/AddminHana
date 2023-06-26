@@ -26,7 +26,7 @@ public class LoanAssetDAO {
         }
     }
 
-    public AssetEntity getLoanAsset() {
+    public AssetEntity getLoanAsset(Integer id) {
         AssetEntity assetEntity = new AssetEntity();
 
         try {
@@ -34,9 +34,10 @@ public class LoanAssetDAO {
 
             String sql = "select ass_loan " +
                     "from asset " +
-                    "WHERE C_ID = 37";
+                    "WHERE C_ID = ?";
 
             ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
             rs = ps.executeQuery();
 
             System.out.println("LoanAssetDAO 로드 성공");

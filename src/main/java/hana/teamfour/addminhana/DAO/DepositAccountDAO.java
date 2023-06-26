@@ -26,7 +26,7 @@ public class DepositAccountDAO {
         }
     }
 
-    public ArrayList<AccountEntity> getDepositInfoList() {
+    public ArrayList<AccountEntity> getDepositInfoList(Integer id) {
         ArrayList<AccountEntity> list = new ArrayList<AccountEntity>();
 
         try {
@@ -34,9 +34,10 @@ public class DepositAccountDAO {
 
             String sql = "SELECT ACC_P_CATEGORY, ACC_PNAME, ACC_MATURITYDATE, ACC_INTERESTRATE, ACC_BALANCE " +
                     "FROM ACCOUNT " +
-                    "WHERE ACC_CID = 37 AND ACC_P_CATEGORY IN ('보통예금', '정기예금') AND ACC_ISACTIVE = 'Y'";
+                    "WHERE ACC_CID = ? AND ACC_P_CATEGORY IN ('보통예금', '정기예금') AND ACC_ISACTIVE = 'Y'";
 
             ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
             rs = ps.executeQuery();
 
             System.out.println("DepositAccountDAO 호출 성공");

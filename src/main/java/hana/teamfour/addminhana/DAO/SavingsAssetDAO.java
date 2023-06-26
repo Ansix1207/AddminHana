@@ -25,7 +25,7 @@ public class SavingsAssetDAO {
         }
     }
 
-    public AssetEntity getSavingsAsset() {
+    public AssetEntity getSavingsAsset(Integer id) {
         AssetEntity assetEntity = new AssetEntity();
 
         try {
@@ -33,9 +33,10 @@ public class SavingsAssetDAO {
 
             String sql = "select ass_savings " +
                     "from asset " +
-                    "WHERE C_ID = 37";
+                    "WHERE C_ID = ?";
 
             ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
             rs = ps.executeQuery();
 
             System.out.println("SavingsAssetDAO 로드 성공");

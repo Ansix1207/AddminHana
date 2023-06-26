@@ -26,7 +26,7 @@ public class LoanAccountDAO {
         }
     }
 
-    public ArrayList<AccountEntity> getLoanInfoList() {
+    public ArrayList<AccountEntity> getLoanInfoList(Integer id) {
         ArrayList<AccountEntity> list = new ArrayList<AccountEntity>();
 
         try {
@@ -34,9 +34,10 @@ public class LoanAccountDAO {
 
             String sql = "SELECT ACC_P_CATEGORY, ACC_PNAME, ACC_MATURITYDATE, ACC_INTERESTRATE, ACC_BALANCE " +
                     "FROM ACCOUNT " +
-                    "WHERE ACC_CID = 37 AND ACC_P_CATEGORY IN ('신용대출', '담보대출') AND ACC_ISACTIVE = 'Y'";
+                    "WHERE ACC_CID = ? AND ACC_P_CATEGORY IN ('신용대출', '담보대출') AND ACC_ISACTIVE = 'Y'";
 
             ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
             rs = ps.executeQuery();
 
             System.out.println("LoanAccountDAO 호출 성공");

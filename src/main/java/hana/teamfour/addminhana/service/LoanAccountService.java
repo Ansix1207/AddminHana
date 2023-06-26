@@ -7,13 +7,16 @@ import java.util.ArrayList;
 
 public class LoanAccountService {
     private final LoanAccountDAO loanAccountDao;
+    private Integer id;
 
-    public LoanAccountService(LoanAccountDAO loanAccountDao) {
-        this.loanAccountDao = loanAccountDao;
+    public LoanAccountService(Integer id) {
+
+        this.loanAccountDao = new LoanAccountDAO();
+        this.id = id;
     }
 
     public ArrayList<AccountEntity> getLoanInfoList() {
         System.out.println("LoanAccountService 로드 성공");
-        return loanAccountDao.getLoanInfoList();
+        return loanAccountDao.getLoanInfoList(id);
     }
 }
