@@ -16,7 +16,7 @@
     <div class="nav">
       <div class="sb-sidenav-menu-heading">고객</div>
       <%--  TODO: 고객 세션이 존재할 때 코드 추가 --%>
-      <% boolean flag = false;
+      <% boolean flag = true;
 
         if (flag) {%>
       <a class="nav-link" href="#">
@@ -25,7 +25,7 @@
         </div>
         프로필
       </a>
-      <a class="nav-link" href="#">
+      <a class="nav-link" href="<%=contextPath%>/sign">
         <div class="sb-nav-link-icon">
           <i class="fas fa-angles-right"></i>
         </div>

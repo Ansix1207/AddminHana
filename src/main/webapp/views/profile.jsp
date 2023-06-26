@@ -129,7 +129,7 @@ Settings | File Templates. --%>
           <div class="card-body">
             <h5 class="card-title">특이사항</h5>
             <p class="card-text customerDescriptions">
-            <form class="descriptionForm" name="descriptionFrom" method="post" action="profile"
+            <form class="descriptionForm" name="descriptionForm" method="post" action="profile"
                   accept-charset="utf-8">
               <textarea name="descriptionText" class="descriptionTextarea" cols="76" rows="10"
                         maxlength="300">${customerSummaryDTO.c_description}</textarea>
