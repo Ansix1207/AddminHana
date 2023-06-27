@@ -41,24 +41,44 @@
       <form action="loaninquery" method="GET">
         <div class="input-group">
           <input class="form-control" type="text" name="q" value="${param.q}" aria-describedby="btnNavbarSearch"/>
-          <input class="btn btn-sunghee btn-search" type="submit" value="검색"/>
+          <input class="btn2 btn-search" type="submit" value="검색"/>
         </div>
       </form>
-      <div class="col-lg-6">
-        <div class="card mb-4">
-          <div class="card-header">
-            <i class="fas fa-chart-bar me-1"></i>
-            20대 남성 예금현황 통계
-          </div>
-          <div class="card-body">
-            <canvas id="myBarChart" width="100%" height="50"></canvas>
-          </div>
-          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-        </div>
+      <%--            그래프 넣기   --%>
+      <div>
+        <canvas id="myChart"></canvas>
       </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+          const ctx = document.getElementById('myChart');
+
+          new Chart(ctx, {
+              type: 'bar',
+              data: {
+                  labels: ['자유예금', '정기적금', '신용대출', '담보대출'],
+                  datasets: [{
+                      label: '현재 고객상품현황',
+                      data: [12, 19, ${count}, 5],
+                      borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      y: {
+                          beginAtZero: true
+                      }
+                  }
+              }
+          });
+      </script>
+
+
       <div class="list1">
         <div class="card-header">
           <h4> &nbsp 추천 금융상품 리스트</h4>
+          <h3> &nbsp ${count}개의 상품이 검색되었습니다</h3>
         </div>
         <ol class="list-group list-group-numbered" id="pages">
           <%
@@ -84,7 +104,7 @@
           <%--        페이지네이션--%>
           <c:set var="page" value="${(param.p == null)?1:param.p}"/>
           <c:set var="startNum" value="${page-(page-1)%5}"/>
-          <c:set var="lastNum" value="17"/>
+          <c:set var="lastNum" value="${Math.floor(count/5)}"/>
           <%--          이전 페이지--%>
           <ul class="-list- center">
             <c:if test="${startNum>1}">
@@ -95,8 +115,11 @@
             </c:if>
             <%--페이지 번호--%>
             <c:forEach var="i" begin="0" end="4">
-              <li class="pagination"><a class="orange bold" style="text-decoration: none;"
-                                        href="?p=${startNum+i}&q=${param.q}"> ${startNum+i}</a></li>
+              <li class="pagination">
+                <a class="orange bold" style="text-decoration: none;"
+                   href="?p=${startNum+i}&q=${param.q}"> ${startNum+i}
+                </a>
+              </li>
             </c:forEach>
             <%--          다음 페이지--%>
             <c:if test="${startNum+5<lastNum}">
