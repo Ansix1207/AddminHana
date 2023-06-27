@@ -74,7 +74,7 @@
               data: {
                   labels: ['보통예금', '정기예금', '자유적금', '${param.q}' + '상품', '정기적금', '신용대출', '담보대출'],
                   datasets: [{
-                      label: '현재 고객상품현황',
+                      label: '분류별 금융상품개수',
                       data: [<%= count1 %>, <%= count2 %>, <%= count3 %>, ${count}, <%= count4 %>, <%= count5 %>, <%= count6 %>],
                       borderWidth: 1
                   }]
@@ -88,8 +88,6 @@
               }
           });
       </script>
-
-
       <div class="list1">
         <div class="card-header">
           <h4> &nbsp 추천 금융상품 리스트</h4>

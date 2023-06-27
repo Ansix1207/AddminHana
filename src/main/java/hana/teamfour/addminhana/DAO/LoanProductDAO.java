@@ -112,11 +112,11 @@ public class LoanProductDAO {
         Map<String, Integer> accountCountMap = new HashMap<>();
         try (Connection conn = dataFactory.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(
-                     "SELECT ACC_P_CATEGORY, COUNT(*) " + "FROM account " +
-                             "GROUP BY ACC_P_CATEGORY")) {
+                     "SELECT P_CATEGORY, COUNT(*) " + "FROM product " +
+                             "GROUP BY P_CATEGORY")) {
             try (ResultSet rs = pstmt.executeQuery()) {
                 while (rs.next()) {
-                    String category = rs.getString("ACC_P_CATEGORY");
+                    String category = rs.getString("P_CATEGORY");
                     int count = rs.getInt(2);
                     accountCountMap.put(category, count);
                 }
