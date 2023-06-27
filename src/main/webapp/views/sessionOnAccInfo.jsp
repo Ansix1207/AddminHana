@@ -38,13 +38,19 @@ To change this template use File | Settings | File Templates.
 
   if (category.equals("예금")) {
     assetCategory = new String[] {"보통", "정기"};
-    if (assetDTO.getAss_deposit() != null) asset = assetDTO.getAss_deposit();
+    if (assetDTO.getAss_deposit() != null) {
+        asset = assetDTO.getAss_deposit();
+    }
   } else if (category.equals("적금")) {
     assetCategory = new String[] {"자유", "정기"};
-    if (assetDTO.getAss_savings() != null) asset = assetDTO.getAss_savings();
+    if (assetDTO.getAss_savings() != null) {
+        asset = assetDTO.getAss_savings();
+    }
   } else {
     assetCategory = new String[] {"신용", "담보"};
-    if (assetDTO.getAss_loan() != null) asset = assetDTO.getAss_loan();
+    if (assetDTO.getAss_loan() != null) {
+        asset = assetDTO.getAss_loan();
+    }
     balance = "대출잔액";
   }
 

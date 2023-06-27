@@ -57,15 +57,15 @@ public class AccInfoController extends HttpServlet {
 
         CustomerSummaryDTO customerSummaryDTO = customerService.getCustomerSummaryDTOById(c_id);
         AssetDTO assetDTO = assetService.getAsset();
-        ArrayList<AccountDTO> accountDTO = accountService.getAccList();
+        ArrayList<AccountDTO> accountDTOList = accountService.getAccList();
         ArrayList<ProductEntity> recByJobProducts = recommendService.getRecByJob();
         ArrayList<ProductEntity> recByGenderProducts = recommendService.getRecByGender();
         ArrayList<ProductEntity> recByAgeProducts = recommendService.getRecByAge();
 
         request.setAttribute("customerSummaryDTO", customerSummaryDTO);
-        request.setAttribute("accountDTO", accountDTO);
-        request.setAttribute("assetDTO", assetDTO);
         request.setAttribute("category", category);
+        request.setAttribute("assetDTO", assetDTO);
+        request.setAttribute("accountDTO", accountDTOList);
         request.setAttribute("recByJob", recByJobProducts);
         request.setAttribute("recByGender", recByGenderProducts);;
         request.setAttribute("recByAge", recByAgeProducts);
