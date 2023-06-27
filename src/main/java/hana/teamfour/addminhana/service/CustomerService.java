@@ -40,16 +40,11 @@ public class CustomerService {
     }
 
     private CustomerSummaryDTO setCustomerSummaryDTO(CustomerEntity customerEntity) {
-        Integer c_id = customerEntity.getC_id();
-        String c_name = customerEntity.getC_name();
+        CustomerSummaryDTO customerSummaryDTO = CustomerSummaryDTO.from(customerEntity);
         String c_rrn = customerEntity.getC_rrn();
-        c_rrn = maskRRN(c_rrn);
-        Character c_gender = customerEntity.getC_gender();
-        String c_job = customerEntity.getC_job();
-        String c_description = customerEntity.getC_description();
-        Integer c_age = getAgeFromRRN(c_rrn);
-
-        return new CustomerSummaryDTO(c_id, c_name, c_rrn, c_gender, c_job, c_description, c_age);
+        customerSummaryDTO.setC_age(getAgeFromRRN(c_rrn));
+        customerSummaryDTO.setC_rrn(maskRRN(c_rrn));
+        return customerSummaryDTO;
     }
 
     private CustomerSignDTO setCustomerSignDTO(CustomerEntity customerEntity) {
