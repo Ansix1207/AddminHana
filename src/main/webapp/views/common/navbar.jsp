@@ -7,6 +7,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="hana.teamfour.addminhana.entity.EmployeeEntity" %>
+<%@ page import="hana.teamfour.addminhana.DTO.CustomerSummaryDTO" %>
+<%
+  boolean flag = request.getSession().getAttribute("userSession") != null;
+%>
 <div class="sb-sidenav accordion sb-sidenav-dark">
 
   <div class="sb-sidenav-logo"><a href="<%=contextPath%>/" style="text-decoration: none; color: white;">AddMin 하나</a>
@@ -17,7 +21,6 @@
       <div class="sb-sidenav-menu-heading">고객</div>
       <%--  TODO: 고객 세션이 존재할 때 코드 추가 --%>
       <%
-        boolean flag = true;
         if (flag) {
       %>
       <a class="nav-link" href="#">
@@ -32,6 +35,7 @@
         </div>
         신규 상품 가입
       </a>
+      
       <a class="nav-link" href="<%=contextPath%>/depositInfo">
         <div class="sb-nav-link-icon">
           <i class="fas fa-money-bill-transfer"></i>
@@ -71,12 +75,15 @@
 
     </div>
   </div>
-  <%if (flag) {%>
+  <%
+    if (flag) {
+      CustomerSummaryDTO userSession = (CustomerSummaryDTO) request.getSession().getAttribute("userSession");
+  %>
   <div class="sb-sidenav-footer">
     <div class="small">현재 상담 중인 고객:</div>
-    <div class="d-flex justify-content-end"><span>권민선 님&nbsp;</span>
+    <div class="d-flex justify-content-end"><span><%=userSession.getC_name()%>&nbsp;님</span>
       <a class="btn btn-light btn-sm" style="--bs-btn-font-size: .50rem; display: inline-block"
-         href="#">세션아웃</a>
+         href="<%=contextPath%>/logout/customer">세션아웃</a>
     </div>
   </div>
   <%}%>
@@ -88,7 +95,7 @@
     %>
     <div class="d-flex"><span><%=user.getE_name()%></span>
       <a class="btn btn-dark btn-sm" style="--bs-btn-font-size: .50rem; display: inline-block"
-         href="<%=contextPath%>/logout">로그아웃</a>
+         href="<%=contextPath%>/logout/user">로그아웃</a>
     </div>
     <%}%>
 

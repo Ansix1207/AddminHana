@@ -7,12 +7,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/logout")
+@WebServlet("/logout/*")
 public class LogoutController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        request.getSession().invalidate(); // 세션 삭제
-        response.sendRedirect(request.getContextPath() + "/login");
+        String pathInfo = request.getPathInfo();
+        System.out.println("pathInfo: " + pathInfo);
+        switch (pathInfo) {
+            case "/user":
+                request.getSession().invalidate(); // 세션 삭제
+                response.sendRedirect(request.getContextPath() + "/login");
+                return;
+            case "/customer":
+                request.getSession().removeAttribute("userSession"); // 세션 삭제
+                response.sendRedirect(request.getContextPath());
+        }
     }
+
 }
