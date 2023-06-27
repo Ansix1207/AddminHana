@@ -29,18 +29,23 @@
     </nav>
 
     <main class="d-flex flex-column justify-content-center gap-2 mx-4">
-      <div class="input-group input-group-lg flex-nowrap w-75">
+      <form name="customerLoginForm" action="profile" method="post"
+            class="input-group input-group-lg flex-nowrap w-75">
           <span class="input-group-text" id="addon-wrapping">
             <i class="fas fa-magnifying-glass"></i>
           </span>
         <input
+                id="rrnInput"
+                name="customerRRN"
                 type="text"
                 class="form-control"
                 placeholder="주민등록번호 입력"
-                aria-label="Username"
+                aria-label="customerRRN"
                 aria-describedby="addon-wrapping"
+                maxlength="14"
+                minlength="11"
         />
-      </div>
+      </form>
       <div class="input-group input-group-lg flex-nowrap w-75">
           <span class="input-group-text" id="addon-wrapping2">
             <i class="fas fa-magnifying-glass"></i>
