@@ -19,7 +19,7 @@ public class LogoutController extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/login");
                 return;
             case "/customer":
-                request.getSession().removeAttribute("userSession"); // 세션 삭제
+                request.getSession().removeAttribute("customerSession"); // 세션 삭제
                 response.sendRedirect(request.getContextPath());
         }
     }
