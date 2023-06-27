@@ -4,6 +4,7 @@ import hana.teamfour.addminhana.DAO.LoanProductDAO;
 import hana.teamfour.addminhana.entity.ProductEntity;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class LoanProductService {
     private final LoanProductDAO loanProductDao;
@@ -23,5 +24,9 @@ public class LoanProductService {
 
     public int getProductCount(String query) {
         return loanProductDao.getProductCount(query);
+    }
+
+    public Map<String, Integer> getAccountCountByCategory() {
+        return loanProductDao.getAccountCountByCategory();
     }
 }

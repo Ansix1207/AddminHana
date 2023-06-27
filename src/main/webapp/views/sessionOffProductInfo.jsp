@@ -6,11 +6,12 @@
   Time: 오후 5:38
   To change this template use File | Settings | File Templates.
 --%>
-
+<%@ page import="java.util.Map" %>
 <%@ page import="hana.teamfour.addminhana.entity.ProductEntity" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%
+
   request.setCharacterEncoding("UTF-8");
   String contextPath = request.getContextPath();
 
@@ -43,10 +44,24 @@
           <input class="form-control" type="text" name="q" value="${param.q}" aria-describedby="btnNavbarSearch"/>
           <input class="btn2 btn-search" type="submit" value="검색"/>
         </div>
+
       </form>
       <%--            그래프 넣기   --%>
       <div>
         <canvas id="myChart"></canvas>
+        <%
+
+          Map<String, Integer> accountCountMap = (Map<String, Integer>) request.getAttribute("accountCountMap");
+          // accountCountMap을 사용하여 필요한 작업 수행
+          // 예: 특정 카테고리의 계좌 개수 출력
+          Integer count1 = accountCountMap.get("보통예금");
+          Integer count2 = accountCountMap.get("정기예금");
+          Integer count3 = accountCountMap.get("자유적금");
+          Integer count4 = accountCountMap.get("정기적금");
+          Integer count5 = accountCountMap.get("신용대출");
+          Integer count6 = accountCountMap.get("담보대출");
+
+        %>
       </div>
 
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -57,10 +72,10 @@
           new Chart(ctx, {
               type: 'bar',
               data: {
-                  labels: ['자유예금', '정기적금', '신용대출', '담보대출'],
+                  labels: ['보통예금', '정기예금', '자유적금', '${param.q}' + '상품', '정기적금', '신용대출', '담보대출'],
                   datasets: [{
                       label: '현재 고객상품현황',
-                      data: [12, 19, ${count}, 5],
+                      data: [<%= count1 %>, <%= count2 %>, <%= count3 %>, ${count}, <%= count4 %>, <%= count5 %>, <%= count6 %>],
                       borderWidth: 1
                   }]
               },

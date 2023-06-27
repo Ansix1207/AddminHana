@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoanProductDAO {
     private DataSource dataFactory;
@@ -105,4 +107,24 @@ public class LoanProductDAO {
         return count;
     }
 
+
+    public Map<String, Integer> getAccountCountByCategory() {
+        Map<String, Integer> accountCountMap = new HashMap<>();
+        try (Connection conn = dataFactory.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(
+                     "SELECT ACC_P_CATEGORY, COUNT(*) " + "FROM account " +
+                             "GROUP BY ACC_P_CATEGORY")) {
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    String category = rs.getString("ACC_P_CATEGORY");
+                    int count = rs.getInt(2);
+                    accountCountMap.put(category, count);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("pass" + accountCountMap);
+        return accountCountMap;
+    }
 }
