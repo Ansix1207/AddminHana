@@ -22,12 +22,17 @@ Settings | File Templates. --%>
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/base.css">
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/nav.css"/>
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
   <title>Admin Hana - profile</title>
   <style>
     main {
       padding: 3rem;
     }
+
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+    
 
     .card {
       margin: 1rem;
@@ -81,6 +86,26 @@ Settings | File Templates. --%>
 
     .w-full {
       width: 100%;
+    }
+
+    .p-4 {
+      padding: 1rem;
+    }
+
+    .mb-2 {
+      margin-bottom: 0.5rem;
+    }
+
+    .mt-4 {
+      margin-top: 1rem;
+    }
+
+    .mb-4 {
+      margin-bottom: 1rem;
+    }
+
+    .w-16 {
+      width: 4rem;
     }
 
   </style>
@@ -207,7 +232,7 @@ Settings | File Templates. --%>
       const $descriptionForm = document.querySelector('.descriptionForm')
       const $toastSuccess = document.getElementById('toastSuccess')
       const $toastFailure = document.getElementById('toastFail')
-      
+
       document.addEventListener("DOMContentLoaded", () => {
           if (hasUpdated == null) {
               return;
