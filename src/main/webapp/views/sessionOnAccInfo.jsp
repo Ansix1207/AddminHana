@@ -69,7 +69,6 @@ To change this template use File | Settings | File Templates.
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"/>
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" type="text/css" href="<%=contextPath%>/resources/css/base.css">
   <link rel="stylesheet" type="text/css" href="<%=contextPath%>/resources/css/nav.css">
   <link rel="stylesheet" type="text/css" href="<%=contextPath%>/resources/css/sessionOnAccInfo.css">
@@ -80,7 +79,7 @@ To change this template use File | Settings | File Templates.
   <nav id="layoutSidenav_nav">
   <%@ include file="common/navbar.jsp" %>
   </nav>
-  <main class="grid grid-cols-2 w-full">
+  <main class="d-grid grid-cols-2 w-full">
     <div class="col-span-1 p-4 h-full">
       <div class="card statisticsSituation h-full">
         <div class="card-body">
