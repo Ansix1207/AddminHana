@@ -44,8 +44,7 @@ ul {
 }
 
 .logOutButton {
-  position: relative;
-  bottom: 0;
+  margin-bottom: 1rem;
 }
 
 .column {

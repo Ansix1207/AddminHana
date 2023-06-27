@@ -109,7 +109,7 @@ Settings | File Templates. --%>
         <div class="logOutButton">
           <a style="color:white;text-underline: none;text-decoration: none; outline: none;"
              href="<%=contextPath%>/logout/customer">
-            <button class="btn btn-primary w-full" style="background-color: #0d6efd">거래 종료</button>
+            <button class="btn btn-primary w-full">거래 종료</button>
           </a>
         </div>
       </div>
