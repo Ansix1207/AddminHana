@@ -2,10 +2,12 @@ package hana.teamfour.addminhana.controller;
 
 import hana.teamfour.addminhana.DTO.AccountDTO;
 import hana.teamfour.addminhana.DTO.AssetDTO;
+import hana.teamfour.addminhana.DTO.CustomerSessionDTO;
 import hana.teamfour.addminhana.DTO.CustomerSummaryDTO;
 import hana.teamfour.addminhana.entity.ProductEntity;
 import hana.teamfour.addminhana.service.AccountService;
 import hana.teamfour.addminhana.service.AssetService;
+import hana.teamfour.addminhana.service.CustomerService;
 import hana.teamfour.addminhana.service.RecommendService;
 
 import javax.servlet.RequestDispatcher;
@@ -45,13 +47,15 @@ public class AccInfoController extends HttpServlet {
     protected void requestPro(HttpServletRequest request, HttpServletResponse response, String category) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
 
-        CustomerSummaryDTO customerSummaryDTO = (CustomerSummaryDTO) session.getAttribute("userSession");
-        Integer c_id = customerSummaryDTO.getC_id();
+        CustomerSessionDTO customerSessionDTO = (CustomerSessionDTO) session.getAttribute("customerSession");
+        Integer c_id = customerSessionDTO.getC_id();
 
+        CustomerService customerService = new CustomerService();
         AccountService accountService = new AccountService(c_id, category);
         AssetService assetService = new AssetService(c_id, category);
         RecommendService recommendService = new RecommendService(c_id, category);
 
+        CustomerSummaryDTO customerSummaryDTO = customerService.getCustomerSummaryDTOById(c_id);
         AssetDTO assetDTO = assetService.getAsset();
         ArrayList<AccountDTO> accountDTO = accountService.getAccList();
         ArrayList<ProductEntity> recByJobProducts = recommendService.getRecByJob();
