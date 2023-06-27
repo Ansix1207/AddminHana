@@ -1,8 +1,8 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="hana.teamfour.addminhana.entity.AccountEntity" %>
-<%@ page import="hana.teamfour.addminhana.entity.AssetEntity" %>
 <%@ page import="hana.teamfour.addminhana.entity.ProductEntity" %>
 <%@ page import="hana.teamfour.addminhana.DTO.CustomerSummaryDTO" %>
+<%@ page import="hana.teamfour.addminhana.DTO.AccountDTO" %>
+<%@ page import="hana.teamfour.addminhana.DTO.AssetDTO" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
 Created by IntelliJ IDEA.
@@ -24,35 +24,28 @@ To change this template use File | Settings | File Templates.
   String job = customerSummaryDTO.getC_job();
 
   // 계좌 정보
-  ArrayList<AccountEntity> accountEntity = (ArrayList<AccountEntity>) request.getAttribute("accountEntity");
+  ArrayList<AccountDTO> accountDTO = (ArrayList<AccountDTO>) request.getAttribute("accountDTO");
 
-  // 계좌 type (예금/적금/대출)
-  String productType = request.getAttribute("productType").toString();
+  // 계좌 카테고리 (예금/적금/대출)
+  String category = request.getAttribute("category").toString();
 
-  // 자산(예금/적금/대출) 총액
-  AssetEntity assetEntity = (AssetEntity) request.getAttribute("assetEntity");
+  // 자산 정보
+  AssetDTO assetDTO = (AssetDTO) request.getAttribute("assetDTO");
+  Integer[] accountBalance = assetDTO.getBalance_sum();
   Integer asset = 0;
-
-  // 계좌 잔액
-  Integer[] accountBalance;
   String[] assetCategory;
   String balance = "잔액";
 
-  if (productType.equals("대출")) {
-    accountBalance = (Integer[]) request.getAttribute("loanBalance");
-    assetCategory = new String[] {"신용", "담보"};
-    if (assetEntity.getAss_loan() != null) asset = assetEntity.getAss_loan();
-    balance = "대출잔액";
-  }
-  else if (productType.equals("예금")) {
-    accountBalance = (Integer[]) request.getAttribute("depositBalance");
+  if (category.equals("예금")) {
     assetCategory = new String[] {"보통", "정기"};
-    if (assetEntity.getAss_deposit() != null) asset = assetEntity.getAss_deposit();
-  }
-  else {
-    accountBalance = (Integer[]) request.getAttribute("savingsBalance");
+    if (assetDTO.getAss_deposit() != null) asset = assetDTO.getAss_deposit();
+  } else if (category.equals("적금")) {
     assetCategory = new String[] {"자유", "정기"};
-    if (assetEntity.getAss_savings() != null) asset = assetEntity.getAss_savings();
+    if (assetDTO.getAss_savings() != null) asset = assetDTO.getAss_savings();
+  } else {
+    assetCategory = new String[] {"신용", "담보"};
+    if (assetDTO.getAss_loan() != null) asset = assetDTO.getAss_loan();
+    balance = "대출잔액";
   }
 
   // 추천 상품
@@ -85,10 +78,10 @@ To change this template use File | Settings | File Templates.
     <div class="col-span-1 p-4 h-full">
       <div class="card statisticsSituation h-full">
         <div class="card-body">
-          <span class="componentTitle"><%=customerName%> 님의 <%=productType%> 현황</span>
+          <span class="componentTitle"><%=customerName%> 님의 <%=category%> 현황</span>
           <div class="mb-4 assetInfo">
             <h5 class="card-title mt-3 mb-2">자산 정보</h5>
-            <p><span>총 <%=productType%>액</span> <span class="card-text">₩ <%=asset%></span></p>
+            <p><span>총 <%=category%>액</span> <span class="card-text">₩ <%=asset%></span></p>
             <div class="statisticsChart">
               <%-- 손님의 대출 자산 현황 그래프 --%>
               <canvas id="assetChart"></canvas>
@@ -99,13 +92,13 @@ To change this template use File | Settings | File Templates.
             <%-- 가입된 상품 리스트 --%>
             <ul>
               <%
-                for (int i = 0; i < accountEntity.size(); i++) {
+                for (AccountDTO account : accountDTO) {
               %>
               <li>
-                <div class="productName"><%=accountEntity.get(i).getAcc_pname()%></div>
-                <span>만기일 <fmt:formatDate pattern="yyyy-MM-dd" value="${accountEntity.get(i).getAcc_maturitydate()}"/></span>
-                <span>이자율 <%=accountEntity.get(i).getAcc_interestrate()%>%</span>
-                <span><%=balance%> <fmt:formatNumber type="number" maxFractionDigits="3" value="${accountEntity.get(i).getAcc_balance()}" />원</span>
+                <div class="productName"><%=account.getAcc_pname()%></div>
+                <span>만기일 <%=account.getAcc_maturitydate()%></span>
+                <span>이자율 <%=account.getAcc_interestrate()%>%</span>
+                <span><%=balance%> <%=account.getAcc_balance()%>원</span>
               </li>
               <%
                 }
@@ -118,7 +111,7 @@ To change this template use File | Settings | File Templates.
     <div class="col-span-1 p-4 h-full">
       <div class="recommendProduct card h-full">
         <div class="card-body">
-          <span class="componentTitle">추천 <%=productType%> 상품</span>
+          <span class="componentTitle">추천 <%=category%> 상품</span>
           <div>
             <%-- 추천 대출 상품 리스트 --%>
             <ul class="recommendList">
