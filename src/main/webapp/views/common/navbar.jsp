@@ -8,8 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="hana.teamfour.addminhana.entity.EmployeeEntity" %>
 <%@ page import="hana.teamfour.addminhana.DTO.CustomerSummaryDTO" %>
+<%@ page import="hana.teamfour.addminhana.DTO.CustomerSessionDTO" %>
 <%
-  boolean flag = request.getSession().getAttribute("userSession") != null;
+  boolean flag = request.getSession().getAttribute("customerSession") != null;
 %>
 <div class="sb-sidenav accordion sb-sidenav-dark">
 
@@ -113,11 +114,11 @@
   </div>
   <%
     if (flag) {
-      CustomerSummaryDTO userSession = (CustomerSummaryDTO) request.getSession().getAttribute("userSession");
+      CustomerSessionDTO customerSession = (CustomerSessionDTO) request.getSession().getAttribute("customerSession");
   %>
   <div class="sb-sidenav-footer">
     <div class="small">현재 상담 중인 고객:</div>
-    <div class="d-flex justify-content-end"><span><%=userSession.getC_name()%>&nbsp;님</span>
+    <div class="d-flex justify-content-end"><span><%=customerSession.getC_name()%>&nbsp;님</span>
       <a class="btn btn-light btn-sm" style="--bs-btn-font-size: .50rem; display: inline-block"
          href="<%=contextPath%>/logout/customer">세션아웃</a>
     </div>
