@@ -43,8 +43,8 @@ Settings | File Templates. --%>
       <jsp:param name="description" value="업데이트에 실패했습니다. "/>
     </jsp:include>
 
-    <main class="d-grid grid-cols-12 w-full">
-      <div class="col-span-8 p-4">
+    <main class="d-grid grid-cols-12 gap-4 w-full">
+      <div class="col-span-8 column">
         <div class="card profileSummary">
           <div class="card-body">
             <h5 class="card-title">프로필</h5>
@@ -74,7 +74,7 @@ Settings | File Templates. --%>
         </div>
       </div>
 
-      <div class="col-span-4 p-4">
+      <div class="col-span-4 column">
         <div class="card recommendationProducts">
           <div class="card-body">
             <h5 class="card-title mb-4">신규 추천 상품</h5>
@@ -101,12 +101,16 @@ Settings | File Templates. --%>
               </li>
               <li class="productItem">365 정기에금
                 <button class="btn btn-sm btn-outline-primary"><a>가입</a></button>
+
               </li>
             </ul>
           </div>
         </div>
+        <div class="logOutButton">
+          <button class="btn btn-primary w-full" style="background-color: #0d6efd">거래 종료</button>
         </div>
       </div>
+
     </main>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
