@@ -51,7 +51,6 @@ public class ProfileController extends HttpServlet {
             } else if (customerRRN != null) {
                 customerSummaryDTO = customerService.getCustomerSummaryDTOByRrn(customerRRN);
             }
-
             if (customerSummaryDTO != null) {
                 CustomerSessionDTO customerSessionDTO = customerSummaryDTO.getCustomerSessionDTO();
                 session.setAttribute("customerSession", customerSessionDTO);
