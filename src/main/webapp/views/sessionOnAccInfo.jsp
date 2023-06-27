@@ -1,6 +1,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="hana.teamfour.addminhana.entity.AccountEntity" %>
 <%@ page import="hana.teamfour.addminhana.entity.AssetEntity" %>
+<%@ page import="hana.teamfour.addminhana.entity.ProductEntity" %>
+<%@ page import="hana.teamfour.addminhana.DTO.CustomerSummaryDTO" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
 Created by IntelliJ IDEA.
@@ -14,8 +16,12 @@ To change this template use File | Settings | File Templates.
   request.setCharacterEncoding("UTF-8");
   String contextPath = request.getContextPath();
 
-  // 손님 이름
-  String customerName = "권민선";
+  // 손님 정보
+  CustomerSummaryDTO customerSummaryDTO = (CustomerSummaryDTO) request.getAttribute("customerSummaryDTO");
+  String customerName = customerSummaryDTO.getC_name();
+  Integer ageRange = ((int) customerSummaryDTO.getC_age() / 10) * 10;
+  String gender = customerSummaryDTO.getC_gender() == 'M' ? "남성" : "여성";
+  String job = customerSummaryDTO.getC_job();
 
   // 계좌 정보
   ArrayList<AccountEntity> accountEntity = (ArrayList<AccountEntity>) request.getAttribute("accountEntity");
@@ -27,14 +33,14 @@ To change this template use File | Settings | File Templates.
   AssetEntity assetEntity = (AssetEntity) request.getAttribute("assetEntity");
   Integer asset = 0;
 
-  // 계좌 자산 비율
+  // 계좌 잔액
   Integer[] accountBalance;
   String[] assetCategory;
   String balance = "잔액";
 
   if (productType.equals("대출")) {
     accountBalance = (Integer[]) request.getAttribute("loanBalance");
-    assetCategory = new String[]{"신용", "담보"};
+    assetCategory = new String[] {"신용", "담보"};
     if (assetEntity.getAss_loan() != null) asset = assetEntity.getAss_loan();
     balance = "대출잔액";
   }
@@ -48,6 +54,11 @@ To change this template use File | Settings | File Templates.
     assetCategory = new String[] {"자유", "정기"};
     if (assetEntity.getAss_savings() != null) asset = assetEntity.getAss_savings();
   }
+
+  // 추천 상품
+  ArrayList<ProductEntity> recByAge = (ArrayList<ProductEntity>) request.getAttribute("recByAge");
+  ArrayList<ProductEntity> recByGender = (ArrayList<ProductEntity>) request.getAttribute("recByGender");
+  ArrayList<ProductEntity> recByJob = (ArrayList<ProductEntity>) request.getAttribute("recByJob");
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -71,12 +82,12 @@ To change this template use File | Settings | File Templates.
   <%@ include file="common/navbar.jsp" %>
   </nav>
   <main class="grid grid-cols-2 w-full">
-    <div class="col-span-1 p-4">
-      <div class="card statisticsSituation">
+    <div class="col-span-1 p-4 h-full">
+      <div class="card statisticsSituation h-full">
         <div class="card-body">
           <span class="componentTitle"><%=customerName%> 님의 <%=productType%> 현황</span>
           <div class="mb-4 assetInfo">
-            <h5 class="card-title mt-1 mb-2">자산 정보</h5>
+            <h5 class="card-title mt-3 mb-2">자산 정보</h5>
             <p><span>총 <%=productType%>액</span> <span class="card-text">₩ <%=asset%></span></p>
             <div class="statisticsChart">
               <%-- 손님의 대출 자산 현황 그래프 --%>
@@ -84,7 +95,7 @@ To change this template use File | Settings | File Templates.
             </div>
           </div>
           <div class="signedupProduct">
-            <h5 class="card-title mt-1 mb-2">가입 상품</h5>
+            <h5 class="card-title mt-3 mb-2">가입 상품</h5>
             <%-- 가입된 상품 리스트 --%>
             <ul>
               <%
@@ -103,18 +114,52 @@ To change this template use File | Settings | File Templates.
           </div>
         </div>
       </div>
-      <div class="searchBox">
-        <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
-             aria-describedby="btnNavbarSearch"/>
-      </div>
     </div>
-    <div class="col-span-1 p-4">
-      <div class="recommendProduct card">
+    <div class="col-span-1 p-4 h-full">
+      <div class="recommendProduct card h-full">
         <div class="card-body">
           <span class="componentTitle">추천 <%=productType%> 상품</span>
-          <h5 class="card-title mt-1 mb-2">추천</h5>
           <div>
             <%-- 추천 대출 상품 리스트 --%>
+            <ul class="recommendList">
+              <li class="recommendTitle mt-3 mb-2"><%=ageRange%>대가 가장 많이 가입한</li>
+              <%
+                for (int i = 0; i < recByAge.size(); i++) {
+              %>
+              <li>
+                <div class="productName"><%=recByAge.get(i).getP_name()%></div>
+                <span>이자율 <%=recByAge.get(i).getP_interestrate()%>%</span>
+              </li>
+              <%
+                }
+              %>
+            </ul>
+            <ul class="recommendList">
+              <li class="recommendTitle mt-3 mb-2"><%=gender%>이 가장 많이 가입한</li>
+              <%
+                for (int i = 0; i < recByGender.size(); i++) {
+              %>
+              <li>
+                <div class="productName"><%=recByGender.get(i).getP_name()%></div>
+                <span>이자율 <%=recByGender.get(i).getP_interestrate()%>%</span>
+              </li>
+              <%
+                }
+              %>
+            </ul>
+            <ul class="recommendList">
+              <li class="recommendTitle mt-3 mb-2"><%=job%> 손님을 위한</li>
+              <%
+                for (int i = 0; i < recByJob.size(); i++) {
+              %>
+              <li>
+                <div class="productName"><%=recByJob.get(i).getP_name()%></div>
+                <span>이자율 <%=recByJob.get(i).getP_interestrate()%>%</span>
+              </li>
+              <%
+                }
+              %>
+            </ul>
           </div>
         </div>
       </div>

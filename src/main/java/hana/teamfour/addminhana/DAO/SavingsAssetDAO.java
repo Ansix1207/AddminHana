@@ -2,45 +2,44 @@ package hana.teamfour.addminhana.DAO;
 
 import hana.teamfour.addminhana.entity.AssetEntity;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class SavingsAssetDAO {
-    Connection conn = null;
-    PreparedStatement ps = null;
-    ResultSet rs = null;
+    private DataSource dataFactory;
 
-    public static Connection getConnection() throws Exception {
-        Class.forName("oracle.jdbc.OracleDriver");
-        Connection con = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/xe", "admin_hana", "1234");
-        return con;
+    public SavingsAssetDAO() {
+        try {
+            Context ctx = new InitialContext();
+            Context envContext = (Context) ctx.lookup("java:/comp/env");
+            dataFactory = (DataSource) envContext.lookup("jdbc/oracle");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public AssetEntity getSavingsAsset() {
+    public AssetEntity getSavingsAssetById(Integer id) {
         AssetEntity assetEntity = new AssetEntity();
+        String query = "select ass_savings " +
+                "from asset " +
+                "WHERE C_ID = ?";
+        
+        try (Connection connection = dataFactory.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)){
 
-        try {
-            conn = getConnection();
+            statement.setInt(1, id);
 
-            String sql = "select ass_savings ";
-            sql += "from asset ";
-            sql += "WHERE C_ID = 37";
-
-            ps = conn.prepareStatement(sql);
-            rs = ps.executeQuery();
-
-            System.out.println("SavingsAssetDAO 로드 성공");
-
-            while (rs.next()) {
-                assetEntity.setAss_savings(rs.getInt(1));
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    assetEntity.setAss_savings(resultSet.getInt(1));
+                }
             }
-
-            conn.close();
-            ps.close();
-            rs.close();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return assetEntity;

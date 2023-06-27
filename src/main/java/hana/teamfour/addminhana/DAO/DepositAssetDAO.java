@@ -2,45 +2,43 @@ package hana.teamfour.addminhana.DAO;
 
 import hana.teamfour.addminhana.entity.AssetEntity;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class DepositAssetDAO {
-    Connection conn = null;
-    PreparedStatement ps = null;
-    ResultSet rs = null;
+    private DataSource dataFactory;
 
-    public static Connection getConnection() throws Exception {
-        Class.forName("oracle.jdbc.OracleDriver");
-        Connection con = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/xe", "admin_hana", "1234");
-        return con;
+    public DepositAssetDAO() {
+        try {
+            Context ctx = new InitialContext();
+            Context envContext = (Context) ctx.lookup("java:/comp/env");
+            dataFactory = (DataSource) envContext.lookup("jdbc/oracle");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public AssetEntity getDepositAsset() {
+    public AssetEntity getDepositAssetById(Integer id) {
         AssetEntity assetEntity = new AssetEntity();
+        String query = "select ass_deposit " +
+                "from asset " +
+                "WHERE C_ID = ?";
 
-        try {
-            conn = getConnection();
+        try (Connection connection = dataFactory.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)){
 
-            String sql = "select ass_deposit ";
-            sql += "from asset ";
-            sql += "WHERE C_ID = 37";
-
-            ps = conn.prepareStatement(sql);
-            rs = ps.executeQuery();
-
-            System.out.println("DepositAssetDAO 로드 성공");
-
-            while (rs.next()) {
-                assetEntity.setAss_loan(rs.getInt(1));
+            statement.setInt(1, id);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    assetEntity.setAss_loan(resultSet.getInt(1));
+                }
             }
-
-            conn.close();
-            ps.close();
-            rs.close();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return assetEntity;
