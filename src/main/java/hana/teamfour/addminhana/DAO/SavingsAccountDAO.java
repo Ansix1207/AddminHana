@@ -6,18 +6,14 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class SavingsAccountDAO {
-    Connection conn = null;
-    PreparedStatement ps = null;
-    ResultSet rs = null;
     private DataSource dataFactory;
-    private PreparedStatement pstmt;
-
+  
     public SavingsAccountDAO() {
         try {
             Context ctx = new InitialContext();
@@ -27,46 +23,33 @@ public class SavingsAccountDAO {
             e.printStackTrace();
         }
     }
-    public static Connection getConnection() throws Exception {
-        Class.forName("oracle.jdbc.OracleDriver");
 
-        Connection con = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/xe", "admin_hana", "1234");
-        return con;
-    }
-
-    public ArrayList<AccountEntity> getSavingsInfoList() {
+    public ArrayList<AccountEntity> getSavingsAccListById(Integer id) {
         ArrayList<AccountEntity> list = new ArrayList<AccountEntity>();
+        String query = "SELECT ACC_P_CATEGORY, ACC_PNAME, ACC_MATURITYDATE, ACC_INTERESTRATE, ACC_BALANCE " +
+                "FROM ACCOUNT " +
+                "WHERE ACC_CID = ? AND ACC_P_CATEGORY IN ('자유적금', '정기적금') AND ACC_ISACTIVE = 'Y'";
 
-        try {
-            conn = dataFactory.getConnection();
+        try (Connection connection = dataFactory.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)){
 
-            String sql = "SELECT ACC_P_CATEGORY, ACC_PNAME, ACC_MATURITYDATE, ACC_INTERESTRATE, ACC_BALANCE ";
-            sql += "FROM ACCOUNT ";
-            sql += "WHERE ACC_CID = 37 AND ACC_P_CATEGORY IN ('자유적금', '정기적금') AND ACC_ISACTIVE = 'Y'";
+            statement.setInt(1, id);
 
-            ps = conn.prepareStatement(sql);
-            rs = ps.executeQuery();
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    AccountEntity accountEntity = new AccountEntity();
+                    accountEntity.setAcc_p_category(resultSet.getString(1));
+                    accountEntity.setAcc_pname(resultSet.getString(2));
+                    accountEntity.setAcc_maturitydate(resultSet.getTimestamp(3));
+                    accountEntity.setAcc_interestrate(resultSet.getDouble(4));
+                    accountEntity.setAcc_balance(resultSet.getInt(5));
 
-            System.out.println("SavingsAccountDAO 호출 성공");
-
-            while (rs.next()) {
-                AccountEntity accountEntity = new AccountEntity();
-                accountEntity.setAcc_p_category(rs.getString(1));
-                accountEntity.setAcc_pname(rs.getString(2));
-                accountEntity.setAcc_maturitydate(rs.getTimestamp(3));
-                accountEntity.setAcc_interestrate(rs.getDouble(4));
-                accountEntity.setAcc_balance(rs.getInt(5));
-
-                list.add(accountEntity);
+                    list.add(accountEntity);
+                }
             }
-
-            conn.close();
-            ps.close();
-            rs.close();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return list;
     }
 }

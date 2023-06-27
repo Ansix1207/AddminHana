@@ -7,13 +7,16 @@ import java.util.ArrayList;
 
 public class SavingsAccountService {
     private final SavingsAccountDAO savingsAccountDao;
+    private Integer id;
 
-    public SavingsAccountService(SavingsAccountDAO savingsAccountDao) {
-        this.savingsAccountDao = savingsAccountDao;
+    public SavingsAccountService(Integer id) {
+
+        this.savingsAccountDao = new SavingsAccountDAO();
+        this.id = id;
     }
 
-    public ArrayList<AccountEntity> getSavingsInfoList() {
+    public ArrayList<AccountEntity> getSavingsAccList() {
         System.out.println("SavingsAccountService 로드 성공");
-        return savingsAccountDao.getSavingsInfoList();
+        return savingsAccountDao.getSavingsAccListById(id);
     }
 }

@@ -7,15 +7,17 @@ import java.util.ArrayList;
 
 public class DepositBalanceService {
     private final DepositAccountDAO depositAccountDao;
+    private Integer id;
 
-    public DepositBalanceService(DepositAccountDAO depositAccountDao) {
-        this.depositAccountDao = depositAccountDao;
+    public DepositBalanceService(Integer id) {
+        this.depositAccountDao = new DepositAccountDAO();
+        this.id = id;
     }
 
     public Integer[] getDepositBalance() {
         System.out.println("DepositBalanceService 로드 성공");
         Integer[] depositBalance = {0, 0};
-        ArrayList<AccountEntity> accountEntity = depositAccountDao.getDepositInfoList();
+        ArrayList<AccountEntity> accountEntity = depositAccountDao.getDepositAccListById(id);
         for (int i=0; i<accountEntity.size(); i++) {
             if (accountEntity.get(i).getAcc_p_category().equals("보통예금")) {
                 depositBalance[0] += Math.abs(accountEntity.get(i).getAcc_balance());

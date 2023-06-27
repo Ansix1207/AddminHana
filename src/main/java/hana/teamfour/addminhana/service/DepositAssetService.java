@@ -5,13 +5,15 @@ import hana.teamfour.addminhana.entity.AssetEntity;
 
 public class DepositAssetService {
     private final DepositAssetDAO depositAssetDao;
+    private Integer id;
 
-    public DepositAssetService(DepositAssetDAO depositAssetDao) {
-        this.depositAssetDao = depositAssetDao;
+    public DepositAssetService(Integer id) {
+        this.depositAssetDao = new DepositAssetDAO();
+        this.id = id;
     }
 
     public AssetEntity getDepositAsset() {
         System.out.println("DepositAssetService 로드 성공");
-        return depositAssetDao.getDepositAsset();
+        return depositAssetDao.getDepositAssetById(id);
     }
 }

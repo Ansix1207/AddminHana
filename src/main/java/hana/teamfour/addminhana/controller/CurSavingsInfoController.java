@@ -1,12 +1,10 @@
 package hana.teamfour.addminhana.controller;
 
-import hana.teamfour.addminhana.DAO.SavingsAccountDAO;
-import hana.teamfour.addminhana.DAO.SavingsAssetDAO;
+import hana.teamfour.addminhana.DTO.CustomerSummaryDTO;
 import hana.teamfour.addminhana.entity.AccountEntity;
 import hana.teamfour.addminhana.entity.AssetEntity;
-import hana.teamfour.addminhana.service.SavingsAccountService;
-import hana.teamfour.addminhana.service.SavingsAssetService;
-import hana.teamfour.addminhana.service.SavingsBalanceService;
+import hana.teamfour.addminhana.entity.ProductEntity;
+import hana.teamfour.addminhana.service.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,33 +18,31 @@ import java.util.ArrayList;
 @WebServlet("/savingsInfo")
 public class CurSavingsInfoController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        requestPro(request, response);
-    }
+        String productType = "적금";
+        Integer uid = 37;
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        requestPro(request, response);
-    }
+        SavingsAccountService savingsAccountService = new SavingsAccountService(uid);
+        SavingsAssetService savingsAssetService = new SavingsAssetService(uid);
+        SavingsBalanceService savingsBalanceService = new SavingsBalanceService(uid);
+        RecommendService recommendService = new RecommendService(uid, productType);
+        CustomerService customerService = new CustomerService();
 
-
-    protected void requestPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        SavingsAccountDAO savingsAccountDAO = new SavingsAccountDAO();
-        SavingsAssetDAO savingsAssetDAO = new SavingsAssetDAO();
-
-        SavingsAccountService savingsAccountService = new SavingsAccountService(savingsAccountDAO);
-        SavingsAssetService savingsAssetService = new SavingsAssetService(savingsAssetDAO);
-        SavingsBalanceService savingsBalanceService = new SavingsBalanceService(savingsAccountDAO);
-
+        CustomerSummaryDTO customerSummaryDTO = customerService.getCustomerSummaryDTOById(uid);
         AssetEntity assetEntity = savingsAssetService.getSavingsAsset();
-        ArrayList<AccountEntity> accountEntity = savingsAccountService.getSavingsInfoList();
+        ArrayList<AccountEntity> accountEntity = savingsAccountService.getSavingsAccList();
         Integer[] savingsBalance = savingsBalanceService.getSavingsBalance();
+        ArrayList<ProductEntity> recByJobProducts = recommendService.getRecByJob();
+        ArrayList<ProductEntity> recByGenderProducts = recommendService.getRecByGender();
+        ArrayList<ProductEntity> recByAgeProducts = recommendService.getRecByAge();
 
+        request.setAttribute("customerSummaryDTO", customerSummaryDTO);
         request.setAttribute("accountEntity", accountEntity);
         request.setAttribute("assetEntity", assetEntity);
         request.setAttribute("savingsBalance", savingsBalance);
-        request.setAttribute("productType", "적금");
+        request.setAttribute("productType", productType);
+        request.setAttribute("recByJob", recByJobProducts);
+        request.setAttribute("recByGender", recByGenderProducts);;
+        request.setAttribute("recByAge", recByAgeProducts);
 
         String site = "views/sessionOnAccInfo.jsp";
 

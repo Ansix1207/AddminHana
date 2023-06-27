@@ -15,19 +15,22 @@ main {
   height: auto!important;
   padding: 1rem;
 }
-.searchBox {
-  margin: 1rem;
-  width: 100%;
-  border-radius: 20px;
-}
 .componentTitle {
   font-size: 1.25rem;
   margin-right: 1rem;
   font-weight: bold;
 }
-.signedupProduct > ul > li {
-  line-height: 2rem;
-}
 .productName {
-  font-weight: bold;
+   font-weight: bold;
+ }
+.signedupProduct > ul > li, .recommendList > li {
+  line-height: 1.8rem;
+}
+.signedupProduct li > span, .recommendList > li > span {
+  font-size: 0.9rem;
+}
+.recommendTitle {
+  color: #555;
+  text-decoration: underline currentColor;
+  text-underline-position:under
 }
