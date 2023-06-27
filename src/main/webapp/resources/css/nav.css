@@ -120,3 +120,21 @@
   color: #000;
   background-color: #D8E6E7;
 }
+
+.sb-sidenav .sb-sidenav-menu .nav .nav-link .sb-sidenav-collapse-arrow {
+  display: inline-block;
+  margin-left: auto;
+  transition: transform 0.15s ease;
+}
+
+.sb-sidenav .sb-sidenav-menu .nav .nav-link.collapsed .sb-sidenav-collapse-arrow {
+  transform: rotate(-90deg);
+}
+
+.sb-sidenav-menu {
+  overflow-y: auto;
+}
+
+.sb-sidenav-menu::-webkit-scrollbar {
+  display: none;
+}
