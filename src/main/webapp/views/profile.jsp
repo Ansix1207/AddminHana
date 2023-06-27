@@ -21,94 +21,9 @@ Settings | File Templates. --%>
         crossorigin="anonymous"/>
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/base.css">
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/nav.css"/>
+  <link rel="stylesheet" href="<%=contextPath%>/resources/css/profile.css"/>
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
   <title>Admin Hana - profile</title>
-  <style>
-    main {
-      padding: 3rem;
-    }
-
-    ul {
-      margin: 0;
-      padding: 0;
-    }
-
-
-    .card {
-      margin: 1rem;
-      width: 100%;
-      box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5);
-    }
-
-    .card-title {
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
-    .profileSummary {
-    }
-
-    .summaryCustomerName {
-      font-size: 1.25rem;
-      margin-right: 1rem;
-      font-weight: bold;
-    }
-
-    .recommendationSubtitle {
-      font-weight: 600;
-      font-size: 1.25rem;
-    }
-
-    .productItem {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .descriptionTextarea {
-      resize: none;
-    }
-
-    .btn-primary {
-      background-color: #0d6efd;
-    }
-
-    .grid-cols-12 {
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-    }
-
-    .col-span-4 {
-      grid-column: span 4 / span 4;
-    }
-
-    .col-span-8 {
-      grid-column: span 8 / span 8;
-    }
-
-    .w-full {
-      width: 100%;
-    }
-
-    .p-4 {
-      padding: 1rem;
-    }
-
-    .mb-2 {
-      margin-bottom: 0.5rem;
-    }
-
-    .mt-4 {
-      margin-top: 1rem;
-    }
-
-    .mb-4 {
-      margin-bottom: 1rem;
-    }
-
-    .w-16 {
-      width: 4rem;
-    }
-
-  </style>
 </head>
 <body>
   <div class="wrap">
