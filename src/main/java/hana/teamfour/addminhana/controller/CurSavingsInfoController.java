@@ -29,7 +29,7 @@ public class CurSavingsInfoController extends HttpServlet {
 
         CustomerSummaryDTO customerSummaryDTO = customerService.getCustomerSummaryDTOById(uid);
         AssetEntity assetEntity = savingsAssetService.getSavingsAsset();
-        ArrayList<AccountEntity> accountEntity = savingsAccountService.getSavingsInfoList();
+        ArrayList<AccountEntity> accountEntity = savingsAccountService.getSavingsAccList();
         Integer[] savingsBalance = savingsBalanceService.getSavingsBalance();
         ArrayList<ProductEntity> recByJobProducts = recommendService.getRecByJob();
         ArrayList<ProductEntity> recByGenderProducts = recommendService.getRecByGender();

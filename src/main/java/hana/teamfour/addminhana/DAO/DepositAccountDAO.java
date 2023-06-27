@@ -24,7 +24,7 @@ public class DepositAccountDAO {
         }
     }
 
-    public ArrayList<AccountEntity> getDepositInfoList(Integer id) {
+    public ArrayList<AccountEntity> getDepositAccListById(Integer id) {
         ArrayList<AccountEntity> list = new ArrayList<AccountEntity>();
         String query = "SELECT ACC_P_CATEGORY, ACC_PNAME, ACC_MATURITYDATE, ACC_INTERESTRATE, ACC_BALANCE " +
                 "FROM ACCOUNT " +

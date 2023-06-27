@@ -5,7 +5,10 @@ import hana.teamfour.addminhana.entity.AssetEntity;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class LoanAssetDAO {
     private DataSource dataFactory;
@@ -20,7 +23,7 @@ public class LoanAssetDAO {
         }
     }
 
-    public AssetEntity getLoanAsset(Integer id) {
+    public AssetEntity getLoanAssetById(Integer id) {
         AssetEntity assetEntity = new AssetEntity();
         String query = "select ass_loan " +
                 "from asset " +

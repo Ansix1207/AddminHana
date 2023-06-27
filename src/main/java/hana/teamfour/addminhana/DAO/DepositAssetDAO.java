@@ -23,7 +23,7 @@ public class DepositAssetDAO {
         }
     }
 
-    public AssetEntity getDepositAsset(Integer id) {
+    public AssetEntity getDepositAssetById(Integer id) {
         AssetEntity assetEntity = new AssetEntity();
         String query = "select ass_deposit " +
                 "from asset " +

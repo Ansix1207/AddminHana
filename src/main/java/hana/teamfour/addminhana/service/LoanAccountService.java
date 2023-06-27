@@ -15,8 +15,8 @@ public class LoanAccountService {
         this.id = id;
     }
 
-    public ArrayList<AccountEntity> getLoanInfoList() {
+    public ArrayList<AccountEntity> getLoanAccList() {
         System.out.println("LoanAccountService 로드 성공");
-        return loanAccountDao.getLoanInfoList(id);
+        return loanAccountDao.getLoanAccListById(id);
     }
 }

@@ -30,7 +30,7 @@ public class CurDepositInfoController extends HttpServlet {
 
         CustomerSummaryDTO customerSummaryDTO = customerService.getCustomerSummaryDTOById(uid);
         AssetEntity assetEntity = depositAssetService.getDepositAsset();
-        ArrayList<AccountEntity> accountEntity = depositAccountService.getDepositInfoList();
+        ArrayList<AccountEntity> accountEntity = depositAccountService.getDepositAccList();
         Integer[] depositBalance = depositBalanceService.getDepositBalance();
         ArrayList<ProductEntity> recByJobProducts = recommendService.getRecByJob();
         ArrayList<ProductEntity> recByGenderProducts = recommendService.getRecByGender();

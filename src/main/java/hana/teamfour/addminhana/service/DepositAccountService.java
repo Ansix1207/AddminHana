@@ -14,8 +14,8 @@ public class DepositAccountService {
         this.id = id;
     }
 
-    public ArrayList<AccountEntity> getDepositInfoList() {
+    public ArrayList<AccountEntity> getDepositAccList() {
         System.out.println("DepositAccountService 로드 성공");
-        return depositAccountDao.getDepositInfoList(id);
+        return depositAccountDao.getDepositAccListById(id);
     }
 }

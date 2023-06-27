@@ -14,6 +14,6 @@ public class DepositAssetService {
 
     public AssetEntity getDepositAsset() {
         System.out.println("DepositAssetService 로드 성공");
-        return depositAssetDao.getDepositAsset(id);
+        return depositAssetDao.getDepositAssetById(id);
     }
 }

@@ -24,7 +24,7 @@ public class SavingsAccountDAO {
         }
     }
 
-    public ArrayList<AccountEntity> getSavingsInfoList(Integer id) {
+    public ArrayList<AccountEntity> getSavingsAccListById(Integer id) {
         ArrayList<AccountEntity> list = new ArrayList<AccountEntity>();
         String query = "SELECT ACC_P_CATEGORY, ACC_PNAME, ACC_MATURITYDATE, ACC_INTERESTRATE, ACC_BALANCE " +
                 "FROM ACCOUNT " +

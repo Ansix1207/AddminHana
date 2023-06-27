@@ -18,7 +18,7 @@ public class LoanBalanceService {
     public Integer[] getLoanBalance() {
         System.out.println("LoanBalanceService 로드 성공");
         Integer[] loanBalance = {0, 0};
-        ArrayList<AccountEntity> accountEntity = loanAccountDao.getLoanInfoList(id);
+        ArrayList<AccountEntity> accountEntity = loanAccountDao.getLoanAccListById(id);
         for (int i=0; i<accountEntity.size(); i++) {
             if (accountEntity.get(i).getAcc_p_category().equals("신용대출")) {
                 loanBalance[0] += Math.abs(accountEntity.get(i).getAcc_balance());

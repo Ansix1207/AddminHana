@@ -29,7 +29,7 @@ public class CurLoanInfoController extends HttpServlet {
 
         CustomerSummaryDTO customerSummaryDTO = customerService.getCustomerSummaryDTOById(uid);
         AssetEntity assetEntity = loanAssetService.getLoanAsset();
-        ArrayList<AccountEntity> accountEntity = loanAccountService.getLoanInfoList();
+        ArrayList<AccountEntity> accountEntity = loanAccountService.getLoanAccList();
         Integer[] loanBalance = loanBalanceService.getLoanBalance();
         ArrayList<ProductEntity> recByJobProducts = recommendService.getRecByJob();
         ArrayList<ProductEntity> recByGenderProducts = recommendService.getRecByGender();

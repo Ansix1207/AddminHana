@@ -15,8 +15,8 @@ public class SavingsAccountService {
         this.id = id;
     }
 
-    public ArrayList<AccountEntity> getSavingsInfoList() {
+    public ArrayList<AccountEntity> getSavingsAccList() {
         System.out.println("SavingsAccountService 로드 성공");
-        return savingsAccountDao.getSavingsInfoList(id);
+        return savingsAccountDao.getSavingsAccListById(id);
     }
 }

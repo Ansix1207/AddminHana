@@ -15,6 +15,6 @@ public class SavingsAssetService {
 
     public AssetEntity getSavingsAsset() {
         System.out.println("SavingsAssetService 로드 성공");
-        return savingsAssetDao.getSavingsAsset(id);
+        return savingsAssetDao.getSavingsAssetById(id);
     }
 }

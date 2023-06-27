@@ -23,7 +23,7 @@ public class SavingsAssetDAO {
         }
     }
 
-    public AssetEntity getSavingsAsset(Integer id) {
+    public AssetEntity getSavingsAssetById(Integer id) {
         AssetEntity assetEntity = new AssetEntity();
         String query = "select ass_savings " +
                 "from asset " +

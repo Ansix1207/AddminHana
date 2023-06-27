@@ -15,6 +15,6 @@ public class LoanAssetService {
 
     public AssetEntity getLoanAsset() {
         System.out.println("LoanAssetService 로드 성공");
-        return loanAssetDao.getLoanAsset(id);
+        return loanAssetDao.getLoanAssetById(id);
     }
 }

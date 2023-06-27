@@ -17,7 +17,7 @@ public class SavingsBalanceService {
     public Integer[] getSavingsBalance() {
         System.out.println("SavingsBalanceService 로드 성공");
         Double[] dbl_savingsBalance = {0.0, 0.0};
-        ArrayList<AccountEntity> accountEntity = savingsAccountDao.getSavingsInfoList(id);
+        ArrayList<AccountEntity> accountEntity = savingsAccountDao.getSavingsAccListById(id);
         for (int i=0; i<accountEntity.size(); i++) {
             if (accountEntity.get(i).getAcc_p_category().equals("자유적금")) {
                 dbl_savingsBalance[0] += Math.abs(accountEntity.get(i).getAcc_balance());
