@@ -68,7 +68,8 @@
             <div class="ms-2 me-auto ">
               <div class="fw-bold">
                 <div>
-                  <h4><span><%=productEntity.get(i).getP_name()%></span></h4>
+                  <h4><%=productEntity.get(i).getP_name()%>
+                  </h4>
                   <span>금리 <%=productEntity.get(i).getP_interestrate()%> %</span><br>
                   <span><%=productEntity.get(i).getP_description()%></span>
                 </div>
@@ -84,7 +85,9 @@
           <%--        페이지네이션--%>
           <c:set var="page" value="${(param.p == null)?1:param.p}"/>
           <c:set var="startNum" value="${page-(page-1)%5}"/>
-          <c:set var="lastNum" value="17"/>
+          <c:set var="lastNum" value="${200/5}"/>
+          <div>
+          </div>
           <%--          이전 페이지--%>
           <ul class="-list- center">
             <c:if test="${startNum>1}">
@@ -95,8 +98,11 @@
             </c:if>
             <%--페이지 번호--%>
             <c:forEach var="i" begin="0" end="4">
-              <li class="pagination"><a class="orange bold" style="text-decoration: none;"
-                                        href="?p=${startNum+i}&q=${param.q}"> ${startNum+i}</a></li>
+              <c:set var="pageNum" value="${startNum + i}"/>
+              <c:if test="${pageNum <= lastNum}">
+                <li class="pagination"><a class="orange bold" style="text-decoration: none;"
+                                          href="?p=${startNum+i}&q=${param.q}"> ${startNum+i}</a></li>
+              </c:if>
             </c:forEach>
             <%--          다음 페이지--%>
             <c:if test="${startNum+5<lastNum}">
