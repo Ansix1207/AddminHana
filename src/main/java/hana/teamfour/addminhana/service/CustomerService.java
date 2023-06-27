@@ -27,8 +27,8 @@ public class CustomerService {
         return setCustomerSummaryDTO(customerEntity);
     }
 
-    public CustomerSummaryDTO getCustomerSummaryDTOByRrn(String _c_rrn) {
-        CustomerEntity customerEntity = customerDAO.findByRrn(_c_rrn);
+    public CustomerSummaryDTO getCustomerSummaryDTOByRRN(String _c_rrn) {
+        CustomerEntity customerEntity = customerDAO.findByRRN(_c_rrn);
         if (customerEntity == null) {
             return null;
         }

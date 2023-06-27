@@ -45,7 +45,7 @@ public class ProfileController extends HttpServlet {
         try {
             // 1. 로그인 후 /profile 의 경로로 컨트롤러를 타고 들어오면
             // 1.1. CustomerSummaryDTO 를 서비스단에서 가져와서 request에 setAttribute
-            CustomerSummaryDTO customerSummaryDTO = customerService.getCustomerSummaryDTOByRrn(customerRRN);
+            CustomerSummaryDTO customerSummaryDTO = customerService.getCustomerSummaryDTOByRRN(customerRRN);
             System.out.println("customerSummaryDTO controller = " + customerSummaryDTO);
             if (customerSummaryDTO == null) {
                 nextPage = "/views/main.jsp";
