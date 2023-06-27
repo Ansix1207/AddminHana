@@ -7,9 +7,14 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="hana.teamfour.addminhana.entity.EmployeeEntity" %>
+<%@ page import="hana.teamfour.addminhana.DTO.CustomerSummaryDTO" %>
+<%
+  boolean flag = request.getSession().getAttribute("userSession") != null;
+%>
 <div class="sb-sidenav accordion sb-sidenav-dark">
 
-  <div class="sb-sidenav-logo"><a href="<%=contextPath%>/" style="text-decoration: none; color: white;">AddMin 하나</a>
+  <div class="sb-sidenav-logo"><a href="<%=contextPath%>/"
+                                  style="text-decoration: none; color: white;">AddMin 하나</a>
   </div>
 
   <div class="sb-sidenav-menu">
@@ -17,7 +22,6 @@
       <div class="sb-sidenav-menu-heading">고객</div>
       <%--  TODO: 고객 세션이 존재할 때 코드 추가 --%>
       <%
-        boolean flag = true;
         if (flag) {
       %>
       <a class="nav-link" href="#">
@@ -32,20 +36,56 @@
         </div>
         신규 상품 가입
       </a>
-      <a class="nav-link" href="<%=contextPath%>/depositInfo">
-        <div class="sb-nav-link-icon">
-          <i class="fas fa-money-bill-transfer"></i>
-        </div>
-        예금 현황
+      <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+         data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+        <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+        고객 계좌 현황
+        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
       </a>
-      <a class="nav-link" href="<%=contextPath%>/savingsInfo">
-        <div class="sb-nav-link-icon"><i class="fas fa-piggy-bank"></i></div>
-        적금 현황
+      <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+           data-bs-parent="#sidenavAccordion">
+        <nav class="sb-sidenav-menu-nested nav">
+          <a class="nav-link" href="<%=contextPath%>/depositInfo">
+            <div class="sb-nav-link-icon">
+              <i class="fas fa-money-bill-transfer"></i>
+            </div>
+            예금 현황
+          </a>
+          <a class="nav-link" href="<%=contextPath%>/savingsInfo">
+            <div class="sb-nav-link-icon"><i class="fas fa-piggy-bank"></i></div>
+            적금 현황
+          </a>
+          <a class="nav-link" href="<%=contextPath%>/loanInfo">
+            <div class="sb-nav-link-icon"><i class="fas fa-landmark"></i></div>
+            대출 현황
+          </a>
+        </nav>
+      </div>
+      <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+         data-bs-target="#collapseLayouts2" aria-expanded="false" aria-controls="collapseLayouts2">
+        <div class="sb-nav-link-icon"><i class="fas fa-wallet"></i></div>
+        창구 업무
+        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
       </a>
-      <a class="nav-link" href="<%=contextPath%>/loanInfo">
-        <div class="sb-nav-link-icon"><i class="fas fa-landmark"></i></div>
-        대출 현황
-      </a>
+      <div class="collapse" id="collapseLayouts2" aria-labelledby="headingOne"
+           data-bs-parent="#sidenavAccordion">
+        <nav class="sb-sidenav-menu-nested nav">
+          <a class="nav-link" href="#">
+            <div class="sb-nav-link-icon">
+              <i class="fas fa-plus"></i>
+            </div>
+            입금
+          </a>
+          <a class="nav-link" href="#">
+            <div class="sb-nav-link-icon"><i class="fas fa-minus"></i></div>
+            출금
+          </a>
+          <a class="nav-link" href="#">
+            <div class="sb-nav-link-icon"><i class="fas fa-right-left"></i></div>
+            계좌이체
+          </a>
+        </nav>
+      </div>
       <%} else {%>
       <a class="nav-link" href="#">
         <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
@@ -71,12 +111,15 @@
 
     </div>
   </div>
-  <%if (flag) {%>
+  <%
+    if (flag) {
+      CustomerSummaryDTO userSession = (CustomerSummaryDTO) request.getSession().getAttribute("userSession");
+  %>
   <div class="sb-sidenav-footer">
     <div class="small">현재 상담 중인 고객:</div>
-    <div class="d-flex justify-content-end"><span>권민선 님&nbsp;</span>
+    <div class="d-flex justify-content-end"><span><%=userSession.getC_name()%>&nbsp;님</span>
       <a class="btn btn-light btn-sm" style="--bs-btn-font-size: .50rem; display: inline-block"
-         href="#">세션아웃</a>
+         href="<%=contextPath%>/logout/customer">세션아웃</a>
     </div>
   </div>
   <%}%>
@@ -88,7 +131,7 @@
     %>
     <div class="d-flex"><span><%=user.getE_name()%></span>
       <a class="btn btn-dark btn-sm" style="--bs-btn-font-size: .50rem; display: inline-block"
-         href="<%=contextPath%>/logout">로그아웃</a>
+         href="<%=contextPath%>/logout/user">로그아웃</a>
     </div>
     <%}%>
 
