@@ -1,3 +1,8 @@
+ul, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 main {
   padding: 3rem;
 }
@@ -21,8 +26,8 @@ main {
   font-weight: bold;
 }
 .productName {
-   font-weight: bold;
- }
+  font-weight: bold;
+}
 .signedupProduct > ul > li, .recommendList > li {
   line-height: 1.8rem;
 }
@@ -33,4 +38,25 @@ main {
   color: #555;
   text-decoration: underline currentColor;
   text-underline-position:under
+}
+.w-full {
+  width: 100%;
+}
+.h-full {
+  height: 100%
+}
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.col-span-1 {
+  grid-column: span 1 / span 1;
+}
+.p-4 {
+  padding: 1rem;
+}
+.mb-4 {
+  margin-top: 1rem;
+}
+.mb-2 {
+  margin-bottom: 0.5rem;
 }
