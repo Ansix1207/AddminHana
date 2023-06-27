@@ -12,7 +12,12 @@ public class LoanProductService {
         this.loanProductDao = loanProductDao;
     }
 
-    public ArrayList<ProductEntity> getLoanProductList() {
-        return loanProductDao.getLoanProductList();
+    public ArrayList<ProductEntity> getLoanProductList(int page) {
+        return loanProductDao.getLoanProductList(page);
+    }
+
+    public ArrayList<ProductEntity> getSearchLoanProductList(String field, String query, int page) {
+        ArrayList<ProductEntity> productEntityList = new ArrayList<>();
+        return loanProductDao.getSearchLoanProductList(query, page);
     }
 }
