@@ -4,7 +4,10 @@ import hana.teamfour.addminhana.DTO.CustomerSummaryDTO;
 import hana.teamfour.addminhana.entity.AccountEntity;
 import hana.teamfour.addminhana.entity.AssetEntity;
 import hana.teamfour.addminhana.entity.ProductEntity;
-import hana.teamfour.addminhana.service.*;
+import hana.teamfour.addminhana.service.LoanAccountService;
+import hana.teamfour.addminhana.service.LoanAssetService;
+import hana.teamfour.addminhana.service.LoanBalanceService;
+import hana.teamfour.addminhana.service.RecommendService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -19,15 +23,16 @@ import java.util.ArrayList;
 public class CurLoanInfoController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String productType = "대출";
-        Integer uid = 25;
+        HttpSession session = request.getSession(false);
 
-        LoanAccountService loanAccountService = new LoanAccountService(uid);
-        LoanAssetService loanAssetService = new LoanAssetService(uid);
-        LoanBalanceService loanBalanceService = new LoanBalanceService(uid);
-        RecommendService recommendService = new RecommendService(uid, productType);
-        CustomerService customerService = new CustomerService();
+        CustomerSummaryDTO customerSummaryDTO = (CustomerSummaryDTO) session.getAttribute("userSession");
+        Integer c_id = customerSummaryDTO.getC_id();
 
-        CustomerSummaryDTO customerSummaryDTO = customerService.getCustomerSummaryDTOById(uid);
+        LoanAccountService loanAccountService = new LoanAccountService(c_id);
+        LoanAssetService loanAssetService = new LoanAssetService(c_id);
+        LoanBalanceService loanBalanceService = new LoanBalanceService(c_id);
+        RecommendService recommendService = new RecommendService(c_id, productType);
+
         AssetEntity assetEntity = loanAssetService.getLoanAsset();
         ArrayList<AccountEntity> accountEntity = loanAccountService.getLoanAccList();
         Integer[] loanBalance = loanBalanceService.getLoanBalance();

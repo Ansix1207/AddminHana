@@ -4,7 +4,10 @@ import hana.teamfour.addminhana.DTO.CustomerSummaryDTO;
 import hana.teamfour.addminhana.entity.AccountEntity;
 import hana.teamfour.addminhana.entity.AssetEntity;
 import hana.teamfour.addminhana.entity.ProductEntity;
-import hana.teamfour.addminhana.service.*;
+import hana.teamfour.addminhana.service.RecommendService;
+import hana.teamfour.addminhana.service.SavingsAccountService;
+import hana.teamfour.addminhana.service.SavingsAssetService;
+import hana.teamfour.addminhana.service.SavingsBalanceService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -19,15 +23,17 @@ import java.util.ArrayList;
 public class CurSavingsInfoController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String productType = "적금";
-        Integer uid = 37;
+        HttpSession session = request.getSession(false);
 
-        SavingsAccountService savingsAccountService = new SavingsAccountService(uid);
-        SavingsAssetService savingsAssetService = new SavingsAssetService(uid);
-        SavingsBalanceService savingsBalanceService = new SavingsBalanceService(uid);
-        RecommendService recommendService = new RecommendService(uid, productType);
-        CustomerService customerService = new CustomerService();
+        CustomerSummaryDTO customerSummaryDTO = (CustomerSummaryDTO) session.getAttribute("userSession");
+        Integer c_id = customerSummaryDTO.getC_id();
+        System.out.println(c_id);
 
-        CustomerSummaryDTO customerSummaryDTO = customerService.getCustomerSummaryDTOById(uid);
+        SavingsAccountService savingsAccountService = new SavingsAccountService(c_id);
+        SavingsAssetService savingsAssetService = new SavingsAssetService(c_id);
+        SavingsBalanceService savingsBalanceService = new SavingsBalanceService(c_id);
+        RecommendService recommendService = new RecommendService(c_id, productType);
+
         AssetEntity assetEntity = savingsAssetService.getSavingsAsset();
         ArrayList<AccountEntity> accountEntity = savingsAccountService.getSavingsAccList();
         Integer[] savingsBalance = savingsBalanceService.getSavingsBalance();

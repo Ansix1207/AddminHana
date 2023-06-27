@@ -4,7 +4,10 @@ import hana.teamfour.addminhana.DTO.CustomerSummaryDTO;
 import hana.teamfour.addminhana.entity.AccountEntity;
 import hana.teamfour.addminhana.entity.AssetEntity;
 import hana.teamfour.addminhana.entity.ProductEntity;
-import hana.teamfour.addminhana.service.*;
+import hana.teamfour.addminhana.service.DepositAccountService;
+import hana.teamfour.addminhana.service.DepositAssetService;
+import hana.teamfour.addminhana.service.DepositBalanceService;
+import hana.teamfour.addminhana.service.RecommendService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -20,15 +24,16 @@ public class CurDepositInfoController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String productType = "예금";
-        Integer uid = 37;
+        HttpSession session = request.getSession(false);
 
-        DepositAccountService depositAccountService = new DepositAccountService(uid);
-        DepositAssetService depositAssetService = new DepositAssetService(uid);
-        DepositBalanceService depositBalanceService = new DepositBalanceService(uid);
-        RecommendService recommendService = new RecommendService(uid, productType);
-        CustomerService customerService = new CustomerService();
+        CustomerSummaryDTO customerSummaryDTO = (CustomerSummaryDTO) session.getAttribute("userSession");
+        Integer c_id = customerSummaryDTO.getC_id();
 
-        CustomerSummaryDTO customerSummaryDTO = customerService.getCustomerSummaryDTOById(uid);
+        DepositAccountService depositAccountService = new DepositAccountService(c_id);
+        DepositAssetService depositAssetService = new DepositAssetService(c_id);
+        DepositBalanceService depositBalanceService = new DepositBalanceService(c_id);
+        RecommendService recommendService = new RecommendService(c_id, productType);
+
         AssetEntity assetEntity = depositAssetService.getDepositAsset();
         ArrayList<AccountEntity> accountEntity = depositAccountService.getDepositAccList();
         Integer[] depositBalance = depositBalanceService.getDepositBalance();
