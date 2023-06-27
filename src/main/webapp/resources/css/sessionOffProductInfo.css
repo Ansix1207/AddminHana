@@ -10,10 +10,14 @@
 }
 
 .modify {
+<<<<<<< HEAD
   /*display: flex;*/
   flex-shrink: 0;
   /*align-items: center;*/
   /*justify-content: flex-end;*/
+=======
+  flex-shrink: 0;
+>>>>>>> d1bda3b3864cdb2b6593c2f38df6cb85b1c27daa
   vertical-align: middle;
   margin-left: 150px;
   height: 40px;
@@ -36,11 +40,26 @@
 }
 
 
+<<<<<<< HEAD
 .btn {
+=======
+.btn-sunghee {
+>>>>>>> d1bda3b3864cdb2b6593c2f38df6cb85b1c27daa
   margin: 50px;
   --bs-btn-padding-x: 2.5rem;
 }
 
+<<<<<<< HEAD
+=======
+.btn-search {
+  color: #ffffff;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  font-size: 20px;
+}
+
+
+>>>>>>> d1bda3b3864cdb2b6593c2f38df6cb85b1c27daa
 .btn-next {
   /*flex-shrink: 0;*/
   list-style: none;

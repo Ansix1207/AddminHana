@@ -12,12 +12,17 @@ public class LoanProductService {
         this.loanProductDao = loanProductDao;
     }
 
+<<<<<<< HEAD
     public ArrayList<ProductEntity> getLoanProductList(String query, int page) {
         return loanProductDao.getLoanProductList(query, page);
     }
 
     public ArrayList<ProductEntity> getLoanProductList(String field, String query, int page) {
         return loanProductDao.getLoanProductList(query, page);
+=======
+    public ArrayList<ProductEntity> getLoanProductList(int page) {
+        return loanProductDao.getLoanProductList(page);
+>>>>>>> d1bda3b3864cdb2b6593c2f38df6cb85b1c27daa
     }
 
     public ArrayList<ProductEntity> getSearchLoanProductList(String field, String query, int page) {
