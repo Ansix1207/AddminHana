@@ -15,6 +15,7 @@ public class LoanProductDAO {
     private Connection conn;
     private PreparedStatement pstmt;
 
+
     public LoanProductDAO() {
         try {
             Context ctx = new InitialContext();
@@ -23,30 +24,60 @@ public class LoanProductDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
-    public ArrayList<ProductEntity> getLoanProductList() {
+    public ArrayList<ProductEntity> getLoanProductList(int page) {
         ArrayList<ProductEntity> productEntityList = new ArrayList<>();
-        try {
-            conn = dataFactory.getConnection();
-            String sql = "select p_name, p_limit, p_interestrate from admin_hana.product where p_category in (?, ?)";
-            pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, "신용대출");
-            pstmt.setString(2, "담보대출");
-            ResultSet rs = pstmt.executeQuery();
-            while (rs.next()) {
-                ProductEntity productEntity = new ProductEntity();
-                productEntity.setP_name(rs.getString(1));
-                productEntity.setP_limit(rs.getInt(2));
-                productEntity.setP_interestrate(rs.getDouble(3));
-                productEntityList.add(productEntity);
+        try (Connection conn = dataFactory.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement("select p_name, p_description, p_interestrate " +
+                     "FROM (SELECT rownum AS num, p.*" +
+                     "FROM (SELECT * FROM admin_hana.product) p)" +
+                     "WHERE num BETWEEN ? AND ?")) {
+            pstmt.setInt(1, 1 + (page - 1) * 5);
+            pstmt.setInt(2, page * 5);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    ProductEntity productEntity = new ProductEntity();
+                    productEntity.setP_name(rs.getString(1));
+                    productEntity.setP_description(rs.getString(2));
+                    productEntity.setP_interestrate(rs.getDouble(3));
+                    productEntityList.add(productEntity);
+                }
             }
-            conn.close();
-            pstmt.close();
-            rs.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println("productEntityList = " + productEntityList);
+        return productEntityList;
+    }
+
+    public ArrayList<ProductEntity> getSearchLoanProductList(String query, int page) {
+        ArrayList<ProductEntity> productEntityList = new ArrayList<>();
+
+        try (Connection conn = dataFactory.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement("SELECT p_name, p_description, p_interestrate " +
+                     "FROM (SELECT rownum AS num, p.* " +
+                     "FROM (SELECT * FROM admin_hana.product " +
+                     "WHERE p_description LIKE ? or p_name LIKE ? ) p) " +
+                     "WHERE num BETWEEN ? AND ?")) {
+            pstmt.setString(1, "%" + query + "%");
+            pstmt.setString(2, "%" + query + "%");
+            pstmt.setInt(3, 1 + (page - 1) * 5);
+            pstmt.setInt(4, page * 5);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    ProductEntity productEntity = new ProductEntity();
+                    productEntity.setP_name(rs.getString(1));
+                    productEntity.setP_description(rs.getString(2));
+                    productEntity.setP_interestrate(rs.getDouble(3));
+                    productEntityList.add(productEntity);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("productEntityList = " + productEntityList);
         return productEntityList;
     }
 }
