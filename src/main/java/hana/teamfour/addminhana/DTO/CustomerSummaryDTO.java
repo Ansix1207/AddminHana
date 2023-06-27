@@ -25,6 +25,7 @@ public class CustomerSummaryDTO {
         this.c_gender = customerEntity.getC_gender();
         this.c_job = customerEntity.getC_job();
         this.c_description = customerEntity.getC_description();
+        this.customerSessionDTO = new CustomerSessionDTO(this.c_name, this.c_id);
     }
 
     public CustomerSummaryDTO(Integer c_id, String c_name, String c_rrn, Character c_gender, String c_job, String c_description, Integer c_age) {
