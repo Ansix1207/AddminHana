@@ -13,7 +13,6 @@ import java.util.regex.Pattern;
 public class CustomerService {
     private CustomerDAO customerDAO;
 
-    private final static Pattern rrn_pattern = Pattern.compile("^(\\d{6}\\D?\\d{1})(\\d{6})$");
 
     public CustomerService() {
         customerDAO = new CustomerDAO();
@@ -63,6 +62,7 @@ public class CustomerService {
     }
 
     private static String maskRRN(String rrn) {
+        Pattern rrn_pattern = Pattern.compile("^(\\d{6}\\D?\\d{1})(\\d{6})$");
         Matcher matcher = rrn_pattern.matcher(rrn);
         if (matcher.find()) {
             return new StringBuffer(matcher.group(1)).append("******").toString();
