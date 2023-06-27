@@ -16,9 +16,10 @@
     <div class="nav">
       <div class="sb-sidenav-menu-heading">고객</div>
       <%--  TODO: 고객 세션이 존재할 때 코드 추가 --%>
-      <% boolean flag = true;
-
-        if (flag) {%>
+      <%
+        boolean flag = true;
+        if (flag) {
+      %>
       <a class="nav-link" href="#">
         <div class="sb-nav-link-icon">
           <i class="fas fa-id-card"></i>
@@ -82,8 +83,7 @@
   <div class="sb-sidenav-footer-employee">
     <div class="small">로그인된 행원:</div>
     <%
-      if
-      (request.getSession().getAttribute("login") != null) {
+      if (request.getSession().getAttribute("login") != null) {
         EmployeeEntity user = (EmployeeEntity) request.getSession().getAttribute("login");
     %>
     <div class="d-flex"><span><%=user.getE_name()%></span>
