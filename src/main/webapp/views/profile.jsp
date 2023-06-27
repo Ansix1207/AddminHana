@@ -32,7 +32,7 @@ Settings | File Templates. --%>
       margin: 0;
       padding: 0;
     }
-    
+
 
     .card {
       margin: 1rem;
@@ -138,15 +138,6 @@ Settings | File Templates. --%>
               <span>만 ${customerSummaryDTO.c_age}세 / ${customerSummaryDTO.c_gender} / ${customerSummaryDTO.c_job}</span>
             </h6>
             <p class="card-text">${customerSummaryDTO.c_rrn}</p>
-          </div>
-        </div>
-
-        <div class="card assetSummary">
-          <div class="card-body">
-            <h5 class="card-title">Profile</h5>
-            <h6 class="card-subtitle"><span class="summaryCustomerName">O O O 손님</span><span>만 35세 / 여 / 직장인</span>
-            </h6>
-            <p class="card-text">880528 - 2******</p>
           </div>
         </div>
 

@@ -1,5 +1,6 @@
 package hana.teamfour.addminhana.controller;
 
+import hana.teamfour.addminhana.DTO.CustomerSessionDTO;
 import hana.teamfour.addminhana.DTO.CustomerSummaryDTO;
 import hana.teamfour.addminhana.service.CustomerService;
 
@@ -42,20 +43,18 @@ public class ProfileController extends HttpServlet {
         String action = request.getParameter("action");
         String description = request.getParameter("descriptionText");
         String customerRRN = (String) request.getParameter("customerRRN");
+        CustomerSessionDTO customerSession = (CustomerSessionDTO) session.getAttribute("customerSession");
         try {
-            // 1. 로그인 후 /profile 의 경로로 컨트롤러를 타고 들어오면
-            // 1.1. CustomerSummaryDTO 를 서비스단에서 가져와서 request에 setAttribute
-            CustomerSummaryDTO customerSummaryDTO = customerService.getCustomerSummaryDTOByRRN(customerRRN);
-            System.out.println("customerSummaryDTO controller = " + customerSummaryDTO);
-            if (customerSummaryDTO == null) {
-                nextPage = "/views/main.jsp";
-                RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
-                dispatcher.forward(request, response);
-            } else {
-                session.setAttribute("userSession", customerSummaryDTO);
+            CustomerSummaryDTO customerSummaryDTO = null;
+            if (customerSession != null) {
+                customerSummaryDTO = customerService.getCustomerSummaryDTOById(customerSession.getC_id());
+            } else if (customerRRN != null) {
+                customerSummaryDTO = customerService.getCustomerSummaryDTOByRRN(customerRRN);
+            }
+            if (customerSummaryDTO != null) {
+                CustomerSessionDTO customerSessionDTO = customerSummaryDTO.getCustomerSessionDTO();
+                session.setAttribute("customerSession", customerSessionDTO);
                 request.setAttribute("customerSummaryDTO", customerSummaryDTO);
-                // 2. AssetSummary
-                // 3. description
                 if (action != null && action.equals("description")) {
                     customerSummaryDTO.setC_description(description);
                     boolean hasUpdated = customerService.updateCustomerDescription(customerSummaryDTO);
@@ -64,12 +63,15 @@ public class ProfileController extends HttpServlet {
                     // TODO: 새로고침했을 때 attribute를 삭제해줘야 하는 방법이 뭘까 ?
                     // TODO: Toast를 한번 띄우고 attribute 삭제 콜을 해야할것 같기도 하고.. ?
                     request.setAttribute("hasUpdatedDescription", hasUpdated);
+                    request.setAttribute("customerSummaryDTO", customerSummaryDTO);
                 }
-                // 4. recommendation
-                // 5. calendar data
                 RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
                 dispatcher.forward(request, response);
+                return;
             }
+            nextPage = "/views/main.jsp";
+            RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
+            dispatcher.forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
         }
