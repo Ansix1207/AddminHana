@@ -79,9 +79,9 @@ To change this template use File | Settings | File Templates.
   <nav id="layoutSidenav_nav">
   <%@ include file="common/navbar.jsp" %>
   </nav>
-  <main class="d-grid grid-cols-2 w-full">
-    <div class="col-span-1 p-4 h-full">
-      <div class="card statisticsSituation h-full">
+  <main class="d-grid grid-cols-2 w-100">
+    <div class="col-span-1 p-4 h-100">
+      <div class="card statisticsSituation h-100">
         <div class="card-body">
           <span class="componentTitle"><%=customerName%> 님의 <%=category%> 현황</span>
           <div class="mb-4 assetInfo">
@@ -113,8 +113,8 @@ To change this template use File | Settings | File Templates.
         </div>
       </div>
     </div>
-    <div class="col-span-1 p-4 h-full">
-      <div class="recommendProduct card h-full">
+    <div class="col-span-1 p-4 h-100">
+      <div class="recommendProduct card h-100">
         <div class="card-body">
           <span class="componentTitle">추천 <%=category%> 상품</span>
           <div>
