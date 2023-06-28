@@ -37,7 +37,6 @@ public class LoanController extends HttpServlet {
             int page = 1;
             if (page_ != null && !query.isEmpty()) {
                 page = Integer.parseInt(page_);
-
             }
         }
         setProductCount(request, response);
@@ -51,7 +50,6 @@ public class LoanController extends HttpServlet {
         Map<String, Integer> accountCountMap = new HashMap<>();
         accountCountMap = loanProductDAO.getAccountCountByCategory();
         request.setAttribute("accountCountMap", accountCountMap);
-
     }
 
     public void setProductCount(HttpServletRequest request, HttpServletResponse response) {
@@ -60,7 +58,6 @@ public class LoanController extends HttpServlet {
         int count = loanProductDAO.getProductCount(query);
         request.setAttribute("count", count);
     }
-
 
     private void setProductEntity(HttpServletRequest request, HttpServletResponse response) {
         LoanProductDAO loanProductDAO = new LoanProductDAO();
@@ -88,6 +85,4 @@ public class LoanController extends HttpServlet {
         ArrayList<ProductEntity> productEntity = loanProductDAO.getSearchLoanProductList(query, page);
         request.setAttribute("productEntity", productEntity);
     }
-
-
 }

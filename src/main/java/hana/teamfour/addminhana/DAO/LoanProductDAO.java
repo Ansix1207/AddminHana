@@ -107,7 +107,6 @@ public class LoanProductDAO {
         return count;
     }
 
-
     public Map<String, Integer> getAccountCountByCategory() {
         Map<String, Integer> accountCountMap = new HashMap<>();
         try (Connection conn = dataFactory.getConnection();
