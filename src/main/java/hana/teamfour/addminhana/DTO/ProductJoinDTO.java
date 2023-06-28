@@ -1,7 +1,6 @@
 package hana.teamfour.addminhana.DTO;
 
 import hana.teamfour.addminhana.entity.AccountEntity;
-import hana.teamfour.addminhana.entity.CustomerEntity;
 import lombok.*;
 
 import java.sql.Timestamp;
@@ -12,50 +11,60 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+
 public class ProductJoinDTO {
-    private Integer ACC_CID;
-    private Timestamp ACC_DATE;
-    private java.lang.String ACC_P_CATEGORY;
-    private java.lang.String ACC_PNAME;
-    private java.lang.String c_name;
-    private java.lang.String c_job;
-    private java.lang.String c_mobile;
-    private java.lang.String c_description;
-
-
-    private ProductJoinDTO(CustomerEntity customerEntity) {
-        this.c_name = customerEntity.getC_name();
-        this.c_job = customerEntity.getC_job();
-        this.c_mobile = customerEntity.getC_mobile();
-        this.c_description = customerEntity.getC_description();
-    }
+    private Integer acc_id;
+    private Integer acc_cid;
+    private Timestamp acc_date;
+    private Integer acc_balance;
+    private String acc_password;
+    private Integer acc_pid;
+    private String acc_p_category;
+    private String acc_pname;
+    private Double acc_interestrate;
+    private Integer acc_collateralvalue;
+    private Integer acc_interest_day;
+    private Integer acc_contract_month;
+    private Timestamp acc_maturitydate;
+    private Character acc_isactive;
 
     private ProductJoinDTO(AccountEntity accountEntity) {
-        this.ACC_CID = accountEntity.getAcc_cid();
-        this.ACC_DATE = accountEntity.getAcc_date();
-        this.ACC_P_CATEGORY = accountEntity.getAcc_p_category();
-        this.ACC_PNAME = accountEntity.getAcc_pname();
+        this.acc_id = accountEntity.getAcc_id();
+        this.acc_cid = accountEntity.getAcc_cid();
+        this.acc_date = accountEntity.getAcc_date();
+        this.acc_balance = accountEntity.getAcc_balance();
+        this.acc_password = accountEntity.getAcc_password();
+        this.acc_pid = accountEntity.getAcc_pid();
+        this.acc_p_category = accountEntity.getAcc_p_category();
+        this.acc_pname = accountEntity.getAcc_pname();
+        this.acc_interestrate = accountEntity.getAcc_interestrate();
+        this.acc_collateralvalue = accountEntity.getAcc_collateralvalue();
+        this.acc_interest_day = accountEntity.getAcc_interest_day();
+        this.acc_contract_month = accountEntity.getAcc_contract_month();
+        this.acc_maturitydate = accountEntity.getAcc_maturitydate();
+        this.acc_isactive = accountEntity.getAcc_isactive();
     }
 
     // static factory method pattern (정적 팩토리 메서드 패턴)
-    public static ProductJoinDTO from(CustomerEntity customerEntity) {
-        return new ProductJoinDTO(customerEntity);
+    public static ProductJoinDTO from(AccountEntity accountEntity) {
+        return new ProductJoinDTO(accountEntity);
     }
 
-    public static ProductJoinDTO from(AccountEntity customerEntity) {
-        return new ProductJoinDTO(customerEntity);
-    }
-
-    public static CustomerEntity toEntity(ProductJoinDTO productJoinDTO) {
-        return CustomerEntity.builder()
-                .ACC_CID(productJoinDTO.getACC_CID())
-                .ACC_DATE(productJoinDTO.getACC_DATE())
-                .ACC_P_CATEGORY(productJoinDTO.getACC_P_CATEGORY())
-                .ACC_PNAME(productJoinDTO.getACC_PNAME())
-                .c_name(productJoinDTO.getC_name())
-                .c_job(productJoinDTO.getC_job())
-                .c_mobile(productJoinDTO.getC_mobile())
-                .c_description(productJoinDTO.getC_description())
-                .build();
-    }
+//    public static AccountEntity toEntity(ProductJoinDTO productJoinDTO) {
+//        return AccountEntity.builder()
+//                .acc_id(productJoinDTO.getAcc_id())
+//                .acc_cid(productJoinDTO.getAcc_cid())
+//                .acc_date(productJoinDTO.getAcc_date())
+//                .acc_balance(productJoinDTO.getAcc_balance())
+//                .acc_password(productJoinDTO.getAcc_password())
+//                .acc_pid(productJoinDTO.getAcc_pid())
+//                .acc_p_category(productJoinDTO.getAcc_p_category())
+//                .acc_pname(productJoinDTO.getAcc_pname())
+//                .acc_interestrate(productJoinDTO.getAcc_interestrate())
+//                .acc_collateralvalue(productJoinDTO.getAcc_collateralvalue())
+//                .acc_interest_day(productJoinDTO.getAcc_interest_day())
+//                .acc_contract_month(productJoinDTO.getAcc_contract_month())
+//                .acc_maturitydate(productJoinDTO.getAcc_maturitydate())
+//                .acc_isactive(productJoinDTO.getAcc_isactive());
+//    }
 }

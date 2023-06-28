@@ -40,39 +40,40 @@
               <div class="card shadow-lg border-0 rounded-lg mt-5">
                 <div class="card-header"><h3 class="text-center font-weight-light my-4">대출 가입</h3></div>
                 <div class="card-body">
-                  <div class="form-floating mb-3" style="margin-top: 50px">
-                    <label>고객번호</label>
-                    <input class="form-control" name="idNum" value="${param.idNum}" type="email" id="inputEmail">
-                  </div>
+                  <%--                  <div class="form-floating mb-3" style="margin-top: 50px">--%>
+                  <%--                    <label>고객번호</label>--%>
+                  <%--                    <input class="form-control" name="idNum" value="${param.idNum}" type="text">--%>
+                  <%--                  </div>--%>
                   <div class="form-floating mb-3">
-                    <label>가입날짜</label>
-                    <input class="form-control" name="today" value="${param.today}" type="text">
-                  </div>
-
-                  <div class="form-floating mb-3">
-                    <label>가입상품종류</label>
-                    <input class="form-control" name="productType" value="${param.productType}" type="text">
+                    <label>비밀번호</label>
+                    <input class="form-control" name="ACC_PASSWORD" value="${param.ACC_PASSWORD}" type="text">
                   </div>
 
                   <div class="form-floating mb-3">
-                    <label>가입상품</label>
-                    <input class="form-control" name="product" value="${param.product}" type="text">
+                    <label>이자율</label>
+                    <input class="form-control" name="ACC_INTERESTRATE" value="${param.ACC_INTERESTRATE}" type="text">
                   </div>
                   <div class="form-floating mb-3">
-                    <label>이름</label>
-                    <input class="form-control" name="customerName" value="${param.customerName}" type="text">
+                    <label>담보가액</label>
+                    <input class="form-control" name="ACC_COLLATERALVALUE" value="${param.ACC_COLLATERALVALUE}"
+                           type="text">
                   </div>
                   <div class="form-floating mb-3">
-                    <label>직장</label>
-                    <input class="form-control" name="job" value="${param.job}" type="text">
+                    <label>이자일</label>
+                    <input class="form-control" name="ACC_INTEREST_DAY" value="${param.ACC_INTEREST_DAY}" type="text">
                   </div>
                   <div class="form-floating mb-3">
-                    <label>휴대폰번호</label>
-                    <input class="form-control" name="phone" value="${param.phone}" type="text">
+                    <label>약정일</label>
+                    <input class="form-control" name="ACC_CONTRACT_MONTH" value="${param.ACC_CONTRACT_MONTH}"
+                           type="text">
                   </div>
                   <div class="form-floating mb-3">
-                    <label>세부사항</label>
-                    <input class="form-control" name="description" value="${param.description}" type="text">
+                    <label>만기일</label>
+                    <input class="form-control" name="ACC_MATURITYDATE" value="${param.ACC_MATURITYDATE}" type="text">
+                  </div>
+                  <div class="form-floating mb-3">
+                    <label>활성화여부</label>
+                    <input class="form-control" name="ACC_ISACTIVE" value="${param.ACC_ISACTIVE}" type="text">
                   </div>
                   <div class="d-grid"><a class="btn1 btn-block" href="login.html">가입 심사</a></div>
                 </div>

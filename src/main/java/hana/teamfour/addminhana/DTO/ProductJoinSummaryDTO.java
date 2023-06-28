@@ -11,12 +11,18 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 
 public class ProductJoinSummaryDTO {
-    private Integer ACC_CID;
-    private Timestamp ACC_DATE;
-    private java.lang.String ACC_P_CATEGORY;
-    private java.lang.String ACC_PNAME;
-    private java.lang.String c_name;
-    private java.lang.String c_job;
-    private java.lang.String c_mobile;
-    private java.lang.String c_description;
+    private Integer acc_id;
+    private Integer acc_cid;
+    private Timestamp acc_date;
+    private Integer acc_balance;
+    private String acc_password;
+    private Integer acc_pid;
+    private String acc_p_category;
+    private String acc_pname;
+    private Double acc_interestrate;
+    private Integer acc_collateralvalue;
+    private Integer acc_interest_day;
+    private Integer acc_contract_month;
+    private Timestamp acc_maturitydate;
+    private Character acc_isactive;
 }
