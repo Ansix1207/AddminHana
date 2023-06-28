@@ -32,55 +32,55 @@
       <%@ include file="common/navbar.jsp" %>
     </nav>
     <main>
-      <form action="loaninquery" method="GET"></form>
+      <form action="loaninquery" method="GET">
 
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-7">
-            <div class="card shadow-lg border-0 rounded-lg mt-5">
-              <div class="card-header"><h3 class="text-center font-weight-light my-4">대출 가입</h3></div>
-              <div class="card-body">
-                <div class="form-floating mb-3" style="margin-top: 50px">
-                  <label for="inputEmail">고객번호</label>
-                  <input class="form-control" name="inputEmail" type="email" id="inputEmail">
-                </div>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-7">
+              <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-header"><h3 class="text-center font-weight-light my-4">대출 가입</h3></div>
+                <div class="card-body">
+                  <div class="form-floating mb-3" style="margin-top: 50px">
+                    <label>고객번호</label>
+                    <input class="form-control" name="idNum" value="${param.idNum}" type="email" id="inputEmail">
+                  </div>
+                  <div class="form-floating mb-3">
+                    <label>가입날짜</label>
+                    <input class="form-control" name="today" value="${param.today}" type="text">
+                  </div>
 
-                <div class="form-floating mb-3">
-                  <label for="inputName">가입날짜</label>
-                  <input class="form-control" name="inputName" type="text">
-                </div>
+                  <div class="form-floating mb-3">
+                    <label>가입상품종류</label>
+                    <input class="form-control" name="productType" value="${param.productType}" type="text">
+                  </div>
 
-                <div class="form-floating mb-3">
-                  <label for="inputName">가입상품종류</label>
-                  <input class="form-control" name="inputName" type="text">
+                  <div class="form-floating mb-3">
+                    <label>가입상품</label>
+                    <input class="form-control" name="product" value="${param.product}" type="text">
+                  </div>
+                  <div class="form-floating mb-3">
+                    <label>이름</label>
+                    <input class="form-control" name="customerName" value="${param.customerName}" type="text">
+                  </div>
+                  <div class="form-floating mb-3">
+                    <label>직장</label>
+                    <input class="form-control" name="job" value="${param.job}" type="text">
+                  </div>
+                  <div class="form-floating mb-3">
+                    <label>휴대폰번호</label>
+                    <input class="form-control" name="phone" value="${param.phone}" type="text">
+                  </div>
+                  <div class="form-floating mb-3">
+                    <label>세부사항</label>
+                    <input class="form-control" name="description" value="${param.description}" type="text">
+                  </div>
+                  <div class="d-grid"><a class="btn1 btn-block" href="login.html">가입 심사</a></div>
                 </div>
-
-                <div class="form-floating mb-3">
-                  <label for="inputName">가입상품</label>
-                  <input class="form-control" name="inputName" type="text">
-                </div>
-                <div class="form-floating mb-3">
-                  <label for="inputName">이름</label>
-                  <input class="form-control" name="inputName" type="text">
-                </div>
-                <div class="form-floating mb-3">
-                  <label for="inputName">직장</label>
-                  <input class="form-control" name="inputName" type="text">
-                </div>
-                <div class="form-floating mb-3">
-                  <label for="inputName">휴대폰번호</label>
-                  <input class="form-control" name="inputName" type="text">
-                </div>
-                <div class="form-floating mb-3">
-                  <label for="inputName">세부사항</label>
-                  <input class="form-control" name="inputName" type="text">
-                </div>
-                <div class="d-grid"><a class="btn1 btn-block" href="login.html">가입 심사</a></div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </main>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
