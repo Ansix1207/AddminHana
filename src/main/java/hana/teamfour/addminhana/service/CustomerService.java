@@ -35,7 +35,12 @@ public class CustomerService {
     }
 
     public boolean updateCustomerDescription(CustomerSummaryDTO customerSummaryDTO) {
-        return customerDAO.updateCustomerSummary(customerSummaryDTO);
+        CustomerEntity customerEntity = customerDAO.findById(customerSummaryDTO.getC_id());
+        if (customerEntity == null) {
+            return false;
+        }
+        customerEntity.setC_description(customerSummaryDTO.getC_description());
+        return customerDAO.updateCustomerEntity(customerEntity);
     }
 
     private CustomerSummaryDTO setCustomerSummaryDTO(CustomerEntity customerEntity) {
