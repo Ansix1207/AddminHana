@@ -21,94 +21,9 @@ Settings | File Templates. --%>
         crossorigin="anonymous"/>
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/base.css">
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/nav.css"/>
+  <link rel="stylesheet" href="<%=contextPath%>/resources/css/profile.css"/>
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
   <title>Admin Hana - profile</title>
-  <style>
-    main {
-      padding: 3rem;
-    }
-
-    ul {
-      margin: 0;
-      padding: 0;
-    }
-
-
-    .card {
-      margin: 1rem;
-      width: 100%;
-      box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5);
-    }
-
-    .card-title {
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
-    .profileSummary {
-    }
-
-    .summaryCustomerName {
-      font-size: 1.25rem;
-      margin-right: 1rem;
-      font-weight: bold;
-    }
-
-    .recommendationSubtitle {
-      font-weight: 600;
-      font-size: 1.25rem;
-    }
-
-    .productItem {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .descriptionTextarea {
-      resize: none;
-    }
-
-    .btn-primary {
-      background-color: #0d6efd;
-    }
-
-    .grid-cols-12 {
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-    }
-
-    .col-span-4 {
-      grid-column: span 4 / span 4;
-    }
-
-    .col-span-8 {
-      grid-column: span 8 / span 8;
-    }
-
-    .w-full {
-      width: 100%;
-    }
-
-    .p-4 {
-      padding: 1rem;
-    }
-
-    .mb-2 {
-      margin-bottom: 0.5rem;
-    }
-
-    .mt-4 {
-      margin-top: 1rem;
-    }
-
-    .mb-4 {
-      margin-bottom: 1rem;
-    }
-
-    .w-16 {
-      width: 4rem;
-    }
-
-  </style>
 </head>
 <body>
   <div class="wrap">
@@ -128,8 +43,8 @@ Settings | File Templates. --%>
       <jsp:param name="description" value="업데이트에 실패했습니다. "/>
     </jsp:include>
 
-    <main class="d-grid grid-cols-12 w-full">
-      <div class="col-span-8 p-4">
+    <main class="d-grid grid-cols-12 gap-4 w-full">
+      <div class="col-span-8 column">
         <div class="card profileSummary">
           <div class="card-body">
             <h5 class="card-title">프로필</h5>
@@ -159,7 +74,7 @@ Settings | File Templates. --%>
         </div>
       </div>
 
-      <div class="col-span-4 p-4">
+      <div class="col-span-4 column">
         <div class="card recommendationProducts">
           <div class="card-body">
             <h5 class="card-title mb-4">신규 추천 상품</h5>
@@ -186,32 +101,19 @@ Settings | File Templates. --%>
               </li>
               <li class="productItem">365 정기에금
                 <button class="btn btn-sm btn-outline-primary"><a>가입</a></button>
+
               </li>
             </ul>
           </div>
         </div>
-
-        <div class="card accountCalendar">
-          <div class="card-body">
-            <h5 class="card-title">Profile</h5>
-            <h6 class="card-subtitle mb-2">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
-        </div>
-        <div class="card customerLogout">
-          <div class="card-body">
-            <h5 class="card-title">Profile</h5>
-            <h6 class="card-subtitle mb-2">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
+        <div class="logOutButton">
+          <a style="color:white;text-underline: none;text-decoration: none; outline: none;"
+             href="<%=contextPath%>/logout/customer">
+            <button class="btn btn-primary w-full">거래 종료</button>
+          </a>
         </div>
       </div>
+
     </main>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
