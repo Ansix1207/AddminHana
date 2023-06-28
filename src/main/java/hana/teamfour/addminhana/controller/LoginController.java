@@ -1,7 +1,7 @@
 package hana.teamfour.addminhana.controller;
 
-import hana.teamfour.addminhana.DAO.EmployeeDAO;
-import hana.teamfour.addminhana.entity.EmployeeEntity;
+import hana.teamfour.addminhana.DTO.EmployeeDTO;
+import hana.teamfour.addminhana.service.EmployeeService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,8 +13,6 @@ import java.io.IOException;
 
 @WebServlet("/login")
 public class LoginController extends HttpServlet {
-
-    private final EmployeeDAO employeeDAO = new EmployeeDAO();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,9 +29,11 @@ public class LoginController extends HttpServlet {
         String id = request.getParameter("id");
         String pw = request.getParameter("pw");
 
-        EmployeeEntity employee = employeeDAO.login(id, pw);
-        if (employee != null) {
-            request.getSession().setAttribute("login", employee);
+        EmployeeService employeeService = new EmployeeService();
+        EmployeeDTO employeeDTO = employeeService.login(id, pw);
+        
+        if (employeeDTO != null) {
+            request.getSession().setAttribute("login", employeeDTO);
             request.getSession().setMaxInactiveInterval(60 * 30); // 60초 * 30분 (테스트할 때 세션 시간 늘리시면 됩니다)
             response.sendRedirect(request.getContextPath());
         } else {

@@ -6,9 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="hana.teamfour.addminhana.entity.EmployeeEntity" %>
-<%@ page import="hana.teamfour.addminhana.DTO.CustomerSummaryDTO" %>
 <%@ page import="hana.teamfour.addminhana.DTO.CustomerSessionDTO" %>
+<%@ page import="hana.teamfour.addminhana.DTO.EmployeeDTO" %>
 <%
   boolean flag = request.getSession().getAttribute("customerSession") != null;
 %>
@@ -25,7 +24,7 @@
       <%
         if (flag) {
       %>
-      <a class="nav-link" href="#">
+      <a class="nav-link" href="<%=contextPath%>/profile">
         <div class="sb-nav-link-icon">
           <i class="fas fa-id-card"></i>
         </div>
@@ -95,17 +94,17 @@
       <%}%>
 
       <div class="sb-sidenav-menu-heading">상품</div>
-      <a class="nav-link" href="#">
+      <a class="nav-link" href="<%=contextPath%>/loaninquery?q=예금">
         <div class="sb-nav-link-icon">
           <i class="fas fa-money-bill-transfer"></i>
         </div>
         예금 상품 리스트
       </a>
-      <a class="nav-link" href="#">
+      <a class="nav-link" href="<%=contextPath%>/loaninquery?q=적금">
         <div class="sb-nav-link-icon"><i class="fas fa-piggy-bank"></i></div>
         적금 상품 리스트
       </a>
-      <a class="nav-link" href="#">
+      <a class="nav-link" href="<%=contextPath%>/loaninquery?q=대출">
         <div class="sb-nav-link-icon"><i class="fas fa-landmark"></i></div>
         대출 상품 리스트
       </a>
@@ -128,9 +127,9 @@
     <div class="small">로그인된 행원:</div>
     <%
       if (request.getSession().getAttribute("login") != null) {
-        EmployeeEntity user = (EmployeeEntity) request.getSession().getAttribute("login");
+        EmployeeDTO employee = (EmployeeDTO) request.getSession().getAttribute("login");
     %>
-    <div class="d-flex"><span><%=user.getE_name()%></span>
+    <div class="d-flex"><span><%=employee.getE_name()%></span>
       <a class="btn btn-dark btn-sm" style="--bs-btn-font-size: .50rem; display: inline-block"
          href="<%=contextPath%>/logout/user">로그아웃</a>
     </div>
