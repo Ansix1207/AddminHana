@@ -43,7 +43,7 @@ Settings | File Templates. --%>
       <jsp:param name="description" value="업데이트에 실패했습니다. "/>
     </jsp:include>
 
-    <main class="d-grid grid-cols-12 gap-4 w-full">
+    <main class="d-grid grid-cols-12 gap-4 w-100">
       <div class="col-span-8 column">
         <div class="card profileSummary">
           <div class="card-body">
@@ -109,7 +109,7 @@ Settings | File Templates. --%>
         <div class="logOutButton">
           <a style="color:white;text-underline: none;text-decoration: none; outline: none;"
              href="<%=contextPath%>/logout/customer">
-            <button class="btn btn-primary w-full">거래 종료</button>
+            <button class="btn btn-primary w-100">거래 종료</button>
           </a>
         </div>
       </div>

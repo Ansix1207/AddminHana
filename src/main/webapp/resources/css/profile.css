@@ -20,9 +20,6 @@ ul {
   margin-bottom: 1rem;
 }
 
-.profileSummary {
-}
-
 .summaryCustomerName {
   font-size: 1.25rem;
   margin-right: 1rem;
@@ -53,10 +50,6 @@ ul {
   justify-content: space-between;
 }
 
-.btn-primary {
-  background-color: #0d6efd;
-}
-
 .grid-cols-12 {
   grid-template-columns: repeat(12, minmax(0, 1fr));
 }
@@ -67,30 +60,6 @@ ul {
 
 .col-span-8 {
   grid-column: span 8 / span 8;
-}
-
-.gap-4 {
-  gap: 1rem;
-}
-
-.w-full {
-  width: 100%;
-}
-
-.p-4 {
-  padding: 1rem;
-}
-
-.mb-2 {
-  margin-bottom: 0.5rem;
-}
-
-.mt-4 {
-  margin-top: 1rem;
-}
-
-.mb-4 {
-  margin-bottom: 1rem;
 }
 
 .w-16 {
