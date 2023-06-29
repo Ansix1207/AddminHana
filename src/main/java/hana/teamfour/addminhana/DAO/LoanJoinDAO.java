@@ -24,12 +24,14 @@ public class LoanJoinDAO {
 
     public AccountEntity insertAccount(AccountEntity accountEntity) {
 //        AccountEntity 객체의 정보를 사용하여 데이터베이스에 새로운 계정을 삽입하는 작업을 수행합니다. 
-        String sql = "INSERT INTO ACCOUNT VALUES(account_seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO ACCOUNT VALUES(account_seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 //        String sql = "INSERT INTO ACCOUNT VALUES(account_seq.nextval,?)";
         System.out.println("sql = " + sql);
         try (Connection connection = getDataFactoryConnection()) {
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                System.out.println("set 하기 전까지는 왔다");
                 statement.setInt(1, accountEntity.getAcc_id());
+//                PreparedStatement의 첫 번째 파라미터 위치에 accountEntity의 acc_id 값을 설정한다는 의미입니다.
                 statement.setInt(2, accountEntity.getAcc_cid());
                 statement.setTimestamp(3, accountEntity.getAcc_date());
                 statement.setInt(4, accountEntity.getAcc_balance());
@@ -50,7 +52,7 @@ public class LoanJoinDAO {
             e.printStackTrace();
         }
         System.out.println("pass" + new AccountEntity());
-        return null;
+        return accountEntity;
     }
 
     private Connection getDataFactoryConnection() throws SQLException {

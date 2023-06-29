@@ -55,7 +55,7 @@
                   </div>
                   <div class="form-floating mb-3">
                     <label>Acc_date</label>
-                    <input class="form-control" name="Acc_cid" value="${Acc_date}" type="text">
+                    <input class="form-control" name="Acc_date" value="${Acc_date}" type="text">
                   </div>
                   <div class="form-floating mb-3">
                     <label>Acc_balance</label>
