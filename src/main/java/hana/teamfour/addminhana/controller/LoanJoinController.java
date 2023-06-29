@@ -15,7 +15,13 @@ import java.io.IOException;
 
 public class LoanJoinController extends HttpServlet {
     private LoanJoinService loanJoinService;
+
     //    LoanJoinService 클래스의 메서드와 기능에 접근할 수 있습니다.
+    public LoanJoinController() {
+        this.loanJoinService = new LoanJoinService();
+    }
+//    문제는 loanJoinService 객체가 null인 상태를 해결하기위해서 초기화
+
     private Integer id;
 
 //    public void init(ServletConfig config) throws ServletException {
@@ -63,7 +69,7 @@ public class LoanJoinController extends HttpServlet {
 //
 //            productJoinDTO.setAcc_id(request.getParameter("acc_id"));
 //            return productJoinDTO;
-//        }
+//        } 
     }
 //                 request.getParameter("acc_id")를 통해 전달된 파라미터의 값을 "acc_id"라는 이름으로 속성을 설정하는 코드
 //                 이후 이 속성은 해당 요청에 대한 응답 처리나 다른 컴포넌트에서 사용될 수 있습니다.

@@ -43,6 +43,7 @@ public class LoanJoinDAO {
 //                statement.setInt(12, accountEntity.getAcc_contract_month());
 //                statement.setTimestamp(13, accountEntity.getAcc_maturitydate());
 //                statement.setString(14, String.valueOf(accountEntity.getAcc_isactive()));
+                System.out.println("set은 잘 들어감");
                 statement.executeUpdate(); // 데이터를 삽입?
             }
         } catch (SQLException e) {

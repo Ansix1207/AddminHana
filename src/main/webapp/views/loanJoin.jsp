@@ -38,7 +38,7 @@
       <%@ include file="common/navbar.jsp" %>
     </nav>
     <main>
-      <form action="loanJoin" method="POST">
+      <form action="loanjoin" method="POST">
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-7">
