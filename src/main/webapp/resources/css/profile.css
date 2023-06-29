@@ -65,3 +65,34 @@ ul {
 .w-16 {
   width: 4rem;
 }
+
+.productName {
+  font-weight: bold;
+}
+
+.signedupProduct > ul > li, .recommendList > li {
+  line-height: 1.8rem;
+}
+
+.signedupProduct li > span, .recommendList > li > span {
+  font-size: 0.9rem;
+}
+
+.recommendTitle {
+  color: #555;
+  text-decoration: underline currentColor;
+  text-underline-position: under
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.col-span-1 {
+  grid-column: span 1 / span 1;
+}
+
+.assetCardContainer {
+  display: flex;
+  justify-content: space-between;
+}

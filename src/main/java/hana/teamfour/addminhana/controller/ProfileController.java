@@ -1,7 +1,11 @@
 package hana.teamfour.addminhana.controller;
 
+import hana.teamfour.addminhana.DTO.AccountDTO;
+import hana.teamfour.addminhana.DTO.AssetDTO;
 import hana.teamfour.addminhana.DTO.CustomerSessionDTO;
 import hana.teamfour.addminhana.DTO.CustomerSummaryDTO;
+import hana.teamfour.addminhana.service.AccountService;
+import hana.teamfour.addminhana.service.AssetService;
 import hana.teamfour.addminhana.service.CustomerService;
 
 import javax.servlet.RequestDispatcher;
@@ -14,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet("/customer/profile/*")
 public class ProfileController extends HttpServlet {
@@ -75,6 +80,9 @@ public class ProfileController extends HttpServlet {
                 CustomerSessionDTO customerSessionDTO = customerSummaryDTO.getCustomerSessionDTO();
                 session.setAttribute("customerSession", customerSessionDTO);
                 request.setAttribute("customerSummaryDTO", customerSummaryDTO);
+
+                setAssetsInfo(request, response);
+
                 RequestDispatcher dispatcher = request.getRequestDispatcher(profilePage);
                 dispatcher.forward(request, response);
                 return;
@@ -89,6 +97,26 @@ public class ProfileController extends HttpServlet {
         String nextPage = "/views/main.jsp";
         RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
         dispatcher.forward(request, response);
+    }
+
+    private void setAssetsInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+
+        CustomerSessionDTO customerSessionDTO = (CustomerSessionDTO) session.getAttribute("customerSession");
+        Integer c_id = customerSessionDTO.getC_id();
+
+        setDepositAsset(request, response, c_id, "예금", "depositDTO", "depositAccountList");
+        setDepositAsset(request, response, c_id, "적금", "savingsDTO", "savingsAccountList");
+        setDepositAsset(request, response, c_id, "대출", "loanDTO", "loanAccountList");
+    }
+
+    private void setDepositAsset(HttpServletRequest request, HttpServletResponse response, Integer c_id, String category, String assetDTOName, String acountListName) throws ServletException, IOException {
+        AccountService accountService = new AccountService(c_id, category);
+        AssetService assetService = new AssetService(c_id, category);
+        AssetDTO assetDTO = assetService.getAsset();
+        ArrayList<AccountDTO> accountList = accountService.getAccList();
+        request.setAttribute(assetDTOName, assetDTO);
+        request.setAttribute(acountListName, accountList);
     }
 
     @Override

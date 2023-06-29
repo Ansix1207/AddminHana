@@ -1,4 +1,6 @@
-<%@ page import="hana.teamfour.addminhana.DTO.CustomerSummaryDTO" %><%-- Created by IntelliJ IDEA. User: chaedongim Date: 2023/06/19 Time: 9:26 AM To change this template use File |
+<%@ page import="hana.teamfour.addminhana.DTO.*" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Arrays" %><%-- Created by IntelliJ IDEA. User: chaedongim Date: 2023/06/19 Time: 9:26 AM To change this template use File |
 Settings | File Templates. --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -8,6 +10,49 @@ Settings | File Templates. --%>
   String contextPath = request.getContextPath();
   CustomerSummaryDTO customerSummaryDTO = (CustomerSummaryDTO) request.getAttribute("customerSummaryDTO");
   Boolean hasUpdatedDescription = (Boolean) request.getAttribute("hasUpdatedDescription");
+
+  // 계좌 정보
+  ArrayList<AccountDTO> depositAccountList = (ArrayList<AccountDTO>) request.getAttribute("depositAccountList");
+  ArrayList<AccountDTO> savingsAccountList = (ArrayList<AccountDTO>) request.getAttribute("savingsAccountList");
+  ArrayList<AccountDTO> loanAccountList = (ArrayList<AccountDTO>) request.getAttribute("loanAccountList");
+  String category = "전체 자산 현황";
+  AssetDTO depositDTO = (AssetDTO) request.getAttribute("depositDTO");
+  AssetDTO savingsDTO = (AssetDTO) request.getAttribute("savingsDTO");
+  AssetDTO loanDTO = (AssetDTO) request.getAttribute("loanDTO");
+  // 자산 정보
+  Integer asset = 0;
+  String[] assetCategory = new String[6];
+
+  String balance = "잔액";
+  int[] accountBalance = new int[6];
+  int idx = 0;
+  if (depositAccountList != null && depositDTO != null) {
+    Integer[] tempBalance = depositDTO.getBalance_sum();
+    assetCategory[idx] = "보통예금";
+    accountBalance[idx++] = tempBalance[0];
+    assetCategory[idx] = "정기예금";
+    accountBalance[idx++] = tempBalance[1];
+    asset += depositDTO.getAss_deposit();
+    System.out.println("depositDTO.getAss_deposit() = " + depositDTO.getAss_deposit());
+  }
+  if (savingsAccountList != null && savingsDTO != null) {
+    Integer[] tempBalance = savingsDTO.getBalance_sum();
+    assetCategory[idx] = "자유적금";
+    accountBalance[idx++] = tempBalance[0];
+    assetCategory[idx] = "정기적금";
+    accountBalance[idx++] = tempBalance[1];
+    asset += savingsDTO.getAss_savings();
+  }
+  if (loanAccountList != null && loanDTO != null) {
+    Integer[] tempBalance = loanDTO.getBalance_sum();
+    assetCategory[idx] = "신용대출";
+    accountBalance[idx++] = tempBalance[0];
+    assetCategory[idx] = "담보대출";
+    accountBalance[idx++] = tempBalance[1];
+    asset = loanDTO.getAss_loan();
+  }
+  System.out.println("Arrays.toString(accountBalance) = " + Arrays.toString(accountBalance));
+
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -23,6 +68,7 @@ Settings | File Templates. --%>
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/nav.css"/>
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/profile.css"/>
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <title>Admin Hana - profile</title>
 </head>
 <body>
@@ -55,6 +101,104 @@ Settings | File Templates. --%>
             <p class="card-text">${customerSummaryDTO.c_rrn}</p>
           </div>
         </div>
+
+        <c:if test="${(depositDTO != null) || (savingsDTO != null) || (loanDTO != null)}">
+          <div class="col-span-1 h-full">
+            <div class="card statisticsSituation h-full">
+              <div class="card-body assetCardContainer gap-4">
+                <div class="mb-4 assetInfo">
+                  <h5 class="card-title mt-3 mb-2">적금 정보</h5>
+                  <p><span>자산 총액</span> <span class="card-text">₩ <%=asset%></span></p>
+                  <div class="statisticsChart">
+                      <%-- 손님의 대출 자산 현황 그래프 --%>
+                    <canvas class="assetChart" id="assetChart"></canvas>
+                  </div>
+                    <%--                  <c:if test="${depositDTO != null}">--%>
+                    <%--                    <h5 class="card-title mt-3 mb-2">적금 정보</h5>--%>
+                    <%--                    <p><span>총 적금액</span> <span class="card-text">₩ <%=deposit%></span></p>--%>
+                    <%--                    <div class="statisticsChart">--%>
+                    <%--                        &lt;%&ndash; 손님의 대출 자산 현황 그래프 &ndash;%&gt;--%>
+                    <%--                      <canvas class="assetChart" id="depositChart"></canvas>--%>
+                    <%--                    </div>--%>
+                    <%--                  </c:if>--%>
+                    <%--                  <c:if test="${savingsDTO != null}">--%>
+                    <%--                    <h5 class="card-title mt-3 mb-2">예금 정보</h5>--%>
+                    <%--                    <p><span>총 예금액</span> <span class="card-text">₩ <%=savings%></span></p>--%>
+                    <%--                    <div class="statisticsChart">--%>
+                    <%--                        &lt;%&ndash; 손님의 대출 자산 현황 그래프 &ndash;%&gt;--%>
+                    <%--                      <canvas class="assetChart" id="savingsChart"></canvas>--%>
+                    <%--                    </div>--%>
+                    <%--                  </c:if>--%>
+                    <%--                  <c:if test="${loanDTO != null}">--%>
+                    <%--                    <h5 class="card-title mt-3 mb-2">대출 정보</h5>--%>
+                    <%--                    <p><span>총 대출액</span> <span class="card-text">₩ <%=loan%></span></p>--%>
+                    <%--                    <div class="statisticsChart">--%>
+                    <%--                        &lt;%&ndash; 손님의 대출 자산 현황 그래프 &ndash;%&gt;--%>
+                    <%--                      <canvas class="assetChart" id="loanChart"></canvas>--%>
+                    <%--                    </div>--%>
+                    <%--                  </c:if>--%>
+                </div>
+                <div class="signedupProduct">
+                    <%-- 가입된 상품 리스트 --%>
+                  <ul>
+                    <c:if test="${not empty depositAccountList}">
+                      <h5 class="card-title mt-3 mb-2">예금 상품</h5>
+                    </c:if>
+                    <%
+                      for (AccountDTO account : depositAccountList) {
+                    %>
+                    <li>
+                      <div class="productName"><%=account.getAcc_pname()%>
+                      </div>
+                      <span>만기일 <%=account.getAcc_maturitydate()%></span>
+                      <span>이자율 <%=account.getAcc_interestrate()%>%</span>
+                      <span><%=balance%> <%=account.getAcc_balance()%>원</span>
+                    </li>
+                    <%
+                      }
+                    %>
+                  </ul>
+                  <ul>
+                    <c:if test="${not empty savingsAccountList}">
+                      <h5 class="card-title mt-3 mb-2">적금 상품</h5>
+                    </c:if>
+                    <%
+                      for (AccountDTO account : savingsAccountList) {
+                    %>
+                    <li>
+                      <div class="productName"><%=account.getAcc_pname()%>
+                      </div>
+                      <span>만기일 <%=account.getAcc_maturitydate()%></span>
+                      <span>이자율 <%=account.getAcc_interestrate()%>%</span>
+                      <span><%=balance%> <%=account.getAcc_balance()%>원</span>
+                    </li>
+                    <%
+                      }
+                    %>
+                  </ul>
+                  <ul>
+                    <c:if test="${not empty loanAccountList}">
+                      <h5 class="card-title mt-3 mb-2">대출 상품</h5>
+                    </c:if>
+                    <%
+                      for (AccountDTO account : loanAccountList) {
+                    %>
+                    <li>
+                      <div class="productName"><%=account.getAcc_pname()%>
+                      </div>
+                      <span>만기일 <%=account.getAcc_maturitydate()%></span>
+                      <span>이자율 <%=account.getAcc_interestrate()%>%</span>
+                      <span><%=balance%> <%=account.getAcc_balance()%>원</span>
+                    </li>
+                    <%
+                      }
+                    %>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </c:if>
 
         <div class="card customerDescriptionContainer">
           <div class="card-body">
@@ -147,6 +291,89 @@ Settings | File Templates. --%>
               history.replaceState({}.null, location.pathname);
           }
       }
+
+      // 자산이 없을 때 빈 도넛 차트를 그리기 위한 플러그인
+      const plugin = {
+          id: 'emptyDoughnut',
+          afterDraw(chart, args, options) {
+              const {datasets} = chart.data;
+              const {color, width, radiusDecrease} = options;
+              let hasData = false;
+
+              for (let i = 0; i < datasets.length; i += 1) {
+                  const dataset = datasets[i];
+                  for (let j = 0; j < dataset.data.length; j += 1) {
+                      hasData |= (dataset.data[j] != 0);
+                  }
+              }
+
+              if (!hasData) {
+                  const {chartArea: {left, top, right, bottom}, ctx} = chart;
+                  const centerX = (left + right) / 2;
+                  const centerY = (top + bottom) / 2;
+                  const r = Math.min(right - left, bottom - top) / 2;
+
+                  ctx.beginPath();
+                  ctx.lineWidth = width || 2;
+                  ctx.strokeStyle = color || '#BF5AD8';
+                  ctx.arc(centerX, centerY, (r - radiusDecrease || 0), 0, 2 * Math.PI);
+                  ctx.stroke();
+              }
+          }
+      };
+      const dataArr = [];
+      dataArr.push(<%=accountBalance[0]%>);
+      dataArr.push(<%=accountBalance[1]%>);
+      dataArr.push(<%=accountBalance[2]%>);
+      dataArr.push(<%=accountBalance[3]%>);
+      dataArr.push(<%=accountBalance[4]%>);
+      dataArr.push(<%=accountBalance[5]%>);
+      console.log(dataArr);
+      const labelsArr = [];
+      labelsArr.push('<%=assetCategory[0]%>')
+      labelsArr.push('<%=assetCategory[1]%>')
+      labelsArr.push('<%=assetCategory[2]%>')
+      labelsArr.push('<%=assetCategory[3]%>')
+      labelsArr.push('<%=assetCategory[4]%>')
+      labelsArr.push('<%=assetCategory[5]%>')
+      console.log(labelsArr);
+      data1 = {
+          datasets: [{
+              data: dataArr
+          }
+          ],
+          // 라벨의 이름이 툴팁처럼 마우스가 근처에 오면 나타남
+          labels: labelsArr,
+      }
+
+
+      // 도넛형 차트
+      var ctx1 = document.getElementById("assetChart");
+      var myDoughnutChart = new Chart(ctx1, {
+          type: 'doughnut',
+          data: data1,
+          options: {
+              responsive: false,
+              plugins: {
+                  legend: {
+                      position: 'right',
+                      labels: {
+                          font: {
+                              size: 10
+                          }
+
+                      },
+                  },
+                  emptyDoughnut: {
+                      color: '#BF5AD8',
+                      width: 1,
+                      radiusDecrease: 20
+                  }
+              }
+
+          },
+          plugins: [plugin]
+      });
   </script>
 </body>
 </html>
