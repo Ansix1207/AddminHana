@@ -62,16 +62,6 @@ public class LoanController extends HttpServlet {
     }
 
     private void setProductDTO(HttpServletRequest request, HttpServletResponse response) {
-        /*
-        LoanProductService loanProductService = new LoanProductService();
-        String page_ = request.getParameter("p");
-        int page = 1;
-        if (page_ != null) {
-            page = Integer.parseInt(page_);
-        }
-        ArrayList<ProductEntity> productEntity = loanProductDAO.getLoanProductList(page);
-        request.setAttribute("productEntity", productEntity);
-         */
         LoanProductService loanProductService = new LoanProductService();
         String page_ = request.getParameter("p");
         int page = 1;
@@ -80,26 +70,9 @@ public class LoanController extends HttpServlet {
         }
         ArrayList<ProductDTO> productDTOs = loanProductService.getProducts(page);
         request.setAttribute("productDTOs", productDTOs);
-
     }
 
     private void setSearchProductDTO(HttpServletRequest request, HttpServletResponse response) {
-        /*
-        LoanProductService loanProductService = new LoanProductService();
-        ProductDTO productDTO = loanProductService.getSearchLoanProductList(query, page);
-        String query_ = request.getParameter("q");
-        String query = "";
-        String page_ = request.getParameter("p");
-        if (query_ != null) {
-            query = query_;
-        }
-        int page = 1;
-        if (page_ != null) {
-            page = Integer.parseInt(page_);
-        }
-        ArrayList<ProductEntity> productEntity = loanProductDAO.getSearchLoanProductList(query, page);
-        request.setAttribute("productEntity", productEntity);
-         */
         LoanProductService loanProductService = new LoanProductService();
         String query_ = request.getParameter("q");
         String query = "";

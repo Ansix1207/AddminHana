@@ -41,7 +41,7 @@ public class LoanJoinController extends HttpServlet {
         switch (request.getMethod()) {
             case "GET":
                 System.out.println("get 진입");
-                dispatcher = request.getRequestDispatcher("./views/loanJoin.jsp");
+                dispatcher = request.getRequestDispatcher(request.getContextPath() + "/views/loanJoin.jsp");
                 dispatcher.forward(request, response);
                 break;
             case "POST":

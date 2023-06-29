@@ -15,12 +15,6 @@
 
   request.setCharacterEncoding("UTF-8");
   String contextPath = request.getContextPath();
-
-  /*
-  ArrayList<ProductEntity> productEntity = new ArrayList<>();
-  productEntity = (ArrayList<ProductEntity>) request.getAttribute("productEntity");
-  */
-
   ArrayList<ProductDTO> productDTOs = (ArrayList<ProductDTO>) request.getAttribute("productDTOs");
 
 %>
@@ -72,7 +66,6 @@
 
       <script>
           const ctx = document.getElementById('myChart');
-
           new Chart(ctx, {
               type: 'bar',
               data: {
