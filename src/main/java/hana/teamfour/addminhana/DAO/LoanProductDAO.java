@@ -30,7 +30,7 @@ public class LoanProductDAO {
     }
 
     public ArrayList<ProductEntity> getLoanProductList(int page) {
-        ArrayList<ProductEntity> productEntityList = new ArrayList<>();
+        ArrayList<ProductEntity> productList = new ArrayList<>();
         try (Connection conn = dataFactory.getConnection();
              PreparedStatement pstmt = conn.prepareStatement("select p_name, p_description, p_interestrate " +
                      "FROM (SELECT rownum AS num, p.*" +
@@ -44,14 +44,14 @@ public class LoanProductDAO {
                     productEntity.setP_name(rs.getString(1));
                     productEntity.setP_description(rs.getString(2));
                     productEntity.setP_interestrate(rs.getDouble(3));
-                    productEntityList.add(productEntity);
+                    productList.add(productEntity);
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("productEntityList = " + productEntityList);
-        return productEntityList;
+        System.out.println("productEntityList = " + productList);
+        return productList;
     }
 
     public ArrayList<ProductEntity> getSearchLoanProductList(String query, int page) {

@@ -9,14 +9,19 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="hana.teamfour.addminhana.entity.ProductEntity" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="hana.teamfour.addminhana.DTO.ProductDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%
 
   request.setCharacterEncoding("UTF-8");
   String contextPath = request.getContextPath();
 
+  /*
   ArrayList<ProductEntity> productEntity = new ArrayList<>();
   productEntity = (ArrayList<ProductEntity>) request.getAttribute("productEntity");
+  */
+
+  ArrayList<ProductDTO> productDTOs = (ArrayList<ProductDTO>) request.getAttribute("productDTOs");
 
 %>
 <!DOCTYPE html>
@@ -94,15 +99,15 @@
         </div>
         <ol class="list-group list-group-numbered" id="pages">
           <%
-            for (int i = 0; i < productEntity.size(); i++) {
+            for (int i = 0; i < productDTOs.size(); i++) {
           %>
           <li class="productItem list-group-item d-flex justify-content-between align-items-start">
             <div class="ms-2 me-auto ">
               <div class="fw-bold">
                 <div>
-                  <h4><span><%=productEntity.get(i).getP_name()%></span></h4>
-                  <span>금리 <%=productEntity.get(i).getP_interestrate()%> %</span><br>
-                  <span><%=productEntity.get(i).getP_description()%></span>
+                  <h4><span><%=productDTOs.get(i).getP_name()%></span></h4>
+                  <span>금리 <%=productDTOs.get(i).getP_interestrate()%> %</span><br>
+                  <span><%=productDTOs.get(i).getP_description()%></span>
                 </div>
               </div>
             </div>
