@@ -40,15 +40,13 @@ public class RecByJobDAO {
             statement.execute();
 
             try (ResultSet resultSet = (ResultSet) statement.getObject(8)) {
-                if (resultSet.next()) {
-                    do {
-                        ProductEntity productEntity = new ProductEntity();
-                        productEntity.setP_id(resultSet.getInt("p_id"));
-                        productEntity.setP_name(resultSet.getString("p_name"));
-                        productEntity.setP_interestrate(resultSet.getDouble("p_interestrate"));
-                        productEntity.setP_limit(resultSet.getInt("p_limit"));
-                        productList.add(productEntity);
-                    } while (resultSet.next());
+                while (resultSet.next()) {
+                    ProductEntity productEntity = new ProductEntity();
+                    productEntity.setP_id(resultSet.getInt("p_id"));
+                    productEntity.setP_name(resultSet.getString("p_name"));
+                    productEntity.setP_interestrate(resultSet.getDouble("p_interestrate"));
+                    productEntity.setP_limit(resultSet.getInt("p_limit"));
+                    productList.add(productEntity);
                 }
 
             }
