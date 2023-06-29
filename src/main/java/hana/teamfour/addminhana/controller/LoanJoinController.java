@@ -1,6 +1,9 @@
 package hana.teamfour.addminhana.controller;
 
+import hana.teamfour.addminhana.DTO.ProductDTO;
+import hana.teamfour.addminhana.DTO.ProductJoinDTO;
 import hana.teamfour.addminhana.service.LoanJoinService;
+import hana.teamfour.addminhana.service.LoanProductService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,11 +12,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
-@WebServlet("/loanjoin")
+@WebServlet("/customer/loanjoin")
 
 public class LoanJoinController extends HttpServlet {
     private LoanJoinService loanJoinService;
+    //    LoanJoinService 클래스의 메서드와 기능에 접근할 수 있습니다.
     private Integer id;
 
 //    public void init(ServletConfig config) throws ServletException {
@@ -48,6 +53,18 @@ public class LoanJoinController extends HttpServlet {
                 System.out.println("Post 진입");
 //                String res = doValidRRN(request);
                 request.setAttribute("acc_id", request.getParameter("acc_id"));
+        }
+//                 request.getParameter("acc_id")를 통해 전달된 파라미터의 값을 "acc_id"라는 이름으로 속성을 설정하는 코드
+//                 이후 이 속성은 해당 요청에 대한 응답 처리나 다른 컴포넌트에서 사용될 수 있습니다.
+//                 예를 들어, JSP 페이지에서 해당 속성을 참조하여 동적으로 내용을 생성하거나 특정 로직에서 이 값을 활용할 수 있습니다.
+
+        private void setProductJoinDTO(HttpServletRequest request, HttpServletResponse response) {
+            LoanJoinService loanjoinService = new LoanJoinService(id);
+//            새로운 LoanJoinService(id)를 소문자로 부르고 불러온다
+            ArrayList<ProductJoinDTO> productJoinDTOS = loanjoinService.getProducts();
+            request.setAttribute("productDTOs", productDTOs);
+                
+                
 //                request.setAttribute("acc_cid", request.getParameter("acc_cid"));
 //                request.setAttribute("acc_date", request.getParameter("acc_date"));
 //                request.setAttribute("acc_balance", request.getParameter("acc_balance"));

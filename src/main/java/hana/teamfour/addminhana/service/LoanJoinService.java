@@ -1,10 +1,14 @@
 package hana.teamfour.addminhana.service;
 
 import hana.teamfour.addminhana.DAO.LoanJoinDAO;
+import hana.teamfour.addminhana.DTO.ProductDTO;
+import hana.teamfour.addminhana.DTO.ProductJoinDTO;
 import hana.teamfour.addminhana.DTO.ProductJoinSummaryDTO;
 import hana.teamfour.addminhana.entity.AccountEntity;
+import hana.teamfour.addminhana.entity.ProductEntity;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 public class LoanJoinService {
 
@@ -13,6 +17,20 @@ public class LoanJoinService {
 
     public LoanJoinService(Integer id) {
         loanJoinDAO = new LoanJoinDAO();
+    }
+
+    public ArrayList<ProductJoinDTO> getProducts() {
+//        ArrayList<ProductJoinDTO>를 받을 getProducts() 는 무엇이냐 하면
+        LoanJoinDAO loanJoinDAO = new LoanJoinDAO(); // LoanProduct 객체 생성
+        ArrayList<ProductEntity> productEntities = loanProductDAO.insertAccount(page);
+        ArrayList<ProductDTO> productDTOs = new ArrayList<ProductDTO>();
+        for (int i = 0; i < productEntities.size(); i++) {
+            // productEntities.get(i) -> type은? ProductEntity
+            System.out.println(productEntities.get(i).getP_name());
+            ProductDTO productDTO = new ProductDTO(productEntities.get(i)); //entities에서 하나 꺼내와서 DTO로 만든다.
+            productDTOs.add(productDTO);
+        }
+        return productDTOs;
     }
 
     private ProductJoinSummaryDTO setProductJoinSummary(AccountEntity accountEntity) {
