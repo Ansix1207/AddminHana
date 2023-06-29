@@ -46,6 +46,17 @@ public class ProfileController extends HttpServlet {
         CustomerSessionDTO customerSession = (CustomerSessionDTO) session.getAttribute("customerSession");
         try {
             CustomerSummaryDTO customerSummaryDTO = null;
+            if (action != null && action.equals("description")) {
+                customerSummaryDTO = customerService.getCustomerSummaryDTOById(customerSession.getC_id());
+                System.out.println("customerSummaryDTO = " + customerSummaryDTO);
+                customerSummaryDTO.setC_description(description);
+                boolean hasUpdated = customerService.updateCustomerDescription(customerSummaryDTO);
+                request.setAttribute("hasUpdatedDescription", hasUpdated);
+                request.setAttribute("customerSummaryDTO", customerSummaryDTO);
+                RequestDispatcher dispatcher = request.getRequestDispatcher(profilePage);
+                dispatcher.forward(request, response);
+                return;
+            }
             if (customerSession == null) {
                 customerSummaryDTO = customerService.getCustomerSummaryDTOByRRN(customerRRN);
                 if (customerSummaryDTO == null) {
@@ -64,12 +75,6 @@ public class ProfileController extends HttpServlet {
                 CustomerSessionDTO customerSessionDTO = customerSummaryDTO.getCustomerSessionDTO();
                 session.setAttribute("customerSession", customerSessionDTO);
                 request.setAttribute("customerSummaryDTO", customerSummaryDTO);
-                if (action != null && action.equals("description")) {
-                    customerSummaryDTO.setC_description(description);
-                    boolean hasUpdated = customerService.updateCustomerDescription(customerSummaryDTO);
-                    request.setAttribute("hasUpdatedDescription", hasUpdated);
-                    request.setAttribute("customerSummaryDTO", customerSummaryDTO);
-                }
                 RequestDispatcher dispatcher = request.getRequestDispatcher(profilePage);
                 dispatcher.forward(request, response);
                 return;
