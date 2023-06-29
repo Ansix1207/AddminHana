@@ -24,25 +24,25 @@ public class LoanJoinDAO {
 
     public AccountEntity insertAccount(AccountEntity accountEntity) {
 //        AccountEntity 객체의 정보를 사용하여 데이터베이스에 새로운 계정을 삽입하는 작업을 수행합니다. 
-//        String query = "INSERT INTO ACCOUNT VALUES(account_seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        String sql = "INSERT INTO ACCOUNT VALUES(account_seq.nextval,?)";
+        String sql = "INSERT INTO ACCOUNT VALUES(account_seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+//        String sql = "INSERT INTO ACCOUNT VALUES(account_seq.nextval,?)";
         System.out.println("sql = " + sql);
-        try (Connection connection = dataFactory.getConnection()) {
+        try (Connection connection = getDataFactoryConnection()) {
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setInt(1, accountEntity.getAcc_id());
-//                statement.setInt(2, accountEntity.getAcc_cid());
-//                statement.setTimestamp(3, accountEntity.getAcc_date());
-//                statement.setInt(4, accountEntity.getAcc_balance());
-//                statement.setString(5, accountEntity.getAcc_password());
-//                statement.setInt(6, accountEntity.getAcc_pid());
-//                statement.setString(7, accountEntity.getAcc_p_category());
-//                statement.setString(8, accountEntity.getAcc_pname());
-//                statement.setDouble(9, accountEntity.getAcc_interestrate());
-//                statement.setInt(10, accountEntity.getAcc_collateralvalue());
-//                statement.setInt(11, accountEntity.getAcc_interest_day());
-//                statement.setInt(12, accountEntity.getAcc_contract_month());
-//                statement.setTimestamp(13, accountEntity.getAcc_maturitydate());
-//                statement.setString(14, String.valueOf(accountEntity.getAcc_isactive()));
+                statement.setInt(2, accountEntity.getAcc_cid());
+                statement.setTimestamp(3, accountEntity.getAcc_date());
+                statement.setInt(4, accountEntity.getAcc_balance());
+                statement.setString(5, accountEntity.getAcc_password());
+                statement.setInt(6, accountEntity.getAcc_pid());
+                statement.setString(7, accountEntity.getAcc_p_category());
+                statement.setString(8, accountEntity.getAcc_pname());
+                statement.setDouble(9, accountEntity.getAcc_interestrate());
+                statement.setInt(10, accountEntity.getAcc_collateralvalue());
+                statement.setInt(11, accountEntity.getAcc_interest_day());
+                statement.setInt(12, accountEntity.getAcc_contract_month());
+                statement.setTimestamp(13, accountEntity.getAcc_maturitydate());
+                statement.setString(14, String.valueOf(accountEntity.getAcc_isactive()));
                 System.out.println("set은 잘 들어감");
                 statement.executeUpdate(); // 데이터를 삽입?
             }
@@ -51,5 +51,12 @@ public class LoanJoinDAO {
         }
         System.out.println("pass" + new AccountEntity());
         return null;
+    }
+
+    private Connection getDataFactoryConnection() throws SQLException {
+        if (dataFactory == null) {
+            throw new SQLException("DataFactory is null");
+        }
+        return dataFactory.getConnection();
     }
 }

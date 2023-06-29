@@ -52,12 +52,24 @@ public class LoanJoinController extends HttpServlet {
                 break;
             case "POST":
                 System.out.println("Post 진입");
-//                String res = doValidRRN(request);
                 ProductJoinDTO productJoinDTO = new ProductJoinDTO();
                 loanJoinService.insertLoanJoin(productJoinDTO);
                 /* insertLoanJoin이 ProductJoinDTO를 받아와서 반환하여 loanJoinDAO 에서 삽입
                  */
                 request.setAttribute("acc_id", request.getParameter("acc_id"));
+                request.setAttribute("acc_cid", request.getParameter("acc_cid"));
+                request.setAttribute("acc_date", request.getParameter("acc_date"));
+                request.setAttribute("acc_balance", request.getParameter("acc_balance"));
+                request.setAttribute("acc_password", request.getParameter("acc_password"));
+                request.setAttribute("acc_pid", request.getParameter("acc_pid"));
+                request.setAttribute("acc_p_category", request.getParameter("acc_p_category"));
+                request.setAttribute("acc_pname", request.getParameter("acc_pname"));
+                request.setAttribute("acc_interestrate", request.getParameter("acc_interestrate"));
+                request.setAttribute("acc_collateralvalue", request.getParameter("acc_collateralvalue"));
+                request.setAttribute("acc_interest_day", request.getParameter("acc_interest_day"));
+                request.setAttribute("acc_contract_month", request.getParameter("acc_contract_month"));
+                request.setAttribute("acc_maturitydate", request.getParameter("acc_maturitydate"));
+                request.setAttribute("acc_isactive", request.getParameter("acc_isactive"));
                 dispatcher = request.getRequestDispatcher("./views/loanJoin.jsp");
                 dispatcher.forward(request, response);
                 System.out.println("POST 요청 처리 끝");
@@ -76,19 +88,6 @@ public class LoanJoinController extends HttpServlet {
 //                 예를 들어, JSP 페이지에서 해당 속성을 참조하여 동적으로 내용을 생성하거나 특정 로직에서 이 값을 활용할 수 있습니다.
 
 
-//                request.setAttribute("acc_cid", request.getParameter("acc_cid"));
-//                request.setAttribute("acc_date", request.getParameter("acc_date"));
-//                request.setAttribute("acc_balance", request.getParameter("acc_balance"));
-//                request.setAttribute("acc_password", request.getParameter("acc_password"));
-//                request.setAttribute("acc_pid", request.getParameter("acc_pid"));
-//                request.setAttribute("acc_p_category", request.getParameter("acc_p_category"));
-//                request.setAttribute("acc_pname", request.getParameter("acc_pname"));
-//                request.setAttribute("acc_interestrate", request.getParameter("acc_interestrate"));
-//                request.setAttribute("acc_collateralvalue", request.getParameter("acc_collateralvalue"));
-//                request.setAttribute("acc_interest_day", request.getParameter("acc_interest_day"));
-//                request.setAttribute("acc_contract_month", request.getParameter("acc_contract_month"));
-//                request.setAttribute("acc_maturitydate", request.getParameter("acc_maturitydate"));
-//                request.setAttribute("acc_isactive", request.getParameter("acc_isactive"));
 //                String res = doSign(request);
 
 

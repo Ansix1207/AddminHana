@@ -49,66 +49,66 @@
                     <label>Acc_id</label>
                     <input class="form-control" name="Acc_id" value="${Acc_id}" type="text">
                   </div>
-                  <%--                  <div class="form-floating mb-3">--%>
-                  <%--                    <label>Acc_cid</label>--%>
-                  <%--                    <input class="form-control" name="Acc_cid" value="${Acc_cid}" type="text">--%>
-                  <%--                  </div>--%>
-                  <%--                  <div class="form-floating mb-3">--%>
-                  <%--                    <label>Acc_date</label>--%>
-                  <%--                    <input class="form-control" name="Acc_cid" value="${Acc_date}" type="text">--%>
-                  <%--                  </div>--%>
-                  <%--                  <div class="form-floating mb-3">--%>
-                  <%--                    <label>Acc_balance</label>--%>
-                  <%--                    <input class="form-control" name="Acc_balance" value="${Acc_balance}" type="text">--%>
-                  <%--                  </div>--%>
-                  <%--                  <div class="form-floating mb-3">--%>
-                  <%--                    <label>비밀번호</label>--%>
-                  <%--                    <input class="form-control" name="ACC_PASSWORD" value="${ACC_PASSWORD}" type="text">--%>
-                  <%--                  </div>--%>
-                  <%--                  <div class="form-floating mb-3">--%>
-                  <%--                    <label>Acc_pid</label>--%>
-                  <%--                    <input class="form-control" name="Acc_pid" value="${Acc_pid}" type="text">--%>
-                  <%--                  </div>--%>
-                  <%--                  <div class="form-floating mb-3">--%>
-                  <%--                    <label>Acc_p_category</label>--%>
-                  <%--                    <input class="form-control" name="Acc_p_category" value="${Acc_p_category}"--%>
-                  <%--                           type="text">--%>
-                  <%--                  </div>--%>
-                  <%--                  <div class="form-floating mb-3">--%>
-                  <%--                    <label>Acc_pname</label>--%>
-                  <%--                    <input class="form-control" name="Acc_pname" value="${Acc_pname}" type="text">--%>
-                  <%--                  </div>--%>
-                  <%--                  <div class="form-floating mb-3">--%>
-                  <%--                    <label>이자율</label>--%>
-                  <%--                    <input class="form-control" name="ACC_INTERESTRATE" value="${ACC_INTERESTRATE}"--%>
-                  <%--                           type="text">--%>
-                  <%--                  </div>--%>
-                  <%--                  <div class="form-floating mb-3">--%>
-                  <%--                    <label>담보가액</label>--%>
-                  <%--                    <input class="form-control" name="ACC_COLLATERALVALUE" value="${ACC_COLLATERALVALUE}"--%>
-                  <%--                           type="text">--%>
-                  <%--                  </div>--%>
-                  <%--                  <div class="form-floating mb-3">--%>
-                  <%--                    <label>이자일</label>--%>
-                  <%--                    <input class="form-control" name="ACC_INTEREST_DAY" value="${ACC_INTEREST_DAY}"--%>
-                  <%--                           type="text">--%>
-                  <%--                  </div>--%>
-                  <%--                  <div class="form-floating mb-3">--%>
-                  <%--                    <label>약정일</label>--%>
-                  <%--                    <input class="form-control" name="ACC_CONTRACT_MONTH" value="${ACC_CONTRACT_MONTH}"--%>
-                  <%--                           type="text">--%>
-                  <%--                  </div>--%>
-                  <%--                  <div class="form-floating mb-3">--%>
-                  <%--                    <label>만기일</label>--%>
-                  <%--                    <input class="form-control" name="ACC_MATURITYDATE" value="${ACC_MATURITYDATE}"--%>
-                  <%--                           type="text">--%>
-                  <%--                  </div>--%>
-                  <%--                  <div class="form-floating mb-3">--%>
-                  <%--                    <label>활성화여부</label>--%>
-                  <%--                    <input class="form-control" name="ACC_ISACTIVE" value="${ACC_ISACTIVE}" type="text">--%>
-                  <%--                  </div>--%>
-                  <%--                  <div class="d-grid">--%>
-                  <%--                  </div>--%>
+                  <div class="form-floating mb-3">
+                    <label>Acc_cid</label>
+                    <input class="form-control" name="Acc_cid" value="${Acc_cid}" type="text">
+                  </div>
+                  <div class="form-floating mb-3">
+                    <label>Acc_date</label>
+                    <input class="form-control" name="Acc_cid" value="${Acc_date}" type="text">
+                  </div>
+                  <div class="form-floating mb-3">
+                    <label>Acc_balance</label>
+                    <input class="form-control" name="Acc_balance" value="${Acc_balance}" type="text">
+                  </div>
+                  <div class="form-floating mb-3">
+                    <label>비밀번호</label>
+                    <input class="form-control" name="ACC_PASSWORD" value="${ACC_PASSWORD}" type="text">
+                  </div>
+                  <div class="form-floating mb-3">
+                    <label>Acc_pid</label>
+                    <input class="form-control" name="Acc_pid" value="${Acc_pid}" type="text">
+                  </div>
+                  <div class="form-floating mb-3">
+                    <label>Acc_p_category</label>
+                    <input class="form-control" name="Acc_p_category" value="${Acc_p_category}"
+                           type="text">
+                  </div>
+                  <div class="form-floating mb-3">
+                    <label>Acc_pname</label>
+                    <input class="form-control" name="Acc_pname" value="${Acc_pname}" type="text">
+                  </div>
+                  <div class="form-floating mb-3">
+                    <label>이자율</label>
+                    <input class="form-control" name="ACC_INTERESTRATE" value="${ACC_INTERESTRATE}"
+                           type="text">
+                  </div>
+                  <div class="form-floating mb-3">
+                    <label>담보가액</label>
+                    <input class="form-control" name="ACC_COLLATERALVALUE" value="${ACC_COLLATERALVALUE}"
+                           type="text">
+                  </div>
+                  <div class="form-floating mb-3">
+                    <label>이자일</label>
+                    <input class="form-control" name="ACC_INTEREST_DAY" value="${ACC_INTEREST_DAY}"
+                           type="text">
+                  </div>
+                  <div class="form-floating mb-3">
+                    <label>약정일</label>
+                    <input class="form-control" name="ACC_CONTRACT_MONTH" value="${ACC_CONTRACT_MONTH}"
+                           type="text">
+                  </div>
+                  <div class="form-floating mb-3">
+                    <label>만기일</label>
+                    <input class="form-control" name="ACC_MATURITYDATE" value="${ACC_MATURITYDATE}"
+                           type="text">
+                  </div>
+                  <div class="form-floating mb-3">
+                    <label>활성화여부</label>
+                    <input class="form-control" name="ACC_ISACTIVE" value="${ACC_ISACTIVE}" type="text">
+                  </div>
+                  <div class="d-grid">
+                  </div>
                   <button type="submit" class="btn btn-primary btn-block" id="signButton">신규 손님 가입</button>
                 </div>
               </div>
