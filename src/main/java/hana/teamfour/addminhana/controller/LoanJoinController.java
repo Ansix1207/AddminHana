@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.sql.Timestamp;
 
 @WebServlet("/customer/loanjoin")
-// /customer 시험후 이거 위에 넣을것
+
 public class LoanJoinController extends HttpServlet {
     private LoanJoinService loanJoinService;
     private Integer id;
