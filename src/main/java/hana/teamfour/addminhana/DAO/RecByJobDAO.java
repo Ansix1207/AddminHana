@@ -1,14 +1,12 @@
 package hana.teamfour.addminhana.DAO;
 
 import hana.teamfour.addminhana.entity.ProductEntity;
+import oracle.jdbc.OracleTypes;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class RecByJobDAO {
@@ -26,29 +24,31 @@ public class RecByJobDAO {
 
     public ArrayList<ProductEntity> getRecProduct(Integer id, String productType, String job) {
         ArrayList<ProductEntity> productList = new ArrayList<>();
-        String query = "select pro.p_id, pro.p_name, pro.p_interestrate, pro.p_limit " +
-                "from account acc, product pro " +
-                "where acc.acc_pid = pro.p_id and pro.p_jobtype = ? and acc.acc_cid <> ? and pro.p_isactive = 'Y' " +
-                "and REGEXP_SUBSTR(substr(pro.p_category, 3, 2), ?) = substr(pro.p_category, 3, 2)" +
-                "group by pro.p_id, pro.p_name, pro.p_interestrate, pro.p_limit " +
-                "order by count(*) desc";
+        String query = "{CALL select_rec_by_job(?, ?, ?, ?, ?, ?, ?, ?)}";
         
         try (Connection connection = dataFactory.getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)){
+             CallableStatement statement = connection.prepareCall(query)){
 
-            statement.setString(1, job);
-            statement.setInt(2, id);
+            statement.setInt(1, id);
+            statement.setString(2, job);
             statement.setString(3, productType);   // productType을 지정하지 않는 경우 '..'
+            statement.registerOutParameter(4, Types.INTEGER); // p_id
+            statement.registerOutParameter(5, Types.VARCHAR); // p_name
+            statement.registerOutParameter(6, Types.DOUBLE);  // p_interestrate
+            statement.registerOutParameter(7, Types.INTEGER); // p_limit
+            statement.registerOutParameter(8, OracleTypes.CURSOR);
+            statement.execute();
 
-            try (ResultSet resultSet = statement.executeQuery()) {
+            try (ResultSet resultSet = (ResultSet) statement.getObject(8)) {
                 while (resultSet.next()) {
                     ProductEntity productEntity = new ProductEntity();
-                    productEntity.setP_id(resultSet.getInt(1));
-                    productEntity.setP_name(resultSet.getString(2));
-                    productEntity.setP_interestrate(resultSet.getDouble(3));
-                    productEntity.setP_limit(resultSet.getInt(4));
+                    productEntity.setP_id(resultSet.getInt("p_id"));
+                    productEntity.setP_name(resultSet.getString("p_name"));
+                    productEntity.setP_interestrate(resultSet.getDouble("p_interestrate"));
+                    productEntity.setP_limit(resultSet.getInt("p_limit"));
                     productList.add(productEntity);
                 }
+
             }
         } catch (SQLException e) {
             e.printStackTrace();

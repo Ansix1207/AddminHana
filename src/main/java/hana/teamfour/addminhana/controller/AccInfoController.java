@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(urlPatterns = {"/depositInfo", "/loanInfo", "/savingsInfo"})
+@WebServlet(urlPatterns = {"/customer/depositInfo", "/customer/loanInfo", "/customer/savingsInfo"})
 public class AccInfoController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,13 +29,13 @@ public class AccInfoController extends HttpServlet {
         String command = uri.substring(context.length());
         String category = null;
         switch (command) {
-            case "/depositInfo":
+            case "/customer/depositInfo":
                 category = "예금";
                 break;
-            case "/savingsInfo":
+            case "/customer/savingsInfo":
                 category = "적금";
                 break;
-            case "/loanInfo":
+            case "/customer/loanInfo":
                 category = "대출";
                 break;
             default:
@@ -70,7 +70,7 @@ public class AccInfoController extends HttpServlet {
         request.setAttribute("recByGender", recByGenderProducts);;
         request.setAttribute("recByAge", recByAgeProducts);
 
-        String site = "views/sessionOnAccInfo.jsp";
+        String site = "../views/sessionOnAccInfo.jsp";
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(site);
         dispatcher.forward(request, response);
