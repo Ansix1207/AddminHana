@@ -1,7 +1,7 @@
 package hana.teamfour.addminhana.controller;
 
 import hana.teamfour.addminhana.DTO.CustomerSignDTO;
-import hana.teamfour.addminhana.entity.EmployeeEntity;
+import hana.teamfour.addminhana.DTO.EmployeeDTO;
 import hana.teamfour.addminhana.service.CustomerService;
 
 import javax.servlet.RequestDispatcher;
@@ -47,11 +47,7 @@ public class SignController extends HttpServlet {
                 if (!checkEmptyOrNull(request, "valid_rrn")) {
                     String res = doValidRRN(request);
                     request.setAttribute("message", res);
-                    request.setAttribute("c_address1", request.getParameter("c_address1"));
-                    request.setAttribute("c_address2", request.getParameter("c_address2"));
-                    request.setAttribute("c_mobile", request.getParameter("c_mobile"));
-                    request.setAttribute("c_job", request.getParameter("c_job"));
-                    request.setAttribute("c_description", request.getParameter("c_description"));
+
                     dispatcher = request.getRequestDispatcher("./views/sign.jsp");
                     dispatcher.forward(request, response);
                 } else {
@@ -99,7 +95,7 @@ public class SignController extends HttpServlet {
      * request로 전달받은 값들을 통해 CustomerSignDTO를 만들고 반환합니다.
      */
     private CustomerSignDTO makeSignDTO(HttpServletRequest request) {
-        EmployeeEntity user = (EmployeeEntity) request.getSession().getAttribute("login");
+        EmployeeDTO user = (EmployeeDTO) request.getSession().getAttribute("login");
         CustomerSignDTO customerSignDTO = CustomerSignDTO.builder()
                 .c_name(request.getParameter("c_name"))
                 .c_rrn(request.getParameter("c_rrn1") + "-" + request.getParameter("c_rrn2"))
