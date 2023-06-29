@@ -13,7 +13,6 @@ import java.util.regex.Pattern;
 public class CustomerService {
     private CustomerDAO customerDAO;
 
-    private final static Pattern rrn_pattern = Pattern.compile("^(\\d{6}\\D?\\d{1})(\\d{6})$");
 
     public CustomerService() {
         customerDAO = new CustomerDAO();
@@ -27,8 +26,8 @@ public class CustomerService {
         return setCustomerSummaryDTO(customerEntity);
     }
 
-    public CustomerSummaryDTO getCustomerSummaryDTOByRrn(String _c_rrn) {
-        CustomerEntity customerEntity = customerDAO.findByRrn(_c_rrn);
+    public CustomerSummaryDTO getCustomerSummaryDTOByRRN(String _c_rrn) {
+        CustomerEntity customerEntity = customerDAO.findByRRN(_c_rrn);
         if (customerEntity == null) {
             return null;
         }
@@ -36,20 +35,20 @@ public class CustomerService {
     }
 
     public boolean updateCustomerDescription(CustomerSummaryDTO customerSummaryDTO) {
-        return customerDAO.updateCustomerSummary(customerSummaryDTO);
+        CustomerEntity customerEntity = customerDAO.findById(customerSummaryDTO.getC_id());
+        if (customerEntity == null) {
+            return false;
+        }
+        customerEntity.setC_description(customerSummaryDTO.getC_description());
+        return customerDAO.updateCustomerEntity(customerEntity);
     }
 
     private CustomerSummaryDTO setCustomerSummaryDTO(CustomerEntity customerEntity) {
-        Integer c_id = customerEntity.getC_id();
-        String c_name = customerEntity.getC_name();
+        CustomerSummaryDTO customerSummaryDTO = CustomerSummaryDTO.from(customerEntity);
         String c_rrn = customerEntity.getC_rrn();
-        c_rrn = maskRRN(c_rrn);
-        Character c_gender = customerEntity.getC_gender();
-        String c_job = customerEntity.getC_job();
-        String c_description = customerEntity.getC_description();
-        Integer c_age = getAgeFromRRN(c_rrn);
-
-        return new CustomerSummaryDTO(c_id, c_name, c_rrn, c_gender, c_job, c_description, c_age);
+        customerSummaryDTO.setC_age(getAgeFromRRN(c_rrn));
+        customerSummaryDTO.setC_rrn(maskRRN(c_rrn));
+        return customerSummaryDTO;
     }
 
     private CustomerSignDTO setCustomerSignDTO(CustomerEntity customerEntity) {
@@ -68,6 +67,7 @@ public class CustomerService {
     }
 
     private static String maskRRN(String rrn) {
+        Pattern rrn_pattern = Pattern.compile("^(\\d{6}\\D?\\d{1})(\\d{6})$");
         Matcher matcher = rrn_pattern.matcher(rrn);
         if (matcher.find()) {
             return new StringBuffer(matcher.group(1)).append("******").toString();
