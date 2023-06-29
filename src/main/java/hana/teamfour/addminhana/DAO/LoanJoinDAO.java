@@ -41,10 +41,12 @@ public class LoanJoinDAO {
                 statement.setInt(12, accountEntity.getAcc_contract_month());
                 statement.setTimestamp(13, accountEntity.getAcc_maturitydate());
                 statement.setString(14, String.valueOf(accountEntity.getAcc_isactive()));
+                statement.executeUpdate();
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        System.out.println("pass" + new AccountEntity());
         return new AccountEntity();
     }
 }

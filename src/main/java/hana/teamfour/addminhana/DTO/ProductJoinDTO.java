@@ -49,22 +49,5 @@ public class ProductJoinDTO {
     public static ProductJoinDTO from(AccountEntity accountEntity) {
         return new ProductJoinDTO(accountEntity);
     }
-
-//    public static AccountEntity toEntity(ProductJoinDTO productJoinDTO) {
-//        return AccountEntity.builder()
-//                .acc_id(productJoinDTO.getAcc_id())
-//                .acc_cid(productJoinDTO.getAcc_cid())
-//                .acc_date(productJoinDTO.getAcc_date())
-//                .acc_balance(productJoinDTO.getAcc_balance())
-//                .acc_password(productJoinDTO.getAcc_password())
-//                .acc_pid(productJoinDTO.getAcc_pid())
-//                .acc_p_category(productJoinDTO.getAcc_p_category())
-//                .acc_pname(productJoinDTO.getAcc_pname())
-//                .acc_interestrate(productJoinDTO.getAcc_interestrate())
-//                .acc_collateralvalue(productJoinDTO.getAcc_collateralvalue())
-//                .acc_interest_day(productJoinDTO.getAcc_interest_day())
-//                .acc_contract_month(productJoinDTO.getAcc_contract_month())
-//                .acc_maturitydate(productJoinDTO.getAcc_maturitydate())
-//                .acc_isactive(productJoinDTO.getAcc_isactive());
-//    }
+    
 }

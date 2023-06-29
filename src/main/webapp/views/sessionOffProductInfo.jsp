@@ -44,7 +44,6 @@
           <input class="form-control" type="text" name="q" value="${param.q}" aria-describedby="btnNavbarSearch"/>
           <input class="btn2 btn-search" type="submit" value="검색"/>
         </div>
-
       </form>
       <%--            그래프 넣기   --%>
       <div>

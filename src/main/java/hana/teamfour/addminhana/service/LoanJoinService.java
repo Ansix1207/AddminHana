@@ -30,12 +30,11 @@ public class LoanJoinService {
         Integer acc_contract_month = accountEntity.getAcc_contract_month();
         Timestamp acc_maturitydate = accountEntity.getAcc_maturitydate();
         Character acc_isactive = accountEntity.getAcc_isactive();
+        System.out.println("Service");
 
 
         return new ProductJoinSummaryDTO(acc_id, acc_cid, acc_date, acc_balance, acc_password, acc_pid,
                 acc_p_category, acc_pname, acc_interestrate, acc_collateralvalue, acc_interest_day, acc_contract_month
                 , acc_maturitydate, acc_isactive);
     }
-
-
 }
