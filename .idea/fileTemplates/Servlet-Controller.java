@@ -33,9 +33,10 @@ public class ${Class_Name} extends HttpServlet {
     }
     
     private void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=utf-8");
-        String nextPage = "";
+        HttpSession session = request.getSession(false);
+        String contextPath = request.getContextPath();
         String action = request.getPathInfo();
+        String nextPage = "";
         System.out.println("action = " + action);
         try {
             List<ArticleVO> articleList = new ArrayList<>();
