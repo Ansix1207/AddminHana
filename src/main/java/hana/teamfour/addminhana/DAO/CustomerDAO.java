@@ -165,4 +165,31 @@ public class CustomerDAO {
         }
         return false;
     }
+
+    public boolean updateCustomerEntity(CustomerEntity customerEntity) {
+        Integer c_id = customerEntity.getC_id();
+        String c_name = customerEntity.getC_name();
+        String c_rrn = customerEntity.getC_rrn();
+        Character c_gender = customerEntity.getC_gender();
+        String c_job = customerEntity.getC_job();
+        String c_description = customerEntity.getC_description();
+        String query = "update customer set c_name=?, c_rrn=?," +
+                " c_gender=?, c_job=?, c_description=? " +
+                " where c_id=? ";
+        try (Connection connection = dataFactory.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            System.out.println("query = " + query);
+            statement.setString(1, c_name);
+            statement.setString(2, c_rrn);
+            statement.setString(3, c_gender.toString());
+            statement.setString(4, c_job);
+            statement.setString(5, c_description);
+            statement.setInt(6, c_id);
+            statement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
