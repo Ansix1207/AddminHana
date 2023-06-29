@@ -19,7 +19,7 @@ public class CustomerLoginFilter implements Filter {
 
         boolean loggedIn = session != null && session.getAttribute("customerSession") != null;
         boolean loginRequest = request.getRequestURI().equals(loginURI);
-        if (!loggedIn || loginRequest) {
+        if (loggedIn || loginRequest) {
             chain.doFilter(request, response);
         } else {
             response.sendRedirect(request.getContextPath() + "/");
