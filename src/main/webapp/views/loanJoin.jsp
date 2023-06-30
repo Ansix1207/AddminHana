@@ -24,6 +24,21 @@
 
 
 %>
+<% Boolean isSuccess = (Boolean) request.getAttribute("isSuccess");
+  System.out.println("isSuccess: " + isSuccess);
+%>
+<% if (isSuccess != null && isSuccess) { %>
+<script>
+    var alertMessage = "해당금융상품이 등록되었습니다";
+    alert(alertMessage);
+</script>
+<% } else if (isSuccess != null && !isSuccess) {%>
+<script>
+    var alertMessage = "등록이 안되었습니다. 다시 시도해주세요";
+    alert(alertMessage);
+</script>
+<%}%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -135,5 +150,7 @@
           location.reload();
       }
   </script>
+
+
 </body>
 </html>

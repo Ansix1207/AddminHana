@@ -83,7 +83,12 @@ public class LoanJoinController extends HttpServlet {
                 productJoinDTO.setAcc_maturitydate(java.sql.Timestamp.valueOf(currentDateTime));
                 productJoinDTO.setAcc_isactive('Y');
 
-                loanJoinService.insertLoanJoin(productJoinDTO);
+                boolean isSuccess = loanJoinService.insertLoanJoin(productJoinDTO);
+//                Controller에서 isSuccess 변수를 JSP 페이지로 전달하는 코드 추가
+                request.setAttribute("isSuccess", isSuccess);
+
+
+
                 /* insertLoanJoin이 ProductJoinDTO를 받아와서 반환하여 loanJoinDAO 에서 삽입
                  */
                 /*

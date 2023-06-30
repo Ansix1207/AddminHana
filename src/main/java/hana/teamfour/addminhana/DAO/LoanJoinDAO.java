@@ -24,7 +24,8 @@ public class LoanJoinDAO {
         }
     }
 
-    public void insertAccount(AccountEntity accountEntity) {
+    public boolean insertAccount(AccountEntity accountEntity) {
+        boolean result = false;
 //        AccountEntity 객체의 정보를 사용하여 데이터베이스에 새로운 계정을 삽입하는 작업을 수행합니다. 
         String sql = "INSERT INTO ACCOUNT VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 //        String sql = "INSERT INTO ACCOUNT VALUES(account_seq.nextval,?)";
@@ -47,13 +48,16 @@ public class LoanJoinDAO {
                 statement.setInt(12, accountEntity.getAcc_contract_month());
                 statement.setTimestamp(13, accountEntity.getAcc_maturitydate());
                 statement.setString(14, String.valueOf(accountEntity.getAcc_isactive()));
-                System.out.println("set은 잘 들어감");
+                System.out.println("set은 잘 들어감  " + statement);
                 statement.executeUpdate(); // 데이터를 삽입?
+                result = true;
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            result = false;
         }
         System.out.println("pass" + new AccountEntity());
+        return result;
     }
 
     public ArrayList<AccountEntity> insertJoin() {
