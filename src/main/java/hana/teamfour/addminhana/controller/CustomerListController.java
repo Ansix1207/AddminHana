@@ -1,11 +1,11 @@
 package hana.teamfour.addminhana.controller;
 
-import hana.teamfour.addminhana.DTO.CustomerSummaryDTO;
+import hana.teamfour.addminhana.DTO.CustomerDTO;
+import hana.teamfour.addminhana.DTO.PaginationDTO;
 import hana.teamfour.addminhana.service.CustomerService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +16,6 @@ import java.util.List;
 
 @WebServlet("/customerList")
 public class CustomerListController extends HttpServlet {
-    ServletContext context = null;
     CustomerService customerService;
 
     @Override
@@ -38,11 +37,30 @@ public class CustomerListController extends HttpServlet {
     private void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=utf-8");
         String nextPage = "views/customerList.jsp";
+        String page = request.getParameter("page");
+        if (page == null || page == "") {
+            page = "1";
+        }
+        String size = request.getParameter("size");
+        if (size == null || size == "") {
+            size = "10";
+        }
+        String orderBy = request.getParameter("orderBy");
+        if (orderBy == null || orderBy == "") {
+            orderBy = "c_id";
+        }
+        List<CustomerDTO> customerList = null;
         try {
-            System.out.println("커스터머리스트 컨트롤러");
-            List<CustomerSummaryDTO> customerSummaryList = null;
-            customerSummaryList = customerService.getCustomerSummaryList();
-            request.setAttribute("customerSummaryList", customerSummaryList);
+            Integer pageNum = Integer.parseInt(page);
+            Integer sizeNum = Integer.parseInt(size);
+
+            PaginationDTO paginationDTO = new PaginationDTO(pageNum, sizeNum, orderBy);
+            customerList = customerService.getCustomerListWithPagination(paginationDTO);
+            Integer customerCount = customerService.getCountRow();
+
+            request.setAttribute("customerList", customerList);
+            request.setAttribute("customerCount", customerCount);
+
             RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
             dispatcher.forward(request, response);
         } catch (Exception e) {

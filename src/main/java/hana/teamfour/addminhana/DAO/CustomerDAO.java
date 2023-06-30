@@ -1,6 +1,7 @@
 package hana.teamfour.addminhana.DAO;
 
 import hana.teamfour.addminhana.DTO.CustomerSummaryDTO;
+import hana.teamfour.addminhana.DTO.PaginationDTO;
 import hana.teamfour.addminhana.entity.CustomerEntity;
 
 import javax.naming.Context;
@@ -224,5 +225,70 @@ public class CustomerDAO {
             e.printStackTrace();
         }
         return list;
+    }
+
+    public List<CustomerEntity> findWithPagination(PaginationDTO paginationDTO) {
+        List<CustomerEntity> list = new ArrayList<>();
+        String query = "" +
+                "select * from (" +
+                "   select rownum as rownumber, " +
+                "           ordered_customer.* from (" +
+                "               select * from customer " +
+                "                order by ? ) ordered_customer ) " +
+                " where rownumber >= ? and rownumber < ?";
+        String orderBy = paginationDTO.getOrderBy();
+        Integer size = paginationDTO.getSize();
+        Integer page = paginationDTO.getPage();
+        if (orderBy == null || orderBy.equals("")) {
+            orderBy = "c_id";
+        }
+        Integer startNum = 1;
+        Integer lastNum = 10;
+        if (size != null && page != null) {
+            startNum = 1 + (size * (page - 1));
+            lastNum = startNum + size;
+        }
+        try (Connection connection = dataFactory.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, orderBy);
+            statement.setInt(2, startNum);
+            statement.setInt(3, lastNum);
+            try (ResultSet rs = statement.executeQuery()) {
+                while (rs.next()) {
+                    Integer c_id = rs.getInt("c_id");
+                    String c_name = rs.getString("c_name");
+                    String c_rrn = rs.getString("c_rrn");
+                    Character c_gender = rs.getString("c_gender").charAt(0);
+                    String c_job = rs.getString("c_job");
+                    String c_address = rs.getString("c_address");
+                    String c_mobile = rs.getString("c_mobile");
+                    String c_description = rs.getString("c_description");
+                    Integer e_id = rs.getInt("e_id");
+                    CustomerEntity customerEntity = new CustomerEntity(c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id);
+                    list.add(customerEntity);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+
+    public Integer countRows() {
+        Integer count = null;
+        String query = "select count(c_id) from customer ";
+        try (Connection connection = dataFactory.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            try (ResultSet rs = statement.executeQuery()) {
+                if (rs.next()) {
+                    Integer countFromDB = rs.getInt(1);
+                    count = countFromDB;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
     }
 }

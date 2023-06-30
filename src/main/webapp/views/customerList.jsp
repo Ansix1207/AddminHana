@@ -1,5 +1,7 @@
-<%@ page import="hana.teamfour.addminhana.DTO.CustomerSummaryDTO" %>
+<%@ page import="hana.teamfour.addminhana.DTO.CustomerDTO" %>
 <%@ page import="java.util.List" %>
+<%@ page import="hana.teamfour.addminhana.DTO.CustomerDTO" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -12,8 +14,12 @@
 <%
   request.setCharacterEncoding("UTF-8");
   String contextPath = request.getContextPath();
-  List<CustomerSummaryDTO> customerSummaryList = (List<CustomerSummaryDTO>) request.getAttribute("customerSummaryList");
-  System.out.println("customerSummaryList = " + customerSummaryList);
+  List<CustomerDTO> customerList = new ArrayList<>();
+  List<CustomerDTO> tempList = (List<CustomerDTO>) request.getAttribute("customerList");
+  if (tempList != null) {
+    customerList = tempList;
+  }
+  Integer customerCount = (Integer) request.getAttribute("customerCount");
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -71,115 +77,59 @@
               <table id="datatablesSimple" class="datatable-table">
                 <thead>
                 <tr>
-                  <th data-sortable="true" style="width: 19.437340153452684%;">
+                  <th data-sortable="true">
                     <a href="#" class="datatable-sorter">손님 id</a></th>
-                  <th data-sortable="true" style="width: 30.051150895140665%;">
+                  <th data-sortable="true">
                     <a href="#" class="datatable-sorter">이름</a>
                   </th>
-                  <th data-sortable="true" style="width: 15.089514066496163%;">
+                  <th data-sortable="true">
                     <a href="#" class="datatable-sorter">주민등록 번호</a>
                   </th>
-                  <th data-sortable="true" style="width: 8.439897698209718%;">
+                  <th data-sortable="true">
                     <a href="#" class="datatable-sorter">성별</a></th>
-                  <th data-sortable="true" style="width: 14.322250639386189%;">
+                  <th data-sortable="true">
                     <a href="#" class="datatable-sorter">주소</a></th>
-                  <th data-sortable="true" style="width: 12.65984654731458%;">
+                  <th data-sortable="true">
                     <a href="#" class="datatable-sorter">휴대폰 번호</a>
                   </th>
-                  <th data-sortable="true" style="width: 12.65984654731458%;">
+                  <th data-sortable="true">
                     <a href="#" class="datatable-sorter">직업</a>
                   </th>
-                  <th data-sortable="true" style="width: 12.65984654731458%;">
+                  <th data-sortable="true">
                     <a href="#" class="datatable-sorter">추천 직원 id</a>
                   </th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr data-index="0">
-                  <td>Tiger Nixon</td>
-                  <td>System Architect</td>
-                  <td>Edinburgh</td>
-                  <td>61</td>
-                  <td>2011/04/25</td>
-                  <td>$320,800</td>
-                </tr>
-                <tr data-index="1">
-                  <td>Garrett Winters</td>
-                  <td>Accountant</td>
-                  <td>Tokyo</td>
-                  <td>63</td>
-                  <td>2011/07/25</td>
-                  <td>$170,750</td>
-                </tr>
-                <tr data-index="2">
-                  <td>Ashton Cox</td>
-                  <td>Junior Technical Author</td>
-                  <td>San Francisco</td>
-                  <td>66</td>
-                  <td>2009/01/12</td>
-                  <td>$86,000</td>
-                </tr>
-                <tr data-index="3">
-                  <td>Cedric Kelly</td>
-                  <td>Senior Javascript Developer</td>
-                  <td>Edinburgh</td>
-                  <td>22</td>
-                  <td>2012/03/29</td>
-                  <td>$433,060</td>
-                </tr>
-                <tr data-index="4">
-                  <td>Airi Satou</td>
-                  <td>Accountant</td>
-                  <td>Tokyo</td>
-                  <td>33</td>
-                  <td>2008/11/28</td>
-                  <td>$162,700</td>
-                </tr>
-                <tr data-index="5">
-                  <td>Brielle Williamson</td>
-                  <td>Integration Specialist</td>
-                  <td>New York</td>
-                  <td>61</td>
-                  <td>2012/12/02</td>
-                  <td>$372,000</td>
-                </tr>
-                <tr data-index="6">
-                  <td>Herrod Chandler</td>
-                  <td>Sales Assistant</td>
-                  <td>San Francisco</td>
-                  <td>59</td>
-                  <td>2012/08/06</td>
-                  <td>$137,500</td>
-                </tr>
-                <tr data-index="7">
-                  <td>Rhona Davidson</td>
-                  <td>Integration Specialist</td>
-                  <td>Tokyo</td>
-                  <td>55</td>
-                  <td>2010/10/14</td>
-                  <td>$327,900</td>
-                </tr>
-                <tr data-index="8">
-                  <td>Colleen Hurst</td>
-                  <td>Javascript Developer</td>
-                  <td>San Francisco</td>
-                  <td>39</td>
-                  <td>2009/09/15</td>
-                  <td>$205,500</td>
-                </tr>
-                <tr data-index="9">
-                  <td>Sonya Frost</td>
-                  <td>Software Engineer</td>
-                  <td>Edinburgh</td>
-                  <td>23</td>
-                  <td>2008/12/13</td>
-                  <td>$103,600</td>
-                </tr>
+                <%
+                  for (int i = 0; i < customerList.size(); i++) {
+                %>
+                <tr data-index="<%=i%>">
+                  <td><%=customerList.get(i).getC_id()%>
+                  </td>
+                  <td><%=customerList.get(i).getC_name()%>
+                  </td>
+                  <td><%=customerList.get(i).getC_rrn()%>
+                  </td>
+                  <td><%=customerList.get(i).getC_gender()%>
+                  </td>
+                  <td><%=customerList.get(i).getC_address()%>
+                  </td>
+                  <td><%=customerList.get(i).getC_mobile()%>
+                  </td>
+                  <td><%=customerList.get(i).getC_job()%>
+                  </td>
+                  <td><%=customerList.get(i).getE_id()%>
+                  </td>
+                    <%
+                  }
+                %>
                 </tbody>
               </table>
             </div>
             <div class="datatable-bottom">
-              <div class="datatable-info">Showing 1 to 10 of 57 entries</div>
+              <div class="datatable-info">Showing <%=customerList.size()%> Customer of <%=customerCount%> Customers
+              </div>
               <nav class="datatable-pagination">
                 <ul class="datatable-pagination-list">
                   <li class="datatable-pagination-list-item datatable-hidden datatable-disabled">
@@ -212,15 +162,7 @@
           </div>
         </div>
       </div>
-      <%
-        for (int i = 0; i < customerSummaryList.size(); i++) {
-      %>
 
-      <h5><%=customerSummaryList.get(i)%>
-      </h5>
-      <%
-        }
-      %>
     </main>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
