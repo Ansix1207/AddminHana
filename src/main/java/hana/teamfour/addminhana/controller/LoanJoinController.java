@@ -105,7 +105,7 @@ public class LoanJoinController extends HttpServlet {
                 System.out.println("POST 요청 처리 끝" + request);
                  */
                 System.out.println("POST 요청 처리 끝" + request);
-                dispatcher = request.getRequestDispatcher("./views/loanJoin.jsp");
+                dispatcher = request.getRequestDispatcher("/views/loanJoin.jsp");
                 dispatcher.forward(request, response);
                 break;
             default:
