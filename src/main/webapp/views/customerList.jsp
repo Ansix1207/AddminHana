@@ -71,7 +71,6 @@
             <%--              <div class="datatable-dropdown">--%>
             <%--                <label>--%>
             <%--                  <select class="datatable-selector">--%>
-            <%--                    미구현--%>
             <%--                    <option value="5">5</option>--%>
             <%--                    <option value="10" selected="">10</option>--%>
             <%--                    <option value="15">15</option>--%>
@@ -81,7 +80,6 @@
             <%--                </label>--%>
             <%--              </div>--%>
             <%--              <div class="datatable-search">--%>
-            <%--                미구현--%>
             <%--                <input class="datatable-input" placeholder="Search..." type="search" title="Search within table"--%>
             <%--                       aria-controls="datatablesSimple">--%>
             <%--              </div>--%>
@@ -144,30 +142,7 @@
               <div class="datatable-info">Showing <%=customerList.size()%> Customer of <%=customerCount%> Customers
               </div>
               <nav class="datatable-pagination">
-                <ul class="datatable-pagination-list">
-                  <%--                  <%--%>
-                  <%--                    System.out.println("_page = " + _page);--%>
-                  <%--                    int pageNum = Integer.parseInt(_page);--%>
-                  <%--                    int sizeNum = Integer.parseInt(size);--%>
-                  <%--                    int currentGroup = pageNum / 5;--%>
-                  <%--                    int startPage = currentGroup + 1;--%>
-                  <%--                    int endPage = currentGroup + 4;--%>
-                  <%--                    int startNum = 1 + (sizeNum * (pageNum - 1));--%>
-                  <%--                    int lastNum = startNum + sizeNum;--%>
-                  <%--                    if (lastNum >= customerCount) {--%>
-                  <%--                      endPage = pageNum;--%>
-                  <%--                    }--%>
-                  <%--                    for (int i = startPage; i < endPage; i++) {--%>
-                  <%--                  %>--%>
-                  <%--                  <li class="datatable-pagination-list-item <% if (i == pageNum) {%>datatable-active<%} %>">--%>
-                  <%--                    <a data-page="<%=i%>" class="datatable-pagination-list-item-link">1</a>--%>
-                  <%--                  </li>--%>
-                  <%--                  <%--%>
-                  <%--                    }--%>
-                  <%--                  %>--%>
-
-
-                </ul>
+                <ul class="datatable-pagination-list"></ul>
               </nav>
             </div>
           </div>
