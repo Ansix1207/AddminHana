@@ -62,12 +62,14 @@ public class AccountDAO {
     }
 
     public List<AssetSumDTO> getSumOfAccBalance(Integer acc_cid) {
+        System.out.println("어카운트 다오 getSumOfAccBalance");
+        System.out.println("acc_cid = " + acc_cid);
         List<AssetSumDTO> list = new ArrayList<>();
         String query = "select sum(acc_balance) as balance_sum, acc_p_category " +
                 " from account " +
                 " where acc_cid = ? " +
                 "       and acc_isactive = 'Y' " +
-                " group by acc_p_category; ";
+                " group by acc_p_category";
         try (Connection connection = dataFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
