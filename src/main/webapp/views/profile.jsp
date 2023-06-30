@@ -60,7 +60,7 @@ Settings | File Templates. --%>
   <meta charset="UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css?after"
         rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
         crossorigin="anonymous"/>
@@ -107,8 +107,15 @@ Settings | File Templates. --%>
             <div class="card statisticsSituation h-full">
               <div class="card-body assetCardContainer gap-4">
                 <div class="mb-4 assetInfo">
-                  <h5 class="card-title mt-3 mb-2">적금 정보</h5>
-                  <p><span>자산 총액</span> <span class="card-text">₩ <%=asset%></span></p>
+                  <h5 class="card-title mt-3 mb-2">자산 현황</h5>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <p>
+                      <span>자산 총액</span>
+                      <span class="card-text">₩ <%=asset%></span>
+                    </p>
+                    <button type="button" class="btn btn-outline-secondary">새로고침</button>
+                  </div>
+
                   <div class="statisticsChart">
                       <%-- 손님의 대출 자산 현황 그래프 --%>
                     <canvas class="assetChart" id="assetChart"></canvas>

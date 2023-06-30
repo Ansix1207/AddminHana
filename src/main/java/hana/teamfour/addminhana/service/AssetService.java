@@ -3,16 +3,23 @@ package hana.teamfour.addminhana.service;
 import hana.teamfour.addminhana.DAO.AccountDAO;
 import hana.teamfour.addminhana.DAO.AssetDAO;
 import hana.teamfour.addminhana.DTO.AssetDTO;
+import hana.teamfour.addminhana.DTO.AssetSumDTO;
 import hana.teamfour.addminhana.entity.AccountEntity;
 import hana.teamfour.addminhana.entity.AssetEntity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AssetService {
     private final AssetDAO assetDAO;
     private final AccountDAO accountDAO;
     private Integer id;
     private String category;
+
+    public AssetService() {
+        this.assetDAO = new AssetDAO();
+        this.accountDAO = new AccountDAO();
+    }
 
     public AssetService(Integer id, String category) {
         this.assetDAO = new AssetDAO();
@@ -49,5 +56,41 @@ public class AssetService {
         }
 
         return balanceSum;
+    }
+
+    public void refreshAssetTable(Integer acc_cid) {
+        List<AssetSumDTO> assetSumDTOList = accountDAO.getSumOfAccBalance(acc_cid);
+        if (assetSumDTOList == null) {
+            return;
+        }
+        Integer assDeposit = 0;
+        Integer assSavings = 0;
+        Integer assLoan = 0;
+        for (AssetSumDTO assetSumDTO : assetSumDTOList) {
+            Integer balanceSum = assetSumDTO.getBalanceSum();
+            String productCategory = assetSumDTO.getAccProductCategory();
+            switch (productCategory) {
+                case "보통예금":
+                    assDeposit += balanceSum;
+                    break;
+                case "정기예금":
+                    assDeposit += balanceSum;
+                    break;
+                case "자유적금":
+                    assSavings += balanceSum;
+                    break;
+                case "정기적금":
+                    assSavings += balanceSum;
+                    break;
+                case "신용대출":
+                    assLoan += balanceSum;
+                    break;
+                case "담보대출":
+                    assLoan += balanceSum;
+                    break;
+            }
+        }
+        AssetDTO assetDTO = new AssetDTO(assDeposit, assSavings, assLoan, null);
+        assetDAO.updateAssetTableById(acc_cid, assetDTO);
     }
 }

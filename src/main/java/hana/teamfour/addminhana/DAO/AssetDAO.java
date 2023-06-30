@@ -1,5 +1,6 @@
 package hana.teamfour.addminhana.DAO;
 
+import hana.teamfour.addminhana.DTO.AssetDTO;
 import hana.teamfour.addminhana.entity.AssetEntity;
 
 import javax.naming.Context;
@@ -27,7 +28,7 @@ public class AssetDAO {
                 "WHERE C_ID = ?";
 
         try (Connection connection = dataFactory.getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)){
+             PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setInt(1, id);
             try (ResultSet resultSet = statement.executeQuery()) {
@@ -49,5 +50,25 @@ public class AssetDAO {
             e.printStackTrace();
         }
         return assetEntity;
+    }
+
+    public void updateAssetTableById(Integer c_id, AssetDTO assetDTO) {
+        String query = "update asset " +
+                " set " +
+                "     ass_deposit = ? " +
+                "     ass_savings = ? " +
+                "     ass_loan = ? " +
+                " where " +
+                "     c_id = ? ";
+        try (Connection connection = dataFactory.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, c_id);
+            statement.setInt(2, assetDTO.getAss_deposit());
+            statement.setInt(3, assetDTO.getAss_savings());
+            statement.setInt(4, assetDTO.getAss_loan());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
