@@ -8,7 +8,9 @@
 <%@ page import="hana.teamfour.addminhana.entity.ProductEntity" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="hana.teamfour.addminhana.DTO.ProductJoinDTO" %>
+<%@ page import="java.sql.Timestamp" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="hana.teamfour.addminhana.DTO.AccountDTO" %>
 <%
   request.setCharacterEncoding("UTF-8");
   String contextPath = request.getContextPath();
@@ -17,6 +19,10 @@
 //    ProductJoinDTO productJoinDTO = (ProductJoinDTO) request.getAttribute("productJoinDTO");
 //    System.out.println("In loanJoin.jsp : " + productJoinDTO);
 //  }
+//  String category = request.getAttribute("category").toString();
+  ProductJoinDTO productJoinDTO = (ProductJoinDTO) request.getAttribute("productJoinDTO");
+
+
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -47,11 +53,12 @@
                 <div class="card-body">
                   <div class="form-floating mb-3">
                     <label>Acc_id</label>
-                    <input class="form-control" name="Acc_id" value="${Acc_id}" type="text">
+                    <input class="form-control" name="Acc_id" value="${Acc_id}" type="text" default="1">
                   </div>
                   <div class="form-floating mb-3">
                     <label>Acc_cid</label>
-                    <input class="form-control" name="Acc_cid" value="${Acc_cid}" type="text">
+                    <input class="form-control" name="Acc_cid" value="${Acc_cid}" type="text"
+                           default="2">
                   </div>
                   <div class="form-floating mb-3">
                     <label>Acc_date</label>

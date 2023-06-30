@@ -21,6 +21,7 @@ public class LoanProductService {
             ProductDTO productDTO = new ProductDTO(productEntities.get(i)); //entities에서 하나 꺼내와서 DTO로 만든다.
             productDTOs.add(productDTO);
         }
+        System.out.println("DTOS" + productDTOs);
         return productDTOs;
     }
 
@@ -33,6 +34,7 @@ public class LoanProductService {
             ProductDTO productDTO = new ProductDTO(productEntities.get(i)); //entities에서 하나 꺼내와서 DTO로 만든다.
             productDTOs.add(productDTO);
         }
+        System.out.println("DTOS" + productDTOs);
         return productDTOs;
     }
 }

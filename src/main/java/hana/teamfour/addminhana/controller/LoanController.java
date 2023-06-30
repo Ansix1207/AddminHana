@@ -70,6 +70,7 @@ public class LoanController extends HttpServlet {
         }
         ArrayList<ProductDTO> productDTOs = loanProductService.getProducts(page);
         request.setAttribute("productDTOs", productDTOs);
+//         productDTOs라는 이름으로 상품 목록을 request 객체에 속성으로 설정합니다
     }
 
     private void setSearchProductDTO(HttpServletRequest request, HttpServletResponse response) {

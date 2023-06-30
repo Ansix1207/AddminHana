@@ -11,7 +11,6 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-
 public class ProductJoinDTO {
     private Integer acc_id;
     private Integer acc_cid;

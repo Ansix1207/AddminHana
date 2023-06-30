@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 @WebServlet("/customer/loanjoin")
 
@@ -22,17 +23,9 @@ public class LoanJoinController extends HttpServlet {
     }
 //    문제는 loanJoinService 객체가 null인 상태를 해결하기위해서 초기화
 
-    private Integer id;
-
-//    public void init(ServletConfig config) throws ServletException {
-//        super.init(config);
-//        loanJoinService = new LoanJoinService(id);
-//    }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doHandle(request, response);
-
 
     }
 
@@ -51,134 +44,71 @@ public class LoanJoinController extends HttpServlet {
                 dispatcher.forward(request, response);
                 break;
             case "POST":
+                /*System.out.println("Acc_id: " + request.getParameter("Acc_id"));
+                System.out.println("Acc_cid: " + request.getParameter("Acc_cid"));
+                System.out.println("Acc_date: " + request.getParameter("Acc_date"));
+                System.out.println("Acc_balance: " + request.getParameter("Acc_balance"));
+                System.out.println("ACC_PASSWORD: " + request.getParameter("ACC_PASSWORD"));
+
+                System.out.println("Acc_pid: " + request.getParameter("Acc_pid"));
+                System.out.println("Acc_p_category: " + request.getParameter("Acc_p_category"));
+                System.out.println("Acc_pname: " + request.getParameter("Acc_pname"));
+                System.out.println("ACC_INTERESTRATE: " + request.getParameter("ACC_INTERESTRATE"));
+                System.out.println("ACC_COLLATERALVALUE: " + request.getParameter("ACC_COLLATERALVALUE"));
+
+                System.out.println("ACC_INTEREST_DAY: " + request.getParameter("ACC_INTEREST_DAY"));
+                System.out.println("ACC_CONTRACT_MONTH: " + request.getParameter("ACC_CONTRACT_MONTH"));
+                System.out.println("ACC_MATURITYDATE: " + request.getParameter("ACC_MATURITYDATE"));
+                System.out.println("ACC_ISACTIVE: " + request.getParameter("ACC_ISACTIVE"));*/
+
                 System.out.println("Post 진입");
+
                 ProductJoinDTO productJoinDTO = new ProductJoinDTO();
+                LocalDateTime currentDateTime = LocalDateTime.now();
+
+                productJoinDTO.setAcc_id(Integer.parseInt(request.getParameter("Acc_id")));
+                productJoinDTO.setAcc_cid(Integer.parseInt(request.getParameter("Acc_cid")));
+                productJoinDTO.setAcc_date(java.sql.Timestamp.valueOf(currentDateTime));
+                productJoinDTO.setAcc_balance(Integer.parseInt(request.getParameter("Acc_balance")));
+                productJoinDTO.setAcc_password(request.getParameter("ACC_PASSWORD"));
+
+                productJoinDTO.setAcc_pid(Integer.parseInt(request.getParameter("Acc_pid")));
+                productJoinDTO.setAcc_p_category(request.getParameter("Acc_p_category"));
+                productJoinDTO.setAcc_pname(request.getParameter("Acc_pname"));
+                productJoinDTO.setAcc_interestrate(Double.valueOf(request.getParameter("ACC_INTERESTRATE")));
+                productJoinDTO.setAcc_collateralvalue(Integer.valueOf(request.getParameter("ACC_COLLATERALVALUE")));
+
+                productJoinDTO.setAcc_interest_day(Integer.valueOf(request.getParameter("ACC_INTEREST_DAY")));
+                productJoinDTO.setAcc_contract_month(Integer.valueOf(request.getParameter("ACC_CONTRACT_MONTH")));
+                productJoinDTO.setAcc_maturitydate(java.sql.Timestamp.valueOf(currentDateTime));
+                productJoinDTO.setAcc_isactive('Y');
+
                 loanJoinService.insertLoanJoin(productJoinDTO);
                 /* insertLoanJoin이 ProductJoinDTO를 받아와서 반환하여 loanJoinDAO 에서 삽입
                  */
-                request.setAttribute("acc_id", request.getParameter("acc_id"));
-                request.setAttribute("acc_cid", request.getParameter("acc_cid"));
-                request.setAttribute("acc_date", request.getParameter("acc_date"));
-                request.setAttribute("acc_balance", request.getParameter("acc_balance"));
-                request.setAttribute("acc_password", request.getParameter("acc_password"));
-                request.setAttribute("acc_pid", request.getParameter("acc_pid"));
-                request.setAttribute("acc_p_category", request.getParameter("acc_p_category"));
-                request.setAttribute("acc_pname", request.getParameter("acc_pname"));
-                request.setAttribute("acc_interestrate", request.getParameter("acc_interestrate"));
-                request.setAttribute("acc_collateralvalue", request.getParameter("acc_collateralvalue"));
-                request.setAttribute("acc_interest_day", request.getParameter("acc_interest_day"));
-                request.setAttribute("acc_contract_month", request.getParameter("acc_contract_month"));
-                request.setAttribute("acc_maturitydate", request.getParameter("acc_maturitydate"));
-                request.setAttribute("acc_isactive", request.getParameter("acc_isactive"));
+                /*
+                request.setAttribute("Acc_id", request.getParameter("Acc_id"));
+                request.setAttribute("Acc_cid", request.getParameter("Acc_cid"));
+                request.setAttribute("Acc_date", request.getParameter("Acc_date"));
+                request.setAttribute("Acc_balance", request.getParameter("Acc_balance"));
+                request.setAttribute("ACC_PASSWORD", request.getParameter("ACC_PASSWORD"));
+                request.setAttribute("Acc_pid", request.getParameter("Acc_pid"));
+                request.setAttribute("Acc_p_category", request.getParameter("Acc_p_category"));
+                request.setAttribute("Acc_pname", request.getParameter("Acc_pname"));
+                request.setAttribute("ACC_INTERESTRATE", request.getParameter("ACC_INTERESTRATE"));
+                request.setAttribute("ACC_COLLATERALVALUE", request.getParameter("ACC_COLLATERALVALUE"));
+                request.setAttribute("ACC_INTEREST_DAY", request.getParameter("ACC_INTEREST_DAY"));
+                request.setAttribute("ACC_CONTRACT_MONTH", request.getParameter("ACC_CONTRACT_MONTH"));
+                request.setAttribute("ACC_MATURITYDATE", request.getParameter("ACC_MATURITYDATE"));
+                request.setAttribute("ACC_ISACTIVE", request.getParameter("ACC_ISACTIVE"));
+                System.out.println(request.getParameter("Acc_cid"));
+                System.out.println("POST 요청 처리 끝" + request);
+                 */
+                System.out.println("POST 요청 처리 끝" + request);
                 dispatcher = request.getRequestDispatcher("./views/loanJoin.jsp");
                 dispatcher.forward(request, response);
-                System.out.println("POST 요청 처리 끝");
                 break;
             default:
         }
-//        private ProductJoinDTO createProductJoinDTO(HttpServletRequest request) {
-//            ProductJoinDTO productJoinDTO = new ProductJoinDTO();
-//
-//            productJoinDTO.setAcc_id(request.getParameter("acc_id"));
-//            return productJoinDTO;
-//        } 
     }
-//                 request.getParameter("acc_id")를 통해 전달된 파라미터의 값을 "acc_id"라는 이름으로 속성을 설정하는 코드
-//                 이후 이 속성은 해당 요청에 대한 응답 처리나 다른 컴포넌트에서 사용될 수 있습니다.
-//                 예를 들어, JSP 페이지에서 해당 속성을 참조하여 동적으로 내용을 생성하거나 특정 로직에서 이 값을 활용할 수 있습니다.
-
-
-//                String res = doSign(request);
-
-
-//    private String doValidRRN(HttpServletRequest request) {
-//        String res = "중복된 주민등록 번호입니다.";
-//        request.setAttribute("ProductJoinDTO", makeSignDTO(request));
-//        return res;
-//    }
-
-    /**
-     * request로 전달받은 값들을 통해 LoanServiceDTO를 만들고 반환합니다. 고맙습니다 안식님
-     */
-//    private ProductJoinDTO makeSignDTO(HttpServletRequest request) {
-//        EmployeeEntity user = (EmployeeEntity) request.getSession().getAttribute("login");
-//        Integer accId = null;
-//        if (request.getParameter("acc_id") != null) {
-//            accId = Integer.parseInt(request.getParameter("acc_id"));
-//        }
-//        Integer accCid = null;
-//        if (request.getParameter("acc_cid") != null) {
-//            accCid = Integer.parseInt(request.getParameter("acc_cid"));
-//        }
-//        Timestamp accDate = null;
-//        if (request.getParameter("acc_date") != null) {
-//            accDate = Timestamp.valueOf(request.getParameter("acc_date"));
-//        }
-//        Integer accBalance = null;
-//        if (request.getParameter("acc_balance") != null) {
-//            accBalance = Integer.parseInt(request.getParameter("acc_balance"));
-//        }
-//        String accPassword = request.getParameter("acc_password");
-//        Integer accPid = null;
-//        if (request.getParameter("acc_pid") != null) {
-//            accPid = Integer.parseInt(request.getParameter("acc_pid"));
-//        }
-//        String accPCategory = request.getParameter("acc_p_category");
-//        String accPName = request.getParameter("acc_pname");
-//        Double accInterestRate = null;
-//        if (request.getParameter("acc_interestrate") != null) {
-//            accInterestRate = Double.parseDouble(request.getParameter("acc_interestrate"));
-//        }
-//        Integer accCollateralValue = null;
-//        if (request.getParameter("acc_collateralvalue") != null) {
-//            accCollateralValue = Integer.parseInt(request.getParameter("acc_collateralvalue"));
-//        }
-//        Integer accInterestDay = null;
-//        if (request.getParameter("acc_interest_day") != null) {
-//            accInterestDay = Integer.parseInt(request.getParameter("acc_interest_day"));
-//        }
-//        Integer accContractMonth = null;
-//        if (request.getParameter("acc_contract_month") != null) {
-//            accContractMonth = Integer.parseInt(request.getParameter("acc_contract_month"));
-//        }
-//        Timestamp accMaturityDate = null;
-//        if (request.getParameter("acc_maturitydate") != null) {
-//            accMaturityDate = Timestamp.valueOf(request.getParameter("acc_maturitydate"));
-//        }
-//        Character accIsActive = null;
-//        if (request.getParameter("acc_isactive") != null && request.getParameter("acc_isactive").length() > 0) {
-//            accIsActive = request.getParameter("acc_isactive").charAt(0);
-//        }
-//
-//        ProductJoinDTO productJoinDTO = ProductJoinDTO.builder()
-//                .acc_id(accId)
-//                .acc_cid(accCid)
-//                .acc_date(accDate)
-//                .acc_balance(accBalance)
-//                .acc_password(accPassword)
-//                .acc_pid(accPid)
-//                .acc_p_category(accPCategory)
-//                .acc_pname(accPName)
-//                .acc_interestrate(accInterestRate)
-//                .acc_collateralvalue(accCollateralValue)
-//                .acc_interest_day(accInterestDay)
-//                .acc_contract_month(accContractMonth)
-//                .acc_maturitydate(accMaturityDate)
-//                .acc_isactive(accIsActive)
-//                .build();
-//
-//        System.out.println("IN makeSignDTO: " + productJoinDTO.toString());
-//        return productJoinDTO;
-//    }
-
-//    private String doSign(HttpServletRequest request) {
-//        String res = "가입에 실패했습니다";
-//        ProductJoinDTO productJoinDTO = makeSignDTO(request);
-//        System.out.println("doSign 진입");
-//        System.out.println("ProductJoinDTO = " + productJoinDTO.toString());
-//        res = "가입에 성공했습니다";
-//        return res;
-//    }
-
-
 }

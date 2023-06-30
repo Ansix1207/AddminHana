@@ -13,8 +13,6 @@ public class LoanJoinService {
     //    LoanJoinService 객체를 생성할 때 LoanJoinDAO 객체가 초기화되어 NullPointerException을 방지할 수 있습니다.
 
     public void insertLoanJoin(ProductJoinDTO productJoinDTO) {
-
-
         AccountEntity accountEntity = convertToAccountEntity(productJoinDTO);
         loanJoinDAO.insertAccount(accountEntity);
     }
@@ -52,6 +50,21 @@ public class LoanJoinService {
         System.out.println(accountEntity);
         return accountEntity;
     }
+
+//    public ArrayList<LoanJoinDAO> getJoins() {
+//        LoanJoinDAO loanjoinDAO = new LoanJoinDAO(); // LoanProduct 객체 생성
+//        ArrayList<AccountEntity> accountEntities = loanjoinDAO.insertJoin();
+//        ArrayList<ProductJoinDTO> JoinDTOs = new ArrayList<ProductJoinDTO>();
+//        for (int i = 0; i < accountEntities.size(); i++) {
+//            // productEntities.get(i) -> type은? ProductEntity
+//            System.out.println(accountEntities.get(i).getAcc_id());
+//            ProductJoinDTO productJoinDTO = new ProductJoinDTO(accountEntities.get(i)); //entities에서 하나 꺼내와서 DTO로 만든다.
+//            JoinDTOs.add(productJoinDTO);
+//        }
+//        System.out.println("DTOS" + JoinDTOs);
+//        return JoinDTOs;
+//    }
+
 }
 //    public ArrayList<ProductJoinDTO> getProducts() {
 ////        ArrayList<ProductJoinDTO>를 받을 getProducts() 는 무엇이냐 하면
