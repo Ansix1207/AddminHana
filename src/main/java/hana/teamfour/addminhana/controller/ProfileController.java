@@ -10,7 +10,6 @@ import hana.teamfour.addminhana.service.CustomerService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,14 +21,12 @@ import java.util.ArrayList;
 
 @WebServlet("/customer/profile/*")
 public class ProfileController extends HttpServlet {
-    ServletContext context = null;
     CustomerService customerService;
     AssetService assetService;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        context = getServletContext();
         customerService = new CustomerService();
         assetService = new AssetService();
     }
@@ -47,10 +44,8 @@ public class ProfileController extends HttpServlet {
     private void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         response.setContentType("text/html;charset=utf-8");
-        String contextPath = context.getContextPath();
         String profilePage = "/views/profile.jsp";
         String action = request.getParameter("action");
-        System.out.println("action = " + action);
         String description = request.getParameter("descriptionText");
         String customerRRN = (String) request.getParameter("customerRRN");
         CustomerSessionDTO customerSession = (CustomerSessionDTO) session.getAttribute("customerSession");

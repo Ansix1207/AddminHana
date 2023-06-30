@@ -62,8 +62,6 @@ public class AccountDAO {
     }
 
     public List<AssetSumDTO> getSumOfAccBalance(Integer acc_cid) {
-        System.out.println("어카운트 다오 getSumOfAccBalance");
-        System.out.println("acc_cid = " + acc_cid);
         List<AssetSumDTO> list = new ArrayList<>();
         String query = "select sum(acc_balance) as balance_sum, acc_p_category " +
                 " from account " +
