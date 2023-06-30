@@ -68,15 +68,16 @@ Settings | File Templates. --%>
   <meta charset="UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css?after"
         rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
         crossorigin="anonymous"/>
-  <link rel="stylesheet" href="<%=contextPath%>/resources/css/base.css">
-  <link rel="stylesheet" href="<%=contextPath%>/resources/css/nav.css"/>
-  <link rel="stylesheet" href="<%=contextPath%>/resources/css/profile.css"/>
-  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="<%=contextPath%>/resources/css/base.css?ver=1">
+  <link rel="stylesheet" href="<%=contextPath%>/resources/css/nav.css?ver=1"/>
+  <link rel="stylesheet" href="<%=contextPath%>/resources/css/profile.css?ver=1"/>
   <title>Admin Hana - profile</title>
 </head>
 <body>
@@ -135,15 +136,15 @@ Settings | File Templates. --%>
                 </div>
                 <div class="signedupProduct">
                     <%-- 가입된 상품 리스트 --%>
-                  <ul>
-                    <c:if test="${not empty depositAccountList}">
-                      <p>
-                        <span style="font-size:1.25rem;margin-right: 11rem;">예금 상품</span>
-                        <span class="card-text">₩
+                  <c:if test="${not empty depositAccountList}">
+                    <p>
+                      <span style="font-size:1.25rem;margin-right: 11rem;">예금 상품</span>
+                      <span class="card-text">₩
                           <fmt:formatNumber type="number" maxFractionDigits="3" value="${deposit}"/>
                         </span>
-                      </p>
-                    </c:if>
+                    </p>
+                  </c:if>
+                  <ul>
                     <%
                       for (AccountDTO account : depositAccountList) {
                     %>
@@ -158,14 +159,14 @@ Settings | File Templates. --%>
                       }
                     %>
                   </ul>
-                  <ul>
-                    <c:if test="${not empty savingsAccountList}">
-                      <p>
-                        <span style="font-size:1.25rem;margin-right: 11rem;">예금 상품</span>
-                        <span class="card-text">₩
+                  <p>
+                    <span style="font-size:1.25rem;margin-right: 11rem;">적금 상품</span>
+                    <span class="card-text">₩
                           <fmt:formatNumber type="number" maxFractionDigits="3" value="${savings}"/>
                         </span>
-                      </p>
+                  </p>
+                  <ul>
+                    <c:if test="${not empty savingsAccountList}">
                     </c:if>
                     <%
                       for (AccountDTO account : savingsAccountList) {
@@ -181,15 +182,15 @@ Settings | File Templates. --%>
                       }
                     %>
                   </ul>
-                  <ul>
-                    <c:if test="${not empty loanAccountList}">
-                      <p>
-                        <span style="font-size:1.25rem;margin-right: 11rem;">예금 상품</span>
-                        <span class="card-text">₩
+                  <c:if test="${not empty loanAccountList}">
+                    <p>
+                      <span style="font-size:1.25rem;margin-right: 11rem;">대출 상품</span>
+                      <span class="card-text">₩
                           <fmt:formatNumber type="number" maxFractionDigits="3" value="${loan}"/>
                         </span>
-                      </p>
-                    </c:if>
+                    </p>
+                  </c:if>
+                  <ul>
                     <%
                       for (AccountDTO account : loanAccountList) {
                     %>
@@ -274,6 +275,8 @@ Settings | File Templates. --%>
           integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
           crossorigin="anonymous"
   ></script>
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
       const hasUpdated = <%=hasUpdatedDescription%>;
       const $descriptionForm = document.querySelector('.descriptionForm')
