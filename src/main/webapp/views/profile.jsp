@@ -21,6 +21,9 @@ Settings | File Templates. --%>
   AssetDTO loanDTO = (AssetDTO) request.getAttribute("loanDTO");
   // 자산 정보
   Integer asset = 0;
+  Integer deposit = 0;
+  Integer savings = 0;
+  Integer loan = 0;
   String[] assetCategory = new String[6];
 
   String balance = "잔액";
@@ -32,7 +35,8 @@ Settings | File Templates. --%>
     accountBalance[idx++] = tempBalance[0];
     assetCategory[idx] = "정기예금";
     accountBalance[idx++] = tempBalance[1];
-    asset += depositDTO.getAss_deposit();
+    deposit = depositDTO.getAss_deposit();
+    asset += deposit;
     System.out.println("depositDTO.getAss_deposit() = " + depositDTO.getAss_deposit());
   }
   if (savingsAccountList != null && savingsDTO != null) {
@@ -41,7 +45,8 @@ Settings | File Templates. --%>
     accountBalance[idx++] = tempBalance[0];
     assetCategory[idx] = "정기적금";
     accountBalance[idx++] = tempBalance[1];
-    asset += savingsDTO.getAss_savings();
+    savings = savingsDTO.getAss_savings();
+    asset += savings;
   }
   if (loanAccountList != null && loanDTO != null) {
     Integer[] tempBalance = loanDTO.getBalance_sum();
@@ -49,10 +54,13 @@ Settings | File Templates. --%>
     accountBalance[idx++] = tempBalance[0];
     assetCategory[idx] = "담보대출";
     accountBalance[idx++] = tempBalance[1];
-    asset = loanDTO.getAss_loan();
+    loan = loanDTO.getAss_loan();
+    asset = loan;
   }
-  System.out.println("Arrays.toString(accountBalance) = " + Arrays.toString(accountBalance));
-
+  request.setAttribute("asset", asset);
+  request.setAttribute("deposit", deposit);
+  request.setAttribute("savings", savings);
+  request.setAttribute("loan", loan);
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -111,9 +119,13 @@ Settings | File Templates. --%>
                   <div class="d-flex justify-content-between align-items-center">
                     <p>
                       <span>자산 총액</span>
-                      <span class="card-text">₩ <%=asset%></span>
+                      <span class="card-text">₩ 
+                        <fmt:formatNumber type="number" maxFractionDigits="3" value="${asset}"/></span>
                     </p>
-                    <button type="button" class="btn btn-outline-secondary">새로고침</button>
+                    <form action="profile" method="post">
+                      <button type="submit" class="btn btn-outline-secondary">새로고침</button>
+                      <input type="hidden" name="action" value="asset-update">
+                    </form>
                   </div>
 
                   <div class="statisticsChart">
@@ -125,7 +137,12 @@ Settings | File Templates. --%>
                     <%-- 가입된 상품 리스트 --%>
                   <ul>
                     <c:if test="${not empty depositAccountList}">
-                      <h5 class="card-title mt-3 mb-2">예금 상품</h5>
+                      <p>
+                        <span style="font-size:1.25rem;margin-right: 11rem;">예금 상품</span>
+                        <span class="card-text">₩
+                          <fmt:formatNumber type="number" maxFractionDigits="3" value="${deposit}"/>
+                        </span>
+                      </p>
                     </c:if>
                     <%
                       for (AccountDTO account : depositAccountList) {
@@ -143,7 +160,12 @@ Settings | File Templates. --%>
                   </ul>
                   <ul>
                     <c:if test="${not empty savingsAccountList}">
-                      <h5 class="card-title mt-3 mb-2">적금 상품</h5>
+                      <p>
+                        <span style="font-size:1.25rem;margin-right: 11rem;">예금 상품</span>
+                        <span class="card-text">₩
+                          <fmt:formatNumber type="number" maxFractionDigits="3" value="${savings}"/>
+                        </span>
+                      </p>
                     </c:if>
                     <%
                       for (AccountDTO account : savingsAccountList) {
@@ -161,7 +183,12 @@ Settings | File Templates. --%>
                   </ul>
                   <ul>
                     <c:if test="${not empty loanAccountList}">
-                      <h5 class="card-title mt-3 mb-2">대출 상품</h5>
+                      <p>
+                        <span style="font-size:1.25rem;margin-right: 11rem;">예금 상품</span>
+                        <span class="card-text">₩
+                          <fmt:formatNumber type="number" maxFractionDigits="3" value="${loan}"/>
+                        </span>
+                      </p>
                     </c:if>
                     <%
                       for (AccountDTO account : loanAccountList) {
