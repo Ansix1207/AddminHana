@@ -14,15 +14,7 @@
 <%
   request.setCharacterEncoding("UTF-8");
   String contextPath = request.getContextPath();
-//  if (request.getAttribute("productJoinDTO") != null) {
-//    request.removeAttribute("valid_rrn");
-//    ProductJoinDTO productJoinDTO = (ProductJoinDTO) request.getAttribute("productJoinDTO");
-//    System.out.println("In loanJoin.jsp : " + productJoinDTO);
-//  }
-//  String category = request.getAttribute("category").toString();
   ProductJoinDTO productJoinDTO = (ProductJoinDTO) request.getAttribute("productJoinDTO");
-
-
 %>
 <% Boolean isSuccess = (Boolean) request.getAttribute("isSuccess");
   System.out.println("isSuccess: " + isSuccess);
@@ -51,7 +43,7 @@
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/nav.css">
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/loanJoin.css ">
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/base.css ">
-  <title>대출상품가입</title>
+  <title>금융상품가입</title>
 </head>
 <body>
   <div class="wrap">
@@ -150,7 +142,5 @@
           location.reload();
       }
   </script>
-
-
 </body>
 </html>

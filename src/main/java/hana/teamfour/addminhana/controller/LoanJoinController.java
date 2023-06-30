@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 
 @WebServlet("/customer/loanjoin")
-
 public class LoanJoinController extends HttpServlet {
     private LoanJoinService loanJoinService;
 
@@ -26,7 +25,6 @@ public class LoanJoinController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doHandle(request, response);
-
     }
 
     @Override
@@ -44,25 +42,7 @@ public class LoanJoinController extends HttpServlet {
                 dispatcher.forward(request, response);
                 break;
             case "POST":
-                /*System.out.println("Acc_id: " + request.getParameter("Acc_id"));
-                System.out.println("Acc_cid: " + request.getParameter("Acc_cid"));
-                System.out.println("Acc_date: " + request.getParameter("Acc_date"));
-                System.out.println("Acc_balance: " + request.getParameter("Acc_balance"));
-                System.out.println("ACC_PASSWORD: " + request.getParameter("ACC_PASSWORD"));
-
-                System.out.println("Acc_pid: " + request.getParameter("Acc_pid"));
-                System.out.println("Acc_p_category: " + request.getParameter("Acc_p_category"));
-                System.out.println("Acc_pname: " + request.getParameter("Acc_pname"));
-                System.out.println("ACC_INTERESTRATE: " + request.getParameter("ACC_INTERESTRATE"));
-                System.out.println("ACC_COLLATERALVALUE: " + request.getParameter("ACC_COLLATERALVALUE"));
-
-                System.out.println("ACC_INTEREST_DAY: " + request.getParameter("ACC_INTEREST_DAY"));
-                System.out.println("ACC_CONTRACT_MONTH: " + request.getParameter("ACC_CONTRACT_MONTH"));
-                System.out.println("ACC_MATURITYDATE: " + request.getParameter("ACC_MATURITYDATE"));
-                System.out.println("ACC_ISACTIVE: " + request.getParameter("ACC_ISACTIVE"));*/
-
                 System.out.println("Post 진입");
-
                 ProductJoinDTO productJoinDTO = new ProductJoinDTO();
                 LocalDateTime currentDateTime = LocalDateTime.now();
 
@@ -86,29 +66,6 @@ public class LoanJoinController extends HttpServlet {
                 boolean isSuccess = loanJoinService.insertLoanJoin(productJoinDTO);
 //                Controller에서 isSuccess 변수를 JSP 페이지로 전달하는 코드 추가
                 request.setAttribute("isSuccess", isSuccess);
-
-
-
-                /* insertLoanJoin이 ProductJoinDTO를 받아와서 반환하여 loanJoinDAO 에서 삽입
-                 */
-                /*
-                request.setAttribute("Acc_id", request.getParameter("Acc_id"));
-                request.setAttribute("Acc_cid", request.getParameter("Acc_cid"));
-                request.setAttribute("Acc_date", request.getParameter("Acc_date"));
-                request.setAttribute("Acc_balance", request.getParameter("Acc_balance"));
-                request.setAttribute("ACC_PASSWORD", request.getParameter("ACC_PASSWORD"));
-                request.setAttribute("Acc_pid", request.getParameter("Acc_pid"));
-                request.setAttribute("Acc_p_category", request.getParameter("Acc_p_category"));
-                request.setAttribute("Acc_pname", request.getParameter("Acc_pname"));
-                request.setAttribute("ACC_INTERESTRATE", request.getParameter("ACC_INTERESTRATE"));
-                request.setAttribute("ACC_COLLATERALVALUE", request.getParameter("ACC_COLLATERALVALUE"));
-                request.setAttribute("ACC_INTEREST_DAY", request.getParameter("ACC_INTEREST_DAY"));
-                request.setAttribute("ACC_CONTRACT_MONTH", request.getParameter("ACC_CONTRACT_MONTH"));
-                request.setAttribute("ACC_MATURITYDATE", request.getParameter("ACC_MATURITYDATE"));
-                request.setAttribute("ACC_ISACTIVE", request.getParameter("ACC_ISACTIVE"));
-                System.out.println(request.getParameter("Acc_cid"));
-                System.out.println("POST 요청 처리 끝" + request);
-                 */
                 System.out.println("POST 요청 처리 끝" + request);
                 dispatcher = request.getRequestDispatcher("/views/loanJoin.jsp");
                 dispatcher.forward(request, response);
