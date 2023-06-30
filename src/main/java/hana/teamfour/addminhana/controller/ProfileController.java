@@ -24,11 +24,14 @@ import java.util.ArrayList;
 public class ProfileController extends HttpServlet {
     ServletContext context = null;
     CustomerService customerService;
+    AssetService assetService;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
+        context = getServletContext();
         customerService = new CustomerService();
+        assetService = new AssetService();
     }
 
     @Override
@@ -44,13 +47,21 @@ public class ProfileController extends HttpServlet {
     private void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         response.setContentType("text/html;charset=utf-8");
+        String contextPath = context.getContextPath();
         String profilePage = "/views/profile.jsp";
         String action = request.getParameter("action");
+        System.out.println("action = " + action);
         String description = request.getParameter("descriptionText");
         String customerRRN = (String) request.getParameter("customerRRN");
         CustomerSessionDTO customerSession = (CustomerSessionDTO) session.getAttribute("customerSession");
         try {
             CustomerSummaryDTO customerSummaryDTO = null;
+            if (action != null && action.equals("asset-update")) {
+                customerSummaryDTO = customerService.getCustomerSummaryDTOById(customerSession.getC_id());
+                request.setAttribute("customerSummaryDTO", customerSummaryDTO);
+                Integer customerId = customerSession.getC_id();
+                assetService.refreshAssetTable(customerId);
+            }
             if (action != null && action.equals("description")) {
                 customerSummaryDTO = customerService.getCustomerSummaryDTOById(customerSession.getC_id());
                 System.out.println("customerSummaryDTO = " + customerSummaryDTO);
