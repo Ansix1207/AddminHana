@@ -120,30 +120,6 @@ Settings | File Templates. --%>
                       <%-- 손님의 대출 자산 현황 그래프 --%>
                     <canvas class="assetChart" id="assetChart"></canvas>
                   </div>
-                    <%--                  <c:if test="${depositDTO != null}">--%>
-                    <%--                    <h5 class="card-title mt-3 mb-2">적금 정보</h5>--%>
-                    <%--                    <p><span>총 적금액</span> <span class="card-text">₩ <%=deposit%></span></p>--%>
-                    <%--                    <div class="statisticsChart">--%>
-                    <%--                        &lt;%&ndash; 손님의 대출 자산 현황 그래프 &ndash;%&gt;--%>
-                    <%--                      <canvas class="assetChart" id="depositChart"></canvas>--%>
-                    <%--                    </div>--%>
-                    <%--                  </c:if>--%>
-                    <%--                  <c:if test="${savingsDTO != null}">--%>
-                    <%--                    <h5 class="card-title mt-3 mb-2">예금 정보</h5>--%>
-                    <%--                    <p><span>총 예금액</span> <span class="card-text">₩ <%=savings%></span></p>--%>
-                    <%--                    <div class="statisticsChart">--%>
-                    <%--                        &lt;%&ndash; 손님의 대출 자산 현황 그래프 &ndash;%&gt;--%>
-                    <%--                      <canvas class="assetChart" id="savingsChart"></canvas>--%>
-                    <%--                    </div>--%>
-                    <%--                  </c:if>--%>
-                    <%--                  <c:if test="${loanDTO != null}">--%>
-                    <%--                    <h5 class="card-title mt-3 mb-2">대출 정보</h5>--%>
-                    <%--                    <p><span>총 대출액</span> <span class="card-text">₩ <%=loan%></span></p>--%>
-                    <%--                    <div class="statisticsChart">--%>
-                    <%--                        &lt;%&ndash; 손님의 대출 자산 현황 그래프 &ndash;%&gt;--%>
-                    <%--                      <canvas class="assetChart" id="loanChart"></canvas>--%>
-                    <%--                    </div>--%>
-                    <%--                  </c:if>--%>
                 </div>
                 <div class="signedupProduct">
                     <%-- 가입된 상품 리스트 --%>
