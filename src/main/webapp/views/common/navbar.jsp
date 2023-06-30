@@ -91,6 +91,10 @@
         <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
         신규 고객 가입
       </a>
+      <a class="nav-link" href="<%=contextPath%>/customerList ">
+        <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+        가입 고객 리스트
+      </a>
       <%}%>
 
       <div class="sb-sidenav-menu-heading">상품</div>
