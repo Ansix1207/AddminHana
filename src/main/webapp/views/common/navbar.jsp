@@ -117,9 +117,9 @@
   %>
   <div class="sb-sidenav-footer">
     <div class="small">현재 상담 중인 고객:</div>
-    <div class="d-flex justify-content-end"><span><%=customerSession.getC_name()%>&nbsp;님</span>
+    <div class="d-flex justify-content-between"><span><%=customerSession.getC_name()%>&nbsp;님</span>
       <a class="btn btn-light btn-sm" style="--bs-btn-font-size: .50rem; display: inline-block"
-         href="<%=contextPath%>/logout/customer">세션아웃</a>
+         href="<%=contextPath%>/logout/customer">거래종료</a>
     </div>
   </div>
   <%}%>
@@ -129,12 +129,10 @@
       if (request.getSession().getAttribute("login") != null) {
         EmployeeDTO employee = (EmployeeDTO) request.getSession().getAttribute("login");
     %>
-    <div class="d-flex"><span><%=employee.getE_name()%></span>
+    <div class="d-flex justify-content-between"><span><%=employee.getE_name()%></span>
       <a class="btn btn-dark btn-sm" style="--bs-btn-font-size: .50rem; display: inline-block"
          href="<%=contextPath%>/logout/user">로그아웃</a>
     </div>
     <%}%>
-
   </div>
-
 </div>

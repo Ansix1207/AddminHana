@@ -74,8 +74,6 @@
                     <label for="inputName">신용등급</label>
                     <input class="form-control" name="inputName" type="text">
                   </div>
-
-
                   <div class="mt-4 mb-0">
                     <div class="d-grid"><a class="btn btn-primary btn-block" href="login.html">가입 심사</a></div>
                   </div>

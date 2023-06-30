@@ -185,7 +185,11 @@ public class CustomerDAO {
             statement.setString(4, c_job);
             statement.setString(5, c_description);
             statement.setInt(6, c_id);
-            statement.executeUpdate();
+            if (statement.executeUpdate() == 1) {
+                connection.commit();
+            } else {
+                connection.rollback();
+            }
             return true;
         } catch (SQLException e) {
             e.printStackTrace();

@@ -1,5 +1,6 @@
 package hana.teamfour.addminhana.DAO;
 
+import hana.teamfour.addminhana.DTO.AssetSumDTO;
 import hana.teamfour.addminhana.entity.AccountEntity;
 
 import javax.naming.Context;
@@ -7,6 +8,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AccountDAO {
     private DataSource dataFactory;
@@ -51,6 +53,32 @@ public class AccountDAO {
                     Character acc_isactive = resultSet.getString("acc_isactive").charAt(0);
                     AccountEntity accountEntity = new AccountEntity(acc_id, acc_cid, acc_date, acc_balance, acc_password, acc_pid, acc_p_category, acc_pname, acc_interestrate, acc_collateralvalue, acc_interest_day, acc_contract_month, acc_maturitydate, acc_isactive);
                     list.add(accountEntity);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }   
+
+    public List<AssetSumDTO> getSumOfAccBalance(Integer acc_cid) {
+        List<AssetSumDTO> list = new ArrayList<>();
+        String query = "select sum(acc_balance) as balance_sum, acc_p_category " +
+                " from account " +
+                " where acc_cid = ? " +
+                "       and acc_isactive = 'Y' " +
+                " group by acc_p_category";
+        try (Connection connection = dataFactory.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setInt(1, acc_cid);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    Integer balanceSum = resultSet.getInt("balance_sum");
+                    String accProductCategory = resultSet.getString("acc_p_category");
+                    AssetSumDTO assetSumDTO = new AssetSumDTO(balanceSum, accProductCategory);
+                    list.add(assetSumDTO);
                 }
             }
         } catch (SQLException e) {
