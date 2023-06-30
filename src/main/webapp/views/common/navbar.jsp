@@ -91,7 +91,7 @@
         <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
         신규 고객 가입
       </a>
-      <a class="nav-link" href="<%=contextPath%>/customerList ">
+      <a class="nav-link" href="<%=contextPath%>/customerList?page=1&size=10 ">
         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
         가입 고객 리스트
       </a>

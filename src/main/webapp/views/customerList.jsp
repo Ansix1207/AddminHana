@@ -67,23 +67,13 @@
 
         <div class="card-body">
           <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
-            <%--            <div class="datatable-top">--%>
-            <%--              <div class="datatable-dropdown">--%>
-            <%--                <label>--%>
-            <%--                  <select class="datatable-selector">--%>
-            <%--                    <option value="5">5</option>--%>
-            <%--                    <option value="10" selected="">10</option>--%>
-            <%--                    <option value="15">15</option>--%>
-            <%--                    <option value="20">20</option>--%>
-            <%--                    <option value="25">25</option>--%>
-            <%--                  </select> entries per page--%>
-            <%--                </label>--%>
-            <%--              </div>--%>
-            <%--              <div class="datatable-search">--%>
-            <%--                <input class="datatable-input" placeholder="Search..." type="search" title="Search within table"--%>
-            <%--                       aria-controls="datatablesSimple">--%>
-            <%--              </div>--%>
-            <%--            </div>--%>
+            <div class="datatable-top">
+              <div class="datatable-dropdown"></div>
+              <div class="datatable-search">
+                <input class="datatable-input" placeholder="Search..." type="search" title="Search within table"
+                       aria-controls="datatablesSimple">
+              </div>
+            </div>
             <div class="datatable-container">
               <table id="datatablesSimple" class="datatable-table">
                 <thead>
@@ -160,36 +150,49 @@
       const size = <%=size%>;
       const customerCount = <%=customerCount%>;
       const lastPage = Math.floor(300 / size);
-      console.log(lastPage);
 
       let pageListNum = Math.floor((page - 1) / 10) * 10;
       let innerHTML = "";
       innerHTML += `
       <li class="datatable-pagination-list-item">
-        <a href="?page=${page - 10 > 0 ? page -10 : 1}"data-page="1" class="datatable-pagination-list-item-link">‹</a>
+        <a href="?page=${page - 10 > 0 ? page -10 : 1}&size=${size}"data-page="1" class="datatable-pagination-list-item-link">‹</a>
       </li>`
 
       for (let i = 1 + pageListNum; i <= 10 + pageListNum; i++) {
           innerHTML += `
           <li class="datatable-pagination-list-item ${page == i ? "datatable-active" : ""} ">
-            <a href="?page=${i}" data-page="${i}" class="datatable-pagination-list-item-link">${i}</a>
+            <a href="?page=${i}&size=${size}" data-page="${i}" class="datatable-pagination-list-item-link">${i}</a>
           </li>
           `;
       }
 
       innerHTML += `
       <li class="datatable-pagination-list-item"  >
-        <a href="?page=${page + 10 < lastPage ? page + 10 : lastPage}"data-page="2" class="datatable-pagination-list-item-link">›</a>
+        <a href="?page=${page + 10 < lastPage ? page + 10 : lastPage}&size=${size}" data-page="2" class="datatable-pagination-list-item-link">›</a>
       </li>`
 
       $pagenation.innerHTML = innerHTML;
+
+      $sizeSelector = document.querySelector(".datatable-dropdown");
+
+
+      let selectorInnerHTML = `
+      <label>
+          <select class="datatable-selector">
+            <option value="10" ${size == 10 ? "selected" : ""}>10</option>
+            <option value="15" ${size == 15 ? "selected" : ""}>15</option>
+            <option value="20" ${size == 20 ? "selected" : ""}>20</option>
+            <option value="25" ${size == 25 ? "selected" : ""}>25</option>
+          </select> entries per page
+      </label>
+      `;
+      $sizeSelector.innerHTML = selectorInnerHTML;
+      $sizeSelector.addEventListener('change', (e) => {
+          const value = e.target.value;
+          location.href = `customerList?page=${page}&size=${value}`;
+      });
+
+
   </script>
 </body>
 </html>
-
-<li class="datatable-pagination-list-item datatable-hidden datatable-disabled">
-  <a data-page="1" class="datatable-pagination-list-item-link">‹</a>
-</li>
-<li class="datatable-pagination-list-item">
-  <a data-page="2" class="datatable-pagination-list-item-link">›</a>
-</li>
