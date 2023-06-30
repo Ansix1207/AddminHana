@@ -6,7 +6,9 @@ import hana.teamfour.addminhana.DTO.CustomerSummaryDTO;
 import hana.teamfour.addminhana.entity.CustomerEntity;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -106,5 +108,16 @@ public class CustomerService {
     public boolean checkDuplicateByRRN(String rrn) {
         System.out.println("Service checkDuplicateByRRN : " + rrn);
         return customerDAO.checkDuplicateByRRN(rrn);
+    }
+
+    public List<CustomerSummaryDTO> getCustomerSummaryList() {
+        List<CustomerSummaryDTO> customerSummaryList = new ArrayList<>();
+        List<CustomerEntity> customerEntityList = customerDAO.findAll();
+        System.out.println("customerEntityList 인 서비스= " + customerEntityList);
+        for (CustomerEntity customerEntity : customerEntityList) {
+            CustomerSummaryDTO customerSummaryDTO = CustomerSummaryDTO.from(customerEntity);
+            customerSummaryList.add(customerSummaryDTO);
+        }
+        return customerSummaryList;
     }
 }

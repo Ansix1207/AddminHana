@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CustomerDAO {
     private DataSource dataFactory;
@@ -195,5 +197,32 @@ public class CustomerDAO {
             e.printStackTrace();
         }
         return false;
+    }
+
+
+    public List<CustomerEntity> findAll() {
+        List<CustomerEntity> list = new ArrayList<>();
+        String query = "select * from customer ";
+        try (Connection connection = dataFactory.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            try (ResultSet rs = statement.executeQuery()) {
+                while (rs.next()) {
+                    Integer c_id = rs.getInt("c_id");
+                    String c_name = rs.getString("c_name");
+                    String c_rrn = rs.getString("c_rrn");
+                    Character c_gender = rs.getString("c_gender").charAt(0);
+                    String c_job = rs.getString("c_job");
+                    String c_address = rs.getString("c_address");
+                    String c_mobile = rs.getString("c_mobile");
+                    String c_description = rs.getString("c_description");
+                    Integer e_id = rs.getInt("e_id");
+                    CustomerEntity customerEntity = new CustomerEntity(c_id, c_name, c_rrn, c_gender, c_address, c_mobile, c_job, c_description, e_id);
+                    list.add(customerEntity);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 }
