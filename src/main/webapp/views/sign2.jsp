@@ -19,6 +19,23 @@
     System.out.println("In sign.jsp : " + customerSignDTO.getC_rrn());
   }
   String message = (String) request.getAttribute("message");
+  String c_address1 = request.getParameter("c_address1");
+  String c_address2 = request.getParameter("c_address2");
+  String c_mobile = request.getParameter("c_mobile");
+  String c_description = request.getParameter("c_description");
+  //null처리
+  if (c_address1 == null) {
+    c_address1 = "";
+  }
+  if (c_address2 == null) {
+    c_address2 = "";
+  }
+  if (c_mobile == null) {
+    c_mobile = "";
+  }
+  if (c_description == null) {
+    c_description = "";
+  }
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -87,17 +104,17 @@
           <div class="col-8">
             <label for="inputAddress" class="form-label">도로명 주소</label>
             <input type="text" class="form-control" id="inputAddress" placeholder="" name="c_address1"
-                   value="${c_address1}" default="">
+                   value="<%=c_address1%>" default="">
           </div>
           <div class="col-4">
             <label for="inputAddress2" class="form-label">상세주소</label>
             <input type="text" class="form-control" id="inputAddress2" placeholder="1동 101호, 2층, 지하" name="c_address2"
-                   value="${c_address2}" default="">
+                   value="<%=c_address2%>" default="">
           </div>
           <div class="col-md-8">
             <label for="inputMobile" class="form-label">휴대폰번호</label>
             <input type="text" class="form-control" id="inputMobile" name="c_mobile"
-                   value="${c_mobile}" default="">
+                   value="<%=c_mobile%>" default="">
           </div>
           <div class="col-md-4">
             <label for="inputState" class="form-label">직업</label>
@@ -112,10 +129,10 @@
           <div class="form-floating">
             <textarea class="form-control" placeholder="Leave a comment here" name="c_description"
                       id="floatingTextarea2"
-                      style="height: 100px">${c_description}</textarea>
+                      style="height: 100px"><%=c_description%></textarea>
             <label for="floatingTextarea2">특이사항</label>
           </div>
-          <button type="submit col-12" class="btn btn-primary" id="signButton">신규 손님 가입</button>
+          <button type="button" class="btn btn-primary col-12" id="signButton" onclick="check()">신규 손님 가입</button>
           <%--            <input type="submit col-12" class="btn btn-primary"  value="회원 가입"/>--%>
         </form>
       </div>
@@ -129,6 +146,63 @@
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"/>
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
   <script>
+      function check() {
+          let name = document.querySelector("#name");
+          let rrn1 = document.querySelector("#rrn1");
+          let rrn2 = document.querySelector("#rrn2");
+          let mobile = document.querySelector("#inputMobile");
+          let zip = document.querySelector("#inputZip");
+          let address = document.querySelector("#inputAddress");
+          let address2 = document.querySelector("#inputAddress2");
+
+          console.log(name, rrn1, rrn2, mobile)
+
+          if (name.value === "") {
+              name.classList.add("is-invalid");
+          } else {
+              name.classList.remove("is-invalid");
+          }
+          if (rrn1.value === "") {
+              rrn1.classList.add("is-invalid");
+          } else {
+              rrn1.classList.remove("is-invalid");
+          }
+          if (rrn2.value === "") {
+              rrn2.classList.add("is-invalid");
+          } else {
+              rrn2.classList.remove("is-invalid");
+          }
+          if (mobile.value === "") {
+              mobile.classList.add("is-invalid");
+          } else {
+              mobile.classList.remove("is-invalid");
+          }
+          if (zip.value === "") {
+              zip.classList.add("is-invalid");
+          } else {
+              zip.classList.remove("is-invalid");
+          }
+          if (address.value === "") {
+              address.classList.add("is-invalid");
+          } else {
+              address.classList.remove("is-invalid");
+          }
+          if (address2.value === "") {
+              address2.classList.add("is-invalid");
+          } else {
+              address2.classList.remove("is-invalid");
+          }
+
+          if (name.value === "" || rrn1.value === "" || rrn2.value === "" || mobile.value === "" || zip.value === "" || address.value === "" || address2.value === "") {
+              alert("빠진 정보를 입력해주세요.");
+          } else {
+              const form = document.getElementById('signForm');
+              form.submit();
+          }
+
+          console.log(name);
+      }
+
       function submitForm() {
           if (document.getElementById('rrn1').value.length < 6) {
               alert("주민 등록번호 앞자리를 모두 입력해야 합니다.")
@@ -139,7 +213,10 @@
               return;
           }
           const form = document.getElementById('signForm');
+
+          console.log(form);
           // 필요한 input 요소 추가
+
           var inputRRN = document.createElement('input');
           inputRRN.setAttribute('type', 'text');
           inputRRN.setAttribute('name', 'valid_rrn');
@@ -149,6 +226,7 @@
               inputRRN.setAttribute("value", rrn_p1 + '-' + rrn_p2);
           }
           form.appendChild(inputRRN);
+
           form.submit();
           var validRrnInput = form.elements['valid_rrn']; // name이 'valid_rrn'인 요소 가져오기
 
@@ -158,11 +236,6 @@
           }
       }
 
-      document.addEventListener("DOMContentLoaded", function () {
-          const name = document.querySelector("#name");
-
-          console.log(name);
-      })
   </script>
 </body>
 </html>
