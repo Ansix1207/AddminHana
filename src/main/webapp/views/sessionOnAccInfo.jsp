@@ -28,6 +28,8 @@ To change this template use File | Settings | File Templates.
 
   // 계좌 카테고리 (예금/적금/대출)
   String category = request.getAttribute("category").toString();
+  String link_by_cate = category == "예금" ? "deposit" : category == "적금" ? "savings" : "loan";
+  System.out.println(category + " " + link_by_cate);
 
   // 자산 정보
   AssetDTO assetDTO = (AssetDTO) request.getAttribute("assetDTO");
@@ -86,7 +88,19 @@ To change this template use File | Settings | File Templates.
           <span class="componentTitle"><%=customerName%> 님의 <%=category%> 현황</span>
           <div class="mb-4 assetInfo">
             <h5 class="card-title mt-3 mb-2">자산 정보</h5>
-            <p><span>총 <%=category%>액</span> <span class="card-text">₩ <%=asset%></span></p>
+            <div class="d-flex justify-content-between align-items-center">
+              <p>
+                <span>총 <%=category%>액</span>
+                <span class="card-text">₩ <%=asset%></span>
+              </p>
+              <form action="<%=link_by_cate%>Info" method="post">
+                <button type="submit" class="btn">새로고침
+                  <i class="fa-solid fa-rotate-right"></i>
+                </button>
+                <input type="hidden" name="action" value="asset-update">
+              </form>
+            </div>
+
             <div class="statisticsChart">
               <%-- 손님의 대출 자산 현황 그래프 --%>
               <canvas id="assetChart"></canvas>
