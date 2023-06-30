@@ -65,6 +65,7 @@ public class ProfileController extends HttpServlet {
                 boolean hasUpdated = customerService.updateCustomerDescription(customerSummaryDTO);
                 request.setAttribute("hasUpdatedDescription", hasUpdated);
                 request.setAttribute("customerSummaryDTO", customerSummaryDTO);
+                setAssetsInfo(request, response);
                 RequestDispatcher dispatcher = request.getRequestDispatcher(profilePage);
                 dispatcher.forward(request, response);
                 return;
