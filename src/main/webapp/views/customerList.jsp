@@ -10,7 +10,7 @@
   Time: 4:56 AM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="true" %>
 <%
   request.setCharacterEncoding("UTF-8");
   String contextPath = request.getContextPath();
@@ -20,6 +20,19 @@
     customerList = tempList;
   }
   Integer customerCount = (Integer) request.getAttribute("customerCount");
+  String _page = request.getParameter("page");
+  String size = request.getParameter("size");
+  String orderBy = request.getParameter("orderBy");
+  if (_page == null) {
+    _page = "1";
+  }
+  if (size == null) {
+    size = "10";
+  }
+  if (orderBy == null) {
+    orderBy = "c_id";
+  }
+
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -54,25 +67,25 @@
 
         <div class="card-body">
           <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
-            <div class="datatable-top">
-              <div class="datatable-dropdown">
-                <label>
-                  <select class="datatable-selector">
-                    미구현
-                    <option value="5">5</option>
-                    <option value="10" selected="">10</option>
-                    <option value="15">15</option>
-                    <option value="20">20</option>
-                    <option value="25">25</option>
-                  </select> entries per page
-                </label>
-              </div>
-              <div class="datatable-search">
-                미구현
-                <input class="datatable-input" placeholder="Search..." type="search" title="Search within table"
-                       aria-controls="datatablesSimple">
-              </div>
-            </div>
+            <%--            <div class="datatable-top">--%>
+            <%--              <div class="datatable-dropdown">--%>
+            <%--                <label>--%>
+            <%--                  <select class="datatable-selector">--%>
+            <%--                    미구현--%>
+            <%--                    <option value="5">5</option>--%>
+            <%--                    <option value="10" selected="">10</option>--%>
+            <%--                    <option value="15">15</option>--%>
+            <%--                    <option value="20">20</option>--%>
+            <%--                    <option value="25">25</option>--%>
+            <%--                  </select> entries per page--%>
+            <%--                </label>--%>
+            <%--              </div>--%>
+            <%--              <div class="datatable-search">--%>
+            <%--                미구현--%>
+            <%--                <input class="datatable-input" placeholder="Search..." type="search" title="Search within table"--%>
+            <%--                       aria-controls="datatablesSimple">--%>
+            <%--              </div>--%>
+            <%--            </div>--%>
             <div class="datatable-container">
               <table id="datatablesSimple" class="datatable-table">
                 <thead>
@@ -132,30 +145,28 @@
               </div>
               <nav class="datatable-pagination">
                 <ul class="datatable-pagination-list">
-                  <li class="datatable-pagination-list-item datatable-hidden datatable-disabled">
-                    <a data-page="1" class="datatable-pagination-list-item-link">‹</a>
-                  </li>
-                  <li class="datatable-pagination-list-item datatable-active">
-                    <a data-page="1" class="datatable-pagination-list-item-link">1</a>
-                  </li>
-                  <li class="datatable-pagination-list-item">
-                    <a data-page="2" class="datatable-pagination-list-item-link">2</a>
-                  </li>
-                  <li class="datatable-pagination-list-item">
-                    <a data-page="3" class="datatable-pagination-list-item-link">3</a>
-                  </li>
-                  <li class="datatable-pagination-list-item">
-                    <a data-page="4" class="datatable-pagination-list-item-link">4</a>
-                  </li>
-                  <li class="datatable-pagination-list-item">
-                    <a data-page="5" class="datatable-pagination-list-item-link">5</a>
-                  </li>
-                  <li class="datatable-pagination-list-item">
-                    <a data-page="6" class="datatable-pagination-list-item-link">6</a>
-                  </li>
-                  <li class="datatable-pagination-list-item">
-                    <a data-page="2" class="datatable-pagination-list-item-link">›</a>
-                  </li>
+                  <%--                  <%--%>
+                  <%--                    System.out.println("_page = " + _page);--%>
+                  <%--                    int pageNum = Integer.parseInt(_page);--%>
+                  <%--                    int sizeNum = Integer.parseInt(size);--%>
+                  <%--                    int currentGroup = pageNum / 5;--%>
+                  <%--                    int startPage = currentGroup + 1;--%>
+                  <%--                    int endPage = currentGroup + 4;--%>
+                  <%--                    int startNum = 1 + (sizeNum * (pageNum - 1));--%>
+                  <%--                    int lastNum = startNum + sizeNum;--%>
+                  <%--                    if (lastNum >= customerCount) {--%>
+                  <%--                      endPage = pageNum;--%>
+                  <%--                    }--%>
+                  <%--                    for (int i = startPage; i < endPage; i++) {--%>
+                  <%--                  %>--%>
+                  <%--                  <li class="datatable-pagination-list-item <% if (i == pageNum) {%>datatable-active<%} %>">--%>
+                  <%--                    <a data-page="<%=i%>" class="datatable-pagination-list-item-link">1</a>--%>
+                  <%--                  </li>--%>
+                  <%--                  <%--%>
+                  <%--                    }--%>
+                  <%--                  %>--%>
+
+
                 </ul>
               </nav>
             </div>
@@ -168,5 +179,42 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
           crossorigin="anonymous"></script>
+  <script>
+      const $pagenation = document.querySelector(".datatable-pagination-list");
+      const page = <%=_page%>;
+      const size = <%=size%>;
+      const customerCount = <%=customerCount%>;
+      const lastPage = Math.floor(300 / size);
+      console.log(lastPage);
+
+      let pageListNum = Math.floor((page - 1) / 10) * 10;
+      let innerHTML = "";
+      innerHTML += `
+      <li class="datatable-pagination-list-item">
+        <a href="?page=${page - 10 > 0 ? page -10 : 1}"data-page="1" class="datatable-pagination-list-item-link">‹</a>
+      </li>`
+
+      for (let i = 1 + pageListNum; i <= 10 + pageListNum; i++) {
+          innerHTML += `
+          <li class="datatable-pagination-list-item ${page == i ? "datatable-active" : ""} ">
+            <a href="?page=${i}" data-page="${i}" class="datatable-pagination-list-item-link">${i}</a>
+          </li>
+          `;
+      }
+
+      innerHTML += `
+      <li class="datatable-pagination-list-item"  >
+        <a href="?page=${page + 10 < lastPage ? page + 10 : lastPage}"data-page="2" class="datatable-pagination-list-item-link">›</a>
+      </li>`
+
+      $pagenation.innerHTML = innerHTML;
+  </script>
 </body>
 </html>
+
+<li class="datatable-pagination-list-item datatable-hidden datatable-disabled">
+  <a data-page="1" class="datatable-pagination-list-item-link">‹</a>
+</li>
+<li class="datatable-pagination-list-item">
+  <a data-page="2" class="datatable-pagination-list-item-link">›</a>
+</li>
