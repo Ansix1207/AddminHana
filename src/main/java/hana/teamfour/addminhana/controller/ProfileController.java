@@ -116,12 +116,12 @@ public class ProfileController extends HttpServlet {
         CustomerSessionDTO customerSessionDTO = (CustomerSessionDTO) session.getAttribute("customerSession");
         Integer c_id = customerSessionDTO.getC_id();
 
-        setDepositAsset(request, response, c_id, "예금", "depositDTO", "depositAccountList");
-        setDepositAsset(request, response, c_id, "적금", "savingsDTO", "savingsAccountList");
-        setDepositAsset(request, response, c_id, "대출", "loanDTO", "loanAccountList");
+        setAssetByCategory(request, response, c_id, "예금", "depositDTO", "depositAccountList");
+        setAssetByCategory(request, response, c_id, "적금", "savingsDTO", "savingsAccountList");
+        setAssetByCategory(request, response, c_id, "대출", "loanDTO", "loanAccountList");
     }
 
-    private void setDepositAsset(HttpServletRequest request, HttpServletResponse response, Integer c_id, String category, String assetDTOName, String acountListName) throws ServletException, IOException {
+    private void setAssetByCategory(HttpServletRequest request, HttpServletResponse response, Integer c_id, String category, String assetDTOName, String acountListName) throws ServletException, IOException {
         AccountService accountService = new AccountService(c_id, category);
         AssetService assetService = new AssetService(c_id, category);
         AssetDTO assetDTO = assetService.getAsset();

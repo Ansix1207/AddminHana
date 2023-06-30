@@ -68,23 +68,15 @@ public class AssetService {
         for (AssetSumDTO assetSumDTO : assetSumDTOList) {
             Integer balanceSum = assetSumDTO.getBalanceSum();
             String productCategory = assetSumDTO.getAccProductCategory();
+            productCategory = productCategory.substring(2);
             switch (productCategory) {
-                case "보통예금":
+                case "예금":
                     assDeposit += balanceSum;
                     break;
-                case "정기예금":
-                    assDeposit += balanceSum;
-                    break;
-                case "자유적금":
+                case "적금":
                     assSavings += balanceSum;
                     break;
-                case "정기적금":
-                    assSavings += balanceSum;
-                    break;
-                case "신용대출":
-                    assLoan += balanceSum;
-                    break;
-                case "담보대출":
+                case "대출":
                     assLoan += balanceSum;
                     break;
             }
