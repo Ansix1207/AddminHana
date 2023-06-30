@@ -22,5 +22,9 @@
         <filter-name>LoginFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>CustomerLoginFilter</filter-name>
+        <url-pattern>/customer/*</url-pattern>
+    </filter-mapping>
 
 </web-app>

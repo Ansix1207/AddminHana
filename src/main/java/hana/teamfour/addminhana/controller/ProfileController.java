@@ -1,5 +1,6 @@
 package hana.teamfour.addminhana.controller;
 
+import hana.teamfour.addminhana.DTO.CustomerSessionDTO;
 import hana.teamfour.addminhana.DTO.CustomerSummaryDTO;
 import hana.teamfour.addminhana.service.CustomerService;
 
@@ -14,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet("/profile/*")
+@WebServlet("/customer/profile/*")
 public class ProfileController extends HttpServlet {
     ServletContext context = null;
     CustomerService customerService;
@@ -38,41 +39,56 @@ public class ProfileController extends HttpServlet {
     private void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         response.setContentType("text/html;charset=utf-8");
-        String nextPage = "/views/profile.jsp";
+        String profilePage = "/views/profile.jsp";
         String action = request.getParameter("action");
         String description = request.getParameter("descriptionText");
         String customerRRN = (String) request.getParameter("customerRRN");
+        CustomerSessionDTO customerSession = (CustomerSessionDTO) session.getAttribute("customerSession");
         try {
-            // 1. 로그인 후 /profile 의 경로로 컨트롤러를 타고 들어오면
-            // 1.1. CustomerSummaryDTO 를 서비스단에서 가져와서 request에 setAttribute
-            CustomerSummaryDTO customerSummaryDTO = customerService.getCustomerSummaryDTOByRrn(customerRRN);
-            System.out.println("customerSummaryDTO controller = " + customerSummaryDTO);
-            if (customerSummaryDTO == null) {
-                nextPage = "/views/main.jsp";
-                RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
-                dispatcher.forward(request, response);
-            } else {
-                session.setAttribute("userSession", customerSummaryDTO);
+            CustomerSummaryDTO customerSummaryDTO = null;
+            if (action != null && action.equals("description")) {
+                customerSummaryDTO = customerService.getCustomerSummaryDTOById(customerSession.getC_id());
+                System.out.println("customerSummaryDTO = " + customerSummaryDTO);
+                customerSummaryDTO.setC_description(description);
+                boolean hasUpdated = customerService.updateCustomerDescription(customerSummaryDTO);
+                request.setAttribute("hasUpdatedDescription", hasUpdated);
                 request.setAttribute("customerSummaryDTO", customerSummaryDTO);
-                // 2. AssetSummary
-                // 3. description
-                if (action != null && action.equals("description")) {
-                    customerSummaryDTO.setC_description(description);
-                    boolean hasUpdated = customerService.updateCustomerDescription(customerSummaryDTO);
-                    // ! false 일 떄 토스트 뜨지 않게 테스트중 
-                    // TODO: profile 페이지에서 새로고침했을 때 Toast 뜨지 않도록 변경해야함
-                    // TODO: 새로고침했을 때 attribute를 삭제해줘야 하는 방법이 뭘까 ?
-                    // TODO: Toast를 한번 띄우고 attribute 삭제 콜을 해야할것 같기도 하고.. ?
-                    request.setAttribute("hasUpdatedDescription", hasUpdated);
-                }
-                // 4. recommendation
-                // 5. calendar data
-                RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
+                RequestDispatcher dispatcher = request.getRequestDispatcher(profilePage);
                 dispatcher.forward(request, response);
+                return;
             }
+            if (customerSession == null) {
+                customerSummaryDTO = customerService.getCustomerSummaryDTOByRRN(customerRRN);
+                if (customerSummaryDTO == null) {
+                    response.sendRedirect(request.getContextPath() + "/");
+                    return;
+                }
+            }
+            if (customerSession != null && customerRRN != null) {
+                customerSummaryDTO = customerService.getCustomerSummaryDTOByRRN(customerRRN);
+                if (customerSummaryDTO == null || (customerSummaryDTO.getC_id() != customerSession.getC_id())) {
+                    response.sendRedirect(request.getContextPath() + "/");
+                    return;
+                }
+            }
+            if (customerSummaryDTO != null) {
+                CustomerSessionDTO customerSessionDTO = customerSummaryDTO.getCustomerSessionDTO();
+                session.setAttribute("customerSession", customerSessionDTO);
+                request.setAttribute("customerSummaryDTO", customerSummaryDTO);
+                RequestDispatcher dispatcher = request.getRequestDispatcher(profilePage);
+                dispatcher.forward(request, response);
+                return;
+            }
+            forwardToMain(request, response);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void forwardToMain(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String nextPage = "/views/main.jsp";
+        RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
+        dispatcher.forward(request, response);
     }
 
     @Override

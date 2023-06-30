@@ -1,0 +1,23 @@
+CREATE OR REPLACE PROCEDURE SELECT_REC_BY_GENDER
+(
+  id in number,
+  gender in varchar2,
+  category in varchar2,
+  p_id out number,
+  p_name out varchar2,
+  p_interestrate out number,
+  p_limit out number,
+  out_cursor out sys_refcursor
+) IS
+BEGIN
+open out_cursor for
+select pro.p_id, pro.p_name, pro.p_interestrate, pro.p_limit
+into p_id, p_name, p_interestrate, p_limit
+from customer cus, account acc, product pro
+where cus.c_id = acc.acc_cid and acc.acc_pid = pro.p_id and cus.c_gender = gender and acc.acc_cid <> id and pro.p_isactive = 'Y'
+and REGEXP_SUBSTR(substr(pro.p_category, 3, 2), category) = substr(pro.p_category, 3, 2)
+group by pro.p_id, pro.p_name, pro.p_interestrate, pro.p_limit
+order by count(*) desc;
+
+END SELECT_REC_BY_GENDER;
+/
