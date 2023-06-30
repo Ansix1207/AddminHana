@@ -23,7 +23,6 @@ public class RecommendService {
     ArrayList<ProductEntity> notJoinedProducts;
 
     public RecommendService(Integer id, String productType) {
-        System.out.println("RecommendService 로드 성공");
         this.userId = id;
         this.productType = productType;
         this.productDAO = new ProductDAO();

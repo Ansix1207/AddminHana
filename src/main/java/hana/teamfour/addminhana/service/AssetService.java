@@ -29,7 +29,6 @@ public class AssetService {
     }
 
     public AssetDTO getAsset() {
-        System.out.println(category + " AssetService 로드 성공");
         AssetEntity assetEntity = assetDAO.getAssetById(id);
         ArrayList<AccountEntity> accountEntities = accountDAO.getAccListById(id, category);
         return setAsset(assetEntity, accountEntities);

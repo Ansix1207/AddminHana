@@ -20,7 +20,6 @@ public class AccountService {
     }
 
     public ArrayList<AccountDTO> getAccList() {
-        System.out.println(category + " AccountService 로드 성공");
         ArrayList<AccountEntity> accountEntities = accountDao.getAccListById(id, category);
         return setAccList(accountEntities);
     }
@@ -34,7 +33,7 @@ public class AccountService {
             Double acc_interestrate = accountEntity.getAcc_interestrate();
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             String acc_maturitydate = dateFormat.format(accountEntity.getAcc_maturitydate());
-            accountDTO.add(new AccountDTO(acc_balance,acc_pname, acc_interestrate, acc_maturitydate));
+            accountDTO.add(new AccountDTO(acc_balance, acc_pname, acc_interestrate, acc_maturitydate));
         }
 
         return accountDTO;
