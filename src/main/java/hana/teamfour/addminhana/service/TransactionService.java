@@ -65,6 +65,7 @@ public class TransactionService {
         TransactionEntity transactionEntity = WithdrawDTOToEntity(withdrawDTO);
         int t_id = -99;
         String message = "출금 실패 사유(오류)";
+        int errorcode = -9999;
         boolean isValid = false;
         WithdrawDTO responseWithdrawDTO = null;
         try {
@@ -81,6 +82,7 @@ public class TransactionService {
             t_id = e.getT_id();
             System.out.println("e.getMessage() = " + e.getMessage());
             message = e.getMessage();
+            errorcode = e.getErrorcode();
         } finally {
             if (isValid) { //출금 요청중에 비밀번호가 동일한 경우.
                 responseWithdrawDTO = WithdrawDTO.from(transactionDAO.findById(t_id));
@@ -88,6 +90,7 @@ public class TransactionService {
                 responseWithdrawDTO = new WithdrawDTO();
             }
             responseWithdrawDTO.setMessage(message);
+            System.out.println("errorcode = " + errorcode);
             System.out.println("IN SERVICE : t_id = " + t_id);
             return responseWithdrawDTO;
         }

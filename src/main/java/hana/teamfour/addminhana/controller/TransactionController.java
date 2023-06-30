@@ -219,6 +219,7 @@ public class TransactionController extends HttpServlet {
                 .build();
         requestWithdrawDTO.setT_amount(amount);
         WithdrawDTO responseWithdrawDTO = transactionService.doWithdraw(requestWithdrawDTO);
+        //왜 여기에서 getAcc_id 가 null 이야?
         if (responseWithdrawDTO.getAcc_id() == null) {
             System.out.println("출금 실패(비밀번호 틀림) : 컨트롤러임");
             System.out.println("출금 실패 : 컨트롤러임");

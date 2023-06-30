@@ -52,14 +52,14 @@ public class TransactionDAO {
                 connection.setAutoCommit(true);
                 if (success == 1) {
                     System.out.println("TransactinDAO : 출금 성공");
-                    throw new BalanceInsufficientException("- 출금 성공!", t_id);
+                    throw new BalanceInsufficientException("- 출금 성공!", t_id, success);
                 } else if (success == -1) {
                     System.out.println("TransactinDAO : 출금 실패 사유(해당하는 계좌 없음)");
-                    throw new BalanceInsufficientException("- 출금 실패 사유(해당하는 계좌 없음)", t_id);
+                    throw new BalanceInsufficientException("- 출금 실패 사유(해당하는 계좌 없음)", t_id, success);
                 } else if (success == -2) {
                     System.out.println("TransactinDAO : 출금 실패 사유(잔고가 부족함)");
                     connection.rollback();
-                    throw new BalanceInsufficientException(" - 출금 실패 사유(잔고 부족)", t_id);
+                    throw new BalanceInsufficientException(" - 출금 실패 사유(잔고 부족)", t_id, success);
                 }
             }
         } catch (SQLException e) {
