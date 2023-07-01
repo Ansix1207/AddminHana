@@ -6,16 +6,23 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page import="hana.teamfour.addminhana.entity.ProductEntity" %>
+<%@ page import="hana.teamfour.addminhana.DTO.CustomerSessionDTO" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.sql.Timestamp" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="hana.teamfour.addminhana.DTO.*" %>
+<%@ page import="java.text.DecimalFormat" %>
 <%
   request.setCharacterEncoding("UTF-8");
   String contextPath = request.getContextPath();
   ProductJoinDTO productJoinDTO = (ProductJoinDTO) request.getAttribute("productJoinDTO");
   ProductDTO productDTO = (ProductDTO) request.getAttribute("productDTO");
-
+  String pIndex = request.getParameter("pIndex");
+  String pName = (String) request.getSession().getAttribute("P_Name_" + pIndex);
+  String pCategory = (String) request.getSession().getAttribute("P_Category_" + pIndex);
+  Integer pId = (Integer) request.getSession().getAttribute("P_ID_" + pIndex);
+  Integer pInterestrate = (Integer) request.getSession().getAttribute("P_ID_" + pIndex);
+  Integer pContractMonth = (Integer) request.getSession().getAttribute("P" + pIndex);
 
 %>
 <% Boolean isSuccess = (Boolean) request.getAttribute("isSuccess");
@@ -69,7 +76,7 @@
 
                   <div class="form-floating mb-3">
                     <label>이름</label>
-                    <input class="form-control" name="ACC_PASSWORD" value="남성희" type="text">
+                    <input class="form-control" name="C_NAME" value="${ACC_NAME}" type="text">
                   </div>
                   <div class="form-floating mb-3">
                     <label>비밀번호</label>
@@ -77,30 +84,58 @@
                   </div>
                   <div class="form-floating mb-3">
                     <label>상품종류</label>
-                    <input class="form-control" name="ACC_P_CATEGORY" value="" type="text">
+                    <input class="form-control" name="ACC_P_CATEGORY" value="<%=pCategory%>" type="text" readonly>
                   </div>
                   <div class="form-floating mb-3">
-                    <label>상품명</label>
-                    <input class="form-control" name="ACC_P_NAME" value="" type="text">
+                    <label>상품명 </label>
+                    <input class="form-control" name="ACC_P_NAME" value="<%=pName%>" type="text" readonly>
                   </div>
+
                   <div class="form-floating mb-3">
-                    <label>이자율</label>
-                    <input class="form-control" name="ACC_INTERESTRATE" value="${ACC_INTERESTRATE}"
+                    <label>금액</label>
+                    <input class="form-control" name="ACC_BALANCE" value="${ACC_BALANCE}"
                            type="text">
                   </div>
                   <div class="form-floating mb-3">
                     <label>담보가액</label>
-                    <input class="form-control" name="ACC_COLLATERALVALUE" value="${ACC_COLLATERALVALUE}"
+                    <input class="form-control" name="ACC_COLLATERALVALUE" value="${ACC_COLLATERALVALUE} "
                            type="text">
                   </div>
-                  <div>
-                    <label>
-                      <% String pIndex = request.getParameter("pIndex");
-                        String pName = (String) request.getSession().getAttribute("P_Name_" + pIndex); %>
-                      <%=pName%>
-                    </label>
+                  <div class="form-floating mb-3">
+                    <label>Acc_id</label>
+                    <input class="form-control" name="Acc_id" value="${Acc_id}" type="text">
                   </div>
-                  
+                  <div class="form-floating mb-3">
+                    <label>Acc_id</label>
+                    <input class="form-control" name="Acc_id" value="${Acc_id}" type="text">
+                  </div>
+                  <div class="form-floating mb-3">
+                    <label>ACC_INTEREST_DAY</label>
+                    <input class="form-control" name="ACC_CID" value="${ACC_INTEREST_DAY}" type="text">
+                  </div>
+                  <div class="form-floating mb-3">
+                    <label>ACC_PID</label>
+                    <input class="form-control" name="ACC_PID" value="<%=pId%>" type="text">
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <label>ACC_INTERESTRATE</label>
+                    <input class="form-control" name="ACC_INTERESTRATE" value="<%=pInterestrate%>" type="text">
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <label>ACC_P_Month </label>
+                    <input class="form-control" name="ACC_P_Month" value="<%=pContractMonth%>" type="text">
+                  </div>
+
+                  <%
+
+
+                  %>
+
+
+                  <div>
+                  </div>
                   <div class="d-grid">
                     <button onclick="reloadPage()" type="submit" class="btn btn-primary btn-block" id="signButton">신규 손님
                       가입
@@ -118,6 +153,13 @@
   <script>
       function reloadPage() {
           location.reload();
+      }
+  </script>
+  <script>
+      function formatCurrency(input) {
+          let value = input.value.replace(/[^0-9]/g, '');
+          let formattedValue = value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+          input.value = formattedValue + '원';
       }
   </script>
 </body>

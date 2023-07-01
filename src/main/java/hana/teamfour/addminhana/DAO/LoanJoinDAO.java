@@ -24,18 +24,20 @@ public class LoanJoinDAO {
 
     public boolean insertAccount(AccountEntity accountEntity) {
         boolean result = false;
-//        AccountEntity 객체의 정보를 사용하여 데이터베이스에 새로운 계정을 삽입하는 작업을 수행합니다. 
-        String sql = "INSERT INTO ACCOUNT VALUES(account_seq.nextval,?," +
+
+        String sql = "INSERT INTO ACCOUNT VALUES(account_seq.nextval,101," +
                 "?,?,?," +
-                "select p_id from product where p_name = '급여하나 월복리 적금'," +
-                "select p_category from product where p_name = '급여하나 월복리 적금'," +
-                "select p_name from product where p_name = '급여하나 월복리 적금'," +
-                "select p_int from product where p_name = '급여하나 월복리 적금'," +
+                "select P_ID from product where p_name = ?," +
+                "select P_CATEGORY from product where p_name = ?," +
+                "select P_NAME from product where p_name = ?," +
+                "select P_INTERESTRATE from product where p_name = ?," +
                 "?," +
                 "1," +
-                "select p_contract_month from product where p_name = '급여하나 월복리 적금'," +
+                "36," +
                 "?,'Y')";
 //        String sql = "INSERT INTO ACCOUNT VALUES(account_seq.nextval,?)";
+//        select P_CONTRACT_MONTH from product where p_name = ?
+
         System.out.println("sql = " + sql);
         try (Connection connection = getDataFactoryConnection()) {
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -45,15 +47,15 @@ public class LoanJoinDAO {
                 statement.setTimestamp(3, accountEntity.getAcc_date());
                 statement.setInt(4, accountEntity.getAcc_balance());
                 statement.setString(5, accountEntity.getAcc_password());
-                statement.setInt(6, accountEntity.getAcc_pid());
-                statement.setString(7, accountEntity.getAcc_p_category());
+                statement.setString(6, accountEntity.getAcc_pname());
+                statement.setString(7, accountEntity.getAcc_pname());
                 statement.setString(8, accountEntity.getAcc_pname());
-                statement.setDouble(9, accountEntity.getAcc_interestrate());
+                statement.setString(9, accountEntity.getAcc_pname());
                 statement.setInt(10, accountEntity.getAcc_collateralvalue());
-                statement.setInt(11, accountEntity.getAcc_interest_day());
-                statement.setInt(12, accountEntity.getAcc_contract_month());
-                statement.setTimestamp(13, accountEntity.getAcc_maturitydate());
-                statement.setString(14, String.valueOf(accountEntity.getAcc_isactive()));
+//                statement.setInt(11, accountEntity.getAcc_interest_day());
+                statement.setString(11, accountEntity.getAcc_pname());
+                statement.setTimestamp(12, accountEntity.getAcc_maturitydate());
+
                 statement.executeUpdate(); // 데이터를 삽입?
                 result = true;
             }
@@ -64,25 +66,6 @@ public class LoanJoinDAO {
         System.out.println("pass" + new AccountEntity());
         return result;
     }
-
-//    public ArrayList<AccountEntity> insertJoin() {
-//        ArrayList<AccountEntity> accountList = new ArrayList<>();
-//        try (Connection conn = dataFactory.getConnection();
-//             PreparedStatement pstmt = conn.prepareStatement("SELECT ACC_ID FROM account")) {
-//            try (ResultSet rs = pstmt.executeQuery()) {
-//                while (rs.next()) {
-//                    AccountEntity accountEntity = new AccountEntity();
-//                    accountEntity.setAcc_id(rs.getInt(1));
-//                    accountList.add(accountEntity);
-//                }
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        System.out.println("accountList = " + accountList);
-//        return accountList;
-//    }
-
 
     private Connection getDataFactoryConnection() throws SQLException {
         if (dataFactory == null) {
