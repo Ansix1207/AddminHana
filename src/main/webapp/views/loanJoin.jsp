@@ -59,7 +59,7 @@
                 <div class="card-header"><h3 class="text-center font-weight-light my-4">대출 가입</h3></div>
                 <div class="card-body">
                   <div class="form-floating mb-3">
-                    <label>이름</label>
+                    <label>이름</label> Fix: jsp 수정중
                     <span></span>
                   </div>
                   <div class="form-floating mb-3">
@@ -84,7 +84,7 @@
                     <input class="form-control" name="ACC_COLLATERALVALUE" value="${ACC_COLLATERALVALUE}"
                            type="text">
                   </div>
-                  
+
 
                   <label>Acc_id</label>
                   <input class="form-control" name="Acc_id" value="${Acc_id}" type="text" default="1">
