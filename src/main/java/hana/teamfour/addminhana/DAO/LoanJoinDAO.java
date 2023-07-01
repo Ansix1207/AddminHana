@@ -32,7 +32,6 @@ public class LoanJoinDAO {
         System.out.println("sql = " + sql);
         try (Connection connection = getDataFactoryConnection()) {
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                System.out.println("set 하기 전까지는 왔다" + statement);
                 statement.setInt(1, accountEntity.getAcc_id());
 //                PreparedStatement의 첫 번째 파라미터 위치에 accountEntity의 acc_id 값을 설정한다는 의미입니다.
                 statement.setInt(2, accountEntity.getAcc_cid());
@@ -48,7 +47,6 @@ public class LoanJoinDAO {
                 statement.setInt(12, accountEntity.getAcc_contract_month());
                 statement.setTimestamp(13, accountEntity.getAcc_maturitydate());
                 statement.setString(14, String.valueOf(accountEntity.getAcc_isactive()));
-                System.out.println("set은 잘 들어감  " + statement);
                 statement.executeUpdate(); // 데이터를 삽입?
                 result = true;
             }

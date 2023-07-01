@@ -57,7 +57,6 @@ public class RecommendService {
         ArrayList<ProductEntity> recProducts = recByGenderDAO.getRecProduct(userId, productType, gender);
         ArrayList<ProductEntity> resultProducts = getRecProducts(recProducts);
 
-        System.out.println("Gender 추천 상품 추가");
         return resultProducts;
     }
 
@@ -67,7 +66,6 @@ public class RecommendService {
         Integer ageRange = ((int) age / 10) * 10;
         ArrayList<ProductEntity> recProducts = recByAgeDAO.getRecProduct(userId, productType, ageRange);
         ArrayList<ProductEntity> resultProducts = getRecProducts(recProducts);
-        System.out.println("Age 추천 상품 추가");
         return resultProducts;
     }
 
