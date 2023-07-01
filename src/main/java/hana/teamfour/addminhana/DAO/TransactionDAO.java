@@ -157,11 +157,14 @@ public class TransactionDAO {
                     System.out.println("TransactinDAO : 계좌이체 성공");
                     throw new TransferException("- 계좌 이체 성공", t_id, success);
                 } else if (success == -1) {
-                    System.out.println("TransactinDAO : 계좌이체 실패 사유(입금 계좌 없음)");
-                    throw new TransferException("- 계좌이체 실패 (사유:입금 계좌 없음)", t_id, success);
+                    System.out.println("TransactinDAO : 계좌이체 실패 사유(출금 계좌 없음)");
+                    throw new TransferException("- 계좌이체 실패 (사유:출금 계좌 없음)", t_id, success);
                 } else if (success == -2) {
                     System.out.println("TransactinDAO : 계좌이체 실패 실패 사유(잔액이 부족함)");
                     throw new TransferException("- 계좌 이체 실패 (사유:잔액 부족)", t_id, success);
+                } else if (success == -3) {
+                    System.out.println("TransactinDAO : 계좌이체 실패 실패 사유(입금 계좌 없음)");
+                    throw new TransferException("- 계좌 이체 실패 (사유:입금 계좌 없음)", t_id, success);
                 } else {
                     System.out.println("TransactinDAO : 출금 실패 오류 발생");
                     throw new TransferException("- 계좌 이체 실패 (사유:오류 발생)", t_id, success);
@@ -209,7 +212,7 @@ public class TransactionDAO {
     public TransactionEntity checkAccountByPassword(TransactionEntity transactionEntity, String password) {
         //계좌 잔고 반환을 위해서
         TransactionEntity result = null;
-        String query = "select acc_id,acc_balance from account where acc_id = ? and acc_password =? ";
+        String query = "select acc_id,acc_balance from account where acc_id = ? and acc_password =? and acc_isactive ='Y'";
         try (Connection connection = dataFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
             // Set parameters
