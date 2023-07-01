@@ -55,31 +55,22 @@
         <div class="row form-group">
           <div class="col-md-5 mb-3 mb-md-0">
             <label class="text-black" for="acc_id">내 계좌</label>
-            <% if (ck != null && ck.equals("1")) { %>
+
             <input type="text" id="acc_id" name="acc_id"
                    value="${acc_id}"
-                   class="form-control" readonly><%}%>
-            <% if (ck == null) { %>
-            <input type="text" id="acc_id" name="acc_id"
-                   value="${acc_id}"
-                   class="form-control"><%}%>
+                   class="form-control" <% if (ck != null && ck.equals("1")) { %> readonly
+                   style="background: lightgray" <%}%>
             <!-- 나머지 코드 생략 -->
           </div>
           <div class="col-md-2 mb-3 mb-md-0 form-group">
             <label class="text-black" for="acc_password">계좌 비밀번호</label>
             <input type="text" id="acc_password" value="${acc_password}" maxlength="4" name="acc_password"
+              <% if (ck != null && ck.equals("1")) { %> readonly style="background: lightgray" <%}%>
                    class="form-control">
           </div>
           <div class="col-md-1 mb-3 mb-md-0 form-group d-flex align-items-end">
             <input type="button" value="입력" onclick="checkPwd()" class="btn btn-primary text-white form-control">
           </div>
-        </div>
-        <%}%>
-
-        <% if (title.equals("계좌이체") || title.equals("입금")) { %>
-        <div class="col-md-8">
-          <label class="text-black" for="counterpart_id">입금할 계좌</label>
-          <input type="text" id="counterpart_id" name="counterpart_id" class="form-control">
         </div>
         <%}%>
 
@@ -91,6 +82,13 @@
           </div>
         </div>
         <% } %>
+
+        <% if (title.equals("계좌이체") || title.equals("입금")) { %>
+        <div class="col-md-8">
+          <label class="text-black" for="counterpart_id">입금할 계좌</label>
+          <input type="text" id="counterpart_id" name="counterpart_id" class="form-control">
+        </div>
+        <%}%>
 
         <div class="row form-group">
           <div class="col-md-8">
@@ -118,6 +116,25 @@
   </div>
 
   <script>
+
+      var amountInput = document.getElementById("t_amount");
+      var balanceInput = document.getElementById("acc_balance");
+
+      // 이벤트 리스너 등록
+      amountInput.addEventListener("input", validateAmount);
+
+      // 유효성 검사 함수
+      function validateAmount() {
+          let amount = parseFloat(amountInput.value);
+          let balance = parseFloat(balanceInput.value);
+
+          // 유효성 검사 조건 설정
+          if (amount > balance) {
+              alert("출금액이 잔고를 초과합니다.");
+              amountInput.value = balance; // 입력값을 잔고와 동일한 값으로 변경
+          }
+      }
+
       function submitForm() {
           let message = document.getElementById('message').value;
           var form = document.getElementById('transferForm');
