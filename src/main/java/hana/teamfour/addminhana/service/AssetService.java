@@ -45,7 +45,7 @@ public class AssetService {
 
     private Integer[] getBalanceSum(ArrayList<AccountEntity> accountEntities) {
         Integer[] balanceSum = {0, 0};  // 카테고리별 잔액 합
-        String first_category = category == "예금" ? category == "적금" ? "보통예금" : "자유적금" : "신용대출";
+        String first_category = category == "예금" ? "보통예금" : category == "적금" ? "자유적금" : "신용대출";
         for (AccountEntity accountEntity : accountEntities) {
             if (accountEntity.getAcc_p_category().equals(first_category)) {
                 balanceSum[0] += Math.abs(accountEntity.getAcc_balance());
