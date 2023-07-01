@@ -77,7 +77,6 @@ public class LoanProductDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("productEntityList = " + productEntityList);
         return productEntityList;
     }
 }

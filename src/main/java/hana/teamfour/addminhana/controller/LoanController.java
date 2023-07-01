@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 @WebServlet("/loaninquery")
-public class LoanController extends HttpServlet {
+public class LoanController extends HttpServlet { //extends HttpServlet 이기 때문에 servlet이 되었음
     private LoanProductService loanProductService;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -39,7 +39,6 @@ public class LoanController extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/sessionOffProductInfo.jsp");
         dispatcher.forward(request, response);
     }
-
 
     private void setProductEntity(HttpServletRequest request, HttpServletResponse response) {
         LoanProductDAO loanProductDAO = new LoanProductDAO();
