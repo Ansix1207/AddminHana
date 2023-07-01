@@ -13,12 +13,10 @@
   request.setCharacterEncoding("UTF-8");
   String contextPath = request.getContextPath();
   if (request.getAttribute("customerSignDTO") != null) {
-      request.removeAttribute("valid_rrn");
-      CustomerSignDTO customerSignDTO = (CustomerSignDTO) request.getAttribute("customerSignDTO");
-      System.out.println("In sign.jsp : " + customerSignDTO.getC_name());
-      System.out.println("In sign.jsp : " + customerSignDTO.getC_rrn());
+    request.removeAttribute("valid_rrn");
+    CustomerSignDTO customerSignDTO = (CustomerSignDTO) request.getAttribute("customerSignDTO");
   }
-  String message = (String)request.getAttribute("message");
+  String message = (String) request.getAttribute("message");
 %>
 <!DOCTYPE html>
 <html lang="ko">

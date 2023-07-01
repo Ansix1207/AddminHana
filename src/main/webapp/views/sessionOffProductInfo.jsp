@@ -12,7 +12,6 @@
 <%@ page import="hana.teamfour.addminhana.DTO.ProductDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%
-
   request.setCharacterEncoding("UTF-8");
   String contextPath = request.getContextPath();
   ArrayList<ProductDTO> productDTOs = (ArrayList<ProductDTO>) request.getAttribute("productDTOs");
@@ -41,7 +40,7 @@
       <form action="loaninquery" method="GET">
         <div class="input-group">
           <input class="form-control" type="text" name="q" value="${param.q}" aria-describedby="btnNavbarSearch"/>
-          <input class="btn2 btn-search" type="submit" value="검색"/>
+          <input class="btn btn-sunghee btn-search" type="submit" value="검색"/>
         </div>
       </form>
       <%--            그래프 넣기   --%>

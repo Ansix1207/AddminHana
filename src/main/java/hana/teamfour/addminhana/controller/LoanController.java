@@ -22,10 +22,8 @@ public class LoanController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=utf-8");
-
         String query = request.getParameter("q");
         String page_ = request.getParameter("p");
-
         if (query != null && !query.isEmpty()) {
             setSearchProductDTO(request, response);
             int page = 1;
