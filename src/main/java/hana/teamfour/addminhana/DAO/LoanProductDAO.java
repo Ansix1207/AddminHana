@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoanProductDAO {
     private DataSource dataFactory;
@@ -48,13 +50,11 @@ public class LoanProductDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("productEntityList = " + productEntityList);
         return productEntityList;
     }
 
     public ArrayList<ProductEntity> getSearchLoanProductList(String query, int page) {
         ArrayList<ProductEntity> productEntityList = new ArrayList<>();
-
         try (Connection conn = dataFactory.getConnection();
              PreparedStatement pstmt = conn.prepareStatement("SELECT p_name, p_description, p_interestrate " +
                      "FROM (SELECT rownum AS num, p.* " +
@@ -78,5 +78,46 @@ public class LoanProductDAO {
             e.printStackTrace();
         }
         return productEntityList;
+    }
+
+    public int getProductCount(String query) {
+        int count = 0;
+        try (Connection conn = dataFactory.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(
+                     "SELECT count(*) " +
+                             "FROM admin_hana.product " +
+                             "WHERE p_description LIKE ? OR p_name LIKE ?")) {
+
+            pstmt.setString(1, "%" + query + "%");
+            pstmt.setString(2, "%" + query + "%");
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    count = rs.getInt(1);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
+    public Map<String, Integer> getAccountCountByCategory() {
+        Map<String, Integer> accountCountMap = new HashMap<>();
+        try (Connection conn = dataFactory.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(
+                     "SELECT P_CATEGORY, COUNT(*) " + "FROM product " +
+                             "GROUP BY P_CATEGORY")) {
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    String category = rs.getString("P_CATEGORY");
+                    int count = rs.getInt(2);
+                    accountCountMap.put(category, count);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return accountCountMap;
     }
 }

@@ -12,9 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 @WebServlet("/loaninquery")
-public class LoanController extends HttpServlet { //extends HttpServlet 이기 때문에 servlet이 되었음
+public class LoanController extends HttpServlet {
     private LoanProductService loanProductService;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,8 +38,24 @@ public class LoanController extends HttpServlet { //extends HttpServlet 이기 �
                 page = Integer.parseInt(page_);
             }
         }
+        setProductCount(request, response);
+        setAccountCount(request, response);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/sessionOffProductInfo.jsp");
         dispatcher.forward(request, response);
+    }
+
+    public void setAccountCount(HttpServletRequest request, HttpServletResponse response) {
+        LoanProductDAO loanProductDAO = new LoanProductDAO();
+        Map<String, Integer> accountCountMap = new HashMap<>();
+        accountCountMap = loanProductDAO.getAccountCountByCategory();
+        request.setAttribute("accountCountMap", accountCountMap);
+    }
+
+    public void setProductCount(HttpServletRequest request, HttpServletResponse response) {
+        LoanProductDAO loanProductDAO = new LoanProductDAO();
+        String query = request.getParameter("q");
+        int count = loanProductDAO.getProductCount(query);
+        request.setAttribute("count", count);
     }
 
     private void setProductEntity(HttpServletRequest request, HttpServletResponse response) {

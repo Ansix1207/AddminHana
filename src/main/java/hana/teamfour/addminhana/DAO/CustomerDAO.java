@@ -63,9 +63,7 @@ public class CustomerDAO {
             System.out.println("query = " + query);
             statement.setString(1, rrn);
             try (ResultSet resultSet = statement.executeQuery()) {
-                System.out.println("checkDuplicateByRRN");
                 if (resultSet.next()) {
-                    System.out.println("checkDuplicateByRRN : 성공!(중복 됨)");
                     resultSet.close();
                     return true;
                 }
@@ -86,7 +84,6 @@ public class CustomerDAO {
             // Set parameters
             statement.setString(1, _rrn);
             try (ResultSet rs = statement.executeQuery()) {
-                System.out.println("findByRRN");
                 if (rs.next()) {
                     Integer c_id = rs.getInt("c_id");
                     String c_name = rs.getString("c_name");
@@ -122,9 +119,7 @@ public class CustomerDAO {
                 statement.setString(6, customerEntity.getC_job());//String 직업(공무원,직장인,전문직,사업자,일반) job
                 statement.setString(7, customerEntity.getC_description());//String 설명 description
                 statement.setInt(8, customerEntity.getE_id());//int 주소 e_id
-                System.out.println(statement.toString());
                 if (statement.executeUpdate() == 1) {
-                    System.out.println("삽입 성공");
                     connection.commit();
                     connection.setAutoCommit(true);
                     return findByRRN(customerEntity.getC_rrn());
