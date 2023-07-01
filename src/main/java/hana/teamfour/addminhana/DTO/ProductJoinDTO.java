@@ -45,8 +45,8 @@ public class ProductJoinDTO {
     }
 
     // static factory method pattern (정적 팩토리 메서드 패턴)
-    public static ProductJoinDTO from(AccountEntity accountEntity) {
-        return new ProductJoinDTO(accountEntity);
-    }
+//    public static ProductJoinDTO from(AccountEntity accountEntity) {
+//        return new ProductJoinDTO(accountEntity);
+//    }
     
 }
