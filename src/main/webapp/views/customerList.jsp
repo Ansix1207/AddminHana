@@ -65,7 +65,8 @@
     <main>
       <div class="card m-4">
         <div class="card-header">
-          <svg class="svg-inline--fa fa-table me-1" aria-hidden="true" focusable="false" data-prefix="fas"
+          <svg height="20px" width="20px" class="svg-inline--fa fa-table me-1" aria-hidden="true" focusable="false"
+               data-prefix="fas"
                data-icon="table" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
             <path fill="currentColor"
                   d="M64 256V160H224v96H64zm0 64H224v96H64V320zm224 96V320H448v96H288zM448 256H288V160H448v96zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"></path>
@@ -96,21 +97,21 @@
                   for (int i = 0; i < customerList.size(); i++) {
                 %>
                 <tr data-index="<%=i%>">
-                  <td><%=customerList.get(i).getC_id()%>
+                  <td style="width: 2rem;"><%=customerList.get(i).getC_id()%>
                   </td>
-                  <td><%=customerList.get(i).getC_name()%>
+                  <td style="width: 3rem;"><%=customerList.get(i).getC_name()%>
                   </td>
-                  <td><%=customerList.get(i).getC_rrn()%>
+                  <td style="width: 5rem;"><%=customerList.get(i).getC_rrn()%>
                   </td>
-                  <td><%=customerList.get(i).getC_gender()%>
+                  <td style="width: 0.5rem;"><%=customerList.get(i).getC_gender() == 'M' ? "남자" : "여자"%>
                   </td>
-                  <td><%=customerList.get(i).getC_address()%>
+                  <td style="width: 10rem"><%=customerList.get(i).getC_address()%>
                   </td>
-                  <td><%=customerList.get(i).getC_mobile()%>
+                  <td style="width: 3rem;"><%=customerList.get(i).getC_mobile()%>
                   </td>
-                  <td><%=customerList.get(i).getC_job()%>
+                  <td style="width: 3rem;"><%=customerList.get(i).getC_job()%>
                   </td>
-                  <td><%=customerList.get(i).getE_id()%>
+                  <td style="width: 3rem;"><%=customerList.get(i).getE_id()%>
                   </td>
                     <%
                   }
