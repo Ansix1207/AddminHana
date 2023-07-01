@@ -7,14 +7,16 @@
 --%>
 <%@ page import="hana.teamfour.addminhana.entity.ProductEntity" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="hana.teamfour.addminhana.DTO.ProductJoinDTO" %>
 <%@ page import="java.sql.Timestamp" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="hana.teamfour.addminhana.DTO.AccountDTO" %>
+<%@ page import="hana.teamfour.addminhana.DTO.*" %>
 <%
   request.setCharacterEncoding("UTF-8");
   String contextPath = request.getContextPath();
   ProductJoinDTO productJoinDTO = (ProductJoinDTO) request.getAttribute("productJoinDTO");
+  ProductDTO productDTO = (ProductDTO) request.getAttribute("productDTO");
+
+
 %>
 <% Boolean isSuccess = (Boolean) request.getAttribute("isSuccess");
   System.out.println("isSuccess: " + isSuccess);
@@ -84,6 +86,9 @@
                     <label>담보가액</label>
                     <input class="form-control" name="ACC_COLLATERALVALUE" value="${ACC_COLLATERALVALUE}"
                            type="text">
+                  </div>
+                  <div>
+
                   </div>
 
 

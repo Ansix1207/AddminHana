@@ -16,7 +16,6 @@ public class LoanProductService {
         ArrayList<ProductEntity> productEntities = loanProductDAO.getLoanProductList(page);
         ArrayList<ProductDTO> productDTOs = new ArrayList<ProductDTO>();
         for (int i = 0; i < productEntities.size(); i++) {
-            // productEntities.get(i) -> type은? ProductEntity
             System.out.println(productEntities.get(i).getP_name());
             ProductDTO productDTO = new ProductDTO(productEntities.get(i)); //entities에서 하나 꺼내와서 DTO로 만든다.
             productDTOs.add(productDTO);
@@ -37,12 +36,4 @@ public class LoanProductService {
         System.out.println("DTOS" + productDTOs);
         return productDTOs;
     }
-
-//    public int getProductCount(String query) {
-//        return LoanProductDAO.getProductCount(query);
-//    }
-//
-//    public Map<String, Integer> getAccountCountByCategory() {
-//        return loanProductDao.getAccountCountByCategory();
-//    }
 }
