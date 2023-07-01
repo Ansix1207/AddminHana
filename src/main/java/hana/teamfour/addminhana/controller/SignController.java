@@ -39,7 +39,7 @@ public class SignController extends HttpServlet {
         switch (request.getMethod()) {
             case "GET":
                 System.out.println("get 진입");
-                dispatcher = request.getRequestDispatcher("./views/sign2.jsp");
+                dispatcher = request.getRequestDispatcher("./views/sign.jsp");
                 dispatcher.forward(request, response);
                 break;
             case "POST":
@@ -51,7 +51,9 @@ public class SignController extends HttpServlet {
                     request.setAttribute("c_mobile", request.getParameter("c_mobile"));
                     request.setAttribute("c_job", request.getParameter("c_job"));
                     request.setAttribute("c_description", request.getParameter("c_description"));
-                    dispatcher = request.getRequestDispatcher("./views/sign2.jsp");
+                    request.setAttribute("inputZip", request.getParameter("inputZip"));
+                    request.setAttribute("extraAddress", request.getParameter("extraAddress"));
+                    dispatcher = request.getRequestDispatcher("./views/sign.jsp");
                     dispatcher.forward(request, response);
                 } else {
                     String res = doSign(request);
@@ -97,8 +99,8 @@ public class SignController extends HttpServlet {
                 .c_rrn(request.getParameter("c_rrn1") + "-" + request.getParameter("c_rrn2"))
                 .c_gender(customerService.getGenderFromRRN(request.getParameter("c_rrn1") + "-" +
                         request.getParameter("c_rrn2")))
-                .c_address(request.getParameter("c_address1") + " " +
-                        request.getParameter("c_address2"))
+                .c_address("[" + request.getParameter("inputZip") + "]" + request.getParameter("c_address1") + " " +
+                        request.getParameter("c_address2") + request.getParameter("extraAddress"))
                 .c_mobile(request.getParameter("c_mobile"))
                 .c_job(request.getParameter("c_job"))
                 .c_description(request.getParameter("c_description"))
