@@ -29,7 +29,7 @@
     </nav>
 
     <main class="d-flex flex-column justify-content-center gap-2 mx-4 w-100">
-      <form name="customerLoginForm" action="profile" method="post"
+      <form name="customerLoginForm" action="customer/profile" method="post"
             class="input-group input-group-lg flex-nowrap w-75">
           <span class="input-group-text" id="addon-wrapping">
             <i class="fas fa-magnifying-glass"></i>

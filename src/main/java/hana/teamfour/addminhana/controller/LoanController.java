@@ -33,7 +33,6 @@ public class LoanController extends HttpServlet {
             }
         } else {
             setProductEntity(request, response);
-            System.out.println("pass");
             int page = 1;
             if (page_ != null && !query.isEmpty()) {
                 page = Integer.parseInt(page_);
@@ -83,6 +82,6 @@ public class LoanController extends HttpServlet {
             page = Integer.parseInt(page_);
         }
         ArrayList<ProductEntity> productEntity = loanProductDAO.getSearchLoanProductList(query, page);
-        request.setAttribute("productEntity", productEntity);
+        request.setAttribute("productEntity", productEntity); /* 이름설정 */
     }
 }

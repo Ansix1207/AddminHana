@@ -15,12 +15,14 @@ public class CustomerLoginFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
         HttpSession session = request.getSession(false);
-        boolean loggedIn = session != null && session.getAttribute("customerSession") != null;
+        String loginURI = request.getContextPath() + "/customer/profile";
 
-        if (loggedIn) {
+        boolean loggedIn = session != null && session.getAttribute("customerSession") != null;
+        boolean loginRequest = request.getRequestURI().equals(loginURI);
+        if (loggedIn || loginRequest) {
             chain.doFilter(request, response);
         } else {
-            response.sendRedirect(request.getContextPath() + "/main");
+            response.sendRedirect(request.getContextPath() + "/");
         }
     }
 }

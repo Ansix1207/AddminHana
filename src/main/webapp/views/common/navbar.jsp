@@ -24,13 +24,13 @@
       <%
         if (flag) {
       %>
-      <a class="nav-link" href="<%=contextPath%>/profile">
+      <a class="nav-link" href="<%=contextPath%>/customer/profile">
         <div class="sb-nav-link-icon">
           <i class="fas fa-id-card"></i>
         </div>
         프로필
       </a>
-      <a class="nav-link" href="<%=contextPath%>/sign">
+      <a class="nav-link" href="<%=contextPath%>/customer/loanjoin">
         <div class="sb-nav-link-icon">
           <i class="fas fa-angles-right"></i>
         </div>
@@ -45,17 +45,17 @@
       <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
            data-bs-parent="#sidenavAccordion">
         <nav class="sb-sidenav-menu-nested nav">
-          <a class="nav-link" href="<%=contextPath%>/depositInfo">
+          <a class="nav-link" href="<%=contextPath%>/customer/depositInfo">
             <div class="sb-nav-link-icon">
               <i class="fas fa-money-bill-transfer"></i>
             </div>
             예금 현황
           </a>
-          <a class="nav-link" href="<%=contextPath%>/savingsInfo">
+          <a class="nav-link" href="<%=contextPath%>/customer/savingsInfo">
             <div class="sb-nav-link-icon"><i class="fas fa-piggy-bank"></i></div>
             적금 현황
           </a>
-          <a class="nav-link" href="<%=contextPath%>/loanInfo">
+          <a class="nav-link" href="<%=contextPath%>/customer/loanInfo">
             <div class="sb-nav-link-icon"><i class="fas fa-landmark"></i></div>
             대출 현황
           </a>
@@ -70,24 +70,24 @@
       <div class="collapse" id="collapseLayouts2" aria-labelledby="headingOne"
            data-bs-parent="#sidenavAccordion">
         <nav class="sb-sidenav-menu-nested nav">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="<%=contextPath%>/deposit">
             <div class="sb-nav-link-icon">
               <i class="fas fa-plus"></i>
             </div>
             입금
           </a>
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="<%=contextPath%>/withdraw">
             <div class="sb-nav-link-icon"><i class="fas fa-minus"></i></div>
             출금
           </a>
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="<%=contextPath%>/transfer">
             <div class="sb-nav-link-icon"><i class="fas fa-right-left"></i></div>
             계좌이체
           </a>
         </nav>
       </div>
       <%} else {%>
-      <a class="nav-link" href="#">
+      <a class="nav-link" href="<%=contextPath%>/customer/loanjoin ">
         <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
         신규 고객 가입
       </a>
@@ -117,9 +117,9 @@
   %>
   <div class="sb-sidenav-footer">
     <div class="small">현재 상담 중인 고객:</div>
-    <div class="d-flex justify-content-end"><span><%=customerSession.getC_name()%>&nbsp;님</span>
+    <div class="d-flex justify-content-between"><span><%=customerSession.getC_name()%>&nbsp;님</span>
       <a class="btn btn-light btn-sm" style="--bs-btn-font-size: .50rem; display: inline-block"
-         href="<%=contextPath%>/logout/customer">세션아웃</a>
+         href="<%=contextPath%>/logout/customer">거래종료</a>
     </div>
   </div>
   <%}%>
@@ -129,12 +129,10 @@
       if (request.getSession().getAttribute("login") != null) {
         EmployeeDTO employee = (EmployeeDTO) request.getSession().getAttribute("login");
     %>
-    <div class="d-flex"><span><%=employee.getE_name()%></span>
+    <div class="d-flex justify-content-between"><span><%=employee.getE_name()%></span>
       <a class="btn btn-dark btn-sm" style="--bs-btn-font-size: .50rem; display: inline-block"
          href="<%=contextPath%>/logout/user">로그아웃</a>
     </div>
     <%}%>
-
   </div>
-
 </div>
