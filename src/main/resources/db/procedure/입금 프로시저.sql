@@ -12,7 +12,7 @@ IS
     v_error_message VARCHAR2(100);
 BEGIN
     -- account 테이블에서 acc_amount 값을 가져옴
-SELECT acc_balance INTO v_acc_amount FROM account WHERE acc_id = p_acc_id;
+SELECT acc_balance INTO v_acc_amount FROM account WHERE acc_id = p_acc_id and acc_isactive = 'Y' FOR UPDATE WAIT 2;
 -- 가져온 값에 입력받은 p_amount를 더함
 v_old_balance := v_acc_amount;
     v_new_balance := v_acc_amount + p_amount;
