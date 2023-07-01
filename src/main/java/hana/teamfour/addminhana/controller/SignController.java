@@ -38,12 +38,10 @@ public class SignController extends HttpServlet {
         RequestDispatcher dispatcher;
         switch (request.getMethod()) {
             case "GET":
-                System.out.println("get 진입");
                 dispatcher = request.getRequestDispatcher("./views/sign.jsp");
                 dispatcher.forward(request, response);
                 break;
             case "POST":
-                System.out.println("POST 진입 & valid_rrn == " + request.getParameter("valid_rrn"));
                 if (!checkEmptyOrNull(request, "valid_rrn")) {
                     String res = doValidRRN(request);
                     request.setAttribute("message", res);
@@ -55,7 +53,6 @@ public class SignController extends HttpServlet {
                     dispatcher = request.getRequestDispatcher("./views/sign.jsp");
                     dispatcher.forward(request, response);
                 } else {
-                    System.out.println("가입 시도");
                     String res = doSign(request);
                     request.setAttribute("message", res);
                     response.setContentType("text/html");
@@ -66,7 +63,6 @@ public class SignController extends HttpServlet {
                     out.println("</body>");
                     out.println("</html>");
                 }
-                System.out.println("POST 요청 처리 끝");
                 break;
             default:
         }

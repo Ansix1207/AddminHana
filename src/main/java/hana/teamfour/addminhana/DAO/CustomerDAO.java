@@ -127,7 +127,6 @@ public class CustomerDAO {
                 statement.setInt(8, customerEntity.getE_id());//int 주소 e_id
                 System.out.println(statement.toString());
                 if (statement.executeUpdate() == 1) {
-                    System.out.println("삽입 성공");
                     connection.commit();
                     connection.setAutoCommit(true);
                     return findByRRN(customerEntity.getC_rrn());
@@ -234,11 +233,13 @@ public class CustomerDAO {
                 "   select rownum as rownumber, " +
                 "           ordered_customer.* from (" +
                 "               select * from customer " +
+                "               where c_name like ?" +
                 "                order by ? ) ordered_customer ) " +
                 " where rownumber >= ? and rownumber < ?";
         String orderBy = paginationDTO.getOrderBy();
         Integer size = paginationDTO.getSize();
         Integer page = paginationDTO.getPage();
+        String search = paginationDTO.getSearch();
         if (orderBy == null || orderBy.equals("")) {
             orderBy = "c_id";
         }
@@ -248,11 +249,16 @@ public class CustomerDAO {
             startNum = 1 + (size * (page - 1));
             lastNum = startNum + size;
         }
+        if (search == null || search.equals("")) {
+            search = "%";
+        }
+        search = "%" + search + "%";
         try (Connection connection = dataFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, orderBy);
-            statement.setInt(2, startNum);
-            statement.setInt(3, lastNum);
+            statement.setString(1, search);
+            statement.setString(2, orderBy);
+            statement.setInt(3, startNum);
+            statement.setInt(4, lastNum);
             try (ResultSet rs = statement.executeQuery()) {
                 while (rs.next()) {
                     Integer c_id = rs.getInt("c_id");

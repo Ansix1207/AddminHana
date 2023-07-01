@@ -10,7 +10,6 @@ import hana.teamfour.addminhana.service.CustomerService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -60,7 +59,6 @@ public class ProfileController extends HttpServlet {
             }
             if (action != null && action.equals("description")) {
                 customerSummaryDTO = customerService.getCustomerSummaryDTOById(customerSession.getC_id());
-                System.out.println("customerSummaryDTO = " + customerSummaryDTO);
                 customerSummaryDTO.setC_description(description);
                 boolean hasUpdated = customerService.updateCustomerDescription(customerSummaryDTO);
                 request.setAttribute("hasUpdatedDescription", hasUpdated);
@@ -88,9 +86,9 @@ public class ProfileController extends HttpServlet {
                 CustomerSessionDTO customerSessionDTO = customerSummaryDTO.getCustomerSessionDTO();
                 session.setAttribute("customerSession", customerSessionDTO);
                 request.setAttribute("customerSummaryDTO", customerSummaryDTO);
-                
+
                 setAssetsInfo(request, response);
-                
+
                 RequestDispatcher dispatcher = request.getRequestDispatcher(profilePage);
                 dispatcher.forward(request, response);
                 return;
@@ -120,7 +118,7 @@ public class ProfileController extends HttpServlet {
         request.setAttribute(assetDTOName, assetDTO);
         request.setAttribute(acountListName, accountList);
     }
-    
+
     private void forwardToMain(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String nextPage = "/views/main.jsp";
         RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);

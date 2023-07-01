@@ -23,6 +23,7 @@
   String _page = request.getParameter("page");
   String size = request.getParameter("size");
   String orderBy = request.getParameter("orderBy");
+  String search = request.getParameter("search");
   if (_page == null) {
     _page = "1";
   }
@@ -31,6 +32,9 @@
   }
   if (orderBy == null) {
     orderBy = "c_id";
+  }
+  if (search == null) {
+    search = "%";
   }
 
 %>
@@ -70,8 +74,12 @@
             <div class="datatable-top">
               <div class="datatable-dropdown"></div>
               <div class="datatable-search">
-                <input class="datatable-input" placeholder="Search..." type="search" title="Search within table"
-                       aria-controls="datatablesSimple">
+                <form class="searchForm">
+                  <input class="datatable-input" name="searchInput" placeholder="Search..." type="search"
+                         title="Search within table"
+                         aria-controls="datatablesSimple">
+                  <button type="submit">검색</button>
+                </form>
               </div>
             </div>
             <div class="datatable-container">
@@ -148,6 +156,7 @@
       const $pagenation = document.querySelector(".datatable-pagination-list");
       const page = <%=_page%>;
       const size = <%=size%>;
+      const search = '<%=search %>';
       const customerCount = <%=customerCount%>;
       const lastPage = Math.floor(300 / size);
 
@@ -156,7 +165,7 @@
       innerHTML += `
       <li class="datatable-pagination-list-item">
         <a href="?page=${page - 10 > 0 ? page -10 : 1}&size=${size}"data-page="1" class="datatable-pagination-list-item-link">‹</a>
-      </li>`
+      </li>`;
 
       for (let i = 1 + pageListNum; i <= 10 + pageListNum; i++) {
           innerHTML += `
@@ -169,12 +178,10 @@
       innerHTML += `
       <li class="datatable-pagination-list-item"  >
         <a href="?page=${page + 10 < lastPage ? page + 10 : lastPage}&size=${size}" data-page="2" class="datatable-pagination-list-item-link">›</a>
-      </li>`
+      </li>`;
 
       $pagenation.innerHTML = innerHTML;
-
       $sizeSelector = document.querySelector(".datatable-dropdown");
-
 
       let selectorInnerHTML = `
       <label>
@@ -184,15 +191,20 @@
             <option value="20" ${size == 20 ? "selected" : ""}>20</option>
             <option value="25" ${size == 25 ? "selected" : ""}>25</option>
           </select> entries per page
-      </label>
-      `;
+      </label>`;
+
       $sizeSelector.innerHTML = selectorInnerHTML;
       $sizeSelector.addEventListener('change', (e) => {
           const value = e.target.value;
           location.href = `customerList?page=${page}&size=${value}`;
       });
 
-
+      $searchForm = document.querySelector(".searchForm");
+      $searchForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const value = e.target.searchInput.value;
+          location.href = `customerList?page=${page}&size=${size}&search=${value}`;
+      })
   </script>
 </body>
 </html>

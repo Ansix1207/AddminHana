@@ -11,4 +11,5 @@ public class PaginationDTO {
     private Integer page;
     private Integer size;
     private String orderBy;
+    private String search;
 }
