@@ -12,7 +12,6 @@ public class LogoutController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String pathInfo = request.getPathInfo();
-        System.out.println("pathInfo: " + pathInfo);
         switch (pathInfo) {
             case "/user":
                 request.getSession().invalidate(); // 세션 삭제

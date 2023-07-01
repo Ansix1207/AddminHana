@@ -23,7 +23,17 @@ import java.util.ArrayList;
 @WebServlet(urlPatterns = {"/customer/depositInfo", "/customer/loanInfo", "/customer/savingsInfo"})
 public class AccInfoController extends HttpServlet {
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doHandle(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doHandle(request, response);
+    }
+
+    protected void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String uri = request.getRequestURI();
         String context = request.getContextPath();
         String command = uri.substring(context.length());
@@ -41,14 +51,12 @@ public class AccInfoController extends HttpServlet {
             default:
                 break;
         }
-        requestPro(request, response, category);
-    }
 
-    protected void requestPro(HttpServletRequest request, HttpServletResponse response, String category) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
 
         CustomerSessionDTO customerSessionDTO = (CustomerSessionDTO) session.getAttribute("customerSession");
         Integer c_id = customerSessionDTO.getC_id();
+        String action = request.getParameter("action");
 
         CustomerService customerService = new CustomerService();
         AccountService accountService = new AccountService(c_id, category);
@@ -56,6 +64,18 @@ public class AccInfoController extends HttpServlet {
         RecommendService recommendService = new RecommendService(c_id, category);
 
         CustomerSummaryDTO customerSummaryDTO = customerService.getCustomerSummaryDTOById(c_id);
+
+        try {
+            if (action != null && action.equals("asset-update")) {
+                customerSummaryDTO = customerService.getCustomerSummaryDTOById(customerSessionDTO.getC_id());
+                request.setAttribute("customerSummaryDTO", customerSummaryDTO);
+                Integer customerId = customerSessionDTO.getC_id();
+                assetService.refreshAssetTable(customerId);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         AssetDTO assetDTO = assetService.getAsset();
         ArrayList<AccountDTO> accountDTOList = accountService.getAccList();
         ArrayList<ProductEntity> recByJobProducts = recommendService.getRecByJob();

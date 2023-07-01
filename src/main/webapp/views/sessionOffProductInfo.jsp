@@ -6,16 +6,15 @@
   Time: 오후 5:38
   To change this template use File | Settings | File Templates.
 --%>
-
+<%@ page import="java.util.Map" %>
 <%@ page import="hana.teamfour.addminhana.entity.ProductEntity" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="hana.teamfour.addminhana.DTO.ProductDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%
   request.setCharacterEncoding("UTF-8");
   String contextPath = request.getContextPath();
-
-  ArrayList<ProductEntity> productEntity = new ArrayList<>();
-  productEntity = (ArrayList<ProductEntity>) request.getAttribute("productEntity");
+  ArrayList<ProductDTO> productDTOs = (ArrayList<ProductDTO>) request.getAttribute("productDTOs");
 
 %>
 <!DOCTYPE html>
@@ -44,33 +43,63 @@
           <input class="btn btn-sunghee btn-search" type="submit" value="검색"/>
         </div>
       </form>
-      <div class="col-lg-6">
-        <div class="card mb-4">
-          <div class="card-header">
-            <i class="fas fa-chart-bar me-1"></i>
-            20대 남성 예금현황 통계
-          </div>
-          <div class="card-body">
-            <canvas id="myBarChart" width="100%" height="50"></canvas>
-          </div>
-          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-        </div>
+      <%--            그래프 넣기   --%>
+      <div>
+        <canvas id="myChart"></canvas>
+        <%
+
+          Map<String, Integer> accountCountMap = (Map<String, Integer>) request.getAttribute("accountCountMap");
+          // accountCountMap을 사용하여 필요한 작업 수행
+          // 예: 특정 카테고리의 계좌 개수 출력
+          Integer count1 = accountCountMap.get("보통예금");
+          Integer count2 = accountCountMap.get("정기예금");
+          Integer count3 = accountCountMap.get("자유적금");
+          Integer count4 = accountCountMap.get("정기적금");
+          Integer count5 = accountCountMap.get("신용대출");
+          Integer count6 = accountCountMap.get("담보대출");
+
+        %>
       </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+          const ctx = document.getElementById('myChart');
+          new Chart(ctx, {
+              type: 'bar',
+              data: {
+                  labels: ['보통예금', '정기예금', '자유적금', '${param.q}' + '상품', '정기적금', '신용대출', '담보대출'],
+                  datasets: [{
+                      label: '분류별 금융상품개수',
+                      data: [<%= count1 %>, <%= count2 %>, <%= count3 %>, ${count}, <%= count4 %>, <%= count5 %>, <%= count6 %>],
+                      borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      y: {
+                          beginAtZero: true
+                      }
+                  }
+              }
+          });
+      </script>
       <div class="list1">
         <div class="card-header">
           <h4> &nbsp 추천 금융상품 리스트</h4>
+          <h3> &nbsp ${count}개의 상품이 검색되었습니다</h3>
         </div>
         <ol class="list-group list-group-numbered" id="pages">
           <%
-            for (int i = 0; i < productEntity.size(); i++) {
+            for (int i = 0; i < productDTOs.size(); i++) {
           %>
           <li class="productItem list-group-item d-flex justify-content-between align-items-start">
             <div class="ms-2 me-auto ">
               <div class="fw-bold">
                 <div>
-                  <h4><span><%=productEntity.get(i).getP_name()%></span></h4>
-                  <span>금리 <%=productEntity.get(i).getP_interestrate()%> %</span><br>
-                  <span><%=productEntity.get(i).getP_description()%></span>
+                  <h4><span><%=productDTOs.get(i).getP_name()%></span></h4>
+                  <span>금리 <%=productDTOs.get(i).getP_interestrate()%> %</span><br>
+                  <span><%=productDTOs.get(i).getP_description()%></span>
                 </div>
               </div>
             </div>
@@ -84,7 +113,7 @@
           <%--        페이지네이션--%>
           <c:set var="page" value="${(param.p == null)?1:param.p}"/>
           <c:set var="startNum" value="${page-(page-1)%5}"/>
-          <c:set var="lastNum" value="17"/>
+          <c:set var="lastNum" value="${Math.floor(count/5)}"/>
           <%--          이전 페이지--%>
           <ul class="-list- center">
             <c:if test="${startNum>1}">
@@ -95,8 +124,11 @@
             </c:if>
             <%--페이지 번호--%>
             <c:forEach var="i" begin="0" end="4">
-              <li class="pagination"><a class="orange bold" style="text-decoration: none;"
-                                        href="?p=${startNum+i}&q=${param.q}"> ${startNum+i}</a></li>
+              <li class="pagination">
+                <a class="orange bold" style="text-decoration: none;"
+                   href="?p=${startNum+i}&q=${param.q}"> ${startNum+i}
+                </a>
+              </li>
             </c:forEach>
             <%--          다음 페이지--%>
             <c:if test="${startNum+5<lastNum}">

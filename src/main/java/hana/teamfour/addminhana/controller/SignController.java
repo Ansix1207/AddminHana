@@ -43,7 +43,6 @@ public class SignController extends HttpServlet {
                 dispatcher.forward(request, response);
                 break;
             case "POST":
-                System.out.println("POST 진입 & valid_rrn == " + request.getParameter("valid_rrn"));
                 if (!checkEmptyOrNull(request, "valid_rrn")) {
                     String res = doValidRRN(request);
                     request.setAttribute("message", res);
@@ -55,7 +54,6 @@ public class SignController extends HttpServlet {
                     dispatcher = request.getRequestDispatcher("./views/sign2.jsp");
                     dispatcher.forward(request, response);
                 } else {
-                    System.out.println("가입 시도");
                     String res = doSign(request);
                     request.setAttribute("message", res);
                     response.setContentType("text/html");
@@ -66,7 +64,6 @@ public class SignController extends HttpServlet {
                     out.println("</body>");
                     out.println("</html>");
                 }
-                System.out.println("POST 요청 처리 끝");
                 break;
             default:
         }
@@ -74,9 +71,7 @@ public class SignController extends HttpServlet {
 
     private String doValidRRN(HttpServletRequest request) {
         String res = "중복된 주민등록 번호입니다.";
-        System.out.println(request.getParameter("valid_rrn") + " <- 이 번호로 조회 시도");
         if (!customerService.checkDuplicateByRRN(request.getParameter("valid_rrn"))) {
-            System.out.println("중복되지 않았음.");
             res = "중복되지 않았습니다";
         }
         request.setAttribute("customerSignDTO", makeSignDTO(request));
@@ -86,10 +81,7 @@ public class SignController extends HttpServlet {
     private String doSign(HttpServletRequest request) {
         String res = "가입에 실패했습니다";
         CustomerSignDTO customerSignDTO = makeSignDTO(request);
-        System.out.println("doSign 진입");
-        System.out.println("customerSignDTO = " + customerSignDTO.toString());
         if (customerService.signCustomer(customerSignDTO)) {
-            System.out.println("In doSign : 성공");
             res = "가입에 성공했습니다";
         }
         return res;
@@ -112,7 +104,6 @@ public class SignController extends HttpServlet {
                 .c_description(request.getParameter("c_description"))
                 .e_id(user.getE_id())
                 .build();
-        System.out.println("IN makeSignDTO : " + customerSignDTO.toString());
         return customerSignDTO;
     }
 

@@ -20,7 +20,6 @@ public class AccountService {
     }
 
     public ArrayList<AccountDTO> getAccList() {
-        System.out.println(category + " AccountService 로드 성공");
         ArrayList<AccountEntity> accountEntities = accountDao.getAccListById(id, category);
         return setAccList(accountEntities);
     }
