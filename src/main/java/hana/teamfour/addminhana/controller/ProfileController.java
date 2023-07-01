@@ -1,9 +1,6 @@
 package hana.teamfour.addminhana.controller;
 
-import hana.teamfour.addminhana.DTO.AccountDTO;
-import hana.teamfour.addminhana.DTO.AssetDTO;
-import hana.teamfour.addminhana.DTO.CustomerSessionDTO;
-import hana.teamfour.addminhana.DTO.CustomerSummaryDTO;
+import hana.teamfour.addminhana.DTO.*;
 import hana.teamfour.addminhana.service.AccountService;
 import hana.teamfour.addminhana.service.AssetService;
 import hana.teamfour.addminhana.service.CustomerService;
@@ -107,18 +104,26 @@ public class ProfileController extends HttpServlet {
         CustomerSessionDTO customerSessionDTO = (CustomerSessionDTO) session.getAttribute("customerSession");
         Integer c_id = customerSessionDTO.getC_id();
 
-        setAssetByCategory(request, response, c_id, "예금", "depositDTO", "depositAccountList");
-        setAssetByCategory(request, response, c_id, "적금", "savingsDTO", "savingsAccountList");
-        setAssetByCategory(request, response, c_id, "대출", "loanDTO", "loanAccountList");
+        AssetSetterDTO depositSetterDTO = new AssetSetterDTO(c_id, "예금", "depositDTO", "depositAccountList");
+        AssetSetterDTO savingsSetterDTO = new AssetSetterDTO(c_id, "적금", "savingsDTO", "savingsAccountList");
+        AssetSetterDTO loanSetterDTO = new AssetSetterDTO(c_id, "대출", "loanDTO", "loanAccountList");
+
+        setAssetByCategory(request, depositSetterDTO);
+        setAssetByCategory(request, savingsSetterDTO);
+        setAssetByCategory(request, loanSetterDTO);
     }
 
-    private void setAssetByCategory(HttpServletRequest request, HttpServletResponse response, Integer c_id, String category, String assetDTOName, String acountListName) throws ServletException, IOException {
+    private void setAssetByCategory(HttpServletRequest request, AssetSetterDTO assetSetterDTO) throws ServletException, IOException {
+        Integer c_id = assetSetterDTO.getC_id();
+        String category = assetSetterDTO.getCategory();
+        String assetDTOName = assetSetterDTO.getAssetDTOName();
+        String accountListName = assetSetterDTO.getAccountListName();
         AccountService accountService = new AccountService(c_id, category);
         AssetService assetService = new AssetService(c_id, category);
         AssetDTO assetDTO = assetService.getAsset();
         ArrayList<AccountDTO> accountList = accountService.getAccList();
         request.setAttribute(assetDTOName, assetDTO);
-        request.setAttribute(acountListName, accountList);
+        request.setAttribute(accountListName, accountList);
     }
 
     private void forwardToMain(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
