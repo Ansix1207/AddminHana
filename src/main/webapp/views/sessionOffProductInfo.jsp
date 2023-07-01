@@ -92,16 +92,14 @@
         <ol class="list-group list-group-numbered" id="pages">
           <%
             for (int i = 0; i < productDTOs.size(); i++) {
+              String pName = productDTOs.get(i).getP_name();
+              request.getSession().setAttribute("P_Name_" + i, pName);
           %>
           <li class="productItem list-group-item d-flex justify-content-between align-items-start">
             <div class="ms-2 me-auto ">
               <div class="fw-bold">
                 <div>
-                  <h4><span><%=productDTOs.get(i).getP_name()%></span></h4>
-                  <%
-                    String P_Name = productDTOs.get(i).getP_name();
-                    request.getSession().setAttribute("P_Name", P_Name);
-                  %>
+                  <h4><span><%=pName%></span></h4>
                   <span>금리 <%=productDTOs.get(i).getP_interestrate()%> %</span><br>
                   <span><%=productDTOs.get(i).getP_description()%></span>
                 </div>
@@ -110,8 +108,9 @@
             <%
               if (request.getSession().getAttribute("customerSession") != null) {%>
             <%--            세션이 있을 때는 가입 버튼이 나올수 있게 해두었다--%>
-            <a class=join value="<%=productDTOs.get(i).getP_name()%>}" href=<%=contextPath%>/customer/loanjoin>
-              <button class="modify">가입</button>
+            <a class=join value="<%=productDTOs.get(i).getP_name()%>}"
+               href="<%=contextPath%>/customer/loanjoin?pIndex=<%=i%>">
+              <button class=" modify">가입</button>
             </a>
             <%}%>
           </li>

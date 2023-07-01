@@ -95,12 +95,12 @@
                   </div>
                   <div>
                     <label>
-                      <%String P_Name = (String) request.getSession().getAttribute("P_Name"); %>
-                      <%=P_Name%>
+                      <% String pIndex = request.getParameter("pIndex");
+                        String pName = (String) request.getSession().getAttribute("P_Name_" + pIndex); %>
+                      <%=pName%>
                     </label>
                   </div>
-
-
+                  
                   <div class="d-grid">
                     <button onclick="reloadPage()" type="submit" class="btn btn-primary btn-block" id="signButton">신규 손님
                       가입
