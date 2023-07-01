@@ -40,13 +40,10 @@ public class LoanJoinController extends HttpServlet {
         RequestDispatcher dispatcher;
         switch (request.getMethod()) {
             case "GET":
-                System.out.println("get 진입");
                 dispatcher = request.getRequestDispatcher("./views/loanJoin.jsp");
                 dispatcher.forward(request, response);
                 break;
             case "POST":
-                System.out.println("Post 진입");
-//                String res = doValidRRN(request);
                 request.setAttribute("acc_id", request.getParameter("acc_id"));
                 request.setAttribute("acc_cid", request.getParameter("acc_cid"));
                 request.setAttribute("acc_date", request.getParameter("acc_date"));
@@ -64,7 +61,6 @@ public class LoanJoinController extends HttpServlet {
                 String res = doSign(request);
                 dispatcher = request.getRequestDispatcher("./views/loanJoin.jsp");
                 dispatcher.forward(request, response);
-                System.out.println("POST 요청 처리 끝");
                 break;
             default:
         }
@@ -145,16 +141,12 @@ public class LoanJoinController extends HttpServlet {
                 .acc_maturitydate(accMaturityDate)
                 .acc_isactive(accIsActive)
                 .build();
-
-        System.out.println("IN makeSignDTO: " + productJoinDTO.toString());
         return productJoinDTO;
     }
 
     private String doSign(HttpServletRequest request) {
         String res = "가입에 실패했습니다";
         ProductJoinDTO productJoinDTO = makeSignDTO(request);
-        System.out.println("doSign 진입");
-        System.out.println("ProductJoinDTO = " + productJoinDTO.toString());
         res = "가입에 성공했습니다";
         return res;
     }

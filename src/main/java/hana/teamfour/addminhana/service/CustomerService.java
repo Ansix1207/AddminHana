@@ -77,7 +77,6 @@ public class CustomerService {
 
     public static char getGenderFromRRN(String rrn) {
         //001026-1
-        System.out.println("getGenderFromRRN : " + rrn);
         String[] stk = rrn.split("-");
         int partRRN = Integer.parseInt(stk[1].substring(0, 1));
         if (partRRN == 1 || partRRN == 3) {
@@ -98,13 +97,11 @@ public class CustomerService {
                 return false;
             }
         } catch (SQLException e) {
-            System.out.println(e.toString() + " | CustomerService - signCustomer : 회원 가입 실패!");
         }
         return false;
     }
 
     public boolean checkDuplicateByRRN(String rrn) {
-        System.out.println("Service checkDuplicateByRRN : " + rrn);
         return customerDAO.checkDuplicateByRRN(rrn);
     }
 }

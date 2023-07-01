@@ -35,7 +35,6 @@ Settings | File Templates. --%>
     accountBalance[idx++] = tempBalance[1];
     deposit = depositDTO.getAss_deposit();
     asset += deposit;
-    System.out.println("depositDTO.getAss_deposit() = " + depositDTO.getAss_deposit());
   }
   if (savingsAccountList != null && savingsDTO != null) {
     Integer[] tempBalance = savingsDTO.getBalance_sum();
@@ -246,8 +245,8 @@ Settings | File Templates. --%>
             <p class="card-text customerDescriptions">
             <form class="descriptionForm" name="descriptionForm" method="post" action="profile"
                   accept-charset="utf-8">
-              <textarea name="descriptionText" class="descriptionTextarea" 
-<%--                        cols="35" rows="10"--%>
+              <textarea name="descriptionText" class="descriptionTextarea"
+              <%--                        cols="35" rows="10"--%>
                         maxlength="300">${customerSummaryDTO.c_description}</textarea>
               <input type="hidden" name="action" value="description">
               <div class="d-grid mt-4">
@@ -293,7 +292,7 @@ Settings | File Templates. --%>
               history.replaceState({}.null, location.pathname);
           }
       }
-      
+
       // 자산이 없을 때 빈 도넛 차트를 그리기 위한 플러그인
       const plugin = {
           id: 'emptyDoughnut',

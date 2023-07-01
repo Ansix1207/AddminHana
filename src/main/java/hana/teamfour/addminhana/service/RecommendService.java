@@ -41,7 +41,6 @@ public class RecommendService {
         for (ProductEntity product : joinedProducts) {
             joinedIdSet.add(product.getP_id());
         }
-        System.out.println("가입된 상품 id 추가");
     }
 
     public ArrayList<ProductEntity> getRecByJob() {
@@ -49,7 +48,6 @@ public class RecommendService {
         String job = customerSummaryDTO.getC_job();
         ArrayList<ProductEntity> recProducts = recByJobDAO.getRecProduct(userId, productType, job);
         ArrayList<ProductEntity> resultProducts = getRecProducts(recProducts);
-        System.out.println("Job 추천 상품 추가");
         return resultProducts;
     }
 
@@ -58,6 +56,7 @@ public class RecommendService {
         Character gender = customerSummaryDTO.getC_gender();
         ArrayList<ProductEntity> recProducts = recByGenderDAO.getRecProduct(userId, productType, gender);
         ArrayList<ProductEntity> resultProducts = getRecProducts(recProducts);
+
         System.out.println("Gender 추천 상품 추가");
         return resultProducts;
     }

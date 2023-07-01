@@ -50,7 +50,6 @@ public class LoanProductDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("productEntityList = " + productEntityList);
         return productEntityList;
     }
 
@@ -100,9 +99,6 @@ public class LoanProductDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("count");
-
-        System.out.println("Count: " + count);
         return count;
     }
 
@@ -122,7 +118,6 @@ public class LoanProductDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("pass" + accountCountMap);
         return accountCountMap;
     }
 }

@@ -15,8 +15,6 @@
   if (request.getAttribute("productJoinDTO") != null) {
     request.removeAttribute("valid_rrn");
     ProductJoinDTO productJoinDTO = (ProductJoinDTO) request.getAttribute("productJoinDTO");
-    System.out.println("In loanJoin.jsp : " + productJoinDTO);
-
   }
 %>
 <!DOCTYPE html>

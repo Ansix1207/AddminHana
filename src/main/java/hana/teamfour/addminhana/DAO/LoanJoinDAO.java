@@ -24,7 +24,6 @@ public class LoanJoinDAO {
 
     public AccountEntity insertAccount(AccountEntity accountEntity) {
         String query = "INSERT INTO ACCOUNT VALUES(account_seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        System.out.println("query = " + query);
         try (Connection connection = dataFactory.getConnection()) {
             try (PreparedStatement statement = connection.prepareStatement(query)) {
                 statement.setInt(1, accountEntity.getAcc_id());
@@ -46,7 +45,6 @@ public class LoanJoinDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println("pass" + new AccountEntity());
         return new AccountEntity();
     }
 }
