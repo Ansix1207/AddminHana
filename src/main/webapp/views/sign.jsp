@@ -15,8 +15,6 @@
   if (request.getAttribute("customerSignDTO") != null) {
     request.removeAttribute("valid_rrn");
     CustomerSignDTO customerSignDTO = (CustomerSignDTO) request.getAttribute("customerSignDTO");
-    System.out.println("In sign.jsp : " + customerSignDTO.getC_name());
-    System.out.println("In sign.jsp : " + customerSignDTO.getC_rrn());
   }
   String message = (String) request.getAttribute("message");
 %>
@@ -129,6 +127,7 @@
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"/>
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
   <script>
+
       function submitForm() {
           if (document.getElementById('rrn1').value.length < 6) {
               alert("주민 등록번호 앞자리를 모두 입력해야 합니다.")
