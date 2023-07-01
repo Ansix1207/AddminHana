@@ -33,7 +33,7 @@
 }
 
 .sb-sidenav .sb-sidenav-menu .nav .sb-sidenav-menu-heading {
-  padding: 1.75rem 1rem 0.75rem;
+  padding: 1.25rem 1rem 0.75rem; /*0626 helloalpaca: top: 1.75rem에서 수정*/
   font-size: 0.75rem;
   font-weight: bold;
   text-transform: uppercase;
@@ -63,6 +63,12 @@
 }
 
 .sb-sidenav .sb-sidenav-footer {
+  width: 100%;
+  padding: 0.75rem;
+  flex-shrink: 0;
+}
+
+.sb-sidenav .sb-sidenav-footer-employee {
   padding: 0.75rem;
   flex-shrink: 0;
 }
@@ -107,4 +113,27 @@
 
 .sb-sidenav-dark .sb-sidenav-footer {
   background-color: #343a40;
+}
+
+.sb-sidenav-dark .sb-sidenav-footer-employee {
+  color: #000;
+  background-color: #D8E6E7;
+}
+
+.sb-sidenav .sb-sidenav-menu .nav .nav-link .sb-sidenav-collapse-arrow {
+  display: inline-block;
+  margin-left: auto;
+  transition: transform 0.15s ease;
+}
+
+.sb-sidenav .sb-sidenav-menu .nav .nav-link.collapsed .sb-sidenav-collapse-arrow {
+  transform: rotate(-90deg);
+}
+
+.sb-sidenav-menu {
+  overflow-y: auto;
+}
+
+.sb-sidenav-menu::-webkit-scrollbar {
+  display: none;
 }

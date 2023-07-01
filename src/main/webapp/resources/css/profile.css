@@ -1,0 +1,102 @@
+main {
+  padding: 3rem;
+  height: min-content;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+
+.card {
+  margin-bottom: 1rem;
+  width: 100%;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5);
+}
+
+.card-title {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.summaryCustomerName {
+  font-size: 1.25rem;
+  margin-right: 1rem;
+  font-weight: bold;
+}
+
+.recommendationSubtitle {
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.productItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.descriptionTextarea {
+  resize: none;
+}
+
+.logOutButton {
+  margin-bottom: 1rem;
+}
+
+.grid-cols-12 {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.col-span-4 {
+  grid-column: span 4 / span 4;
+}
+
+.col-span-8 {
+  grid-column: span 8 / span 8;
+}
+
+.w-16 {
+  width: 4rem;
+}
+
+.productName {
+  font-weight: bold;
+}
+
+.signedupProductList {
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.signedupProduct > ul > li, .recommendList > li {
+  line-height: 1.8rem;
+}
+
+.signedupProduct li > span, .recommendList > li > span {
+  font-size: 0.9rem;
+}
+
+.recommendTitle {
+  color: #555;
+  text-decoration: underline currentColor;
+  text-underline-position: under
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.col-span-1 {
+  grid-column: span 1 / span 1;
+}
+
+.assetCardContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+textarea {
+  width: 300px;
+  height: 300px;
+}

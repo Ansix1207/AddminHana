@@ -7,13 +7,13 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.Types;
 
 public class EmployeeDAO {
     private DataSource dataFactory;
+    private static EmployeeDAO instance = new EmployeeDAO();
 
-    public EmployeeDAO() {
+    private EmployeeDAO() {
         try {
             Context ctx = new InitialContext();
             Context envContext = (Context) ctx.lookup("java:/comp/env");
@@ -23,27 +23,26 @@ public class EmployeeDAO {
         }
     }
 
+    public static EmployeeDAO getInstance() {
+        return instance;
+    }
+
     public EmployeeEntity login(String id, String pw) {
-        Connection conn; //변수선언 DB와 연결
-        CallableStatement cs; //SQL 프로시저 담당
-        ResultSet rs = null; //검색 결과를 담을 것
         EmployeeEntity employee = null;
+        String query = "{CALL select_by_eid(?, ?, ?, ?)}";
 
-        try {
-            conn = dataFactory.getConnection();
+        try (Connection connection = dataFactory.getConnection();
+             CallableStatement statement = connection.prepareCall(query)) {
 
-            String sql = "{CALL select_by_eid(?, ?, ?, ?)}";
-            cs = conn.prepareCall(sql);
-
-            cs.setInt(1, Integer.parseInt(id)); // 예시로 100을 사용
-            cs.setString(2, pw); // p_password
-            cs.registerOutParameter(3, Types.VARCHAR); // p_name
-            cs.registerOutParameter(4, Types.NUMERIC); // p_success
-            cs.execute();
+            statement.setInt(1, Integer.parseInt(id));
+            statement.setString(2, pw); // p_password
+            statement.registerOutParameter(3, Types.VARCHAR);
+            statement.registerOutParameter(4, Types.NUMERIC);
+            statement.execute();
 
             // 결과 값 가져오기
-            String e_name = cs.getString(3);
-            int success = cs.getInt(4);
+            String e_name = statement.getString(3);
+            int success = statement.getInt(4);
 
             // success 값으로 성공 여부 확인 후 결과 사용 (1: 성공)
             if (success == 1) {
@@ -52,12 +51,10 @@ public class EmployeeDAO {
                 throw new Exception("해당하는 데이터를 찾을 수 없습니다.");
             }
 
-            conn.close();
-            cs.close();
-            rs.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return employee;
     }
+
 }
