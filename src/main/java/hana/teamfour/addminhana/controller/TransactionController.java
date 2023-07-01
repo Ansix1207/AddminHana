@@ -36,19 +36,19 @@ public class TransactionController extends HttpServlet {
         if (action.equals("/deposit")) {
             System.out.println("GET 입금 들어옴");
             request.setAttribute("title", "입금");
-            dispatcher = request.getRequestDispatcher("views/transfer2.jsp");
+            dispatcher = request.getRequestDispatcher("views/transfer.jsp");
             dispatcher.forward(request, response);
         }
         if (action.equals("/withdraw")) {
             System.out.println("GET 출금 들어옴");
             request.setAttribute("title", "출금");
-            dispatcher = request.getRequestDispatcher("views/transfer2.jsp");
+            dispatcher = request.getRequestDispatcher("views/transfer.jsp");
             dispatcher.forward(request, response);
         }
         if (action.equals("/transfer")) {
             System.out.println("GET 계좌이체 들어옴");
             request.setAttribute("title", "계좌이체");
-            dispatcher = request.getRequestDispatcher("views/transfer2.jsp");
+            dispatcher = request.getRequestDispatcher("views/transfer.jsp");
             dispatcher.forward(request, response);
         }
     }
@@ -64,8 +64,6 @@ public class TransactionController extends HttpServlet {
             if (action.equals("/deposit")) {
                 request.setAttribute("title", "입금");
                 doDeposit(request, response);
-//                dispatcher = request.getRequestDispatcher("views/transfer2.jsp");
-//                dispatcher.forward(request, response);
             }
             if (action.equals("/withdraw")) {
                 request.setAttribute("title", "출금");
@@ -76,8 +74,6 @@ public class TransactionController extends HttpServlet {
                 } else {
                     doWithdraw(request, response);
                 }
-//                dispatcher = request.getRequestDispatcher("views/transfer2.jsp");
-//                dispatcher.forward(request, response);
             }
             if (action.equals("/transfer")) {
                 request.setAttribute("title", "계좌이체");
@@ -88,7 +84,7 @@ public class TransactionController extends HttpServlet {
                     doTransfer(request, response);
                 }
             }
-            dispatcher = request.getRequestDispatcher("views/transfer2.jsp");
+            dispatcher = request.getRequestDispatcher("views/transfer.jsp");
             dispatcher.forward(request, response);
         } catch (ServletException e) {
             e.printStackTrace();
