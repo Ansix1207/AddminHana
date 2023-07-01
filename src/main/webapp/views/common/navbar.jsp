@@ -87,7 +87,7 @@
         </nav>
       </div>
       <%} else {%>
-      <a class="nav-link" href="<%=contextPath%>/customer/loanjoin ">
+      <a class="nav-link" href="<%=contextPath%>/sign ">
         <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
         신규 고객 가입
       </a>

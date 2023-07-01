@@ -20,6 +20,7 @@ public class LoanJoinController extends HttpServlet {
     //    LoanJoinService 클래스의 메서드와 기능에 접근할 수 있습니다.
     public LoanJoinController() {
         this.loanJoinService = new LoanJoinService();
+
     }
 //    문제는 loanJoinService 객체가 null인 상태를 해결하기위해서 초기화
 

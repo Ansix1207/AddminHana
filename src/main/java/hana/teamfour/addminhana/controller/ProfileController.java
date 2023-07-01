@@ -74,6 +74,8 @@ public class ProfileController extends HttpServlet {
                     response.sendRedirect(request.getContextPath() + "/");
                     return;
                 }
+            } else {
+                customerSummaryDTO = customerService.getCustomerSummaryDTOById(customerSession.getC_id());
             }
             if (customerSession != null && customerRRN != null) {
                 customerSummaryDTO = customerService.getCustomerSummaryDTOByRRN(customerRRN);
