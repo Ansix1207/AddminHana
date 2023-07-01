@@ -22,7 +22,7 @@ public class LoanJoinController extends HttpServlet {
 
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        loanJoinService = new LoanJoinService(id);
+        loanJoinService = new LoanJoinService();
     }
 
     @Override
@@ -150,6 +150,4 @@ public class LoanJoinController extends HttpServlet {
         res = "가입에 성공했습니다";
         return res;
     }
-
-
 }
