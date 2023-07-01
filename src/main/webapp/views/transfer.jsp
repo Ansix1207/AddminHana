@@ -12,6 +12,9 @@
   String message = (String) request.getAttribute("alert_message");
   String ck = (String) request.getAttribute("ck");
   String title = (String) request.getAttribute("title");
+  String pname = request.getParameter("acc_pname");
+  String category = request.getParameter("acc_p_category");
+
   System.out.println(title);
   request.removeAttribute("ck");
   String action = null;
@@ -68,45 +71,53 @@
               <% if (ck != null && ck.equals("1")) { %> readonly style="background: lightgray" <%}%>
                    class="form-control">
           </div>
-          <div class="col-md-1 mb-3 mb-md-0 form-group d-flex align-items-end">
-            <input type="button" value="입력" onclick="checkPwd()" class="btn btn-primary text-white form-control">
+          <div class="col-md-2 mb-3 mb-md-0 form-group d-flex align-items-end">
+            <input type="button" value="조회" onclick="checkPwd()" class="btn btn-primary text-white form-control">
           </div>
         </div>
         <%}%>
 
-        <% if (title.equals("계좌이체") || title.equals("출금")) { %>
+        <% if ((title.equals("계좌이체") || title.equals("출금")) && (ck != null && ck.equals("1"))) { %>
         <div class="row form-group">
-          <div class="col-md-8">
+          <div class="col-md-4">
             <label class="text-black" for="acc_balance">계좌 잔고</label>
-            <input type="text" id="acc_balance" name="acc_balance" class="form-control" readonly value="${acc_balance}">
+            <input type="text" id="acc_balance" name="acc_balance" class="form-control" style="background: lightgray"
+                   readonly value="${acc_balance}">
+          </div>
+          <div class="col-md-3">
+            <label class="text-black" for="pname">상품 이름 </label>
+            <input type="text" id="pname" name="pname" class="form-control" style="background: lightgray" readonly
+                   value="${acc_pname}">
+          </div>
+          <div class="col-md-2">
+            <label class="text-black" for="category">계좌 종류</label>
+            <input type="text" id="category" name="category" class="form-control" style="background: lightgray" readonly
+                   value="${acc_p_category}">
           </div>
         </div>
         <% } %>
-
-        <% if (title.equals("계좌이체") || title.equals("입금")) { %>
-        <div class="col-md-8">
-          <label class="text-black" for="counterpart_id">입금할 계좌</label>
-          <input type="text" id="counterpart_id" name="counterpart_id" class="form-control">
-        </div>
-        <%}%>
-
         <div class="row form-group">
-          <div class="col-md-8">
+          <% if (((title.equals("계좌이체") || (title.equals("출금")) && (ck != null && ck.equals("1"))) || title.equals("입금"))) { %>
+          <% if (!title.equals("출금")) {%>
+          <div class="col-md-9">
+            <label class="text-black" for="counterpart_id">입금할 계좌</label>
+            <input type="text" id="counterpart_id" name="counterpart_id" value="${counterpart_id}" class="form-control">
+          </div>
+          <% }%>
+          <div class="col-md-9">
             <label class="text-black" for="t_amount">거래금액</label>
             <input type="number" id="t_amount" name="t_amount" value="${t_amount}" class="form-control">
           </div>
-        </div>
-
-        <div class="row form-group">
-          <div class="col-md-8">
+          <div class="col-9">
             <label class="text-black" for="message">거래내용</label>
             <textarea name="message" id="message" cols="20" rows="7" class="form-control"
                       placeholder="거래내용이 있으면 입력해주세요.">${message}</textarea>
           </div>
+          <% } %>
         </div>
         <% if (((title.equals("계좌이체") || title.equals("출금")) && (ck != null)) || title.equals("입금")) { %>
         <div class="row form-group">
-          <div class="col-md-8 mt-2">
+          <div class="col-md-9 mt-2">
             <input type="button" value="거래" onclick="submitForm()" class="btn btn-primary text-white form-control">
           </div>
         </div>

@@ -1,8 +1,10 @@
 package hana.teamfour.addminhana.controller;
 
+import hana.teamfour.addminhana.DTO.AccountSummaryDTO;
 import hana.teamfour.addminhana.DTO.DepositDTO;
 import hana.teamfour.addminhana.DTO.TransferDTO;
 import hana.teamfour.addminhana.DTO.WithdrawDTO;
+import hana.teamfour.addminhana.service.AccountService;
 import hana.teamfour.addminhana.service.TransactionService;
 
 import javax.servlet.RequestDispatcher;
@@ -148,6 +150,7 @@ public class TransactionController extends HttpServlet {
         return transactionService.verifyAccountPassword(withdrawDTO);
     }
 
+    //비밀번호 체크 로직
     public HttpServletRequest doCheckAndForward(HttpServletRequest request, HttpServletResponse response) {
         String acc_id = null;
         String acc_password = null;
@@ -168,14 +171,25 @@ public class TransactionController extends HttpServlet {
         request.setAttribute("t_amount", request.getParameter("t_amount"));
         request.setAttribute("message", request.getParameter("message"));
         if (result.getAcc_balance() != null) {
+            AccountService accountService = new AccountService(Integer.parseInt(acc_id));
+            AccountSummaryDTO accountSummaryDTO = new AccountSummaryDTO();
+            accountSummaryDTO = accountService.getAccSummary("출금");
             System.out.println("비밀번호 일치! 성공 : 컨트롤러임");
-            //출금 체크후에 balance 반환해야함.
-            request.setAttribute("acc_balance", result.getAcc_balance()); //int 형 반환 balance
-            request.setAttribute("acc_password", request.getParameter("acc_password"));
-            request.setAttribute("alert_message", "비밀번호가 정상입니다.\\n");
-            request.setAttribute("ck", "1");
+            if (accountSummaryDTO.getAcc_id() != -999) {
+                //출금 체크후에 balance 반환해야함.
+                request.setAttribute("acc_pname", accountSummaryDTO.getAcc_pname());
+                request.setAttribute("counterpart_id", request.getParameter("counterpart_id"));
+                request.setAttribute("acc_p_category", accountSummaryDTO.getAcc_p_category());
+                request.setAttribute("acc_balance", result.getAcc_balance()); //int 형 반환 balance
+                request.setAttribute("acc_password", request.getParameter("acc_password"));
+                request.setAttribute("alert_message", "비밀번호가 정상입니다.\\n");
+                request.setAttribute("ck", "1");
+            } else {
+                System.out.println("비밀번호 일치! 성공 : 컨트롤러임");
+                request.setAttribute("alert_message", "출금이 불가능한 계좌입니다. (일반 입출금 통장만 가능)\\n");
+            }
         } else {
-            request.setAttribute("alert_message", "비밀번호 혹은 계좌 오류입니다....\\n");
+            request.setAttribute("alert_message", "없는 계좌이거나 잘못된 비밀번호 입니다.\\n");
         }
         return request;
     }

@@ -59,7 +59,7 @@ public class AccountDAO {
             e.printStackTrace();
         }
         return list;
-    }   
+    }
 
     public List<AssetSumDTO> getSumOfAccBalance(Integer acc_cid) {
         List<AssetSumDTO> list = new ArrayList<>();
@@ -85,5 +85,36 @@ public class AccountDAO {
             e.printStackTrace();
         }
         return list;
+    }
+
+    public AccountEntity getAccountNameAndCategoryByAccId(Integer acc_id, String type) {
+        AccountEntity responseEntity = new AccountEntity();
+        String query = "";
+        if (type.equals("출금")) {
+            query = "select acc_pname, acc_p_category " +
+                    "from account " +
+                    "where acc_id = ? " +
+                    "and acc_isactive = 'Y'" +
+                    "and acc_p_category IN ('보통예금')";
+        }
+        try (Connection connection = dataFactory.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, acc_id);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    String acc_pname = resultSet.getString("acc_pname");
+                    String accProductCategory = resultSet.getString("acc_p_category");
+                    responseEntity.setAcc_id(acc_id);
+                    responseEntity.setAcc_p_category(accProductCategory);
+                    responseEntity.setAcc_pname(acc_pname);
+                } else {
+                    responseEntity.setAcc_id(-999);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            return responseEntity;
+        }
     }
 }
