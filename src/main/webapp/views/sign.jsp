@@ -138,6 +138,7 @@
               alert("주민 등록번호 뒷자리를 모두 입력해야 합니다.")
               return;
           }
+
           const form = document.getElementById('signForm');
           // 필요한 input 요소 추가
           var inputRRN = document.createElement('input');
@@ -160,7 +161,6 @@
 
       document.addEventListener("DOMContentLoaded", function () {
           const name = document.querySelector("#name");
-
           console.log(name);
       })
   </script>

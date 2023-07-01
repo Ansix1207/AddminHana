@@ -1,6 +1,8 @@
 package hana.teamfour.addminhana.DAO;
 
 import hana.teamfour.addminhana.Exception.BalanceInsufficientException;
+import hana.teamfour.addminhana.Exception.DepositException;
+import hana.teamfour.addminhana.Exception.TransferException;
 import hana.teamfour.addminhana.entity.TransactionEntity;
 
 import javax.naming.Context;
@@ -48,18 +50,18 @@ public class TransactionDAO {
                 connection.rollback();
                 e.printStackTrace();
             } finally {
-                System.out.println("finally in 입금 p_id = " + t_id);
+                System.out.println("finally in 출금 p_id = " + t_id);
                 connection.setAutoCommit(true);
                 if (success == 1) {
-                    System.out.println("TransactinDAO : 출금 성공");
+                    System.out.println("TransactionDAO : 출금 성공");
                     throw new BalanceInsufficientException("- 출금 성공!", t_id, success);
                 } else if (success == -1) {
-                    System.out.println("TransactinDAO : 출금 실패 사유(해당하는 계좌 없음)");
+                    System.out.println("TransactionDAO : 출금 실패 사유(해당하는 계좌 없음)");
                     throw new BalanceInsufficientException("- 출금 실패 사유(해당하는 계좌 없음)", t_id, success);
                 } else if (success == -2) {
-                    System.out.println("TransactinDAO : 출금 실패 사유(잔고가 부족함)");
+                    System.out.println("TransactionDAO : 출금 실패 사유(잔액 부족)");
                     connection.rollback();
-                    throw new BalanceInsufficientException(" - 출금 실패 사유(잔고 부족)", t_id, success);
+                    throw new BalanceInsufficientException(" - 출금 실패 사유(잔액 부족)", t_id, success);
                 }
             }
         } catch (SQLException e) {
@@ -69,12 +71,12 @@ public class TransactionDAO {
 
     //입금 기능(update 기능으로 account balance 조정 -> 성공시 transaction에 insert하는데 성공여부 T 남김,
     //                                         -> 실패시 insert하는데 성공여부에 F
-    public int insertDeposit(TransactionEntity transactionEntity) {
+    public void insertDeposit(TransactionEntity transactionEntity) throws DepositException {
         //pram1 = 입금할 계좌, param2 = 입금액, param3 = 결과 반환
         String procedureSql = "{CALL deposit(?, ?, ?,?,?)}";
         String transactionSql = "INSERT INTO TRANSACTION VALUES(transaction_seq.nextval,?,?,?,?,?,?,?,?)";
         int success = 0;
-        int p_id = -99;
+        int t_id = -99;
         try (Connection connection = dataFactory.getConnection()) {
             connection.setAutoCommit(false); //트랜잭션 처리를 위한 AutoCommit off, 트랜잭션 시작
             try (CallableStatement callableStatement = connection.prepareCall(procedureSql)) {
@@ -86,34 +88,41 @@ public class TransactionDAO {
                 callableStatement.registerOutParameter(5, Types.NUMERIC);
                 callableStatement.execute();
                 success = callableStatement.getInt(4);
-                p_id = callableStatement.getInt(5);
+                t_id = callableStatement.getInt(5);
                 //실행후 getInt로 결과 반환 (0이면 실패, 1이면 성공)
                 if (success == 1) {
-                    System.out.println("TransactinDAO : 입금 성공");
-                } else if (success == -1) {
-                    System.out.println("TransactinDAO : 입금 실패 사유(해당하는 계좌 없음)");
+                    System.out.println("TransactionDAO : 입금 성공");
+                } else if (success == 2) {
+                    System.out.println("TransactionDAO : 입금 실패 사유(해당하는 입금할 계좌 없음)");
                 }
-                System.out.println("insertDeposit DAO : p_id = " + p_id);
+                System.out.println("insertDeposit DAO : t_id = " + t_id);
                 connection.commit();
-                connection.setAutoCommit(true);
             } catch (SQLException e) {
                 connection.rollback();
                 e.printStackTrace();
                 throw e;
             } finally {
+                System.out.println("finally in 출금 t_id = " + t_id);
                 connection.setAutoCommit(true);
-                return p_id;
+                if (success == 1) {
+                    System.out.println("TransactionDAO : 입금 성공");
+                    throw new DepositException("- 입금 성공!", t_id, success);
+                } else if (success == 2) {
+                    System.out.println("TransactionDAO : - 입금 실패 사유(해당하는 계좌 없음)");
+                    connection.rollback();
+                    throw new DepositException("- 입금 실패 사유(해당하는 계좌 없음)", t_id, success);
+                }
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public int doTransfer(TransactionEntity transactionEntity) {
+    public void doTransfer(TransactionEntity transactionEntity) throws TransferException {
         //pram1 = 출금할 계좌, param2 = 입금액, param3 = 결과 반환
         String procedureSql = "{CALL transfer(?,?,?,?,?,?)}";
         String transactionSql = "INSERT INTO TRANSACTION VALUES(transaction_seq.nextval,?,?,?,?,?,?,?,?)";
-        int p_id;
+        int t_id = -99;
         System.out.println("DAO doTransfer 일단 들어옴");
         //UPDATE ACCOUNT SET ACC_BALANCE = 100 WHERE ACC_ID = 1;
         int success = 0;
@@ -129,18 +138,11 @@ public class TransactionDAO {
                 callableStatement.registerOutParameter(6, Types.NUMERIC);
                 callableStatement.execute();
                 success = callableStatement.getInt(5);
-                p_id = callableStatement.getInt(6);
-                System.out.println("DAO : p_id = " + p_id);
+                System.out.println("IN DAO : success = " + success);
+                t_id = callableStatement.getInt(6);
+                System.out.println("DAO : t_id = " + t_id);
                 //실행후 getInt로 결과 반환 (0이면 실패, 1이면 성공)
-                if (success == 1) {
-                    System.out.println("TransactinDAO : 계좌이체 성공");
-                } else if (success == 0) {
-                    System.out.println("TransactinDAO : 출금 실패 오류 발생");
-                } else if (success == -1) {
-                    System.out.println("TransactinDAO : 출금 실패 사유(해당하는 계좌 없음)");
-                } else if (success == -2) {
-                    System.out.println("TransactinDAO : 출금 실패 사유(잔고가 부족함)");
-                }
+                //  1 성공, -1 출금 계좌 없음, -2 출금 잔고 부족 , -3 입금 계좌 없음
                 System.out.println("커밋 직전이야!");
                 connection.commit();
             } catch (SQLException e) {
@@ -151,7 +153,19 @@ public class TransactionDAO {
             } finally {
                 System.out.println("TransactionDAO 들어옴 : Transfer 넘음");
                 connection.setAutoCommit(true);
-                return success;
+                if (success == 1) {
+                    System.out.println("TransactinDAO : 계좌이체 성공");
+                    throw new TransferException("- 계좌 이체 성공", t_id, success);
+                } else if (success == -1) {
+                    System.out.println("TransactinDAO : 계좌이체 실패 사유(입금 계좌 없음)");
+                    throw new TransferException("- 계좌이체 실패 (사유:입금 계좌 없음)", t_id, success);
+                } else if (success == -2) {
+                    System.out.println("TransactinDAO : 계좌이체 실패 실패 사유(잔액이 부족함)");
+                    throw new TransferException("- 계좌 이체 실패 (사유:잔액 부족)", t_id, success);
+                } else {
+                    System.out.println("TransactinDAO : 출금 실패 오류 발생");
+                    throw new TransferException("- 계좌 이체 실패 (사유:오류 발생)", t_id, success);
+                }
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

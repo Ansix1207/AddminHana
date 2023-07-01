@@ -13,6 +13,7 @@
   String ck = (String) request.getAttribute("ck");
   String title = (String) request.getAttribute("title");
   System.out.println(title);
+  request.removeAttribute("ck");
   String action = null;
   if (title.equals("계좌이체"))
     action = "transfer";

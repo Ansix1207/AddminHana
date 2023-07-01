@@ -80,7 +80,7 @@ public class TransactionController extends HttpServlet {
 //                dispatcher.forward(request, response);
             }
             if (action.equals("/transfer")) {
-                request.setAttribute("title", "출금");
+                request.setAttribute("title", "계좌이체");
                 if (isCheck != null && isCheck.equals("check")) {
                     //1-1. doCheckAndForward로 던진다.
                     doCheckAndForward(request, response);
@@ -104,18 +104,14 @@ public class TransactionController extends HttpServlet {
 
     public void doTransfer(HttpServletRequest request, HttpServletResponse response) {
         System.out.println("POST 계좌이체 들어옴");
-        request.setAttribute("title", "계좌이체");
+//        request.setAttribute("title", "계좌이체");
         String accId = request.getParameter("acc_id");
         String password = request.getParameter("acc_password");
         String counterpartId = request.getParameter("counterpart_id");
         String amount = request.getParameter("t_amount");
         String message = request.getParameter("message");
         //필요한 DTO를 만들고
-        WithdrawDTO requestWithdrawDTO = WithdrawDTO.builder()
-                .acc_id(Integer.valueOf(accId))
-                .acc_password(password)
-                .build();
-//        doCheckAndForward();
+//        doCheckAndForward(request, response);
         //DTO로 service -> DAO 로 던진다 .
 //        WithdrawDTO result = doAccountPwdCheck(requestWithdrawDTO);
         TransferDTO transferDTO = TransferDTO.builder()
@@ -125,20 +121,16 @@ public class TransactionController extends HttpServlet {
                 .t_amount(Integer.parseInt(amount))
                 .t_description(message)
                 .build();
-        int result = transactionService.doTransfer(transferDTO);
-        System.out.println("컨트롤러 : result = " + result);
-        if (result == 1) {
-            System.out.println("계좌이체 성공 : 컨트롤러임");
-            request.setAttribute("a_message", "계좌이체에 성공하였습니다!");
-        } else if (result == -1) {
-            System.out.println("출금 실패 : 컨트롤러임 (계좌 없음)");
-            request.setAttribute("a_message", "입금에 실패하였습니다! 사유 : 계좌 없음");
-        } else if (result == -2) {
-            System.out.println("출금 실패 : 컨트롤러임 (잔고 부족)");
-            request.setAttribute("a_message", "입금에 실패하였습니다! 사유 : 잔고 부족");
-        } else {
-            System.out.println("출금 실패 : 컨트롤러임");
+//        if (request.getParameter("ck") != null && request.getParameter("ck").equals("1")) {
+        TransferDTO responseTransferDTO = transactionService.doTransfer(transferDTO);
+        System.out.println("컨트롤러 : result = " + responseTransferDTO.getT_description());
+        if (responseTransferDTO.getAcc_id() == null) {
+            System.out.println("계좌이체 실패 : 컨트롤러임 사유 : " + responseTransferDTO.getT_description());
+            request.setAttribute("a_message", responseTransferDTO.getT_description());
+        } else {//성공한 경우
+            request.setAttribute("a_message", responseTransferDTO.getT_description());
         }
+//        }
     }
 
     public void doDeposit(HttpServletRequest request, HttpServletResponse response) {
@@ -155,16 +147,7 @@ public class TransactionController extends HttpServlet {
         System.out.println("amount = " + amount);
         System.out.println("message = " + message);
         String result = transactionService.doDeposit(depositDTO);
-        if (result.equals("입금 성공")) {
-            System.out.println("입금 성공 : 컨트롤러임");
-            request.setAttribute("a_message", "입금에 성공하였습니다!");
-        } else if (result.equals("계좌 없음")) {
-            System.out.println("입금 실패 : 컨트롤러임 (계좌 없음)");
-            request.setAttribute("a_message", "입금에 실패하였습니다! 사유 : 계좌 없음");
-        } else {
-            System.out.println("입금 실패 : 컨트롤러임");
-            request.setAttribute("a_message", "입금에 실패하였습니다..");
-        }
+        request.setAttribute("alert_message", result);
     }
 
     public WithdrawDTO doAccountPwdCheck(WithdrawDTO withdrawDTO) {

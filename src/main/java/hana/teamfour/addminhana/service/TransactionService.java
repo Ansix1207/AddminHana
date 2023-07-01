@@ -5,6 +5,8 @@ import hana.teamfour.addminhana.DTO.DepositDTO;
 import hana.teamfour.addminhana.DTO.TransferDTO;
 import hana.teamfour.addminhana.DTO.WithdrawDTO;
 import hana.teamfour.addminhana.Exception.BalanceInsufficientException;
+import hana.teamfour.addminhana.Exception.DepositException;
+import hana.teamfour.addminhana.Exception.TransferException;
 import hana.teamfour.addminhana.entity.TransactionEntity;
 
 public class TransactionService {
@@ -50,13 +52,33 @@ public class TransactionService {
     //입금 메소드 , 성공 실패 여부만 반환
     public String doDeposit(DepositDTO depositDTO) {
         TransactionEntity transactionEntity = DepositDTOToEntity(depositDTO);
-        int p_id = transactionDAO.insertDeposit(transactionEntity);
-        if (p_id == 2) {
-            return "계좌 없음";
-        } else if (p_id == 0) {
-            return "입금 실패";
-        } else {
-            return "입금 성공";
+        TransactionEntity responseEntity;
+        String message = "";
+        int errorcode = -999;
+        int t_id = -999;
+        int balance = -999;
+        int c_id = -999;
+        int amount = 999;
+        try {
+            transactionDAO.insertDeposit(transactionEntity);
+        } catch (DepositException e) {
+            t_id = e.getT_id();
+            responseEntity = transactionDAO.findById(t_id);
+            balance = responseEntity.getT_balance();
+            c_id = responseEntity.getT_accid();
+            message = e.getMessage();
+            errorcode = e.getErrorcode();
+            amount = transactionEntity.getT_amount();
+        } finally {
+            if (errorcode == 1) {
+                return message + "\n계좌번호 : " + c_id
+                        + "\n입금액 : " + amount
+                        + "\n잔액 : " + balance;
+            } else if (errorcode == 2) {
+                return message;
+            } else {
+                return "에러 발생 관리자 문의 : " + message;
+            }
         }
     }
 
@@ -66,13 +88,14 @@ public class TransactionService {
         int t_id = -99;
         String message = "출금 실패 사유(오류)";
         int errorcode = -9999;
-        boolean isValid = false;
         WithdrawDTO responseWithdrawDTO = null;
+        boolean isValid = false;
         try {
             if (transactionDAO.checkAccountByPassword(transactionEntity, withdrawDTO.getAcc_password()) != null) {
                 //비밀번호가 틀렸을 경우 널을 반환한다.
-                transactionDAO.insertWithdraw(transactionEntity);
+                System.out.println("TransactionService : Try문 안임.");
                 isValid = true;
+                transactionDAO.insertWithdraw(transactionEntity);
             } else {
                 isValid = false;
             }
@@ -96,11 +119,39 @@ public class TransactionService {
         }
     }
 
-    public int doTransfer(TransferDTO transferDTO) {
+    public TransferDTO doTransfer(TransferDTO transferDTO) {
         System.out.println("Transfer Service : 들어옴");
         TransactionEntity transactionEntity = TransferDTOToEntity(transferDTO);
-        int result = transactionDAO.doTransfer(transactionEntity);
-        return result;
+        String message = "계좌이체 실패 사유(서비스 오류)";
+        int t_id = -99;
+        int errorcode = -9999;
+        boolean isValid = false;
+        TransferDTO responseTransferDTO = null;
+        try {
+            if (transactionDAO.checkAccountByPassword(transactionEntity, transferDTO.getAcc_password().toString()) != null) {
+                //비밀번호가 틀렸을 경우 널을 반환한다.
+                System.out.println("TransactionService : Try문 안임.");
+                isValid = true;
+                transactionDAO.doTransfer(transactionEntity);
+            } else {
+                isValid = false;
+            }
+        } catch (TransferException e) {
+            t_id = e.getT_id();
+            System.out.println("e.getMessage() = " + e.getMessage());
+            message = e.getMessage();
+            errorcode = e.getErrorcode();
+        } finally {
+            if (isValid) { //출금 요청중에 비밀번호가 동일한 경우.
+                responseTransferDTO = TransferDTO.from(transactionDAO.findById(t_id));
+            } else { //출금 요청중에 비밀번호가 틀린 경우
+                responseTransferDTO = new TransferDTO();
+            }
+            responseTransferDTO.setT_description(message);
+            System.out.println("errorcode = " + errorcode);
+            System.out.println("IN SERVICE : t_id = " + t_id);
+            return responseTransferDTO;
+        }
     }
 
     public WithdrawDTO verifyAccountPassword(WithdrawDTO withdrawDTO) {
