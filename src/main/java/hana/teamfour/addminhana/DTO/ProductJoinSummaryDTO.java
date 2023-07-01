@@ -1,17 +1,16 @@
-package hana.teamfour.addminhana.entity;
-
+package hana.teamfour.addminhana.DTO;
 
 import lombok.*;
 
 import java.sql.Timestamp;
 
-@Getter
 @Setter
+@Getter
 @ToString
-@NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class AccountEntity {
+@NoArgsConstructor
+
+public class ProductJoinSummaryDTO {
     private Integer acc_id;
     private Integer acc_cid;
     private Timestamp acc_date;

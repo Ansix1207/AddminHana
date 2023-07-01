@@ -44,12 +44,6 @@ ul {
   margin-bottom: 1rem;
 }
 
-.column {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 .grid-cols-12 {
   grid-template-columns: repeat(12, minmax(0, 1fr));
 }
@@ -64,4 +58,45 @@ ul {
 
 .w-16 {
   width: 4rem;
+}
+
+.productName {
+  font-weight: bold;
+}
+
+.signedupProductList {
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.signedupProduct > ul > li, .recommendList > li {
+  line-height: 1.8rem;
+}
+
+.signedupProduct li > span, .recommendList > li > span {
+  font-size: 0.9rem;
+}
+
+.recommendTitle {
+  color: #555;
+  text-decoration: underline currentColor;
+  text-underline-position: under
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.col-span-1 {
+  grid-column: span 1 / span 1;
+}
+
+.assetCardContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+textarea {
+  width: 300px;
+  height: 300px;
 }
