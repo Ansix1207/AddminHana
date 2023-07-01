@@ -106,7 +106,7 @@
             <%
               if (request.getSession().getAttribute("customerSession") != null) {%>
             <%--            세션이 있을 때는 가입 버튼이 나올수 있게 해두었다--%>
-            <a href=<%=contextPath%>/customer/loanjoin>
+            <a class=join value="<%=productDTOs.get(i).getP_name()%>}" href=<%=contextPath%>/customer/loanjoin>
               <button class="modify">가입</button>
             </a>
             <%}%>

@@ -1,5 +1,6 @@
 package hana.teamfour.addminhana.controller;
 
+import hana.teamfour.addminhana.DTO.ProductDTO;
 import hana.teamfour.addminhana.DTO.ProductJoinDTO;
 import hana.teamfour.addminhana.service.LoanJoinService;
 
@@ -44,6 +45,7 @@ public class LoanJoinController extends HttpServlet {
             case "POST":
                 System.out.println("Post 진입");
                 ProductJoinDTO productJoinDTO = new ProductJoinDTO();
+                ProductDTO productDTO = new ProductDTO();
                 LocalDateTime currentDateTime = LocalDateTime.now();
 
                 productJoinDTO.setAcc_id(Integer.parseInt(request.getParameter("Acc_id")));
@@ -52,14 +54,14 @@ public class LoanJoinController extends HttpServlet {
                 productJoinDTO.setAcc_balance(Integer.parseInt(request.getParameter("Acc_balance")));
                 productJoinDTO.setAcc_password(request.getParameter("ACC_PASSWORD"));
 
-                productJoinDTO.setAcc_pid(Integer.parseInt(request.getParameter("Acc_pid")));
-                productJoinDTO.setAcc_p_category(request.getParameter("Acc_p_category"));
-                productJoinDTO.setAcc_pname(request.getParameter("Acc_pname"));
-                productJoinDTO.setAcc_interestrate(Double.valueOf(request.getParameter("ACC_INTERESTRATE")));
+                productDTO.setP_id(Integer.valueOf(request.getParameter("Acc_pid")));
+                productDTO.setP_category(request.getParameter("Acc_p_category"));
+                productDTO.setP_name(request.getParameter("Acc_pname"));
+                productDTO.setP_interestrate(Double.valueOf(request.getParameter("ACC_INTERESTRATE")));
                 productJoinDTO.setAcc_collateralvalue(Integer.valueOf(request.getParameter("ACC_COLLATERALVALUE")));
 
                 productJoinDTO.setAcc_interest_day(Integer.valueOf(request.getParameter("ACC_INTEREST_DAY")));
-                productJoinDTO.setAcc_contract_month(Integer.valueOf(request.getParameter("ACC_CONTRACT_MONTH")));
+                productDTO.setP_contract_month(Integer.valueOf(request.getParameter("ACC_CONTRACT_MONTH")));
                 productJoinDTO.setAcc_maturitydate(java.sql.Timestamp.valueOf(currentDateTime));
                 productJoinDTO.setAcc_isactive('Y');
 

@@ -7,9 +7,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class LoanJoinDAO {
     private DataSource dataFactory;
@@ -27,7 +25,16 @@ public class LoanJoinDAO {
     public boolean insertAccount(AccountEntity accountEntity) {
         boolean result = false;
 //        AccountEntity 객체의 정보를 사용하여 데이터베이스에 새로운 계정을 삽입하는 작업을 수행합니다. 
-        String sql = "INSERT INTO ACCOUNT VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO ACCOUNT VALUES(account_seq.nextval,?," +
+                "?,?,?," +
+                "select p_id from product where p_name = '급여하나 월복리 적금'," +
+                "select p_category from product where p_name = '급여하나 월복리 적금'," +
+                "select p_name from product where p_name = '급여하나 월복리 적금'," +
+                "select p_int from product where p_name = '급여하나 월복리 적금'," +
+                "?," +
+                "1," +
+                "select p_contract_month from product where p_name = '급여하나 월복리 적금'," +
+                "?,'Y')";
 //        String sql = "INSERT INTO ACCOUNT VALUES(account_seq.nextval,?)";
         System.out.println("sql = " + sql);
         try (Connection connection = getDataFactoryConnection()) {
@@ -60,23 +67,23 @@ public class LoanJoinDAO {
         return result;
     }
 
-    public ArrayList<AccountEntity> insertJoin() {
-        ArrayList<AccountEntity> accountList = new ArrayList<>();
-        try (Connection conn = dataFactory.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement("SELECT ACC_ID FROM account")) {
-            try (ResultSet rs = pstmt.executeQuery()) {
-                while (rs.next()) {
-                    AccountEntity accountEntity = new AccountEntity();
-                    accountEntity.setAcc_id(rs.getInt(1));
-                    accountList.add(accountEntity);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        System.out.println("accountList = " + accountList);
-        return accountList;
-    }
+//    public ArrayList<AccountEntity> insertJoin() {
+//        ArrayList<AccountEntity> accountList = new ArrayList<>();
+//        try (Connection conn = dataFactory.getConnection();
+//             PreparedStatement pstmt = conn.prepareStatement("SELECT ACC_ID FROM account")) {
+//            try (ResultSet rs = pstmt.executeQuery()) {
+//                while (rs.next()) {
+//                    AccountEntity accountEntity = new AccountEntity();
+//                    accountEntity.setAcc_id(rs.getInt(1));
+//                    accountList.add(accountEntity);
+//                }
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        System.out.println("accountList = " + accountList);
+//        return accountList;
+//    }
 
 
     private Connection getDataFactoryConnection() throws SQLException {

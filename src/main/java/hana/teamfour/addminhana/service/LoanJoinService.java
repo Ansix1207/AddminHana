@@ -3,6 +3,7 @@ package hana.teamfour.addminhana.service;
 import hana.teamfour.addminhana.DAO.LoanJoinDAO;
 import hana.teamfour.addminhana.DTO.ProductJoinDTO;
 import hana.teamfour.addminhana.entity.AccountEntity;
+import hana.teamfour.addminhana.entity.ProductEntity;
 
 public class LoanJoinService {
     private LoanJoinDAO loanJoinDAO;
@@ -21,22 +22,30 @@ public class LoanJoinService {
 
     private AccountEntity convertToAccountEntity(ProductJoinDTO productJoinDTO) {
         AccountEntity accountEntity = new AccountEntity();
+        ProductEntity productEntity = new ProductEntity();
+
         accountEntity.setAcc_id(productJoinDTO.getAcc_id());
         accountEntity.setAcc_cid(productJoinDTO.getAcc_cid());
         accountEntity.setAcc_date(productJoinDTO.getAcc_date());
         accountEntity.setAcc_balance(productJoinDTO.getAcc_balance());
         accountEntity.setAcc_password(productJoinDTO.getAcc_password());
 
-        accountEntity.setAcc_pid(productJoinDTO.getAcc_pid());
-        accountEntity.setAcc_p_category(productJoinDTO.getAcc_p_category());
-        accountEntity.setAcc_pname(productJoinDTO.getAcc_pname());
-        accountEntity.setAcc_interestrate(productJoinDTO.getAcc_interestrate());
+//        accountEntity.setAcc_pid(productJoinDTO.getAcc_pid());
+//        accountEntity.setAcc_p_category(productJoinDTO.getAcc_p_category());
+//        accountEntity.setAcc_pname(productJoinDTO.getAcc_pname());
+//        accountEntity.setAcc_interestrate(productJoinDTO.getAcc_interestrate());
         accountEntity.setAcc_collateralvalue(productJoinDTO.getAcc_collateralvalue());
 
-        accountEntity.setAcc_interest_day(productJoinDTO.getAcc_interest_day());
-        accountEntity.setAcc_contract_month(productJoinDTO.getAcc_contract_month());
+//        accountEntity.setAcc_interest_day(productJoinDTO.getAcc_interest_day());
+//        accountEntity.setAcc_contract_month(productJoinDTO.getAcc_contract_month());
         accountEntity.setAcc_maturitydate(productJoinDTO.getAcc_maturitydate());
         accountEntity.setAcc_isactive(productJoinDTO.getAcc_isactive());
+
+        productEntity.setP_id(productJoinDTO.getAcc_pid());
+        productEntity.setP_category(productJoinDTO.getAcc_p_category());
+        productEntity.setP_name(productJoinDTO.getAcc_pname());
+        productEntity.setP_interestrate(productJoinDTO.getAcc_interestrate());
+
         System.out.println(accountEntity);
         return accountEntity;
     }

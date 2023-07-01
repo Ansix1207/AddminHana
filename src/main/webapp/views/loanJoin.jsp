@@ -69,11 +69,11 @@
                   </div>
                   <div class="form-floating mb-3">
                     <label>상품종류</label>
-                    <input class="form-control" name="ACC_PASSWORD" value="" type="text">
+                    <input class="form-control" name="ACC_P_CATEGORY" value="" type="text">
                   </div>
                   <div class="form-floating mb-3">
                     <label>상품명</label>
-                    <input class="form-control" name="ACC_PASSWORD" value="" type="text">
+                    <input class="form-control" name="ACC_P_NAME" value="" type="text">
                   </div>
                   <div class="form-floating mb-3">
                     <label>이자율</label>
