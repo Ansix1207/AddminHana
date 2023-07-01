@@ -147,6 +147,18 @@
       }
 
       function submitForm() {
+          <% if(!title.equals("출금")) {%>
+          let counterpart_id = document.getElementById('counterpart_id').value;
+          if (counterpart_id != null && counterpart_id.length == 0) {
+              alert("입금할 계좌를 입력해야 합니다!");
+              return;
+          }
+          <%}%>
+          let t_amount = document.getElementById('t_amount').value;
+          if (t_amount != null && t_amount.length == 0) {
+              alert("거래 금액을 입력해야 합니다!");
+              return;
+          }
           let message = document.getElementById('message').value;
           var form = document.getElementById('transferForm');
           if (message.length == 0) {
@@ -178,6 +190,10 @@
           isCheck.setAttribute('name', 'isCheck');
           if (document.getElementById('acc_password').value.trim() <= 3) {
               alert("비밀번호 4자리를 모두 입력해주세요.")
+              return;
+          }
+          if (document.getElementById('acc_id').value.trim() <= 0) {
+              alert("내 계좌번호를 입력해야 합니다.")
               return;
           }
           isCheck.setAttribute('value', 'check');
