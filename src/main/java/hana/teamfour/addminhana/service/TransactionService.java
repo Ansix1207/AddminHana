@@ -147,7 +147,9 @@ public class TransactionService {
             } else { //출금 요청중에 비밀번호가 틀린 경우
                 responseTransferDTO = new TransferDTO();
             }
-            responseTransferDTO.setT_description(message);
+            responseTransferDTO.setMessage(message);
+            responseTransferDTO.setErrorcode(errorcode);
+            responseTransferDTO.setT_id(t_id);
             System.out.println("errorcode = " + errorcode);
             System.out.println("IN SERVICE : t_id = " + t_id);
             return responseTransferDTO;

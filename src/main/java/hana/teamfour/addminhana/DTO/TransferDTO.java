@@ -15,6 +15,9 @@ public class TransferDTO {
     private Integer t_counterpart_id; //이체할 계좌
     private Integer t_amount; //거래 금액
     private String t_description;// 거래 내용
+    private int errorcode;
+    private int t_id;
+    private String message;
 
     private TransferDTO(TransactionEntity transactionEntity) {
         this.acc_id = transactionEntity.getT_accid();

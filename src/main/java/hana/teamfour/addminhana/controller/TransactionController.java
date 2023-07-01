@@ -104,16 +104,11 @@ public class TransactionController extends HttpServlet {
 
     public void doTransfer(HttpServletRequest request, HttpServletResponse response) {
         System.out.println("POST 계좌이체 들어옴");
-//        request.setAttribute("title", "계좌이체");
         String accId = request.getParameter("acc_id");
         String password = request.getParameter("acc_password");
         String counterpartId = request.getParameter("counterpart_id");
         String amount = request.getParameter("t_amount");
         String message = request.getParameter("message");
-        //필요한 DTO를 만들고
-//        doCheckAndForward(request, response);
-        //DTO로 service -> DAO 로 던진다 .
-//        WithdrawDTO result = doAccountPwdCheck(requestWithdrawDTO);
         TransferDTO transferDTO = TransferDTO.builder()
                 .acc_id(Integer.parseInt(accId))
                 .acc_password(Integer.parseInt(password))
@@ -121,14 +116,16 @@ public class TransactionController extends HttpServlet {
                 .t_amount(Integer.parseInt(amount))
                 .t_description(message)
                 .build();
-//        if (request.getParameter("ck") != null && request.getParameter("ck").equals("1")) {
         TransferDTO responseTransferDTO = transactionService.doTransfer(transferDTO);
-        System.out.println("컨트롤러 : result = " + responseTransferDTO.getT_description());
+        System.out.println("컨트롤러 : result = " + responseTransferDTO.getMessage());
         if (responseTransferDTO.getAcc_id() == null) {
-            System.out.println("계좌이체 실패 : 컨트롤러임 사유 : " + responseTransferDTO.getT_description());
-            request.setAttribute("a_message", responseTransferDTO.getT_description());
+            System.out.println("계좌이체 실패 : 컨트롤러임 사유 : " + responseTransferDTO.getMessage());
+            request.setAttribute("alert_message", responseTransferDTO.getMessage());
         } else {//성공한 경우
-            request.setAttribute("a_message", responseTransferDTO.getT_description());
+            request.setAttribute("alert_message", responseTransferDTO.getMessage() +
+                    "\n출금 계좌번호: " + responseTransferDTO.getAcc_id() +
+                    "\n입금 계좌번호 : " + responseTransferDTO.getT_counterpart_id() +
+                    "\n거래 금액 : " + responseTransferDTO.getT_amount());
         }
 //        }
     }
@@ -212,12 +209,12 @@ public class TransactionController extends HttpServlet {
             String responseAccId = responseWithdrawDTO.getAcc_id().toString();
             String responseAmount = responseWithdrawDTO.getT_amount().toString();
             String responseBalance = responseWithdrawDTO.getAcc_balance().toString();
-            String text = "계좌번호 : " + responseAccId + "에서 " + responseAmount + "원을 출금했습니다." +
-                    "\\n 잔액은 " + responseBalance + "원 입니다.";
+            String text = "계좌번호 : " + responseAccId + "\n출금액 : " + responseAmount +
+                    "\\n잔액 : " + responseBalance;
             request.setAttribute("alert_message", responseWithdrawDTO.getMessage() + "\\n" + text);
         } else {
             System.out.println("출금 실패 : 컨트롤러임");
-            request.setAttribute("alert_message", responseWithdrawDTO.getMessage() + "출금에 실패하였습니다..");
+            request.setAttribute("alert_message", responseWithdrawDTO.getMessage() + "출금에 실패하였습니다.");
         }
     }
 
