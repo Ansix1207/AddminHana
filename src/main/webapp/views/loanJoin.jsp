@@ -85,7 +85,6 @@
                            type="text">
                   </div>
 
-
                   <label>Acc_id</label>
                   <input class="form-control" name="Acc_id" value="${Acc_id}" type="text" default="1">
                 </div>
@@ -93,6 +92,8 @@
                   <label>Acc_cid</label>
                   <input class="form-control" name="Acc_cid" value="${Acc_cid}" type="text"
                          default="2">
+                </div>
+                <div>
                 </div>
                 <div class="form-floating mb-3">
                   <label>Acc_date</label>
