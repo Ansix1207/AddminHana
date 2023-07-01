@@ -40,7 +40,7 @@
       <form action="loaninquery" method="GET">
         <div class="input-group">
           <input class="form-control" type="text" name="q" value="${param.q}" aria-describedby="btnNavbarSearch"/>
-          <input class="btn btn-sunghee btn-search" type="submit" value="검색"/>
+          <input class="btn2 btn-sunghee btn-search" type="submit" value="검색"/>
         </div>
       </form>
       <%--            그래프 넣기   --%>
@@ -103,7 +103,13 @@
                 </div>
               </div>
             </div>
-            <button class="modify">조회</button>
+            <%
+              if (request.getSession().getAttribute("customerSession") != null) {%>
+            <%--            세션이 있을 때는 가입 버튼이 나올수 있게 해두었다--%>
+            <a href=loanJoin>
+              <button class="modify">가입</button>
+            </a>
+            <%}%>
           </li>
           <%
             }
