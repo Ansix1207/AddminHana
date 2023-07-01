@@ -23,6 +23,7 @@
   String _page = request.getParameter("page");
   String size = request.getParameter("size");
   String orderBy = request.getParameter("orderBy");
+  String ordering = request.getParameter("ordering");
   String search = request.getParameter("search");
   if (_page == null) {
     _page = "1";
@@ -35,6 +36,9 @@
   }
   if (search == null) {
     search = "%";
+  }
+  if (ordering == null) {
+    ordering = "asc";
   }
 
 %>
@@ -84,30 +88,8 @@
             </div>
             <div class="datatable-container">
               <table id="datatablesSimple" class="datatable-table">
-                <thead>
-                <tr>
-                  <th data-sortable="true">
-                    <a href="#" class="datatable-sorter">손님 id</a></th>
-                  <th data-sortable="true">
-                    <a href="#" class="datatable-sorter">이름</a>
-                  </th>
-                  <th data-sortable="true">
-                    <a href="#" class="datatable-sorter">주민등록 번호</a>
-                  </th>
-                  <th data-sortable="true">
-                    <a href="#" class="datatable-sorter">성별</a></th>
-                  <th data-sortable="true">
-                    <a href="#" class="datatable-sorter">주소</a></th>
-                  <th data-sortable="true">
-                    <a href="#" class="datatable-sorter">휴대폰 번호</a>
-                  </th>
-                  <th data-sortable="true">
-                    <a href="#" class="datatable-sorter">직업</a>
-                  </th>
-                  <th data-sortable="true">
-                    <a href="#" class="datatable-sorter">추천 직원 id</a>
-                  </th>
-                </tr>
+                <thead id="columnHead">
+
                 </thead>
                 <tbody>
                 <%
@@ -157,6 +139,8 @@
       const page = <%=_page%>;
       const size = <%=size%>;
       const search = '<%=search %>';
+      const orderBy = '<%=orderBy %>';
+      const ordering = '<%=ordering %>';
       const customerCount = <%=customerCount%>;
       const lastPage = Math.floor(300 / size);
 
@@ -205,6 +189,24 @@
           const value = e.target.searchInput.value;
           location.href = `customerList?page=${page}&size=${size}&search=${value}`;
       })
+
+      const handleClickColumn = (column) => {
+          const newOrdering = ordering == "desc" ? "asc" : "desc";
+          location.href = `customerList?page=${page}&size=${size}&search=${search}&orderBy=${column}&ordering=${newOrdering}`;
+      }
+      const $columnHead = document.querySelector("#columnHead");
+      $columnHead.innerHTML = `
+                <tr>
+                  <th data-sortable="true"><a class="datatable-sorter" onclick="handleClickColumn('c_id')">손님 id</a></th>
+                  <th data-sortable="true"><a class="datatable-sorter" onclick="handleClickColumn('c_name')">이름</a></th>
+                  <th data-sortable="true"><a class="datatable-sorter" onclick="handleClickColumn('c_rrn')">주민등록 번호</a></th>
+                  <th data-sortable="true"><a class="datatable-sorter" onclick="handleClickColumn('c_gender')">성별</a></th>
+                  <th data-sortable="true"><a class="datatable-sorter" onclick="handleClickColumn('c_address')">주소</a></th>
+                  <th data-sortable="true"><a class="datatable-sorter" onclick="handleClickColumn('c_mobile')">휴대폰 번호</a></th>
+                  <th data-sortable="true"><a class="datatable-sorter" onclick="handleClickColumn('c_job')">직업</a></th>
+                  <th data-sortable="true"><a class="datatable-sorter" onclick="handleClickColumn('e_id')">추천 직원 id</a></th>
+                </tr>`;
+
   </script>
 </body>
 </html>

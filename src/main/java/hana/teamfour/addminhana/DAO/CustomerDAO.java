@@ -228,31 +228,22 @@ public class CustomerDAO {
 
     public List<CustomerEntity> findWithPagination(PaginationDTO paginationDTO) {
         List<CustomerEntity> list = new ArrayList<>();
+        String ordering = paginationDTO.getOrdering();
         String query = "" +
                 "select * from (" +
                 "   select rownum as rownumber, " +
                 "           ordered_customer.* from (" +
                 "               select * from customer " +
-                "               where c_name like ?" +
-                "                order by ? ) ordered_customer ) " +
+                "               where c_name like ? " +
+                "               order by ? ) ordered_customer ) " +
                 " where rownumber >= ? and rownumber < ?";
-        String orderBy = paginationDTO.getOrderBy();
         Integer size = paginationDTO.getSize();
         Integer page = paginationDTO.getPage();
         String search = paginationDTO.getSearch();
-        if (orderBy == null || orderBy.equals("")) {
-            orderBy = "c_id";
-        }
-        Integer startNum = 1;
-        Integer lastNum = 10;
-        if (size != null && page != null) {
-            startNum = 1 + (size * (page - 1));
-            lastNum = startNum + size;
-        }
-        if (search == null || search.equals("")) {
-            search = "%";
-        }
-        search = "%" + search + "%";
+        String orderBy = paginationDTO.getOrderBy();
+        String order = orderBy + " " + ordering;
+        Integer startNum = 1 + (size * (page - 1));
+        Integer lastNum = startNum + size;
         try (Connection connection = dataFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, search);

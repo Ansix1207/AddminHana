@@ -124,7 +124,6 @@ public class CustomerService {
 
     public List<CustomerDTO> getCustomerListWithPagination(PaginationDTO paginationDTO) {
         List<CustomerDTO> customerList = new ArrayList<>();
-        System.out.println("paginationDTO = " + paginationDTO);
         List<CustomerEntity> customerEntityList = customerDAO.findWithPagination(paginationDTO);
         for (CustomerEntity customerEntity : customerEntityList) {
             CustomerDTO customerDTO = new CustomerDTO(customerEntity);

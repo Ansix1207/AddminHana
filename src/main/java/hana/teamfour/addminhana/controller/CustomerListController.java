@@ -39,8 +39,9 @@ public class CustomerListController extends HttpServlet {
         String nextPage = "views/customerList.jsp";
         String page = request.getParameter("page");
         String size = request.getParameter("size");
-        String orderBy = request.getParameter("orderBy");
         String search = request.getParameter("search");
+        String orderBy = request.getParameter("orderBy");
+        String ordering = request.getParameter("ordering");
         List<CustomerDTO> customerList = null;
         if (page == null || page == "") {
             page = "1";
@@ -48,17 +49,23 @@ public class CustomerListController extends HttpServlet {
         if (size == null || size == "") {
             size = "10";
         }
+        if (search == null || search == "") {
+            search = "%";
+        } else {
+            search = "%" + search + "%";
+        }
         if (orderBy == null || orderBy == "") {
             orderBy = "c_id";
         }
-        if (search == null || search == "") {
-            search = "%";
+        if (ordering == null || ordering == "") {
+            ordering = "asc";
         }
+
         try {
             Integer pageNum = Integer.parseInt(page);
             Integer sizeNum = Integer.parseInt(size);
 
-            PaginationDTO paginationDTO = new PaginationDTO(pageNum, sizeNum, orderBy, search);
+            PaginationDTO paginationDTO = new PaginationDTO(pageNum, sizeNum, search, orderBy, ordering);
             customerList = customerService.getCustomerListWithPagination(paginationDTO);
             Integer customerCount = customerService.getCountRow();
 
