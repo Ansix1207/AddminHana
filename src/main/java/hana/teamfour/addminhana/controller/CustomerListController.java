@@ -58,7 +58,7 @@ public class CustomerListController extends HttpServlet {
             orderBy = "c_id";
         }
         if (ordering == null || ordering == "") {
-            ordering = "asc";
+            ordering = "desc";
         }
 
         try {
