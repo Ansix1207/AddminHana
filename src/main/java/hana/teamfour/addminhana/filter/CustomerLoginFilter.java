@@ -1,5 +1,7 @@
 package hana.teamfour.addminhana.filter;
 
+import hana.teamfour.addminhana.DTO.CustomerSessionDTO;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +19,8 @@ public class CustomerLoginFilter implements Filter {
         HttpSession session = request.getSession(false);
         String loginURI = request.getContextPath() + "/customer/profile";
 
-        boolean loggedIn = session != null && session.getAttribute("customerSession") != null;
+        CustomerSessionDTO customerSession = (CustomerSessionDTO) session.getAttribute("customerSession");
+        boolean loggedIn = session != null && customerSession != null;
         boolean loginRequest = request.getRequestURI().equals(loginURI);
         if (loggedIn || loginRequest) {
             chain.doFilter(request, response);
