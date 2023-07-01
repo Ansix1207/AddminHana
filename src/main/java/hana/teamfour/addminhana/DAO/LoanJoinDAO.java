@@ -8,6 +8,7 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Random;
 
 public class LoanJoinDAO {
     private DataSource dataFactory;
@@ -25,38 +26,39 @@ public class LoanJoinDAO {
     public boolean insertAccount(AccountEntity accountEntity) {
         boolean result = false;
 
-        String sql = "INSERT INTO ACCOUNT VALUES(account_seq.nextval,101," +
-                "?,?,?," +
-                "select P_ID from product where p_name = ?," +
-                "select P_CATEGORY from product where p_name = ?," +
-                "select P_NAME from product where p_name = ?," +
-                "select P_INTERESTRATE from product where p_name = ?," +
-                "?," +
-                "1," +
-                "36," +
-                "?,'Y')";
+
+        String sql = "INSERT INTO ACCOUNT VALUES(?,?,?,?,?," +
+                "?,?,?,?,?," +
+                "?,?,?,?)";
+
 //        String sql = "INSERT INTO ACCOUNT VALUES(account_seq.nextval,?)";
 //        select P_CONTRACT_MONTH from product where p_name = ?
 
         System.out.println("sql = " + sql);
         try (Connection connection = getDataFactoryConnection()) {
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setInt(1, accountEntity.getAcc_id());
-//                PreparedStatement의 첫 번째 파라미터 위치에 accountEntity의 acc_id 값을 설정한다는 의미입니다.
-                statement.setInt(2, accountEntity.getAcc_cid());
+                Random random = new Random();
+                int randomValue1 = random.nextInt(5000);
+                int randomValue2 = random.nextInt(5000);
+//                statement.setInt(1, accountEntity.getAcc_id());
+//                statement.setInt(2, accountEntity.getAcc_cid());
+
+                statement.setInt(1, randomValue1);
+                statement.setInt(2, randomValue2);
                 statement.setTimestamp(3, accountEntity.getAcc_date());
                 statement.setInt(4, accountEntity.getAcc_balance());
                 statement.setString(5, accountEntity.getAcc_password());
-                statement.setString(6, accountEntity.getAcc_pname());
-                statement.setString(7, accountEntity.getAcc_pname());
+                statement.setInt(6, accountEntity.getAcc_pid());
+                statement.setString(7, accountEntity.getAcc_p_category());
                 statement.setString(8, accountEntity.getAcc_pname());
-                statement.setString(9, accountEntity.getAcc_pname());
+                statement.setDouble(9, accountEntity.getAcc_interestrate());
                 statement.setInt(10, accountEntity.getAcc_collateralvalue());
-//                statement.setInt(11, accountEntity.getAcc_interest_day());
-                statement.setString(11, accountEntity.getAcc_pname());
-                statement.setTimestamp(12, accountEntity.getAcc_maturitydate());
-
-                statement.executeUpdate(); // 데이터를 삽입?
+                statement.setInt(11, 1);
+                statement.setInt(12, accountEntity.getAcc_contract_month());
+                statement.setTimestamp(13, accountEntity.getAcc_maturitydate());
+                statement.setString(14, "Y");
+                System.out.println("statement" + statement);
+                statement.executeUpdate();
                 result = true;
             }
         } catch (SQLException e) {

@@ -16,6 +16,7 @@ public class LoanJoinService {
     public boolean insertLoanJoin(ProductJoinDTO productJoinDTO, ProductDTO productDTO) {
         AccountEntity accountEntity = convertToAccountEntity(productJoinDTO, productDTO);
         boolean isSuccess = loanJoinDAO.insertAccount(accountEntity);
+        System.out.println("service " + isSuccess);
 
         return isSuccess;
     }
@@ -36,7 +37,7 @@ public class LoanJoinService {
         accountEntity.setAcc_collateralvalue(productJoinDTO.getAcc_collateralvalue());
 
         accountEntity.setAcc_interest_day(productJoinDTO.getAcc_interest_day());
-        accountEntity.setAcc_contract_month(productJoinDTO.getAcc_contract_month());
+        accountEntity.setAcc_contract_month(productDTO.getP_contract_month());
         accountEntity.setAcc_maturitydate(productJoinDTO.getAcc_maturitydate());
         accountEntity.setAcc_isactive(productJoinDTO.getAcc_isactive());
 
