@@ -38,7 +38,6 @@ public class SignController extends HttpServlet {
         RequestDispatcher dispatcher;
         switch (request.getMethod()) {
             case "GET":
-                System.out.println("get 진입");
                 dispatcher = request.getRequestDispatcher("./views/sign.jsp");
                 dispatcher.forward(request, response);
                 break;

@@ -16,8 +16,6 @@
   if (request.getAttribute("customerSignDTO") != null) {
     request.removeAttribute("valid_rrn");
     CustomerSignDTO customerSignDTO = (CustomerSignDTO) request.getAttribute("customerSignDTO");
-    System.out.println("In sign.jsp : " + customerSignDTO.getC_name());
-    System.out.println("In sign.jsp : " + customerSignDTO.getC_rrn());
     if (request.getAttribute("message").equals("중복되지 않았습니다")) {
       isCheck = true;
     }

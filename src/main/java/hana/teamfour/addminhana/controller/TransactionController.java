@@ -9,7 +9,6 @@ import hana.teamfour.addminhana.service.TransactionService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,15 +18,12 @@ import java.io.IOException;
 
 @WebServlet({"/deposit", "/withdraw", "/transfer"})
 public class TransactionController extends HttpServlet {
-    ServletContext context = null;
     TransactionService transactionService;
-//    T boardService;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         transactionService = new TransactionService();
-//        boardService = new BoardService();
     }
 
     @Override
@@ -36,19 +32,16 @@ public class TransactionController extends HttpServlet {
         RequestDispatcher dispatcher;
 
         if (action.equals("/deposit")) {
-            System.out.println("GET 입금 들어옴");
             request.setAttribute("title", "입금");
             dispatcher = request.getRequestDispatcher("views/transfer.jsp");
             dispatcher.forward(request, response);
         }
         if (action.equals("/withdraw")) {
-            System.out.println("GET 출금 들어옴");
             request.setAttribute("title", "출금");
             dispatcher = request.getRequestDispatcher("views/transfer.jsp");
             dispatcher.forward(request, response);
         }
         if (action.equals("/transfer")) {
-            System.out.println("GET 계좌이체 들어옴");
             request.setAttribute("title", "계좌이체");
             dispatcher = request.getRequestDispatcher("views/transfer.jsp");
             dispatcher.forward(request, response);
@@ -60,7 +53,6 @@ public class TransactionController extends HttpServlet {
         String action = request.getServletPath();
         RequestDispatcher dispatcher = null;
         response.setContentType("text/html;charset=utf-8");
-        System.out.println("action = " + action);
         String isCheck = request.getParameter("isCheck");
         try {
             if (action.equals("/deposit")) {
@@ -97,11 +89,9 @@ public class TransactionController extends HttpServlet {
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
-
     }
 
     public void doTransfer(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("POST 계좌이체 들어옴");
         String accId = request.getParameter("acc_id");
         String password = request.getParameter("acc_password");
         String counterpartId = request.getParameter("counterpart_id");
@@ -115,9 +105,7 @@ public class TransactionController extends HttpServlet {
                 .t_description(message)
                 .build();
         TransferDTO responseTransferDTO = transactionService.doTransfer(transferDTO);
-        System.out.println("컨트롤러 : result = " + responseTransferDTO.getMessage());
         if (responseTransferDTO.getAcc_id() == null) {
-            System.out.println("계좌이체 실패 : 컨트롤러임 사유 : " + responseTransferDTO.getMessage());
             request.setAttribute("alert_message", responseTransferDTO.getMessage());
         } else {//성공한 경우
             request.setAttribute("alert_message", responseTransferDTO.getMessage() +
@@ -125,11 +113,9 @@ public class TransactionController extends HttpServlet {
                     "\n입금 계좌번호 : " + responseTransferDTO.getT_counterpart_id() +
                     "\n거래 금액 : " + responseTransferDTO.getT_amount());
         }
-//        }
     }
 
     public void doDeposit(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("POST 입금 들어옴");
         String accId = request.getParameter("counterpart_id");
         String amount = request.getParameter("t_amount");
         String message = request.getParameter("message");
@@ -138,9 +124,6 @@ public class TransactionController extends HttpServlet {
                 .t_amount(Integer.parseInt(amount))
                 .t_description(message)
                 .build();
-        System.out.println("accId = " + accId);
-        System.out.println("amount = " + amount);
-        System.out.println("message = " + message);
         String result = transactionService.doDeposit(depositDTO);
         request.setAttribute("alert_message", result);
     }
@@ -174,7 +157,6 @@ public class TransactionController extends HttpServlet {
             AccountService accountService = new AccountService(Integer.parseInt(acc_id));
             AccountSummaryDTO accountSummaryDTO = new AccountSummaryDTO();
             accountSummaryDTO = accountService.getAccSummary("출금");
-            System.out.println("비밀번호 일치! 성공 : 컨트롤러임");
             if (accountSummaryDTO.getAcc_id() != -999) {
                 //출금 체크후에 balance 반환해야함.
                 request.setAttribute("acc_pname", accountSummaryDTO.getAcc_pname());
@@ -185,7 +167,6 @@ public class TransactionController extends HttpServlet {
                 request.setAttribute("alert_message", "비밀번호가 정상입니다.\\n");
                 request.setAttribute("ck", "1");
             } else {
-                System.out.println("비밀번호 일치! 성공 : 컨트롤러임");
                 request.setAttribute("alert_message", "출금이 불가능한 계좌입니다. (일반 입출금 통장만 가능)\\n");
             }
         } else {
@@ -196,7 +177,6 @@ public class TransactionController extends HttpServlet {
 
 
     public void doWithdraw(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("POST 출금 들어옴");
         //2. 출금 처리 부분
         int accId = Integer.parseInt(request.getParameter("acc_id"));
         String message = request.getParameter("message");
@@ -211,11 +191,8 @@ public class TransactionController extends HttpServlet {
         WithdrawDTO responseWithdrawDTO = transactionService.doWithdraw(requestWithdrawDTO);
         //왜 여기에서 getAcc_id 가 null 이야?
         if (responseWithdrawDTO.getAcc_id() == null) {
-            System.out.println("출금 실패(비밀번호 틀림) : 컨트롤러임");
-            System.out.println("출금 실패 : 컨트롤러임");
             request.setAttribute("alert_message", "출금에 실패하였습니다. 사유(비밀번호 다름)");
         } else if (responseWithdrawDTO.getAcc_id() != null) {
-            System.out.println("출금 성공 : 컨트롤러임");
             String responseAccId = responseWithdrawDTO.getAcc_id().toString();
             String responseAmount = responseWithdrawDTO.getT_amount().toString();
             String responseBalance = responseWithdrawDTO.getAcc_balance().toString();
@@ -223,14 +200,12 @@ public class TransactionController extends HttpServlet {
                     "\\n잔액 : " + responseBalance;
             request.setAttribute("alert_message", responseWithdrawDTO.getMessage() + "\\n" + text);
         } else {
-            System.out.println("출금 실패 : 컨트롤러임");
             request.setAttribute("alert_message", responseWithdrawDTO.getMessage() + "출금에 실패하였습니다.");
         }
     }
 
     @Override
     public void destroy() {
-        System.out.println("destroy");
         super.destroy();
     }
 }

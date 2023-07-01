@@ -15,7 +15,6 @@
   String pname = request.getParameter("acc_pname");
   String category = request.getParameter("acc_p_category");
 
-  System.out.println(title);
   request.removeAttribute("ck");
   String action = null;
   if (title.equals("계좌이체"))
