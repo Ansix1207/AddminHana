@@ -31,6 +31,12 @@
     var alertMessage = "등록이 안되었습니다. 다시 시도해주세요";
     alert(alertMessage);
 </script>
+<% } else {%>
+<script>
+    var alertMessage = "다시 입력해주세요";
+    alert(alertMessage);
+</script>
+
 <%}%>
 
 <!DOCTYPE html>
@@ -88,7 +94,10 @@
                            type="text">
                   </div>
                   <div>
-
+                    <label>
+                      <%String P_Name = (String) request.getSession().getAttribute("P_Name"); %>
+                      <%=P_Name%>
+                    </label>
                   </div>
 
 

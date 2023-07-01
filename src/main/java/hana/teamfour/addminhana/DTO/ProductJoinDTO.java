@@ -43,10 +43,4 @@ public class ProductJoinDTO {
         this.acc_maturitydate = accountEntity.getAcc_maturitydate();
         this.acc_isactive = accountEntity.getAcc_isactive();
     }
-
-    // static factory method pattern (정적 팩토리 메서드 패턴)
-//    public static ProductJoinDTO from(AccountEntity accountEntity) {
-//        return new ProductJoinDTO(accountEntity);
-//    }
-    
 }

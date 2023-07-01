@@ -98,6 +98,10 @@
               <div class="fw-bold">
                 <div>
                   <h4><span><%=productDTOs.get(i).getP_name()%></span></h4>
+                  <%
+                    String P_Name = productDTOs.get(i).getP_name();
+                    request.getSession().setAttribute("P_Name", P_Name);
+                  %>
                   <span>금리 <%=productDTOs.get(i).getP_interestrate()%> %</span><br>
                   <span><%=productDTOs.get(i).getP_description()%></span>
                 </div>
