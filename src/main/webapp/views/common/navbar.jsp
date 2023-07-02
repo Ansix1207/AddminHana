@@ -47,7 +47,7 @@
       <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
          data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
         <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
-        손님 계좌 현황
+        손님 자산 현황
         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
       </a>
       <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
