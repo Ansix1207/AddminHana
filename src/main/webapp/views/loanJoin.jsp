@@ -15,14 +15,9 @@
 <%
   request.setCharacterEncoding("UTF-8");
   String contextPath = request.getContextPath();
-//  ProductJoinDTO productJoinDTO = (ProductJoinDTO) request.getAttribute("productJoinDTO");
-//  ProductDTO productDTO = (ProductDTO) request.getAttribute("productDTO");
-
   String pIndex = request.getParameter("pIndex");
   String pName = (String) request.getSession().getAttribute("P_Name_" + pIndex);
   request.setAttribute("pName", pName);
-
-
   String pCategory = (String) request.getSession().getAttribute("P_Category_" + pIndex);
   request.setAttribute("pCategory", pCategory);
   Integer pId = (Integer) request.getSession().getAttribute("P_Id_" + pIndex);
@@ -31,8 +26,6 @@
   request.setAttribute("pInterestrate", pInterestrate);
   Integer pContractMonth = (Integer) request.getSession().getAttribute("P_CONTRACT_MONTH_" + pIndex);
   request.setAttribute("pContractMonth", pContractMonth);
-
-
 %>
 <% Boolean isSuccess = (Boolean) request.getAttribute("isSuccess");
   System.out.println("isSuccess: " + isSuccess);
@@ -90,7 +83,6 @@
                     <input class="form-control" name="ACC_ID" value="3333" type="hidden">
                   </div>
                   <div class="form-floating mb-3">
-
                     <input class="form-control" name="ACC_CID" value="3333" type="hidden">
                   </div>
                   <div class="form-floating mb-3">
@@ -105,7 +97,6 @@
                     <label>상품명 </label>
                     <input class="form-control" name="ACC_P_NAME" value="<%=pName%>" type="text" readonly>
                   </div>
-
                   <div class="form-floating mb-3">
                     <label>금액</label>
                     <input class="form-control" name="ACC_BALANCE" value="${ACC_BALANCE}"
@@ -116,7 +107,6 @@
                     <input class="form-control" name="ACC_COLLATERALVALUE" value="${ACC_COLLATERALVALUE}"
                            type="text">
                   </div>
-
                   <div class="form-floating mb-3">
                     <input class="form-control" name="ACC_INTEREST_DAY" value="1" type="hidden">
                   </div>
@@ -132,7 +122,6 @@
                     <label>계약기간</label>
                     <input class="form-control" name="ACC_P_Month" value="<%=pContractMonth%>" type="text">
                   </div>
-
                   <div>
                   </div>
                   <div class="d-grid">
@@ -140,7 +129,6 @@
                       가입
                     </button>
                   </div>
-
                 </div>
               </div>
             </div>
@@ -148,8 +136,6 @@
         </div>
       </form>
     </main>
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
             crossorigin="anonymous"></script>

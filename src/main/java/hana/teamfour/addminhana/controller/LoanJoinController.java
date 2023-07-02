@@ -17,12 +17,9 @@ import java.time.LocalDateTime;
 public class LoanJoinController extends HttpServlet {
     private LoanJoinService loanJoinService;
 
-    //    LoanJoinService 클래스의 메서드와 기능에 접근할 수 있습니다.
     public LoanJoinController() {
         this.loanJoinService = new LoanJoinService();
-
     }
-//    문제는 loanJoinService 객체가 null인 상태를 해결하기위해서 초기화
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -68,7 +65,6 @@ public class LoanJoinController extends HttpServlet {
                 System.out.println(productDTO);
 
                 boolean isSuccess = loanJoinService.insertLoanJoin(productJoinDTO, productDTO);
-//                Controller에서 isSuccess 변수를 JSP 페이지로 전달하는 코드 추가
                 request.setAttribute("isSuccess", isSuccess);
                 System.out.println("POST 요청 처리 끝" + request);
                 dispatcher = request.getRequestDispatcher("/views/loanJoin.jsp");

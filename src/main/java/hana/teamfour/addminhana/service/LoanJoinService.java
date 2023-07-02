@@ -12,12 +12,10 @@ public class LoanJoinService {
         this.loanJoinDAO = new LoanJoinDAO();
     }
 
-    //    LoanJoinService 객체를 생성할 때 LoanJoinDAO 객체가 초기화되어 NullPointerException을 방지할 수 있습니다.
     public boolean insertLoanJoin(ProductJoinDTO productJoinDTO, ProductDTO productDTO) {
         AccountEntity accountEntity = convertToAccountEntity(productJoinDTO, productDTO);
         boolean isSuccess = loanJoinDAO.insertAccount(accountEntity);
         System.out.println("service " + isSuccess);
-
         return isSuccess;
     }
 

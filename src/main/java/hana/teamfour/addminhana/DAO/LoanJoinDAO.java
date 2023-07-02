@@ -25,24 +25,14 @@ public class LoanJoinDAO {
 
     public boolean insertAccount(AccountEntity accountEntity) {
         boolean result = false;
-
-
         String sql = "INSERT INTO ACCOUNT VALUES(?,?,?,?,?," +
                 "?,?,?,?,?," +
                 "?,?,?,?)";
-
-//        String sql = "INSERT INTO ACCOUNT VALUES(account_seq.nextval,?)";
-//        select P_CONTRACT_MONTH from product where p_name = ?
-
-        System.out.println("sql = " + sql);
         try (Connection connection = getDataFactoryConnection()) {
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 Random random = new Random();
                 int randomValue1 = random.nextInt(5000);
                 int randomValue2 = random.nextInt(5000);
-//                statement.setInt(1, accountEntity.getAcc_id());
-//                statement.setInt(2, accountEntity.getAcc_cid());
-
                 statement.setInt(1, randomValue1);
                 statement.setInt(2, randomValue2);
                 statement.setTimestamp(3, accountEntity.getAcc_date());

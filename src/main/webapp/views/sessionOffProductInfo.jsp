@@ -49,20 +49,15 @@
         <%
 
           Map<String, Integer> accountCountMap = (Map<String, Integer>) request.getAttribute("accountCountMap");
-          // accountCountMap을 사용하여 필요한 작업 수행
-          // 예: 특정 카테고리의 계좌 개수 출력
           Integer count1 = accountCountMap.get("보통예금");
           Integer count2 = accountCountMap.get("정기예금");
           Integer count3 = accountCountMap.get("자유적금");
           Integer count4 = accountCountMap.get("정기적금");
           Integer count5 = accountCountMap.get("신용대출");
           Integer count6 = accountCountMap.get("담보대출");
-
         %>
       </div>
-
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
       <script>
           const ctx = document.getElementById('myChart');
           new Chart(ctx, {
@@ -112,7 +107,6 @@
             </div>
             <%
               if (request.getSession().getAttribute("customerSession") != null) {%>
-            <%--            세션이 있을 때는 가입 버튼이 나올수 있게 해두었다--%>
             <a class=join value="<%=productDTOs.get(i).getP_category()%>}"
                href="<%=contextPath%>/customer/loanjoin?pIndex=<%=i%>">
               <button class=" modify">가입</button>

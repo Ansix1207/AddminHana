@@ -10,7 +10,7 @@ public class LoanProductService {
     LoanProductDAO loanProductDAO = null;
 
     public LoanProductService() {
-        loanProductDAO = new LoanProductDAO(); // LoanProduct 객체 생성
+        loanProductDAO = new LoanProductDAO();
     }
 
     public ArrayList<ProductDTO> getProducts(int page) {
@@ -18,7 +18,7 @@ public class LoanProductService {
         ArrayList<ProductDTO> productDTOs = new ArrayList<ProductDTO>();
         for (int i = 0; i < productEntities.size(); i++) {
             System.out.println(productEntities.get(i).getP_name());
-            ProductDTO productDTO = new ProductDTO(productEntities.get(i)); //entities에서 하나 꺼내와서 DTO로 만든다.
+            ProductDTO productDTO = new ProductDTO(productEntities.get(i));
             productDTOs.add(productDTO);
         }
         return productDTOs;
@@ -28,8 +28,7 @@ public class LoanProductService {
         ArrayList<ProductEntity> productEntities = loanProductDAO.getSearchLoanProductList(query, page);
         ArrayList<ProductDTO> productDTOs = new ArrayList<ProductDTO>();
         for (int i = 0; i < productEntities.size(); i++) {
-            // productEntities.get(i) -> type은? ProductEntity
-            ProductDTO productDTO = new ProductDTO(productEntities.get(i)); //entities에서 하나 꺼내와서 DTO로 만든다.
+            ProductDTO productDTO = new ProductDTO(productEntities.get(i));
             productDTOs.add(productDTO);
         }
         return productDTOs;
