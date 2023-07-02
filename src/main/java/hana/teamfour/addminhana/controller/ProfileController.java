@@ -68,7 +68,7 @@ public class ProfileController extends HttpServlet {
             if (customerSession == null) {
                 customerSummaryDTO = customerService.getCustomerSummaryDTOByRRN(customerRRN);
                 if (customerSummaryDTO == null) {
-                    response.sendRedirect(request.getContextPath() + "/");
+                    response.sendRedirect(request.getContextPath() + "/?message=customerLoginFail");
                     return;
                 }
             } else {
@@ -76,10 +76,11 @@ public class ProfileController extends HttpServlet {
             }
             if (customerSession != null && customerRRN != null) {
                 customerSummaryDTO = customerService.getCustomerSummaryDTOByRRN(customerRRN);
-                if (customerSummaryDTO == null || (customerSummaryDTO.getC_id() != customerSession.getC_id())) {
+                if (customerSummaryDTO == null) {
                     response.sendRedirect(request.getContextPath() + "/");
                     return;
                 }
+                session.removeAttribute("customerSession");
             }
             if (customerSummaryDTO != null) {
                 CustomerSessionDTO customerSessionDTO = customerSummaryDTO.getCustomerSessionDTO();

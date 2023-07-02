@@ -36,7 +36,8 @@
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/nav.css">
   <link rel="stylesheet" href="<%=contextPath%>/resources/css/base.css">
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-  <title>Admin Hana - <%=title%>.jsp </title>
+  <title>Admin Hana - <%=title%>
+  </title>
 </head>
 <body>
   <% if (message != null) { %>

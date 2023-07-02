@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 @WebServlet({"/deposit", "/withdraw", "/transfer"})
 public class TransactionController extends HttpServlet {
@@ -159,10 +160,11 @@ public class TransactionController extends HttpServlet {
             accountSummaryDTO = accountService.getAccSummary("출금");
             if (accountSummaryDTO.getAcc_id() != -999) {
                 //출금 체크후에 balance 반환해야함.
+                DecimalFormat decimalFormat = new DecimalFormat("#,###.##");
                 request.setAttribute("acc_pname", accountSummaryDTO.getAcc_pname());
                 request.setAttribute("counterpart_id", request.getParameter("counterpart_id"));
                 request.setAttribute("acc_p_category", accountSummaryDTO.getAcc_p_category());
-                request.setAttribute("acc_balance", result.getAcc_balance()); //int 형 반환 balance
+                request.setAttribute("acc_balance", decimalFormat.format(result.getAcc_balance())); //int 형 반환 balance
                 request.setAttribute("acc_password", request.getParameter("acc_password"));
                 request.setAttribute("alert_message", "비밀번호가 정상입니다.\\n");
                 request.setAttribute("ck", "1");

@@ -32,7 +32,7 @@ public class LoanProductDAO {
     public ArrayList<ProductEntity> getLoanProductList(int page) {
         ArrayList<ProductEntity> productEntityList = new ArrayList<>();
         try (Connection conn = dataFactory.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement("select p_name, p_description, p_interestrate " +
+             PreparedStatement pstmt = conn.prepareStatement("select p_name, p_description, p_interestrate, p_category " +
                      "FROM (SELECT rownum AS num, p.*" +
                      "FROM (SELECT * FROM admin_hana.product) p)" +
                      "WHERE num BETWEEN ? AND ?")) {
@@ -44,6 +44,7 @@ public class LoanProductDAO {
                     productEntity.setP_name(rs.getString(1));
                     productEntity.setP_description(rs.getString(2));
                     productEntity.setP_interestrate(rs.getDouble(3));
+                    productEntity.setP_category(rs.getString(4));
                     productEntityList.add(productEntity);
                 }
             }
@@ -56,7 +57,7 @@ public class LoanProductDAO {
     public ArrayList<ProductEntity> getSearchLoanProductList(String query, int page) {
         ArrayList<ProductEntity> productEntityList = new ArrayList<>();
         try (Connection conn = dataFactory.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement("SELECT p_name, p_description, p_interestrate " +
+             PreparedStatement pstmt = conn.prepareStatement("SELECT p_name, p_description, p_interestrate , p_category " +
                      "FROM (SELECT rownum AS num, p.* " +
                      "FROM (SELECT * FROM admin_hana.product " +
                      "WHERE p_description LIKE ? or p_name LIKE ? ) p) " +
@@ -71,6 +72,7 @@ public class LoanProductDAO {
                     productEntity.setP_name(rs.getString(1));
                     productEntity.setP_description(rs.getString(2));
                     productEntity.setP_interestrate(rs.getDouble(3));
+                    productEntity.setP_category(rs.getString(4));
                     productEntityList.add(productEntity);
                 }
             }
@@ -80,6 +82,7 @@ public class LoanProductDAO {
         return productEntityList;
     }
 
+    
     public int getProductCount(String query) {
         int count = 0;
         try (Connection conn = dataFactory.getConnection();

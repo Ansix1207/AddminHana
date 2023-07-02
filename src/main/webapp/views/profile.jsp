@@ -23,36 +23,30 @@ Settings | File Templates. --%>
   Integer deposit = 0;
   Integer savings = 0;
   Integer loan = 0;
-  String[] assetCategory = new String[6];
+  String[] assetCategory = new String[]{"보통예금", "정기예금", "자유적금", "정기적금", "신용대출", "담보대출"};
   String balance = "잔액";
   int[] accountBalance = new int[6];
   int idx = 0;
   if (depositAccountList != null && depositDTO != null) {
     Integer[] tempBalance = depositDTO.getBalance_sum();
-    assetCategory[idx] = "보통예금";
-    accountBalance[idx++] = tempBalance[0];
-    assetCategory[idx] = "정기예금";
-    accountBalance[idx++] = tempBalance[1];
+    accountBalance[0] = tempBalance[0];
+    accountBalance[1] = tempBalance[1];
     deposit = depositDTO.getAss_deposit();
     asset += deposit;
   }
   if (savingsAccountList != null && savingsDTO != null) {
     Integer[] tempBalance = savingsDTO.getBalance_sum();
-    assetCategory[idx] = "자유적금";
-    accountBalance[idx++] = tempBalance[0];
-    assetCategory[idx] = "정기적금";
-    accountBalance[idx++] = tempBalance[1];
+    accountBalance[2] = tempBalance[0];
+    accountBalance[3] = tempBalance[1];
     savings = savingsDTO.getAss_savings();
     asset += savings;
   }
   if (loanAccountList != null && loanDTO != null) {
     Integer[] tempBalance = loanDTO.getBalance_sum();
-    assetCategory[idx] = "신용대출";
-    accountBalance[idx++] = tempBalance[0];
-    assetCategory[idx] = "담보대출";
-    accountBalance[idx++] = tempBalance[1];
+    accountBalance[4] = tempBalance[0];
+    accountBalance[5] = tempBalance[1];
     loan = loanDTO.getAss_loan();
-    asset = loan;
+    asset += loan;
   }
   request.setAttribute("asset", asset);
   request.setAttribute("deposit", deposit);
@@ -93,20 +87,20 @@ Settings | File Templates. --%>
       <jsp:param name="description" value="업데이트에 실패했습니다. "/>
     </jsp:include>
 
-    <main class="d-grid grid-cols-12 gap-4 w-100">
-      <div class="col-span-8 column">
-        <div class="card profileSummary">
-          <div class="card-body">
-            <h5 class="card-title">프로필</h5>
-            <h6 class="card-subtitle mb-2">
-              <span class="summaryCustomerName">${customerSummaryDTO.c_name} 손님</span>
-              <span>만 ${customerSummaryDTO.c_age}세 / ${customerSummaryDTO.c_gender} / ${customerSummaryDTO.c_job}</span>
-            </h6>
-            <p class="card-text">${customerSummaryDTO.c_rrn}</p>
+    <main>
+      <div class="d-grid grid-cols-12 gap-4 w-100">
+        <div class="col-span-8 column">
+          <div class="card profileSummary">
+            <div class="card-body">
+              <h5 class="card-title">프로필</h5>
+              <h6 class="card-subtitle mb-2">
+                <span class="summaryCustomerName">${customerSummaryDTO.c_name} 손님</span>
+                <span>만 ${customerSummaryDTO.c_age}세 / ${customerSummaryDTO.c_gender} / ${customerSummaryDTO.c_job}</span>
+              </h6>
+              <p class="card-text">${customerSummaryDTO.c_rrn}</p>
+            </div>
           </div>
-        </div>
 
-        <c:if test="${(depositDTO != null) || (savingsDTO != null) || (loanDTO != null)}">
           <div class="col-span-1 h-full">
             <div class="card statisticsSituation h-full">
               <div class="card-body assetCardContainer gap-4">
@@ -125,12 +119,12 @@ Settings | File Templates. --%>
                   </div>
 
                   <div class="statisticsChart">
-                      <%-- 손님의 대출 자산 현황 그래프 --%>
+                    <%-- 손님의 대출 자산 현황 그래프 --%>
                     <canvas class="assetChart" id="assetChart"></canvas>
                   </div>
                 </div>
                 <div class="signedupProduct">
-                    <%-- 가입된 상품 리스트 --%>
+                  <%-- 가입된 상품 리스트 --%>
                   <c:if test="${not empty depositAccountList}">
                     <p>
                       <span style="font-size:1.25rem;margin-right: 2rem;">예금 상품</span>
@@ -138,45 +132,68 @@ Settings | File Templates. --%>
                           <fmt:formatNumber type="number" maxFractionDigits="3" value="${deposit}"/>
                         </span>
                     </p>
+                    <ul class="signedupProductList">
+                      <%
+                        for (AccountDTO account : depositAccountList) {
+                      %>
+                      <li>
+                        <div class="productName"><%=account.getAcc_pname()%>
+                        </div>
+                        <span>만기일 <%=account.getAcc_maturitydate()%></span>
+                        <span>이자율 <%=account.getAcc_interestrate()%>%</span>
+                        <span><%=balance%> <%=account.getAcc_balance()%>원</span>
+                      </li>
+                      <%
+                        }
+                      %>
+                    </ul>
                   </c:if>
-                  <ul class="signedupProductList">
-                    <%
-                      for (AccountDTO account : depositAccountList) {
-                    %>
-                    <li>
-                      <div class="productName"><%=account.getAcc_pname()%>
-                      </div>
-                      <span>만기일 <%=account.getAcc_maturitydate()%></span>
-                      <span>이자율 <%=account.getAcc_interestrate()%>%</span>
-                      <span><%=balance%> <%=account.getAcc_balance()%>원</span>
-                    </li>
-                    <%
-                      }
-                    %>
-                  </ul>
-                  <p>
-                    <span style="font-size:1.25rem;margin-right: 2rem;">적금 상품</span>
-                    <span class="card-text">₩
+                  <c:if test="${not empty savingsAccountList}">
+                    <p>
+                      <span style="font-size:1.25rem;margin-right: 2rem;">적금 상품</span>
+                      <span class="card-text">₩
                           <fmt:formatNumber type="number" maxFractionDigits="3" value="${savings}"/>
                         </span>
-                  </p>
-                  <ul class="signedupProductList">
-                    <c:if test="${not empty savingsAccountList}">
-                    </c:if>
-                    <%
-                      for (AccountDTO account : savingsAccountList) {
-                    %>
-                    <li>
-                      <div class="productName"><%=account.getAcc_pname()%>
-                      </div>
-                      <span>만기일 <%=account.getAcc_maturitydate()%></span>
-                      <span>이자율 <%=account.getAcc_interestrate()%>%</span>
-                      <span><%=balance%> <%=account.getAcc_balance()%>원</span>
-                    </li>
-                    <%
-                      }
-                    %>
-                  </ul>
+                    </p>
+                    <ul class="signedupProductList">
+                      <%
+                        for (AccountDTO account : depositAccountList) {
+                      %>
+                      <li>
+                        <div class="productName"><%=account.getAcc_pname()%>
+                        </div>
+                        <span>만기일 <%=account.getAcc_maturitydate()%></span>
+                        <span>이자율 <%=account.getAcc_interestrate()%>%</span>
+                        <span><%=balance%> <%=account.getAcc_balance()%>원</span>
+                      </li>
+                      <%
+                        }
+                      %>
+                    </ul>
+                  </c:if>
+                  <c:if test="${not empty savingsAccountList}">
+                    <p>
+                      <span style="font-size:1.25rem;margin-right: 2rem;">적금 상품</span>
+                      <span class="card-text">₩
+                        <fmt:formatNumber type="number" maxFractionDigits="3" value="${savings}"/>
+                      </span>
+                    </p>
+                    <ul class="signedupProductList">
+                      <%
+                        for (AccountDTO account : savingsAccountList) {
+                      %>
+                      <li>
+                        <div class="productName"><%=account.getAcc_pname()%>
+                        </div>
+                        <span>만기일 <%=account.getAcc_maturitydate()%></span>
+                        <span>이자율 <%=account.getAcc_interestrate()%>%</span>
+                        <span><%=balance%> <%=account.getAcc_balance()%>원</span>
+                      </li>
+                      <%
+                        }
+                      %>
+                    </ul>
+                  </c:if>
                   <c:if test="${not empty loanAccountList}">
                     <p>
                       <span style="font-size:1.25rem;margin-right: 2rem;">대출 상품</span>
@@ -184,80 +201,79 @@ Settings | File Templates. --%>
                           <fmt:formatNumber type="number" maxFractionDigits="3" value="${loan}"/>
                         </span>
                     </p>
+                    <ul class="signedupProductList">
+                      <%
+                        for (AccountDTO account : loanAccountList) {
+                      %>
+                      <li>
+                        <div class="productName"><%=account.getAcc_pname()%>
+                        </div>
+                        <span>만기일 <%=account.getAcc_maturitydate()%></span>
+                        <span>이자율 <%=account.getAcc_interestrate()%>%</span>
+                        <span><%=balance%> <%=account.getAcc_balance()%>원</span>
+                      </li>
+                      <%
+                        }
+                      %>
+                    </ul>
                   </c:if>
-                  <ul class="signedupProductList">
-                    <%
-                      for (AccountDTO account : loanAccountList) {
-                    %>
-                    <li>
-                      <div class="productName"><%=account.getAcc_pname()%>
-                      </div>
-                      <span>만기일 <%=account.getAcc_maturitydate()%></span>
-                      <span>이자율 <%=account.getAcc_interestrate()%>%</span>
-                      <span><%=balance%> <%=account.getAcc_balance()%>원</span>
-                    </li>
-                    <%
-                      }
-                    %>
-                  </ul>
                 </div>
               </div>
             </div>
           </div>
-        </c:if>
-      </div>
-
-      <div class="col-span-4 column">
-        <div class="card recommendationProducts">
-          <div class="card-body">
-            <h5 class="card-title mb-4">신규 추천 상품</h5>
-            <div class="d-flex">
-              <h6 class="card-subtitle mb-2 w-16 recommendationSubtitle ">예금 </h6>
-              <a>전체보기 ></a>
-            </div>
-            <ul class="card-text  mb-4">
-              <li class="productItem">하나의 정기에금
-                <button class="btn btn-sm btn-outline-primary"><a>가입</a></button>
-              </li>
-              <li class="productItem">365 정기에금
-                <button class="btn btn-sm btn-outline-primary"><a>가입</a></button>
-              </li>
-            </ul>
-
-            <div class="d-flex">
-              <h6 class="card-subtitle mb-2 w-16 recommendationSubtitle ">입출금 </h6>
-              <a>전체보기 ></a>
-            </div>
-            <ul class="card-text  mb-4">
-              <li class="productItem">하나의 정기에금
-                <button class="btn btn-sm btn-outline-primary"><a>가입</a></button>
-              </li>
-              <li class="productItem">365 정기에금
-                <button class="btn btn-sm btn-outline-primary"><a>가입</a></button>
-              </li>
-            </ul>
-          </div>
         </div>
 
-        <div class="card customerDescriptionContainer">
-          <div class="card-body">
-            <h5 class="card-title">특이사항</h5>
-            <p class="card-text customerDescriptions">
-            <form class="descriptionForm" name="descriptionForm" method="post" action="profile"
-                  accept-charset="utf-8">
+        <div class="col-span-4 column">
+          <div class="card recommendationProducts">
+            <div class="card-body">
+              <h5 class="card-title mb-4">신규 추천 상품</h5>
+              <div class="d-flex">
+                <h6 class="card-subtitle mb-2 w-16 recommendationSubtitle ">예금 </h6>
+                <a>전체보기 ></a>
+              </div>
+              <ul class="card-text  mb-4">
+                <li class="productItem">하나의 정기에금
+                  <button class="btn btn-sm btn-outline-primary"><a>가입</a></button>
+                </li>
+                <li class="productItem">365 정기에금
+                  <button class="btn btn-sm btn-outline-primary"><a>가입</a></button>
+                </li>
+              </ul>
+
+              <div class="d-flex">
+                <h6 class="card-subtitle mb-2 w-16 recommendationSubtitle ">입출금 </h6>
+                <a>전체보기 ></a>
+              </div>
+              <ul class="card-text  mb-4">
+                <li class="productItem">하나의 정기에금
+                  <button class="btn btn-sm btn-outline-primary"><a>가입</a></button>
+                </li>
+                <li class="productItem">365 정기에금
+                  <button class="btn btn-sm btn-outline-primary"><a>가입</a></button>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card customerDescriptionContainer">
+            <div class="card-body">
+              <h5 class="card-title">특이사항</h5>
+              <p class="card-text customerDescriptions">
+              <form class="descriptionForm" name="descriptionForm" method="post" action="profile"
+                    accept-charset="utf-8">
               <textarea name="descriptionText" class="descriptionTextarea"
               <%--                        cols="35" rows="10"--%>
                         maxlength="300">${customerSummaryDTO.c_description}</textarea>
-              <input type="hidden" name="action" value="description">
-              <div class="d-grid mt-4">
-                <button class="btn btn-primary" style="background-color: #0d6efd" type="submit">수정</button>
-              </div>
-            </form>
-            </p>
+                <input type="hidden" name="action" value="description">
+                <div class="d-grid mt-4">
+                  <button class="btn btn-primary" style="background-color: #0d6efd" type="submit">수정</button>
+                </div>
+              </form>
+              </p>
+            </div>
           </div>
         </div>
       </div>
-
     </main>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
@@ -289,7 +305,7 @@ Settings | File Templates. --%>
       window.onkeydown = function (event) {
           const kcode = event.key;
           if (kcode == "refresh") {
-              history.replaceState({}.null, location.pathname);
+              history.replaceState({}, null, location.pathname);
           }
       }
 
@@ -326,7 +342,6 @@ Settings | File Templates. --%>
       dataArr.push(<%=accountBalance[3]%>);
       dataArr.push(<%=accountBalance[4]%>);
       dataArr.push(<%=accountBalance[5]%>);
-      console.log(dataArr);
       const labelsArr = [];
       labelsArr.push('<%=assetCategory[0]%>')
       labelsArr.push('<%=assetCategory[1]%>')
@@ -334,7 +349,6 @@ Settings | File Templates. --%>
       labelsArr.push('<%=assetCategory[3]%>')
       labelsArr.push('<%=assetCategory[4]%>')
       labelsArr.push('<%=assetCategory[5]%>')
-      console.log(labelsArr);
       data1 = {
           datasets: [{
               data: dataArr
