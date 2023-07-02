@@ -19,8 +19,7 @@
 
   <div class="sb-sidenav-menu">
     <div class="nav">
-      <div class="sb-sidenav-menu-heading">고객</div>
-      <%--  TODO: 고객 세션이 존재할 때 코드 추가 --%>
+      <div class="sb-sidenav-menu-heading">손님</div>
       <%
         if (flag) {
       %>
@@ -39,7 +38,7 @@
       <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
          data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
         <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
-        고객 계좌 현황
+        손님 계좌 현황
         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
       </a>
       <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
@@ -61,6 +60,16 @@
           </a>
         </nav>
       </div>
+      <%} else {%>
+      <a class="nav-link" href="<%=contextPath%>/sign ">
+        <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+        신규 손님 가입
+      </a>
+      <a class="nav-link" href="<%=contextPath%>/customerList?page=1&size=10 ">
+        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+        가입 손님 리스트
+      </a>
+      <%}%>
       <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
          data-bs-target="#collapseLayouts2" aria-expanded="false" aria-controls="collapseLayouts2">
         <div class="sb-nav-link-icon"><i class="fas fa-wallet"></i></div>
@@ -86,16 +95,6 @@
           </a>
         </nav>
       </div>
-      <%} else {%>
-      <a class="nav-link" href="<%=contextPath%>/sign ">
-        <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
-        신규 고객 가입
-      </a>
-      <a class="nav-link" href="<%=contextPath%>/customerList?page=1&size=10 ">
-        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-        가입 고객 리스트
-      </a>
-      <%}%>
 
       <div class="sb-sidenav-menu-heading">상품</div>
       <a class="nav-link" href="<%=contextPath%>/loaninquery?q=예금">
@@ -120,7 +119,7 @@
       CustomerSessionDTO customerSession = (CustomerSessionDTO) request.getSession().getAttribute("customerSession");
   %>
   <div class="sb-sidenav-footer">
-    <div class="small">현재 상담 중인 고객:</div>
+    <div class="small">현재 상담 중인 손님:</div>
     <div class="d-flex justify-content-between"><span><%=customerSession.getC_name()%>&nbsp;님</span>
       <a class="btn btn-light btn-sm" style="--bs-btn-font-size: .50rem; display: inline-block"
          href="<%=contextPath%>/logout/customer">거래종료</a>
