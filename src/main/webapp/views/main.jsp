@@ -44,7 +44,7 @@
       <jsp:param name="description" value="<%=alertMessage%>"/>
     </jsp:include>
 
-    <main class="d-flex flex-column justify-content-center gap-2 mx-4 w-100">
+    <main class="d-flex flex-column flex-start gap-3 pt-4 mx-4 w-100">
       <form name="customerLoginForm" action="<%=contextPath%>/customer/profile" method="post"
             class="input-group input-group-lg flex-nowrap w-75">
           <span class="input-group-text" id="addon-wrapping">
@@ -81,7 +81,7 @@
       </div>
 
       <%-- 가이드 컴포넌트 --%>
-      <div class="accordion w-75 adminGuideComponent" id="accordionExample"></div>
+      <div class="accordion w-75 adminGuideComponent mt-4" id="accordionExample"></div>
 
     </main>
   </div>
