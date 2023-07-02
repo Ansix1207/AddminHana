@@ -23,6 +23,41 @@ public class ProductDAO {
         }
     }
 
+    public ProductEntity getProductByPId(Integer pid) {
+        ProductEntity productEntity = new ProductEntity();
+        String query = "select * from product where p_id = ?";
+
+        try (Connection connection = dataFactory.getConnection();
+
+             PreparedStatement statement = connection.prepareStatement(query)){
+
+            statement.setInt(1, pid);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+
+                    productEntity.setP_id(resultSet.getInt(1));
+                    productEntity.setP_id(resultSet.getInt("p_id"));
+                    productEntity.setP_category(resultSet.getString("p_category"));
+                    productEntity.setP_name(resultSet.getString("p_name"));
+                    productEntity.setP_description(resultSet.getString("p_description"));
+                    productEntity.setP_interestrate(resultSet.getDouble("p_interestrate"));
+                    productEntity.setP_intrest_day(resultSet.getInt("p_interest_day"));
+                    productEntity.setP_date(resultSet.getTimestamp("p_date"));
+                    productEntity.setP_contract_month(resultSet.getInt("p_contract_month"));
+                    productEntity.setP_isactive(resultSet.getString("p_isactive").charAt(0));
+                    productEntity.setP_limit(resultSet.getInt("p_limit"));
+                    productEntity.setP_collateralrate(resultSet.getDouble("p_collateralrate"));
+                    productEntity.setP_mincreditgrade(resultSet.getInt("p_mincreditgrade"));
+                    productEntity.setP_jobtype(resultSet.getString("p_jobtype"));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return productEntity;
+    }
+
     public ArrayList<ProductEntity> getProduct(Integer id, String productType, String _sql) {
         ArrayList<ProductEntity> productList = new ArrayList<>();
 

@@ -26,6 +26,9 @@
   request.setAttribute("pInterestrate", pInterestrate);
   Integer pContractMonth = (Integer) request.getSession().getAttribute("P_CONTRACT_MONTH_" + pIndex);
   request.setAttribute("pContractMonth", pContractMonth);
+
+  CustomerSessionDTO customerSessionDTO = (CustomerSessionDTO) request.getAttribute("customerSessionDTO");
+  ProductDTO productDTO = (ProductDTO) request.getAttribute("productDTO");
 %>
 <% Boolean isSuccess = (Boolean) request.getAttribute("isSuccess");
   System.out.println("isSuccess: " + isSuccess);
@@ -76,8 +79,8 @@
                 <div class="card-header"><h3 class="text-center font-weight-light my-4">금융상품가입</h3></div>
                 <div class="card-body">
                   <div class="form-floating mb-3">
-                    <label>이름</label>
-                    <input class="form-control" name="C_NAME" value="${ACC_NAME}" type="text">
+                    <label>성명</label>
+                    <input class="form-control" name="C_NAME" value="<%=customerSessionDTO.getC_name()%>" type="text" readonly>
                   </div>
                   <div class="form-floating mb-3">
                     <input class="form-control" name="ACC_ID" value="3333" type="hidden">
@@ -91,11 +94,11 @@
                   </div>
                   <div class="form-floating mb-3">
                     <label>상품종류</label>
-                    <input class="form-control" name="ACC_P_CATEGORY" value="<%=pCategory%>" type="text" readonly>
+                    <input class="form-control" name="ACC_P_CATEGORY" value="<%=productDTO.getP_category()%>" type="text" readonly>
                   </div>
                   <div class="form-floating mb-3">
                     <label>상품명 </label>
-                    <input class="form-control" name="ACC_P_NAME" value="<%=pName%>" type="text" readonly>
+                    <input class="form-control" name="ACC_P_NAME" value="<%=productDTO.getP_name()%>" type="text" readonly>
                   </div>
                   <div class="form-floating mb-3">
                     <label>금액</label>
@@ -104,7 +107,7 @@
                   </div>
                   <div class="form-floating mb-3">
                     <label>담보가액</label>
-                    <input class="form-control" name="ACC_COLLATERALVALUE" value="${ACC_COLLATERALVALUE}"
+                    <input class="form-control" name="ACC_COLLATERALVALUE" value="<%=productDTO.getP_collateralrate()%>"
                            type="text">
                   </div>
                   <div class="form-floating mb-3">
@@ -112,15 +115,15 @@
                   </div>
                   <div class="form-floating mb-3">
                     <label>상품번호</label>
-                    <input class="form-control" name="ACC_PID" value="<%=pId%>" type="text">
+                    <input class="form-control" name="ACC_PID" value="<%=productDTO.getP_id()%>" type="text" readonly>
                   </div>
                   <div class="form-floating mb-3">
                     <label>이자율</label>
-                    <input class="form-control" name="ACC_INTERESTRATE" value="<%=pInterestrate%>" type="text">
+                    <input class="form-control" name="ACC_INTERESTRATE" value="<%=productDTO.getP_interestrate()%>%" type="text" readonly>
                   </div>
                   <div class="form-floating mb-3">
                     <label>계약기간</label>
-                    <input class="form-control" name="ACC_P_Month" value="<%=pContractMonth%>" type="text">
+                    <input class="form-control" name="ACC_P_Month" value="<%=productDTO.getP_contract_month()%>개월" type="text" readonly>
                   </div>
                   <div>
                   </div>

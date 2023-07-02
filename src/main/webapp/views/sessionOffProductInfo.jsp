@@ -88,11 +88,9 @@
           <%
             for (int i = 0; i < productDTOs.size(); i++) {
               String pName = productDTOs.get(i).getP_name();
-              request.getSession().setAttribute("P_Name_" + i, pName);
               Double pInterestrate = productDTOs.get(i).getP_interestrate();
-              request.getSession().setAttribute("P_interestrate_" + i, pInterestrate);
               String pCategory = productDTOs.get(i).getP_category();
-              request.getSession().setAttribute("P_Category_" + i, pCategory);
+              System.out.println(productDTOs.get(i).getP_id());
           %>
           <li class="productItem list-group-item d-flex justify-content-between align-items-start">
             <div class="ms-2 me-auto ">
@@ -107,10 +105,7 @@
             </div>
             <%
               if (request.getSession().getAttribute("customerSession") != null) {%>
-            <a class=join value="<%=productDTOs.get(i).getP_category()%>}"
-               href="<%=contextPath%>/customer/loanjoin?pIndex=<%=i%>">
-              <button class=" modify">가입</button>
-            </a>
+            <button class=" modify" onclick='location.href="customer/loanjoin?pid=<%=productDTOs.get(i).getP_id()%>"'>가입</button>
             <%}%>
           </li>
           <%
