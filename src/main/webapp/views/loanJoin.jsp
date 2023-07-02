@@ -6,15 +6,26 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page import="hana.teamfour.addminhana.entity.ProductEntity" %>
+<%@ page import="hana.teamfour.addminhana.DTO.CustomerSessionDTO" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="hana.teamfour.addminhana.DTO.ProductJoinDTO" %>
 <%@ page import="java.sql.Timestamp" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="hana.teamfour.addminhana.DTO.AccountDTO" %>
+<%@ page import="hana.teamfour.addminhana.DTO.*" %>
+<%@ page import="java.text.DecimalFormat" %>
 <%
   request.setCharacterEncoding("UTF-8");
   String contextPath = request.getContextPath();
-  ProductJoinDTO productJoinDTO = (ProductJoinDTO) request.getAttribute("productJoinDTO");
+  String pIndex = request.getParameter("pIndex");
+  String pName = (String) request.getSession().getAttribute("P_Name_" + pIndex);
+  request.setAttribute("pName", pName);
+  String pCategory = (String) request.getSession().getAttribute("P_Category_" + pIndex);
+  request.setAttribute("pCategory", pCategory);
+  Integer pId = (Integer) request.getSession().getAttribute("P_Id_" + pIndex);
+  request.setAttribute("pId", pId);
+  Integer pInterestrate = (Integer) request.getSession().getAttribute("P_Interestrate_" + pIndex);
+  request.setAttribute("pInterestrate", pInterestrate);
+  Integer pContractMonth = (Integer) request.getSession().getAttribute("P_CONTRACT_MONTH_" + pIndex);
+  request.setAttribute("pContractMonth", pContractMonth);
 %>
 <% Boolean isSuccess = (Boolean) request.getAttribute("isSuccess");
   System.out.println("isSuccess: " + isSuccess);
@@ -29,6 +40,12 @@
     var alertMessage = "등록이 안되었습니다. 다시 시도해주세요";
     alert(alertMessage);
 </script>
+<% } else {%>
+<script>
+    var alertMessage = "다시 입력해주세요";
+    alert(alertMessage);
+</script>
+
 <%}%>
 
 <!DOCTYPE html>
@@ -56,11 +73,17 @@
           <div class="row justify-content-center">
             <div class="col-lg-7">
               <div class="card shadow-lg border-0 rounded-lg mt-5">
-                <div class="card-header"><h3 class="text-center font-weight-light my-4">대출 가입</h3></div>
+                <div class="card-header"><h3 class="text-center font-weight-light my-4">금융상품가입</h3></div>
                 <div class="card-body">
                   <div class="form-floating mb-3">
-                    <label>이름</label> Fix: jsp 수정중
-                    <span></span>
+                    <label>이름</label>
+                    <input class="form-control" name="C_NAME" value="${ACC_NAME}" type="text">
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input class="form-control" name="ACC_ID" value="3333" type="hidden">
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input class="form-control" name="ACC_CID" value="3333" type="hidden">
                   </div>
                   <div class="form-floating mb-3">
                     <label>비밀번호</label>
@@ -68,15 +91,15 @@
                   </div>
                   <div class="form-floating mb-3">
                     <label>상품종류</label>
-                    <span></span>
+                    <input class="form-control" name="ACC_P_CATEGORY" value="<%=pCategory%>" type="text" readonly>
                   </div>
                   <div class="form-floating mb-3">
-                    <label>상품명</label>
-                    <span></span>
+                    <label>상품명 </label>
+                    <input class="form-control" name="ACC_P_NAME" value="<%=pName%>" type="text" readonly>
                   </div>
                   <div class="form-floating mb-3">
-                    <label>이자율</label>
-                    <input class="form-control" name="ACC_INTERESTRATE" value="${ACC_INTERESTRATE}"
+                    <label>금액</label>
+                    <input class="form-control" name="ACC_BALANCE" value="${ACC_BALANCE}"
                            type="text">
                   </div>
                   <div class="form-floating mb-3">
@@ -84,80 +107,49 @@
                     <input class="form-control" name="ACC_COLLATERALVALUE" value="${ACC_COLLATERALVALUE}"
                            type="text">
                   </div>
-
-
-                  <label>Acc_id</label>
-                  <input class="form-control" name="Acc_id" value="${Acc_id}" type="text" default="1">
+                  <div class="form-floating mb-3">
+                    <input class="form-control" name="ACC_INTEREST_DAY" value="1" type="hidden">
+                  </div>
+                  <div class="form-floating mb-3">
+                    <label>상품번호</label>
+                    <input class="form-control" name="ACC_PID" value="<%=pId%>" type="text">
+                  </div>
+                  <div class="form-floating mb-3">
+                    <label>이자율</label>
+                    <input class="form-control" name="ACC_INTERESTRATE" value="<%=pInterestrate%>" type="text">
+                  </div>
+                  <div class="form-floating mb-3">
+                    <label>계약기간</label>
+                    <input class="form-control" name="ACC_P_Month" value="<%=pContractMonth%>" type="text">
+                  </div>
+                  <div>
+                  </div>
+                  <div class="d-grid">
+                    <button onclick="reloadPage()" type="submit" class="btn btn-primary btn-block" id="signButton">신규 손님
+                      가입
+                    </button>
+                  </div>
                 </div>
-                <div class="form-floating mb-3">
-                  <label>Acc_cid</label>
-                  <input class="form-control" name="Acc_cid" value="${Acc_cid}" type="text"
-                         default="2">
-                </div>
-                <div class="form-floating mb-3">
-                  <label>Acc_date</label>
-                  <input class="form-control" name="Acc_date" value="${Acc_date}" type="text">
-                </div>
-                <div class="form-floating mb-3">
-                  <label>Acc_balance</label>
-                  <input class="form-control" name="Acc_balance" value="${Acc_balance}" type="text">
-                </div>
-
-                <div class="form-floating mb-3">
-                  <label>Acc_pid</label>
-                  <input class="form-control" name="Acc_pid" value="${Acc_pid}" type="text">
-                </div>
-                <div class="form-floating mb-3">
-                  <label>Acc_p_category</label>
-                  <input class="form-control" name="Acc_p_category" value="${Acc_p_category}"
-                         type="text">
-                </div>
-                <div class="form-floating mb-3">
-                  <label>Acc_pname</label>
-                  <input class="form-control" name="Acc_pname" value="${Acc_pname}" type="text">
-                </div>
-
-
               </div>
-              <div class="form-floating mb-3">
-                <label>이자일</label>
-                <input class="form-control" name="ACC_INTEREST_DAY" value="${ACC_INTEREST_DAY}"
-                       type="text">
-              </div>
-              <div class="form-floating mb-3">
-                <label>약정일</label>
-                <input class="form-control" name="ACC_CONTRACT_MONTH" value="${ACC_CONTRACT_MONTH}"
-                       type="text">
-              </div>
-              <div class="form-floating mb-3">
-                <label>만기일</label>
-                <input class="form-control" name="ACC_MATURITYDATE" value="${ACC_MATURITYDATE}"
-                       type="text">
-              </div>
-              <div class="form-floating mb-3">
-                <label>활성화여부</label>
-                <input class="form-control" name="ACC_ISACTIVE" value="${ACC_ISACTIVE}" type="text">
-              </div>
-              <div class="d-grid">
-              </div>
-              <button onclick="reloadPage()" type="submit" class="btn btn-primary btn-block" id="signButton">신규 손님
-                가입
-              </button>
             </div>
           </div>
         </div>
-  </div>
-  </div>
-  </form>
-  </main>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-          crossorigin="anonymous"></script>
-  <script>
-      function reloadPage() {
-          location.reload();
-      }
-  </script>
+      </form>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous"></script>
+    <script>
+        function reloadPage() {
+            location.reload();
+        }
+    </script>
+    <script>
+        function formatCurrency(input) {
+            let value = input.value.replace(/[^0-9]/g, '');
+            let formattedValue = value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            input.value = formattedValue + '원';
+        }
+    </script>
 </body>
 </html>
