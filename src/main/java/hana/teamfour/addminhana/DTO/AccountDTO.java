@@ -12,4 +12,5 @@ public class AccountDTO {
     private String acc_pname;
     private Double acc_interestrate;
     private String acc_maturitydate;
+    private Integer acc_id;
 }
