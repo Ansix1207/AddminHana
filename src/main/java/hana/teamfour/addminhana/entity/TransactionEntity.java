@@ -10,6 +10,7 @@ import java.sql.Timestamp;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class TransactionEntity {
     private Integer t_id;
     private Integer t_accid;
