@@ -290,7 +290,7 @@ Settings | File Templates. --%>
       window.onkeydown = function (event) {
           const kcode = event.key;
           if (kcode == "refresh") {
-              history.replaceState({}.null, location.pathname);
+              history.replaceState({}, null, location.pathname);
           }
       }
 

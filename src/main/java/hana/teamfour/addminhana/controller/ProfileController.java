@@ -69,6 +69,7 @@ public class ProfileController extends HttpServlet {
                 customerSummaryDTO = customerService.getCustomerSummaryDTOByRRN(customerRRN);
                 if (customerSummaryDTO == null) {
                     response.sendRedirect(request.getContextPath() + "/");
+                    response.sendRedirect(request.getContextPath() + "/?message=customerLoginFail");
                     return;
                 }
             } else {
