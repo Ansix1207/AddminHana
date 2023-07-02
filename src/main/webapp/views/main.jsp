@@ -92,7 +92,7 @@
           <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
             <div class="accordion-body">
               <strong>손님의 자산 정보를 알려줍니다.</strong><br />
-              :시계_방향_화살표:(reload button)을 누르면 총 예금/적금/대출액 및 자산 차트가 표시됩니다.
+              🔃(reload button)을 누르면 총 예금/적금/대출액 및 자산 차트가 표시됩니다.
             </div>
           </div>
         </div>
@@ -116,13 +116,30 @@
             <button class="accordion-button bg-secondary text-bg-secondary collapsed" type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              추천 대출 상품 #3
+              추천 대출 상품 가이드 #3
             </button>
           </h2>
           <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
             <div class="accordion-body">
               <strong>손님의 나이대, 성별, 직업에 기반한 추천 상품이 표시됩니다.</strong><br />
               같은 나이대와 성별, 직업을 가진 다른 손님들이 가장 많이 가입한 상품 2개를 추천합니다.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button bg-secondary text-bg-secondary collapsed" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+              창구 업무 가이드 #4
+            </button>
+          </h2>
+          <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>창구업무를 누르면 하위 메뉴인 입금,출금,계좌이체를 이용해서 업무를 진행할 수 있습니다.</strong><br />
+              -입금은 활성화된 계좌에만 진행할 수 있습니다.<br/>
+              -출금과 계좌이체에는 계좌와 비밀번호를 입력한뒤에 정보가 일치하면 잔액 및 계좌에 대한 상세정보가 나오고 거래를 진행할 수 있습니다.<br />
+              -출금이 필요한 거래에는 입출금통장(보통예금) 상품만 출금이 가능합니다.
             </div>
           </div>
         </div>
