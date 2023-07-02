@@ -10,6 +10,5 @@ import lombok.*;
 public class AssetSetterDTO {
     private Integer c_id;
     private String category;
-    private String assetDTOName;
-    private String accountListName;
+    private String categoryEnglish;
 }

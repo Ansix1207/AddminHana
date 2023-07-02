@@ -1,5 +1,8 @@
 <%@ page import="hana.teamfour.addminhana.DTO.*" %>
-<%@ page import="java.util.ArrayList" %><%-- Created by IntelliJ IDEA. User: chaedongim Date: 2023/06/19 Time: 9:26 AM To change this template use File |
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
+<%@ page import="hana.teamfour.addminhana.entity.ProductEntity" %>
+<%@ page import="java.lang.reflect.Array" %><%-- Created by IntelliJ IDEA. User: chaedongim Date: 2023/06/19 Time: 9:26 AM To change this template use File |
 Settings | File Templates. --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -7,9 +10,13 @@ Settings | File Templates. --%>
 <%
   request.setCharacterEncoding("UTF-8");
   String contextPath = request.getContextPath();
-  CustomerSummaryDTO customerSummaryDTO = (CustomerSummaryDTO) request.getAttribute("customerSummaryDTO");
   Boolean hasUpdatedDescription = (Boolean) request.getAttribute("hasUpdatedDescription");
 
+  // 손님 정보
+  CustomerSummaryDTO customerSummaryDTO = (CustomerSummaryDTO) request.getAttribute("customerSummaryDTO");
+  Integer ageRange = ((int) customerSummaryDTO.getC_age() / 10) * 10;
+  String gender = customerSummaryDTO.getC_gender() == 'M' ? "남성" : "여성";
+  String job = customerSummaryDTO.getC_job();
   // 계좌 정보
   ArrayList<AccountDTO> depositAccountList = (ArrayList<AccountDTO>) request.getAttribute("depositAccountList");
   ArrayList<AccountDTO> savingsAccountList = (ArrayList<AccountDTO>) request.getAttribute("savingsAccountList");
@@ -52,6 +59,18 @@ Settings | File Templates. --%>
   request.setAttribute("deposit", deposit);
   request.setAttribute("savings", savings);
   request.setAttribute("loan", loan);
+
+  ArrayList<ProductEntity> depositRecByAge = (ArrayList<ProductEntity>) request.getAttribute("depositRecByAge");
+  ArrayList<ProductEntity> depositRecByGender = (ArrayList<ProductEntity>) request.getAttribute("depositRecByGender");
+  ArrayList<ProductEntity> depositRecByJob = (ArrayList<ProductEntity>) request.getAttribute("depositRecByJob");
+
+  ArrayList<ProductEntity> savingsRecByAge = (ArrayList<ProductEntity>) request.getAttribute("savingsRecByAge");
+  ArrayList<ProductEntity> savingsRecByGender = (ArrayList<ProductEntity>) request.getAttribute("savingsRecByGender");
+  ArrayList<ProductEntity> savingsRecByJob = (ArrayList<ProductEntity>) request.getAttribute("savingsRecByJob");
+
+  ArrayList<ProductEntity> loanRecByAge = (ArrayList<ProductEntity>) request.getAttribute("loanRecByAge");
+  ArrayList<ProductEntity> loanRecByGender = (ArrayList<ProductEntity>) request.getAttribute("loanRecByGender");
+  ArrayList<ProductEntity> loanRecByJob = (ArrayList<ProductEntity>) request.getAttribute("loanRecByJob");
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -227,31 +246,139 @@ Settings | File Templates. --%>
           <div class="card recommendationProducts">
             <div class="card-body">
               <h5 class="card-title mb-4">신규 추천 상품</h5>
-              <div class="d-flex">
-                <h6 class="card-subtitle mb-2 w-16 recommendationSubtitle ">예금 </h6>
-                <a>전체보기 ></a>
-              </div>
-              <ul class="card-text  mb-4">
-                <li class="productItem">하나의 정기에금
-                  <button class="btn btn-sm btn-outline-primary"><a>가입</a></button>
-                </li>
-                <li class="productItem">365 정기에금
-                  <button class="btn btn-sm btn-outline-primary"><a>가입</a></button>
-                </li>
-              </ul>
+              <div class="d-flex align-items-center">
+                <h6 class="card-subtitle w-16 recommendationSubtitle ">예금 </h6>
 
-              <div class="d-flex">
-                <h6 class="card-subtitle mb-2 w-16 recommendationSubtitle ">입출금 </h6>
-                <a>전체보기 ></a>
+                <a href="<%=contextPath%>/customer/depositInfo">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">전체보기 ></button>
+                </a>
               </div>
-              <ul class="card-text  mb-4">
-                <li class="productItem">하나의 정기에금
-                  <button class="btn btn-sm btn-outline-primary"><a>가입</a></button>
-                </li>
-                <li class="productItem">365 정기에금
-                  <button class="btn btn-sm btn-outline-primary"><a>가입</a></button>
-                </li>
-              </ul>
+              <div>
+                <ul class="card-text  mb-4">
+                  <%
+                    for (int i = 0; i < 1; i++) {
+                  %>
+                  <li class="productItem">
+                    <div class="productName"><%=depositRecByAge.get(i).getP_name()%>
+                    </div>
+                    <span>이자율 <%=depositRecByAge.get(i).getP_interestrate()%>%</span>
+                  </li>
+                  <%
+                    }
+                  %>
+                  <%
+                    for (int i = 0; i < 1; i++) {
+                  %>
+                  <li class="productItem">
+                    <div class="productName"><%=depositRecByGender.get(i).getP_name()%>
+                    </div>
+                    <span>이자율 <%=depositRecByGender.get(i).getP_interestrate()%>%</span>
+                  </li>
+                  <%
+                    }
+                  %>
+                  <%
+                    for (int i = 0; i < 1; i++) {
+                  %>
+                  <li class="productItem">
+                    <div class="productName"><%=depositRecByJob.get(i).getP_name()%>
+                    </div>
+                    <span>이자율 <%=depositRecByJob.get(i).getP_interestrate()%>%</span>
+                  </li>
+                  <%
+                    }
+                  %>
+                </ul>
+              </div>
+
+              <div class="d-flex align-items-center">
+                <h6 class="card-subtitle w-16 recommendationSubtitle ">적금 </h6>
+                <a href="<%=contextPath%>/customer/savingsInfo">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">전체보기 ></button>
+                </a>
+              </div>
+              <div>
+                <ul class="card-text  mb-4">
+                  <%
+                    for (int i = 0; i < 1; i++) {
+                  %>
+                  <li class="productItem">
+                    <div class="productName"><%=savingsRecByAge.get(i).getP_name()%>
+                    </div>
+                    <span>이자율 <%=savingsRecByAge.get(i).getP_interestrate()%>%</span>
+                  </li>
+                  <%
+                    }
+                  %>
+                  <%
+                    for (int i = 0; i < 1; i++) {
+                  %>
+                  <li class="productItem">
+                    <div class="productName"><%=savingsRecByGender.get(i).getP_name()%>
+                    </div>
+                    <span>이자율 <%=savingsRecByGender.get(i).getP_interestrate()%>%</span>
+                  </li>
+                  <%
+                    }
+                  %>
+                  <%
+                    for (int i = 0; i < 1; i++) {
+                  %>
+                  <li class="productItem">
+                    <div class="productName"><%=savingsRecByJob.get(i).getP_name()%>
+                    </div>
+                    <span>이자율 <%=savingsRecByJob.get(i).getP_interestrate()%>%</span>
+                  </li>
+                  <%
+                    }
+                  %>
+                </ul>
+              </div>
+
+              <div class="d-flex align-items-center">
+                <h6 class="card-subtitle w-16 recommendationSubtitle ">대출 </h6>
+                <a href="<%=contextPath%>/customer/loanInfo">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">전체보기 ></button>
+                </a>
+              </div>
+              <div>
+                <ul class="card-text  mb-4">
+                  <%
+                    for (int i = 0; i < 1; i++) {
+                  %>
+                  <li class="productItem">
+                    <div class="productName"><%=loanRecByAge.get(i).getP_name()%>
+                    </div>
+                    <span>이자율 <%=loanRecByAge.get(i).getP_interestrate()%>%</span>
+                  </li>
+                  <%
+                    }
+                  %>
+                  <%
+                    for (int i = 0; i < 1; i++) {
+                  %>
+                  <li class="productItem">
+                    <div class="productName"><%=loanRecByGender.get(i).getP_name()%>
+                    </div>
+                    <span>이자율 <%=loanRecByGender.get(i).getP_interestrate()%>%</span>
+                  </li>
+                  <%
+                    }
+                  %>
+                  <%
+                    for (int i = 0; i < 1; i++) {
+                  %>
+                  <li class="productItem">
+                    <div class="productName"><%=loanRecByJob.get(i).getP_name()%>
+                    </div>
+                    <span>이자율 <%=loanRecByJob.get(i).getP_interestrate()%>%</span>
+                  </li>
+                  <%
+                    }
+                  %>
+                </ul>
+              </div>
+
             </div>
           </div>
 
