@@ -40,7 +40,7 @@
       <form action="loaninquery" method="GET">
         <div class="input-group">
           <input class="form-control" type="text" name="q" value="${param.q}" aria-describedby="btnNavbarSearch"/>
-          <input class="btn btn-sunghee btn-search" type="submit" value="검색"/>
+          <input class="btn2 btn-sunghee btn-search" type="submit" value="검색"/>
         </div>
       </form>
       <%--            그래프 넣기   --%>
@@ -49,20 +49,15 @@
         <%
 
           Map<String, Integer> accountCountMap = (Map<String, Integer>) request.getAttribute("accountCountMap");
-          // accountCountMap을 사용하여 필요한 작업 수행
-          // 예: 특정 카테고리의 계좌 개수 출력
           Integer count1 = accountCountMap.get("보통예금");
           Integer count2 = accountCountMap.get("정기예금");
           Integer count3 = accountCountMap.get("자유적금");
           Integer count4 = accountCountMap.get("정기적금");
           Integer count5 = accountCountMap.get("신용대출");
           Integer count6 = accountCountMap.get("담보대출");
-
         %>
       </div>
-
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
       <script>
           const ctx = document.getElementById('myChart');
           new Chart(ctx, {
@@ -92,18 +87,31 @@
         <ol class="list-group list-group-numbered" id="pages">
           <%
             for (int i = 0; i < productDTOs.size(); i++) {
+              String pName = productDTOs.get(i).getP_name();
+              request.getSession().setAttribute("P_Name_" + i, pName);
+              Double pInterestrate = productDTOs.get(i).getP_interestrate();
+              request.getSession().setAttribute("P_interestrate_" + i, pInterestrate);
+              String pCategory = productDTOs.get(i).getP_category();
+              request.getSession().setAttribute("P_Category_" + i, pCategory);
           %>
           <li class="productItem list-group-item d-flex justify-content-between align-items-start">
             <div class="ms-2 me-auto ">
               <div class="fw-bold">
                 <div>
-                  <h4><span><%=productDTOs.get(i).getP_name()%></span></h4>
-                  <span>금리 <%=productDTOs.get(i).getP_interestrate()%> %</span><br>
+                  <h4><span><%=pName%></span></h4>
+                  <span>금리 <%=pInterestrate%> %</span><br>
                   <span><%=productDTOs.get(i).getP_description()%></span>
+                  <span><%=pCategory%></span>
                 </div>
               </div>
             </div>
-            <button class="modify">조회</button>
+            <%
+              if (request.getSession().getAttribute("customerSession") != null) {%>
+            <a class=join value="<%=productDTOs.get(i).getP_category()%>}"
+               href="<%=contextPath%>/customer/loanjoin?pIndex=<%=i%>">
+              <button class=" modify">가입</button>
+            </a>
+            <%}%>
           </li>
           <%
             }

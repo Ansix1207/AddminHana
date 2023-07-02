@@ -1,12 +1,16 @@
 package hana.teamfour.addminhana.service;
 
 import hana.teamfour.addminhana.DAO.CustomerDAO;
+import hana.teamfour.addminhana.DTO.CustomerDTO;
 import hana.teamfour.addminhana.DTO.CustomerSignDTO;
 import hana.teamfour.addminhana.DTO.CustomerSummaryDTO;
+import hana.teamfour.addminhana.DTO.PaginationDTO;
 import hana.teamfour.addminhana.entity.CustomerEntity;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -103,5 +107,29 @@ public class CustomerService {
 
     public boolean checkDuplicateByRRN(String rrn) {
         return customerDAO.checkDuplicateByRRN(rrn);
+    }
+
+    public List<CustomerDTO> getCustomerList() {
+        List<CustomerDTO> customerList = new ArrayList<>();
+        List<CustomerEntity> customerEntityList = customerDAO.findAll();
+        for (CustomerEntity customerEntity : customerEntityList) {
+            CustomerDTO customerDTO = new CustomerDTO(customerEntity);
+            customerList.add(customerDTO);
+        }
+        return customerList;
+    }
+
+    public List<CustomerDTO> getCustomerListWithPagination(PaginationDTO paginationDTO) {
+        List<CustomerDTO> customerList = new ArrayList<>();
+        List<CustomerEntity> customerEntityList = customerDAO.findWithPagination(paginationDTO);
+        for (CustomerEntity customerEntity : customerEntityList) {
+            CustomerDTO customerDTO = new CustomerDTO(customerEntity);
+            customerList.add(customerDTO);
+        }
+        return customerList;
+    }
+
+    public Integer getCountRow() {
+        return customerDAO.countRows();
     }
 }
