@@ -327,7 +327,6 @@ Settings | File Templates. --%>
       dataArr.push(<%=accountBalance[3]%>);
       dataArr.push(<%=accountBalance[4]%>);
       dataArr.push(<%=accountBalance[5]%>);
-      console.log(dataArr);
       const labelsArr = [];
       labelsArr.push('<%=assetCategory[0]%>')
       labelsArr.push('<%=assetCategory[1]%>')
@@ -335,7 +334,6 @@ Settings | File Templates. --%>
       labelsArr.push('<%=assetCategory[3]%>')
       labelsArr.push('<%=assetCategory[4]%>')
       labelsArr.push('<%=assetCategory[5]%>')
-      console.log(labelsArr);
       data1 = {
           datasets: [{
               data: dataArr

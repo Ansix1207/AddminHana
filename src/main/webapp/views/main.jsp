@@ -162,7 +162,6 @@
           crossorigin="anonymous"></script>
   <script>
       const alertMessage = '<%=request.getParameter("message")%>';
-      console.log("alertMessagea", alertMessage);
       const $descriptionForm = document.querySelector('.descriptionForm')
       const $toastSuccess = document.getElementById('toastSuccess')
       const $toastFailure = document.getElementById('toastFail')
@@ -182,7 +181,6 @@
 
       window.onkeydown = function (event) {
           const kcode = event.key;
-          console.log(location.pathname);
           if (kcode == "refresh") {
               history.replaceState({}, null, location.pathname);
           }
