@@ -161,6 +161,8 @@ Settings | File Templates. --%>
                       %>
                       <li>
                         <div class="productName"><%=account.getAcc_pname()%>
+                          <span class="fs-10"> [계좌번호 : <%=account.getAcc_id()%>]
+                          </span>
                         </div>
                         <span>만기일 <%=account.getAcc_maturitydate()%></span>
                         <span>이자율 <%=account.getAcc_interestrate()%>%</span>
@@ -184,6 +186,8 @@ Settings | File Templates. --%>
                       %>
                       <li>
                         <div class="productName"><%=account.getAcc_pname()%>
+                          <span class="fs-10"> [계좌번호 : <%=account.getAcc_id()%>]
+                          </span>
                         </div>
                         <span>만기일 <%=account.getAcc_maturitydate()%></span>
                         <span>이자율 <%=account.getAcc_interestrate()%>%</span>
@@ -207,6 +211,8 @@ Settings | File Templates. --%>
                       %>
                       <li>
                         <div class="productName"><%=account.getAcc_pname()%>
+                          <span class="fs-10"> [계좌번호 : <%=account.getAcc_id()%>]
+                          </span>
                         </div>
                         <span>만기일 <%=account.getAcc_maturitydate()%></span>
                         <span>이자율 <%=account.getAcc_interestrate()%>%</span>
