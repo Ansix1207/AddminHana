@@ -138,45 +138,45 @@ Settings | File Templates. --%>
                           <fmt:formatNumber type="number" maxFractionDigits="3" value="${deposit}"/>
                         </span>
                     </p>
+                    <ul class="signedupProductList">
+                      <%
+                        for (AccountDTO account : depositAccountList) {
+                      %>
+                      <li>
+                        <div class="productName"><%=account.getAcc_pname()%>
+                        </div>
+                        <span>만기일 <%=account.getAcc_maturitydate()%></span>
+                        <span>이자율 <%=account.getAcc_interestrate()%>%</span>
+                        <span><%=balance%> <%=account.getAcc_balance()%>원</span>
+                      </li>
+                      <%
+                        }
+                      %>
+                    </ul>
                   </c:if>
-                  <ul class="signedupProductList">
-                    <%
-                      for (AccountDTO account : depositAccountList) {
-                    %>
-                    <li>
-                      <div class="productName"><%=account.getAcc_pname()%>
-                      </div>
-                      <span>만기일 <%=account.getAcc_maturitydate()%></span>
-                      <span>이자율 <%=account.getAcc_interestrate()%>%</span>
-                      <span><%=balance%> <%=account.getAcc_balance()%>원</span>
-                    </li>
-                    <%
-                      }
-                    %>
-                  </ul>
-                  <p>
-                    <span style="font-size:1.25rem;margin-right: 2rem;">적금 상품</span>
-                    <span class="card-text">₩
+                  <c:if test="${not empty savingsAccountList}">
+                    <p>
+                      <span style="font-size:1.25rem;margin-right: 2rem;">적금 상품</span>
+                      <span class="card-text">₩
                           <fmt:formatNumber type="number" maxFractionDigits="3" value="${savings}"/>
                         </span>
-                  </p>
-                  <ul class="signedupProductList">
-                    <c:if test="${not empty savingsAccountList}">
-                    </c:if>
-                    <%
-                      for (AccountDTO account : savingsAccountList) {
-                    %>
-                    <li>
-                      <div class="productName"><%=account.getAcc_pname()%>
-                      </div>
-                      <span>만기일 <%=account.getAcc_maturitydate()%></span>
-                      <span>이자율 <%=account.getAcc_interestrate()%>%</span>
-                      <span><%=balance%> <%=account.getAcc_balance()%>원</span>
-                    </li>
-                    <%
-                      }
-                    %>
-                  </ul>
+                    </p>
+                    <ul class="signedupProductList">
+                      <%
+                        for (AccountDTO account : savingsAccountList) {
+                      %>
+                      <li>
+                        <div class="productName"><%=account.getAcc_pname()%>
+                        </div>
+                        <span>만기일 <%=account.getAcc_maturitydate()%></span>
+                        <span>이자율 <%=account.getAcc_interestrate()%>%</span>
+                        <span><%=balance%> <%=account.getAcc_balance()%>원</span>
+                      </li>
+                      <%
+                        }
+                      %>
+                    </ul>
+                  </c:if>
                   <c:if test="${not empty loanAccountList}">
                     <p>
                       <span style="font-size:1.25rem;margin-right: 2rem;">대출 상품</span>
@@ -184,22 +184,23 @@ Settings | File Templates. --%>
                           <fmt:formatNumber type="number" maxFractionDigits="3" value="${loan}"/>
                         </span>
                     </p>
+
+                    <ul class="signedupProductList">
+                      <%
+                        for (AccountDTO account : loanAccountList) {
+                      %>
+                      <li>
+                        <div class="productName"><%=account.getAcc_pname()%>
+                        </div>
+                        <span>만기일 <%=account.getAcc_maturitydate()%></span>
+                        <span>이자율 <%=account.getAcc_interestrate()%>%</span>
+                        <span><%=balance%> <%=account.getAcc_balance()%>원</span>
+                      </li>
+                      <%
+                        }
+                      %>
+                    </ul>
                   </c:if>
-                  <ul class="signedupProductList">
-                    <%
-                      for (AccountDTO account : loanAccountList) {
-                    %>
-                    <li>
-                      <div class="productName"><%=account.getAcc_pname()%>
-                      </div>
-                      <span>만기일 <%=account.getAcc_maturitydate()%></span>
-                      <span>이자율 <%=account.getAcc_interestrate()%>%</span>
-                      <span><%=balance%> <%=account.getAcc_balance()%>원</span>
-                    </li>
-                    <%
-                      }
-                    %>
-                  </ul>
                 </div>
               </div>
             </div>
