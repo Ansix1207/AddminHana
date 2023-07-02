@@ -52,7 +52,7 @@ Settings | File Templates. --%>
     assetCategory[idx] = "담보대출";
     accountBalance[idx++] = tempBalance[1];
     loan = loanDTO.getAss_loan();
-    asset = loan;
+    asset += loan;
   }
   request.setAttribute("asset", asset);
   request.setAttribute("deposit", deposit);
