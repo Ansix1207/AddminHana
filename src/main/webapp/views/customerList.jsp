@@ -136,45 +136,45 @@
           integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
           crossorigin="anonymous"></script>
   <script>
-      const $pagenation = document.querySelector(".datatable-pagination-list");
       const page = <%=_page%>;
       const size = <%=size%>;
       const search = '<%=search %>';
       const orderBy = '<%=orderBy %>';
       const ordering = '<%=ordering %>';
       const customerCount = <%=customerCount%>;
-      const lastPage = Math.floor(300 / size);
-
+      const $pagenation = document.querySelector(".datatable-pagination-list");
+      const lastPage = Math.floor(300 / size) + 1;
       let pageListNum = Math.floor((page - 1) / 10) * 10;
+      const startPageIdx = 1 + pageListNum;
+      const lastPageIdx = lastPage <= 10 + pageListNum ? lastPage : 10 + pageListNum;
       let innerHTML = "";
+
       innerHTML += `
       <li class="datatable-pagination-list-item">
-        <a href="?page=${page - 10 > 0 ? page -10 : 1}&size=${size}"data-page="1" class="datatable-pagination-list-item-link">‹</a>
+        <a href="?page=${page - 10 > 0 ? page - 10 : 1}&size=${size}"data-page="1" class="datatable-pagination-list-item-link">‹</a>
       </li>`;
 
-      for (let i = 1 + pageListNum; i <= 10 + pageListNum; i++) {
+      for (let i = startPageIdx; i <= lastPageIdx; i++) {
           innerHTML += `
           <li class="datatable-pagination-list-item ${page == i ? "datatable-active" : ""} ">
             <a href="?page=${i}&size=${size}" data-page="${i}" class="datatable-pagination-list-item-link">${i}</a>
           </li>
           `;
       }
-
       innerHTML += `
       <li class="datatable-pagination-list-item"  >
         <a href="?page=${page + 10 < lastPage ? page + 10 : lastPage}&size=${size}" data-page="2" class="datatable-pagination-list-item-link">›</a>
       </li>`;
-
       $pagenation.innerHTML = innerHTML;
-      $sizeSelector = document.querySelector(".datatable-dropdown");
 
+      $sizeSelector = document.querySelector(".datatable-dropdown");
+      const sizeList = [10, 15, 20, 25, 50, 100];
       let selectorInnerHTML = `
       <label>
           <select class="datatable-selector">
-            <option value="10" ${size == 10 ? "selected" : ""}>10</option>
-            <option value="15" ${size == 15 ? "selected" : ""}>15</option>
-            <option value="20" ${size == 20 ? "selected" : ""}>20</option>
-            <option value="25" ${size == 25 ? "selected" : ""}>25</option>
+            ${sizeList.map((value) => (
+              `<option value='${value}' ${size == value ? 'selected' : ''}>${value}</option>`
+            )).join("")}
           </select> entries per page
       </label>`;
 

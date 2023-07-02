@@ -1,9 +1,11 @@
 package hana.teamfour.addminhana.controller;
 
 import hana.teamfour.addminhana.DTO.*;
+import hana.teamfour.addminhana.entity.ProductEntity;
 import hana.teamfour.addminhana.service.AccountService;
 import hana.teamfour.addminhana.service.AssetService;
 import hana.teamfour.addminhana.service.CustomerService;
+import hana.teamfour.addminhana.service.RecommendService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -105,9 +107,10 @@ public class ProfileController extends HttpServlet {
         CustomerSessionDTO customerSessionDTO = (CustomerSessionDTO) session.getAttribute("customerSession");
         Integer c_id = customerSessionDTO.getC_id();
 
-        AssetSetterDTO depositSetterDTO = new AssetSetterDTO(c_id, "예금", "depositDTO", "depositAccountList");
-        AssetSetterDTO savingsSetterDTO = new AssetSetterDTO(c_id, "적금", "savingsDTO", "savingsAccountList");
-        AssetSetterDTO loanSetterDTO = new AssetSetterDTO(c_id, "대출", "loanDTO", "loanAccountList");
+
+        AssetSetterDTO depositSetterDTO = new AssetSetterDTO(c_id, "예금", "deposit");
+        AssetSetterDTO savingsSetterDTO = new AssetSetterDTO(c_id, "적금", "savings");
+        AssetSetterDTO loanSetterDTO = new AssetSetterDTO(c_id, "대출", "loan");
 
         setAssetByCategory(request, depositSetterDTO);
         setAssetByCategory(request, savingsSetterDTO);
@@ -117,14 +120,25 @@ public class ProfileController extends HttpServlet {
     private void setAssetByCategory(HttpServletRequest request, AssetSetterDTO assetSetterDTO) throws ServletException, IOException {
         Integer c_id = assetSetterDTO.getC_id();
         String category = assetSetterDTO.getCategory();
-        String assetDTOName = assetSetterDTO.getAssetDTOName();
-        String accountListName = assetSetterDTO.getAccountListName();
+        String categoryEnglish = assetSetterDTO.getCategoryEnglish();
+        String assetDTOName = categoryEnglish + "DTO";
+        String accountListName = categoryEnglish + "AccountList";
+
         AccountService accountService = new AccountService(c_id, category);
         AssetService assetService = new AssetService(c_id, category);
+        RecommendService recommendService = new RecommendService(c_id, category);
+
         AssetDTO assetDTO = assetService.getAsset();
         ArrayList<AccountDTO> accountList = accountService.getAccList();
+        ArrayList<ProductEntity> recByJobProducts = recommendService.getRecByJob();
+        ArrayList<ProductEntity> recByGenderProducts = recommendService.getRecByGender();
+        ArrayList<ProductEntity> recByAgeProducts = recommendService.getRecByAge();
+
         request.setAttribute(assetDTOName, assetDTO);
         request.setAttribute(accountListName, accountList);
+        request.setAttribute(categoryEnglish + "RecByJob", recByJobProducts);
+        request.setAttribute(categoryEnglish + "RecByGender", recByGenderProducts);
+        request.setAttribute(categoryEnglish + "RecByAge", recByAgeProducts);
     }
 
     private void forwardToMain(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
