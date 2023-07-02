@@ -31,7 +31,7 @@ public class AssetService {
     public AssetDTO getAsset() {
         AssetEntity assetEntity = assetDAO.getAssetById(id);
         ArrayList<AccountEntity> accountEntities = accountDAO.getAccListById(id, category);
-        return setAsset(assetEntity, accountEntities);
+        return assetEntity == null ? null : setAsset(assetEntity, accountEntities);
     }
 
     private AssetDTO setAsset(AssetEntity assetEntity, ArrayList<AccountEntity> accountEntities) {
