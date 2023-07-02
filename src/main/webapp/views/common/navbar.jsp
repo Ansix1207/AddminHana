@@ -20,6 +20,15 @@
   <div class="sb-sidenav-menu">
     <div class="nav">
       <div class="sb-sidenav-menu-heading">손님</div>
+      <a class="nav-link" href="<%=contextPath%>/sign ">
+        <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+        신규 손님 가입
+      </a>
+      <a class="nav-link" href="<%=contextPath%>/customerList?page=1&size=10 ">
+        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+        가입 손님 리스트
+      </a>
+      <div class="sb-sidenav-menu-heading">업무</div>
       <%
         if (flag) {
       %>
@@ -60,16 +69,7 @@
           </a>
         </nav>
       </div>
-      <%} else {%>
-      <a class="nav-link" href="<%=contextPath%>/sign ">
-        <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
-        신규 손님 가입
-      </a>
-      <a class="nav-link" href="<%=contextPath%>/customerList?page=1&size=10 ">
-        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-        가입 손님 리스트
-      </a>
-      <%}%>
+      <% } %>
       <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
          data-bs-target="#collapseLayouts2" aria-expanded="false" aria-controls="collapseLayouts2">
         <div class="sb-nav-link-icon"><i class="fas fa-wallet"></i></div>
