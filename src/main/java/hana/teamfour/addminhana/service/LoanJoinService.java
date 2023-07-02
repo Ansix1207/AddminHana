@@ -1,14 +1,18 @@
 package hana.teamfour.addminhana.service;
 
 import hana.teamfour.addminhana.DAO.LoanJoinDAO;
+import hana.teamfour.addminhana.DAO.ProductDAO;
 import hana.teamfour.addminhana.DTO.ProductDTO;
 import hana.teamfour.addminhana.DTO.ProductJoinDTO;
 import hana.teamfour.addminhana.entity.AccountEntity;
+import hana.teamfour.addminhana.entity.ProductEntity;
 
 public class LoanJoinService {
+    private ProductDAO productDAO;
     private LoanJoinDAO loanJoinDAO;
 
     public LoanJoinService() {
+        this.productDAO = new ProductDAO();
         this.loanJoinDAO = new LoanJoinDAO();
     }
 
@@ -41,5 +45,19 @@ public class LoanJoinService {
 
         System.out.println(accountEntity);
         return accountEntity;
+    }
+
+    public ProductDTO getProductDTO(Integer pid) {
+        ProductEntity productEntity = productDAO.getProductByPId(pid);
+
+        Integer p_id = productEntity.getP_id();
+        String p_category = productEntity.getP_category();
+        String p_name = productEntity.getP_name();
+        String p_description = productEntity.getP_description();
+        Double p_interestrate = productEntity.getP_interestrate();
+        Double p_collateralrate = productEntity.getP_collateralrate();
+        Integer p_contract_month = productEntity.getP_contract_month();
+        ProductDTO productDTO = new ProductDTO(p_id, p_category, p_name, p_description, p_interestrate, p_collateralrate, p_contract_month);
+        return productDTO;
     }
 }

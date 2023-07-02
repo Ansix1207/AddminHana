@@ -57,7 +57,7 @@ public class LoanProductDAO {
     public ArrayList<ProductEntity> getSearchLoanProductList(String query, int page) {
         ArrayList<ProductEntity> productEntityList = new ArrayList<>();
         try (Connection conn = dataFactory.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement("SELECT p_name, p_description, p_interestrate , p_category " +
+             PreparedStatement pstmt = conn.prepareStatement("SELECT p_id, p_name, p_description, p_interestrate , p_category " +
                      "FROM (SELECT rownum AS num, p.* " +
                      "FROM (SELECT * FROM admin_hana.product " +
                      "WHERE p_description LIKE ? or p_name LIKE ? ) p) " +
@@ -69,10 +69,11 @@ public class LoanProductDAO {
             try (ResultSet rs = pstmt.executeQuery()) {
                 while (rs.next()) {
                     ProductEntity productEntity = new ProductEntity();
-                    productEntity.setP_name(rs.getString(1));
-                    productEntity.setP_description(rs.getString(2));
-                    productEntity.setP_interestrate(rs.getDouble(3));
-                    productEntity.setP_category(rs.getString(4));
+                    productEntity.setP_id(rs.getInt("p_id"));
+                    productEntity.setP_name(rs.getString("p_name"));
+                    productEntity.setP_description(rs.getString("p_description"));
+                    productEntity.setP_interestrate(rs.getDouble("p_interestrate"));
+                    productEntity.setP_category(rs.getString("p_category"));
                     productEntityList.add(productEntity);
                 }
             }

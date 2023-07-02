@@ -146,7 +146,7 @@ To change this template use File | Settings | File Templates.
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="productName"><%=recByAge.get(i).getP_name()%></div>
                   <%-- p_id를 인자로 넘겨줘야 함 --%>
-                  <button onclick="location.href='<%=contextPath%>/customer/<%=link_by_cate%>join'" type="button" class="btn btn-secondary rounded-pill d-flex align-items-center joinBtn">가입</button>
+                  <button onclick='location.href="loanjoin?pid=<%=recByAge.get(i).getP_id()%>"' type="button" class="btn btn-secondary rounded-pill d-flex align-items-center joinBtn">가입</button>
                 </div>
                 <span>이자율 <%=recByAge.get(i).getP_interestrate()%>%</span>
               </li>
@@ -162,7 +162,7 @@ To change this template use File | Settings | File Templates.
               <li>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="productName"><%=recByGender.get(i).getP_name()%></div>
-                  <button onclick="location.href='<%=contextPath%>/customer/<%=link_by_cate%>join'" type="button" class="btn btn-secondary rounded-pill d-flex align-items-center joinBtn">가입</button>
+                  <button onclick='location.href="loanjoin?pid=<%=recByGender.get(i).getP_id()%>"' type="button" class="btn btn-secondary rounded-pill d-flex align-items-center joinBtn">가입</button>
                 </div>
                 <span>이자율 <%=recByGender.get(i).getP_interestrate()%>%</span>
               </li>
@@ -178,7 +178,7 @@ To change this template use File | Settings | File Templates.
               <li>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="productName"><%=recByJob.get(i).getP_name()%></div>
-                  <button onclick="location.href='<%=contextPath%>/customer/<%=link_by_cate%>join'" type="button" class="btn btn-secondary rounded-pill d-flex align-items-center joinBtn">가입</button>
+                  <button onclick='location.href="loanjoin?pid=<%=recByJob.get(i).getP_id()%>"' type="button" class="btn btn-secondary rounded-pill d-flex align-items-center joinBtn">가입</button>
                 </div>
                 <span>이자율 <%=recByJob.get(i).getP_interestrate()%>%</span>
               </li>

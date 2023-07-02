@@ -1,5 +1,6 @@
 package hana.teamfour.addminhana.controller;
 
+import hana.teamfour.addminhana.DTO.CustomerSessionDTO;
 import hana.teamfour.addminhana.DTO.ProductDTO;
 import hana.teamfour.addminhana.DTO.ProductJoinDTO;
 import hana.teamfour.addminhana.service.LoanJoinService;
@@ -10,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
@@ -23,7 +25,20 @@ public class LoanJoinController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doHandle(request, response);
+        response.setContentType("text/html;charset=utf-8");
+        RequestDispatcher dispatcher;
+        HttpSession session = request.getSession(false);
+
+        CustomerSessionDTO customerSessionDTO = (CustomerSessionDTO) session.getAttribute("customerSession");
+        Integer pid = Integer.valueOf(request.getParameter("pid"));
+
+        ProductDTO productDTO = loanJoinService.getProductDTO(pid);
+
+        request.setAttribute("customerSessionDTO", customerSessionDTO);
+        request.setAttribute("productDTO", productDTO);
+
+        dispatcher = request.getRequestDispatcher("/views/loanJoin.jsp");
+        dispatcher.forward(request, response);
     }
 
     @Override
