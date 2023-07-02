@@ -168,14 +168,13 @@
       $pagenation.innerHTML = innerHTML;
 
       $sizeSelector = document.querySelector(".datatable-dropdown");
+      const sizeList = [10, 15, 20, 25, 50, 100];
       let selectorInnerHTML = `
       <label>
           <select class="datatable-selector">
-            <option value="10" ${size == 10 ? "selected" : ""}>10</option>
-            <option value="15" ${size == 15 ? "selected" : ""}>15</option>
-            <option value="20" ${size == 20 ? "selected" : ""}>20</option>
-            <option value="25" ${size == 25 ? "selected" : ""}>25</option>
-            <option value="50" ${size == 50 ? "selected" : ""}>25</option>
+            ${sizeList.map((value) => (
+              `<option value='${value}' ${size == value ? 'selected' : ''}>${value}</option>`
+            )).join("")}
           </select> entries per page
       </label>`;
 
