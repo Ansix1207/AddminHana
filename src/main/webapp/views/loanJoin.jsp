@@ -49,7 +49,8 @@
                 <div class="card-body">
                   <div class="form-floating mb-3">
                     <label>성명</label>
-                    <input class="form-control" name="C_NAME" value="<%=customerSessionDTO.getC_name()%>" type="text" readonly>
+                    <input class="form-control" name="C_NAME" value="<%=customerSessionDTO.getC_name()%>" type="text"
+                           readonly>
                   </div>
                   <div class="form-floating mb-3">
                     <input class="form-control" name="ACC_ID" value="3333" type="hidden">
@@ -63,11 +64,13 @@
                   </div>
                   <div class="form-floating mb-3">
                     <label>상품종류</label>
-                    <input class="form-control" name="ACC_P_CATEGORY" value="<%=productDTO.getP_category()%>" type="text" readonly>
+                    <input class="form-control" name="ACC_P_CATEGORY" value="<%=productDTO.getP_category()%>"
+                           type="text" readonly>
                   </div>
                   <div class="form-floating mb-3">
                     <label>상품명 </label>
-                    <input class="form-control" name="ACC_P_NAME" value="<%=productDTO.getP_name()%>" type="text" readonly>
+                    <input class="form-control" name="ACC_P_NAME" value="<%=productDTO.getP_name()%>" type="text"
+                           readonly>
                   </div>
                   <div class="form-floating mb-3">
                     <label>금액</label>
@@ -88,11 +91,13 @@
                   </div>
                   <div class="form-floating mb-3">
                     <label>이자율</label>
-                    <input class="form-control" name="ACC_INTERESTRATE" value="<%=productDTO.getP_interestrate()%>%" type="text" readonly>
+                    <input class="form-control" name="ACC_INTERESTRATE" value="<%=productDTO.getP_interestrate()%>%"
+                           type="text" readonly>
                   </div>
                   <div class="form-floating mb-3">
                     <label>계약기간</label>
-                    <input class="form-control" name="ACC_P_Month" value="<%=productDTO.getP_contract_month()%>개월" type="text" readonly>
+                    <input class="form-control" name="ACC_P_Month" value="<%=productDTO.getP_contract_month()%>개월"
+                           type="text" readonly>
                   </div>
                   <div>
                   </div>
@@ -111,17 +116,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
             crossorigin="anonymous"></script>
-    <script>
-        function reloadPage() {
-            location.reload();
-        }
-    </script>
-    <script>
-        function formatCurrency(input) {
-            let value = input.value.replace(/[^0-9]/g, '');
-            let formattedValue = value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-            input.value = formattedValue + '원';
-        }
-    </script>
+    <script src="<%=contextPath%>/resources/js/loanJoin.js"></script>
 </body>
 </html>

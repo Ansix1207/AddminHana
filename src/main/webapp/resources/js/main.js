@@ -77,3 +77,28 @@ guideList.forEach((guide, idx) => {
           `
 })
 $adminGuideComponent.innerHTML = innerHTML;
+
+const alertMessage = '<%=request.getParameter("message")%>';
+const $descriptionForm = document.querySelector('.descriptionForm')
+const $toastSuccess = document.getElementById('toastSuccess')
+const $toastFailure = document.getElementById('toastFail')
+
+document.addEventListener("DOMContentLoaded", () => {
+    if (alertMessage == null || alertMessage == "null") {
+        return;
+    } else {
+        triggerToast($toastFailure);
+    }
+})
+
+const triggerToast = ($target) => {
+    const toast = new bootstrap.Toast($target);
+    toast.show();
+}
+
+window.onkeydown = function (event) {
+    const kcode = event.key;
+    if (kcode == "refresh") {
+        history.replaceState({}, null, location.pathname);
+    }
+}
