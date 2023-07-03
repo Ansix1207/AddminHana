@@ -2,7 +2,6 @@ package hana.teamfour.addminhana.DAO;
 
 import hana.teamfour.addminhana.DTO.AssetSumDTO;
 import hana.teamfour.addminhana.entity.AccountEntity;
-
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
@@ -116,5 +115,41 @@ public class AccountDAO {
         } finally {
             return responseEntity;
         }
+    }
+
+    public boolean insertAccount(AccountEntity accountEntity) throws SQLException {
+        boolean result = true;
+        String query = "INSERT INTO ACCOUNT VALUES(account_seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        try (Connection connection = dataFactory.getConnection()) {
+            connection.setAutoCommit(false); //트랜잭션 처리를 위한 AutoCommit off, 트랜잭션 시작
+            try (PreparedStatement statement = connection.prepareStatement(query)) {
+                statement.setInt(1, accountEntity.getAcc_cid());
+                statement.setTimestamp(2, accountEntity.getAcc_date());
+                statement.setInt(3, accountEntity.getAcc_balance());
+                statement.setString(4, accountEntity.getAcc_password());
+                statement.setInt(5, accountEntity.getAcc_pid());
+                statement.setString(6, accountEntity.getAcc_p_category());
+                statement.setString(7, accountEntity.getAcc_pname());
+                statement.setDouble(8, accountEntity.getAcc_interestrate());
+                statement.setInt(9, accountEntity.getAcc_collateralvalue());
+                statement.setInt(10, accountEntity.getAcc_interest_day());
+                statement.setInt(11, accountEntity.getAcc_contract_month());
+                statement.setTimestamp(12, accountEntity.getAcc_maturitydate());
+                statement.setString(13, String.valueOf(accountEntity.getAcc_isactive()));
+
+                if (statement.executeUpdate() == 1) {
+                    connection.commit();
+                    connection.setAutoCommit(true);
+                }
+            } catch (SQLException e) {
+                connection.rollback();
+                connection.setAutoCommit(true);
+                e.printStackTrace();
+                result = false;
+                throw e;
+            }
+        }
+        System.out.println("DAO 결과: " + result);
+        return result;
     }
 }

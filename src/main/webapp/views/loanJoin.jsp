@@ -15,41 +15,10 @@
 <%
   request.setCharacterEncoding("UTF-8");
   String contextPath = request.getContextPath();
-  String pIndex = request.getParameter("pIndex");
-  String pName = (String) request.getSession().getAttribute("P_Name_" + pIndex);
-  request.setAttribute("pName", pName);
-  String pCategory = (String) request.getSession().getAttribute("P_Category_" + pIndex);
-  request.setAttribute("pCategory", pCategory);
-  Integer pId = (Integer) request.getSession().getAttribute("P_Id_" + pIndex);
-  request.setAttribute("pId", pId);
-  Integer pInterestrate = (Integer) request.getSession().getAttribute("P_Interestrate_" + pIndex);
-  request.setAttribute("pInterestrate", pInterestrate);
-  Integer pContractMonth = (Integer) request.getSession().getAttribute("P_CONTRACT_MONTH_" + pIndex);
-  request.setAttribute("pContractMonth", pContractMonth);
 
   CustomerSessionDTO customerSessionDTO = (CustomerSessionDTO) request.getAttribute("customerSessionDTO");
   ProductDTO productDTO = (ProductDTO) request.getAttribute("productDTO");
 %>
-<% Boolean isSuccess = (Boolean) request.getAttribute("isSuccess");
-  System.out.println("isSuccess: " + isSuccess);
-%>
-<% if (isSuccess != null && isSuccess) { %>
-<script>
-    var alertMessage = "해당금융상품이 등록되었습니다";
-    alert(alertMessage);
-</script>
-<% } else if (isSuccess != null && !isSuccess) {%>
-<script>
-    var alertMessage = "등록이 안되었습니다. 다시 시도해주세요";
-    alert(alertMessage);
-</script>
-<% } else {%>
-<script>
-    var alertMessage = "다시 입력해주세요";
-    alert(alertMessage);
-</script>
-
-<%}%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -87,7 +56,7 @@
                     <input class="form-control" name="ACC_ID" value="3333" type="hidden">
                   </div>
                   <div class="form-floating mb-3">
-                    <input class="form-control" name="ACC_CID" value="3333" type="hidden">
+                    <input class="form-control" name="ACC_CID" value="<%=customerSessionDTO.getC_id()%>" type="hidden">
                   </div>
                   <div class="form-floating mb-3">
                     <label>비밀번호</label>
