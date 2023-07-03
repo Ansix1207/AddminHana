@@ -38,12 +38,6 @@
         </div>
         프로필
       </a>
-      <%--      <a class="nav-link" href="<%=contextPath%>/customer/loanjoin">--%>
-      <%--        <div class="sb-nav-link-icon">--%>
-      <%--          <i class="fas fa-angles-right"></i>--%>
-      <%--        </div>--%>
-      <%--        신규 상품 가입--%>
-      <%--      </a>--%>
       <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
          data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
         <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
