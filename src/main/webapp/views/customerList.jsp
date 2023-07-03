@@ -143,7 +143,7 @@
       const ordering = '<%=ordering %>';
       const customerCount = <%=customerCount%>;
       const $pagenation = document.querySelector(".datatable-pagination-list");
-      const lastPage = Math.floor(300 / size) + 1;
+      const lastPage = Math.floor(customerCount / size) + 1;
       let pageListNum = Math.floor((page - 1) / 10) * 10;
       const startPageIdx = 1 + pageListNum;
       const lastPageIdx = lastPage <= 10 + pageListNum ? lastPage : 10 + pageListNum;

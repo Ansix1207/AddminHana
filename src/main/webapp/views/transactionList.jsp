@@ -20,7 +20,7 @@
   if (tempList != null) {
     transactionList = tempList;
   }
-  Integer transactionCount = (Integer) request.getAttribute("TransactionCount");
+  Integer transactionCount = (Integer) request.getAttribute("transactionCount");
   String _page = request.getParameter("page");
   String size = request.getParameter("size");
   String orderBy = request.getParameter("orderBy");
@@ -109,17 +109,17 @@
                   </td>
                   <td style="width: 2rem;"><%=transactionList.get(i).getT_type() == '+' ? "입금" : "출금"%>
                   </td>
-                  <td style="width: 2rem;">₩ <%=decimalFormat.format(transactionList.get(i).getT_amount()) %>
+                  <td style="width: 4rem;">₩ <%=decimalFormat.format(transactionList.get(i).getT_amount()) %>
                   </td>
-                  <td style="width: 2rem;">₩ <%=decimalFormat.format(transactionList.get(i).getT_balance())%>
+                  <td style="width: 4rem;">₩ <%=decimalFormat.format(transactionList.get(i).getT_balance())%>
                   </td>
                   <td style="width: 2rem;"><%=transactionList.get(i).getT_accid()%>
                   </td>
                   <td style="width: 2rem;"><%=transactionList.get(i).getT_counterpart_id() == 0 ? "창구 입금" : transactionList.get(i).getT_counterpart_id()%>
                   </td>
-                  <td style="width: 2rem;"><%=transactionList.get(i).getT_description()%>
+                  <td style="width: 8rem;"><%=transactionList.get(i).getT_description()%>
                   </td>
-                  <td style="width: 2rem;"><%=transactionList.get(i).getT_date()%>
+                  <td style="width: 6rem;"><%=transactionList.get(i).getT_date()%>
                   </td>
                     <%
                   }
@@ -153,12 +153,12 @@
       const ordering = '<%=ordering %>';
       const transactionCount = <%=transactionCount%>;
       const $pagenation = document.querySelector(".datatable-pagination-list");
-      const lastPage = Math.floor(300 / size) + 1;
+      const lastPage = Math.floor(transactionCount / size) + 1;
       let pageListNum = Math.floor((page - 1) / 10) * 10;
       const startPageIdx = 1 + pageListNum;
       const lastPageIdx = lastPage <= 10 + pageListNum ? lastPage : 10 + pageListNum;
       let innerHTML = "";
-
+      
       innerHTML += `
       <li class="datatable-pagination-list-item">
         <a href="?t_accid=${t_accid}&page=${page - 10 > 0 ? page - 10 : 1}&size=${size}"data-page="1" class="datatable-pagination-list-item-link">‹</a>
