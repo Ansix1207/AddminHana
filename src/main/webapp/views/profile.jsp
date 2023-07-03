@@ -242,9 +242,13 @@ Settings | File Templates. --%>
                     for (int i = 0; i < 1; i++) {
                   %>
                   <li class="productItem">
-                    <div class="productName"><%=depositRecByAge.get(i).getP_name()%>
+                    <div class="d-flex flex-column">
+                      <span class="productName"><%=depositRecByAge.get(i).getP_name()%></span>
+                      <span>이자율 <%=depositRecByAge.get(i).getP_interestrate()%>%</span>
                     </div>
-                    <span>이자율 <%=depositRecByAge.get(i).getP_interestrate()%>%</span>
+                    <button onclick='location.href="loanjoin?pid=<%=depositRecByAge.get(i).getP_id()%>"' type="button"
+                            class="btn btn-secondary rounded-pill joinBtn">가입
+                    </button>
                   </li>
                   <%
                     }
@@ -253,9 +257,14 @@ Settings | File Templates. --%>
                     for (int i = 0; i < 1; i++) {
                   %>
                   <li class="productItem">
-                    <div class="productName"><%=depositRecByGender.get(i).getP_name()%>
+                    <div class="d-flex flex-column">
+                      <span class="productName"><%=depositRecByGender.get(i).getP_name()%></span>
+                      <span>이자율 <%=depositRecByGender.get(i).getP_interestrate()%>%</span>
                     </div>
-                    <span>이자율 <%=depositRecByGender.get(i).getP_interestrate()%>%</span>
+                    <button onclick='location.href="loanjoin?pid=<%=depositRecByGender.get(i).getP_id()%>"'
+                            type="button"
+                            class="btn btn-secondary rounded-pill joinBtn">가입
+                    </button>
                   </li>
                   <%
                     }
@@ -264,9 +273,14 @@ Settings | File Templates. --%>
                     for (int i = 0; i < 1; i++) {
                   %>
                   <li class="productItem">
-                    <div class="productName"><%=depositRecByJob.get(i).getP_name()%>
+                    <div class="d-flex flex-column">
+                      <span class="productName"><%=depositRecByJob.get(i).getP_name()%></span>
+                      <span>이자율 <%=depositRecByJob.get(i).getP_interestrate()%>%</span>
                     </div>
-                    <span>이자율 <%=depositRecByJob.get(i).getP_interestrate()%>%</span>
+                    <button onclick='location.href="loanjoin?pid=<%=depositRecByJob.get(i).getP_id()%>"'
+                            type="button"
+                            class="btn btn-secondary rounded-pill joinBtn">가입
+                    </button>
                   </li>
                   <%
                     }
@@ -286,9 +300,14 @@ Settings | File Templates. --%>
                     for (int i = 0; i < 1; i++) {
                   %>
                   <li class="productItem">
-                    <div class="productName"><%=savingsRecByAge.get(i).getP_name()%>
+                    <div class="d-flex flex-column">
+                      <span class="productName"><%=savingsRecByAge.get(i).getP_name()%></span>
+                      <span>이자율 <%=savingsRecByAge.get(i).getP_interestrate()%>%</span>
                     </div>
-                    <span>이자율 <%=savingsRecByAge.get(i).getP_interestrate()%>%</span>
+                    <button onclick='location.href="loanjoin?pid=<%=savingsRecByAge.get(i).getP_id()%>"'
+                            type="button"
+                            class="btn btn-secondary rounded-pill joinBtn">가입
+                    </button>
                   </li>
                   <%
                     }
@@ -297,9 +316,14 @@ Settings | File Templates. --%>
                     for (int i = 0; i < 1; i++) {
                   %>
                   <li class="productItem">
-                    <div class="productName"><%=savingsRecByGender.get(i).getP_name()%>
+                    <div class="d-flex flex-column">
+                      <span class="productName"><%=savingsRecByGender.get(i).getP_name()%></span>
+                      <span>이자율 <%=savingsRecByGender.get(i).getP_interestrate()%>%</span>
                     </div>
-                    <span>이자율 <%=savingsRecByGender.get(i).getP_interestrate()%>%</span>
+                    <button onclick='location.href="loanjoin?pid=<%=savingsRecByGender.get(i).getP_id()%>"'
+                            type="button"
+                            class="btn btn-secondary rounded-pill joinBtn">가입
+                    </button>
                   </li>
                   <%
                     }
@@ -308,9 +332,14 @@ Settings | File Templates. --%>
                     for (int i = 0; i < 1; i++) {
                   %>
                   <li class="productItem">
-                    <div class="productName"><%=savingsRecByJob.get(i).getP_name()%>
+                    <div class="d-flex flex-column">
+                      <span class="productName"><%=savingsRecByJob.get(i).getP_name()%></span>
+                      <span>이자율 <%=savingsRecByJob.get(i).getP_interestrate()%>%</span>
                     </div>
-                    <span>이자율 <%=savingsRecByJob.get(i).getP_interestrate()%>%</span>
+                    <button onclick='location.href="loanjoin?pid=<%=savingsRecByJob.get(i).getP_id()%>"'
+                            type="button"
+                            class="btn btn-secondary rounded-pill joinBtn">가입
+                    </button>
                   </li>
                   <%
                     }
@@ -330,9 +359,14 @@ Settings | File Templates. --%>
                     for (int i = 0; i < 1; i++) {
                   %>
                   <li class="productItem">
-                    <div class="productName"><%=loanRecByAge.get(i).getP_name()%>
+                    <div class="d-flex flex-column">
+                      <span class="productName"><%=loanRecByAge.get(i).getP_name()%></span>
+                      <span>이자율 <%=loanRecByAge.get(i).getP_interestrate()%>%</span>
                     </div>
-                    <span>이자율 <%=loanRecByAge.get(i).getP_interestrate()%>%</span>
+                    <button onclick='location.href="loanjoin?pid=<%=loanRecByAge.get(i).getP_id()%>"'
+                            type="button"
+                            class="btn btn-secondary rounded-pill joinBtn">가입
+                    </button>
                   </li>
                   <%
                     }
@@ -341,9 +375,14 @@ Settings | File Templates. --%>
                     for (int i = 0; i < 1; i++) {
                   %>
                   <li class="productItem">
-                    <div class="productName"><%=loanRecByGender.get(i).getP_name()%>
+                    <div class="d-flex flex-column">
+                      <span class="productName"><%=loanRecByGender.get(i).getP_name()%></span>
+                      <span>이자율 <%=loanRecByGender.get(i).getP_interestrate()%>%</span>
                     </div>
-                    <span>이자율 <%=loanRecByGender.get(i).getP_interestrate()%>%</span>
+                    <button onclick='location.href="loanjoin?pid=<%=loanRecByGender.get(i).getP_id()%>"'
+                            type="button"
+                            class="btn btn-secondary rounded-pill joinBtn">가입
+                    </button>
                   </li>
                   <%
                     }
@@ -352,9 +391,14 @@ Settings | File Templates. --%>
                     for (int i = 0; i < 1; i++) {
                   %>
                   <li class="productItem">
-                    <div class="productName"><%=loanRecByJob.get(i).getP_name()%>
+                    <div class="d-flex flex-column">
+                      <span class="productName"><%=loanRecByJob.get(i).getP_name()%></span>
+                      <span>이자율 <%=loanRecByJob.get(i).getP_interestrate()%>%</span>
                     </div>
-                    <span>이자율 <%=loanRecByJob.get(i).getP_interestrate()%>%</span>
+                    <button onclick='location.href="loanjoin?pid=<%=loanRecByJob.get(i).getP_id()%>"'
+                            type="button"
+                            class="btn btn-secondary rounded-pill joinBtn">가입
+                    </button>
                   </li>
                   <%
                     }
