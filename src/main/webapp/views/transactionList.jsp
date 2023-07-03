@@ -86,12 +86,18 @@
           <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
             <div class="datatable-top">
               <div class="datatable-dropdown"></div>
-              <div class="datatable-search">
+              <div class="datatable-search d-flex gap-4">
                 <form class="searchForm">
                   <input class="datatable-input" name="searchInput" placeholder="Search..." type="search"
                          title="Search within table"
                          aria-controls="datatablesSimple">
                   <button type="submit">검색</button>
+                </form>
+                <form class="accountForm">
+                  <input class="datatable-input" name="accountInput" placeholder="계좌번호를 입력하세요..." type="search"
+                         title="Account within table"
+                         aria-controls="datatablesSimple">
+                  <button type="submit">계좌 조회</button>
                 </form>
               </div>
             </div>
@@ -199,6 +205,13 @@
           e.preventDefault();
           const value = e.target.searchInput.value;
           location.href = `transactionList?t_accid=${t_accid}&page=${page}&size=${size}&search=${value}`;
+      })
+
+      $accountForm = document.querySelector(".accountForm");
+      $accountForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const value = e.target.accountInput.value;
+          location.href = `transactionList?t_accid=${value}&page=${page}&size=${size}&search=${search}`;
       })
 
       const handleClickColumn = (column) => {

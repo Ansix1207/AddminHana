@@ -70,6 +70,10 @@
         창구 업무
         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
       </a>
+      <a class="nav-link" href="<%=contextPath%>/transactionList?t_accid=0&page=1&size=10 ">
+        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+        거래 내역 리스트
+      </a>
       <div class="collapse" id="collapseLayouts2" aria-labelledby="headingOne"
            data-bs-parent="#sidenavAccordion">
         <nav class="sb-sidenav-menu-nested nav">
