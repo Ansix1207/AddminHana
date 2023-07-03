@@ -128,8 +128,8 @@
                   <div>
                   </div>
                   <div class="d-grid">
-                    <button onclick="reloadPage()" type="submit" class="btn btn-primary btn-block" id="signButton">신규 손님
-                      가입
+                    <button onclick="reloadPage()" type="submit" class="btn btn-primary btn-block" id="signButton">
+                      상품 가입
                     </button>
                   </div>
                 </div>

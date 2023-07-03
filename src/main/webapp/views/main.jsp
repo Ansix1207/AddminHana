@@ -5,7 +5,7 @@
   Time: 오후 2:02
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="true" %>
 <%
   request.setCharacterEncoding("UTF-8");
   String contextPath = request.getContextPath();
@@ -44,7 +44,7 @@
       <jsp:param name="description" value="<%=alertMessage%>"/>
     </jsp:include>
 
-    <main class="d-flex flex-column justify-content-center gap-2 mx-4 w-100">
+    <main class="d-flex flex-column flex-start gap-3 pt-4 mx-4 w-100">
       <form name="customerLoginForm" action="<%=contextPath%>/customer/profile" method="post"
             class="input-group input-group-lg flex-nowrap w-75">
           <span class="input-group-text" id="addon-wrapping">
@@ -80,53 +80,8 @@
         </form>
       </div>
 
-      <div class="accordion w-75" id="accordionExample">
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button bg-secondary text-bg-secondary" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseOne"
-                    aria-expanded="true" aria-controls="collapseOne">
-              자산 정보 가이드 #1
-            </button>
-          </h2>
-          <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <strong>손님의 자산 정보를 알려줍니다.</strong><br />
-              :시계_방향_화살표:(reload button)을 누르면 총 예금/적금/대출액 및 자산 차트가 표시됩니다.
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button bg-secondary text-bg-secondary collapsed" type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              가입 상품 가이드 #2
-            </button>
-          </h2>
-          <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <strong>손님이 가입한 상품을 한 눈에 보여줍니다.</strong><br />
-              상품 이름, 만기일, 이자율, 잔액을 확인할 수 있습니다.
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button bg-secondary text-bg-secondary collapsed" type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              추천 대출 상품 #3
-            </button>
-          </h2>
-          <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <strong>손님의 나이대, 성별, 직업에 기반한 추천 상품이 표시됩니다.</strong><br />
-              같은 나이대와 성별, 직업을 가진 다른 손님들이 가장 많이 가입한 상품 2개를 추천합니다.
-            </div>
-          </div>
-        </div>
-      </div>
+      <%-- 가이드 컴포넌트 --%>
+      <div class="accordion w-75 adminGuideComponent mt-4" id="accordionExample"></div>
 
     </main>
   </div>
@@ -158,6 +113,8 @@
               history.replaceState({}, null, location.pathname);
           }
       }
+
   </script>
+  <script src="<%=contextPath%>/resources/js/main.js"></script>
 </body>
 </html>
