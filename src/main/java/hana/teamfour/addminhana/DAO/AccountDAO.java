@@ -27,7 +27,7 @@ public class AccountDAO {
         ArrayList<AccountEntity> list = new ArrayList<AccountEntity>();
         String query = "SELECT * " +
                 "FROM ACCOUNT " +
-                "WHERE ACC_CID = ? AND SUBSTR(ACC_P_CATEGORY, 3, 2) = ? AND ACC_ISACTIVE = 'Y'";
+                "WHERE ACC_CID = ? AND SUBSTR(ACC_P_CATEGORY, 3, 2) = ? AND ACC_ISACTIVE = 'Y' and sysdate < acc_maturitydate";
 
         try (Connection connection = dataFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
@@ -66,7 +66,7 @@ public class AccountDAO {
         String query = "select sum(acc_balance) as balance_sum, acc_p_category " +
                 " from account " +
                 " where acc_cid = ? " +
-                "       and acc_isactive = 'Y' " +
+                "       and acc_isactive = 'Y' and sysdate < acc_maturitydate " +
                 " group by acc_p_category";
         try (Connection connection = dataFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
