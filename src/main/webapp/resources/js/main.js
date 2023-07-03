@@ -78,7 +78,6 @@ guideList.forEach((guide, idx) => {
 })
 $adminGuideComponent.innerHTML = innerHTML;
 
-const alertMessage = '<%=request.getParameter("message")%>';
 const $descriptionForm = document.querySelector('.descriptionForm')
 const $toastSuccess = document.getElementById('toastSuccess')
 const $toastFailure = document.getElementById('toastFail')
