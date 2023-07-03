@@ -137,7 +137,7 @@
       // 유효성 검사 함수
       function validateAmount() {
           let amount = parseFloat(amountInput.value);
-          let balance = parseFloat(balanceInput.value);
+          let balance = parseFloat(balanceInput.value.replace(/,/g, ""));
 
           // 유효성 검사 조건 설정
           if (amount > balance) {
@@ -147,14 +147,20 @@
       }
 
       function submitForm() {
+          <% if(!title.equals("입금")) {%>
+          let acc_id = document.getElementById('acc_id').value;
+          document.getElementById('acc_id').value = acc_id.replace(/ /g, "");
+          <%}%>
           <% if(!title.equals("출금")) {%>
           let counterpart_id = document.getElementById('counterpart_id').value;
+          document.getElementById('counterpart_id').value = counterpart_id.replace(/ /g, "");
           if (counterpart_id != null && counterpart_id.length == 0) {
               alert("입금할 계좌를 입력해야 합니다!");
               return;
           }
           <%}%>
           let t_amount = document.getElementById('t_amount').value;
+          document.getElementById('t_amount').value = t_amount.replace(/ /g, "");
           if (t_amount != null && t_amount.length == 0) {
               alert("거래 금액을 입력해야 합니다!");
               return;
@@ -188,6 +194,11 @@
           var isCheck = document.createElement('input');
           isCheck.setAttribute('type', 'text');
           isCheck.setAttribute('name', 'isCheck');
+          let acc_id = document.getElementById('acc_id').value;
+          document.getElementById('acc_id').value = acc_id.replace(/ /g, "");
+          // let t_amount = document.getElementById('t_amount').value;
+          // document.getElemenrtById('t_amount').value = t_amount.replace(/ /g, "");
+
           if (document.getElementById('acc_password').value.trim() <= 3) {
               alert("비밀번호 4자리를 모두 입력해주세요.")
               return;

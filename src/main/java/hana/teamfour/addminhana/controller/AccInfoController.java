@@ -87,7 +87,7 @@ public class AccInfoController extends HttpServlet {
         request.setAttribute("assetDTO", assetDTO);
         request.setAttribute("accountDTO", accountDTOList);
         request.setAttribute("recByJob", recByJobProducts);
-        request.setAttribute("recByGender", recByGenderProducts);;
+        request.setAttribute("recByGender", recByGenderProducts);
         request.setAttribute("recByAge", recByAgeProducts);
 
         String site = "../views/sessionOnAccInfo.jsp";
