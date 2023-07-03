@@ -1,29 +1,36 @@
 package hana.teamfour.addminhana.service;
 
-import hana.teamfour.addminhana.DAO.LoanJoinDAO;
+import hana.teamfour.addminhana.DAO.AccountDAO;
 import hana.teamfour.addminhana.DAO.ProductDAO;
+import hana.teamfour.addminhana.DTO.AccountDTO;
 import hana.teamfour.addminhana.DTO.ProductDTO;
-import hana.teamfour.addminhana.DTO.ProductJoinDTO;
 import hana.teamfour.addminhana.entity.AccountEntity;
 import hana.teamfour.addminhana.entity.ProductEntity;
 
+import java.sql.SQLException;
+
 public class LoanJoinService {
     private ProductDAO productDAO;
-    private LoanJoinDAO loanJoinDAO;
+    private AccountDAO accountDAO;
 
     public LoanJoinService() {
         this.productDAO = new ProductDAO();
-        this.loanJoinDAO = new LoanJoinDAO();
+        this.accountDAO = new AccountDAO();
     }
 
-    public boolean insertLoanJoin(ProductJoinDTO productJoinDTO, ProductDTO productDTO) {
-        AccountEntity accountEntity = convertToAccountEntity(productJoinDTO, productDTO);
-        boolean isSuccess = loanJoinDAO.insertAccount(accountEntity);
-        System.out.println("service " + isSuccess);
+    public boolean insertLoanJoin(AccountDTO accountDTO) {
+        // AccountEntity accountEntity = new AccountEntity(accountDTO);
+        boolean isSuccess = false;
+        try {
+            isSuccess = accountDAO.insertAccount(accountDTO.toEntity(accountDTO));
+            System.out.println("Service 결과: " + isSuccess);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return isSuccess;
     }
 
-    private AccountEntity convertToAccountEntity(ProductJoinDTO productJoinDTO, ProductDTO productDTO) {
+    private AccountEntity convertToAccountEntity(AccountDTO productJoinDTO, ProductDTO productDTO) {
         AccountEntity accountEntity = new AccountEntity();
 
         accountEntity.setAcc_id(productJoinDTO.getAcc_id());

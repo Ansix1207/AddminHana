@@ -122,9 +122,9 @@ To change this template use File | Settings | File Templates.
               %>
               <li>
                 <div class="productName"><%=account.getAcc_pname()%></div>
-                <span>만기일 <%=account.getAcc_maturitydate()%></span>
+                <span>만기일 <%=account.getAcc_str_maturitydate()%></span>
                 <span>이자율 <%=account.getAcc_interestrate()%>%</span>
-                <span><%=balance%> <%=account.getAcc_balance()%>원</span>
+                <span><%=balance%> <%=account.getAcc_str_balance()%>원</span>
               </li>
               <%
                 }
