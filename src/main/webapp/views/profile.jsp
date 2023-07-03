@@ -189,8 +189,7 @@ Settings | File Templates. --%>
                           <a class="accountLink"
                              href="<%=contextPath%>/transactionList?t_accid=<%=account.getAcc_id()%>&page=1&size=10">
                             <%=account.getAcc_pname()%>
-                            <span class=" fs-10"> [계좌번호 : <%=account.getAcc_id()%>]
-                          </span>
+                            <span class=" fs-10"> [계좌번호 : <%=account.getAcc_id()%>]</span>
                           </a>
                         </div>
                         <span>만기일 <%=account.getAcc_str_maturitydate()%></span>

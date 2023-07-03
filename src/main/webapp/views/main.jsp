@@ -88,33 +88,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
           crossorigin="anonymous"></script>
-  <script>
-      const alertMessage = '<%=request.getParameter("message")%>';
-      const $descriptionForm = document.querySelector('.descriptionForm')
-      const $toastSuccess = document.getElementById('toastSuccess')
-      const $toastFailure = document.getElementById('toastFail')
-
-      document.addEventListener("DOMContentLoaded", () => {
-          if (alertMessage == null || alertMessage == "null") {
-              return;
-          } else {
-              triggerToast($toastFailure);
-          }
-      })
-
-      const triggerToast = ($target) => {
-          const toast = new bootstrap.Toast($target);
-          toast.show();
-      }
-
-      window.onkeydown = function (event) {
-          const kcode = event.key;
-          if (kcode == "refresh") {
-              history.replaceState({}, null, location.pathname);
-          }
-      }
-
-  </script>
   <script src="<%=contextPath%>/resources/js/main.js"></script>
 </body>
 </html>
