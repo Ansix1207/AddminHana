@@ -246,7 +246,6 @@ To change this template use File | Settings | File Templates.
 
       data = {
           datasets: [{
-              backgroundColor: ['#BF5AD8', '#9E37D1'],
               data: [<%=accountBalance[0]%>, <%=accountBalance[1]%>]
           }],
           // 라벨의 이름이 툴팁처럼 마우스가 근처에 오면 나타남
