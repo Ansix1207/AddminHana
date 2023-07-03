@@ -44,9 +44,6 @@ public class TransactionListController extends HttpServlet {
         String ordering = request.getParameter("ordering");
         String t_accidStr = request.getParameter("t_accid");
         Integer t_accid = t_accidStr == null ? 1 : Integer.parseInt(t_accidStr);
-
-        System.out.println("t_accid = " + t_accid);
-
         List<TransactionDTO> transactionDTOList = null;
         if (page == null || page == "") {
             page = "1";
