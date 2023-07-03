@@ -37,7 +37,7 @@ let selectorInnerHTML = `
 $sizeSelector.innerHTML = selectorInnerHTML;
 $sizeSelector.addEventListener('change', (e) => {
     const value = e.target.value;
-    location.href = `transactionList?t_accid=${t_accid}page=${page}&size=${value}`;
+    location.href = `transactionList?t_accid=${t_accid}&page=${page}&size=${value}`;
 });
 
 $searchForm = document.querySelector(".searchForm");
