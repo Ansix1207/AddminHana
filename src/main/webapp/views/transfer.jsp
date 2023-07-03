@@ -137,7 +137,7 @@
       // 유효성 검사 함수
       function validateAmount() {
           let amount = parseFloat(amountInput.value);
-          let balance = parseFloat(balanceInput.value);
+          let balance = parseFloat(balanceInput.value.replace(/,/g, ""));
 
           // 유효성 검사 조건 설정
           if (amount > balance) {
