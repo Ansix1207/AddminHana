@@ -70,11 +70,13 @@ public class LoanJoinController extends HttpServlet {
 
                 productDTO.setP_id(Integer.valueOf(request.getParameter("ACC_PID")));
                 productDTO.setP_category(request.getParameter("ACC_P_CATEGORY"));
-                productDTO.setP_interestrate(Double.valueOf((request.getParameter("ACC_INTERESTRATE"))));
-                productJoinDTO.setAcc_collateralvalue(Integer.parseInt(request.getParameter("ACC_COLLATERALVALUE")));
+                productDTO.setP_interestrate(Double.valueOf((request.getParameter("ACC_INTERESTRATE")).replace("%", "")));
+
+                Double least_collateralvalue = Double.valueOf((request.getParameter("ACC_COLLATERALVALUE")).replace("개월", ""));
+                productJoinDTO.setAcc_collateralvalue(0);
 
                 productJoinDTO.setAcc_interest_day(1);
-                productDTO.setP_contract_month(Integer.valueOf(request.getParameter("ACC_P_Month")));
+                productDTO.setP_contract_month(Integer.valueOf(request.getParameter("ACC_P_Month").replace("개월", "")));
                 productJoinDTO.setAcc_maturitydate(java.sql.Timestamp.valueOf(currentDateTime));
                 productJoinDTO.setAcc_isactive('Y');
                 System.out.println(productDTO);
@@ -82,8 +84,7 @@ public class LoanJoinController extends HttpServlet {
                 boolean isSuccess = loanJoinService.insertLoanJoin(productJoinDTO, productDTO);
                 request.setAttribute("isSuccess", isSuccess);
                 System.out.println("POST 요청 처리 끝" + request);
-                dispatcher = request.getRequestDispatcher("/views/loanJoin.jsp");
-                dispatcher.forward(request, response);
+                response.sendRedirect(request.getContextPath());
                 break;
             default:
         }
