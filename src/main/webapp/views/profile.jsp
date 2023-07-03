@@ -156,9 +156,13 @@ Settings | File Templates. --%>
                         for (AccountDTO account : depositAccountList) {
                       %>
                       <li>
-                        <div class="productName"><%=account.getAcc_pname()%>
-                          <span class="fs-10"> [계좌번호 : <%=account.getAcc_id()%>]
+                        <div class="productName">
+                          <a class="accountLink"
+                             href="<%=contextPath%>/transactionList?t_accid=<%=account.getAcc_id()%>&page=1&size=10">
+                            <%=account.getAcc_pname()%>
+                            <span class=" fs-10"> [계좌번호 : <%=account.getAcc_id()%>]
                           </span>
+                          </a>
                         </div>
                         <span>만기일 <%=account.getAcc_maturitydate()%></span>
                         <span>이자율 <%=account.getAcc_interestrate()%>%</span>
@@ -181,9 +185,13 @@ Settings | File Templates. --%>
                         for (AccountDTO account : savingsAccountList) {
                       %>
                       <li>
-                        <div class="productName"><%=account.getAcc_pname()%>
-                          <span class="fs-10"> [계좌번호 : <%=account.getAcc_id()%>]
+                        <div class="productName">
+                          <a class="accountLink"
+                             href="<%=contextPath%>/transactionList?t_accid=<%=account.getAcc_id()%>&page=1&size=10">
+                            <%=account.getAcc_pname()%>
+                            <span class=" fs-10"> [계좌번호 : <%=account.getAcc_id()%>]
                           </span>
+                          </a>
                         </div>
                         <span>만기일 <%=account.getAcc_maturitydate()%></span>
                         <span>이자율 <%=account.getAcc_interestrate()%>%</span>
@@ -206,9 +214,13 @@ Settings | File Templates. --%>
                         for (AccountDTO account : loanAccountList) {
                       %>
                       <li>
-                        <div class="productName"><%=account.getAcc_pname()%>
-                          <span class="fs-10"> [계좌번호 : <%=account.getAcc_id()%>]
+                        <div class="productName">
+                          <a class="accountLink"
+                             href="<%=contextPath%>/transactionList?t_accid=<%=account.getAcc_id()%>&page=1&size=10">
+                            <%=account.getAcc_pname()%>
+                            <span class=" fs-10"> [계좌번호 : <%=account.getAcc_id()%>]
                           </span>
+                          </a>
                         </div>
                         <span>만기일 <%=account.getAcc_maturitydate()%></span>
                         <span>이자율 <%=account.getAcc_interestrate()%>%</span>
@@ -243,7 +255,8 @@ Settings | File Templates. --%>
                   %>
                   <li class="productItem">
                     <div class="d-flex flex-column">
-                      <span class="productName"><%=depositRecByAge.get(i).getP_name()%></span>
+                      <span class="productName">
+                        <%=depositRecByAge.get(i).getP_name()%></span>
                       <span>이자율 <%=depositRecByAge.get(i).getP_interestrate()%>%</span>
                     </div>
                     <button onclick='location.href="loanjoin?pid=<%=depositRecByAge.get(i).getP_id()%>"' type="button"

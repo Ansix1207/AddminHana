@@ -1,5 +1,6 @@
 package hana.teamfour.addminhana.DAO;
 
+import hana.teamfour.addminhana.DTO.PaginationDTO;
 import hana.teamfour.addminhana.Exception.BalanceInsufficientException;
 import hana.teamfour.addminhana.Exception.DepositException;
 import hana.teamfour.addminhana.Exception.TransferException;
@@ -9,6 +10,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TransactionDAO {
     private DataSource dataFactory;
@@ -205,5 +208,124 @@ public class TransactionDAO {
         } finally {
             return result;
         }
+    }
+
+    public List<TransactionEntity> findAll() {
+        List<TransactionEntity> list = new ArrayList<>();
+        String query = "select * from customer ";
+        try (Connection connection = dataFactory.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            try (ResultSet rs = statement.executeQuery()) {
+                while (rs.next()) {
+                    Integer t_id = rs.getInt("t_id");
+                    Integer t_accid = rs.getInt("t_accid");
+                    Integer t_counterpart_id = rs.getInt("t_counterpart_id");
+                    Character t_type = rs.getString("t_type").charAt(0);
+                    Timestamp t_date = rs.getTimestamp("t_date");
+                    Integer t_amount = rs.getInt("t_amount");
+                    String t_description = rs.getString("t_description");
+                    Character t_status = rs.getString("t_status").charAt(0);
+                    Integer t_balance = rs.getInt("t_balance");
+                    TransactionEntity transactionEntity = new TransactionEntity(t_id, t_accid, t_counterpart_id, t_type, t_date, t_amount, t_description, t_status, t_balance);
+                    list.add(transactionEntity);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public List<TransactionEntity> findAllByAccId(Integer _t_accid) {
+        List<TransactionEntity> list = new ArrayList<>();
+        String query = "select * from customer where t_accid = ? and t_status = 'T'";
+        try (Connection connection = dataFactory.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, _t_accid);
+            try (ResultSet rs = statement.executeQuery()) {
+                while (rs.next()) {
+                    Integer t_id = rs.getInt("t_id");
+                    Integer t_accid = rs.getInt("t_accid");
+                    Integer t_counterpart_id = rs.getInt("t_counterpart_id");
+                    Character t_type = rs.getString("t_type").charAt(0);
+                    Timestamp t_date = rs.getTimestamp("t_date");
+                    Integer t_amount = rs.getInt("t_amount");
+                    String t_description = rs.getString("t_description");
+                    Character t_status = rs.getString("t_status").charAt(0);
+                    Integer t_balance = rs.getInt("t_balance");
+                    TransactionEntity transactionEntity = new TransactionEntity(t_id, t_accid, t_counterpart_id, t_type, t_date, t_amount, t_description, t_status, t_balance);
+                    list.add(transactionEntity);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public Integer countRowsByAccId(Integer t_accid) {
+        Integer count = null;
+        String query = "select count(t_id) from transaction " +
+                " where t_accid = ? " +
+                "   and t_status = 'T'";
+        try (Connection connection = dataFactory.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, t_accid);
+            try (ResultSet rs = statement.executeQuery()) {
+                if (rs.next()) {
+                    Integer countFromDB = rs.getInt(1);
+                    count = countFromDB;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
+    public List<TransactionEntity> findWithPaginationByAccid(Integer _t_accid, PaginationDTO paginationDTO) {
+        List<TransactionEntity> list = new ArrayList<>();
+        String query = "" +
+                "select * from (" +
+                "   select rownum as rownumber, " +
+                "           ordered_transaction.* from (" +
+                "               select * from transaction " +
+                "               where t_accid = ? " +
+                "                 and t_status = 'T' " +
+                "                 and t_description like ? " +
+                "               order by t_accid desc ) ordered_transaction ) " +
+                " where rownumber >= ? and rownumber < ?";
+        Integer size = paginationDTO.getSize();
+        Integer page = paginationDTO.getPage();
+        String search = paginationDTO.getSearch();
+        String orderBy = paginationDTO.getOrderBy();
+        String ordering = paginationDTO.getOrdering();
+        Integer startNum = 1 + (size * (page - 1));
+        Integer lastNum = startNum + size;
+        try (Connection connection = dataFactory.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, _t_accid);
+            statement.setString(2, search);
+            statement.setInt(3, startNum);
+            statement.setInt(4, lastNum);
+            try (ResultSet rs = statement.executeQuery()) {
+                while (rs.next()) {
+                    Integer t_id = rs.getInt("t_id");
+                    Integer t_accid = rs.getInt("t_accid");
+                    Integer t_counterpart_id = rs.getInt("t_counterpart_id");
+                    Character t_type = rs.getString("t_type").charAt(0);
+                    Timestamp t_date = rs.getTimestamp("t_date");
+                    Integer t_amount = rs.getInt("t_amount");
+                    String t_description = rs.getString("t_description");
+                    Character t_status = rs.getString("t_status").charAt(0);
+                    Integer t_balance = rs.getInt("t_balance");
+                    TransactionEntity transactionEntity = new TransactionEntity(t_id, t_accid, t_counterpart_id, t_type, t_date, t_amount, t_description, t_status, t_balance);
+                    list.add(transactionEntity);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 }

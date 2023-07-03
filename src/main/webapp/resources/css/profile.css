@@ -105,3 +105,18 @@ textarea {
   font-size: 0.9rem;
   line-height: 0.9rem;
 }
+
+.accountLink {
+  text-decoration: none;
+  text-underline: none;
+}
+
+.accountLink {
+  color: #000;
+  text-decoration: none;
+  outline: none
+}
+
+.accountLink:hover, .accountLink:active {
+  color: #888;
+}
