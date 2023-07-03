@@ -84,128 +84,143 @@ To change this template use File | Settings | File Templates.
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-<div class="wrap">
-  <nav id="layoutSidenav_nav">
-  <%@ include file="common/navbar.jsp" %>
-  </nav>
-  <main class="d-grid grid-cols-2 w-100">
-    <div class="col-span-1 p-4 h-100">
-      <div class="card statisticsSituation h-100">
-        <div class="card-body">
-          <span class="componentTitle"><%=customerName%> 님의 <%=category%> 현황</span>
-          <div class="mb-4 assetInfo">
-            <h5 class="card-title mt-3 mb-2">자산 정보</h5>
-            <div class="d-flex justify-content-between align-items-center">
-              <p>
-                <span>총 <%=category%>액</span>
-                <span class="card-text">₩ <%=str_asset%></span>
-              </p>
-              <form action="<%=link_by_cate%>Info" method="post">
-                <button type="submit" class="btn">새로고침
-                  <i class="fa-solid fa-rotate-right"></i>
-                </button>
-                <input type="hidden" name="action" value="asset-update">
-              </form>
-            </div>
+  <div class="wrap">
+    <nav id="layoutSidenav_nav">
+      <%@ include file="common/navbar.jsp" %>
+    </nav>
+    <main class="d-grid grid-cols-2 w-100">
+      <div class="col-span-1 p-4 h-100">
+        <div class="card statisticsSituation h-100">
+          <div class="card-body">
+            <span class="componentTitle"><%=customerName%> 님의 <%=category%> 현황</span>
+            <div class="mb-4 assetInfo">
+              <h5 class="card-title mt-3 mb-2">자산 정보</h5>
+              <div class="d-flex justify-content-between align-items-center">
+                <p>
+                  <span>총 <%=category%>액</span>
+                  <span class="card-text">₩ <%=str_asset%></span>
+                </p>
+                <form action="<%=link_by_cate%>Info" method="post">
+                  <button type="submit" class="btn">새로고침
+                    <i class="fa-solid fa-rotate-right"></i>
+                  </button>
+                  <input type="hidden" name="action" value="asset-update">
+                </form>
+              </div>
 
-            <div class="statisticsChart">
-              <%-- 손님의 대출 자산 현황 그래프 --%>
-              <canvas id="assetChart"></canvas>
+              <div class="statisticsChart">
+                <%-- 손님의 대출 자산 현황 그래프 --%>
+                <canvas id="assetChart"></canvas>
+              </div>
+            </div>
+            <div class="signedupProduct">
+              <h5 class="card-title mt-3 mb-2">가입 상품</h5>
+              <%-- 가입된 상품 리스트 --%>
+              <ul>
+                <%
+                  for (AccountDTO account : accountDTO) {
+                %>
+                <li>
+                  <div class="productName">
+                    <a class="accountLink"
+                       href="<%=contextPath%>/transactionList?t_accid=<%=account.getAcc_id()%>&page=1&size=10">
+                      <%=account.getAcc_pname()%>
+                      <span class=" fs-10"> [계좌번호 : <%=account.getAcc_id()%>]</span>
+                    </a>
+                  </div>
+                  <span>만기일 <%=account.getAcc_maturitydate()%></span>
+                  <span>이자율 <%=account.getAcc_interestrate()%>%</span>
+                  <span><%=balance%> <%=account.getAcc_balance()%>원</span>
+                </li>
+                <%
+                  }
+                %>
+              </ul>
             </div>
           </div>
-          <div class="signedupProduct">
-            <h5 class="card-title mt-3 mb-2">가입 상품</h5>
-            <%-- 가입된 상품 리스트 --%>
-            <ul>
-              <%
-                for (AccountDTO account : accountDTO) {
-              %>
-              <li>
-                <div class="productName"><%=account.getAcc_pname()%></div>
-                <span>만기일 <%=account.getAcc_maturitydate()%></span>
-                <span>이자율 <%=account.getAcc_interestrate()%>%</span>
-                <span><%=balance%> <%=account.getAcc_balance()%>원</span>
-              </li>
-              <%
-                }
-              %>
-            </ul>
+        </div>
+      </div>
+      <div class="col-span-1 p-4 h-100">
+        <div class="recommendProduct card h-100">
+          <div class="card-body">
+            <span class="componentTitle">추천 <%=category%> 상품</span>
+            <div>
+              <%-- 추천 대출 상품 리스트 --%>
+              <ul class="recommendList">
+                <li class="recommendTitle mt-3 mb-2"><%=ageRange%>대가 가장 많이 가입한</li>
+                <%
+                  for (int i = 0; i < recByAge.size(); i++) {
+                %>
+                <li>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="productName"><%=recByAge.get(i).getP_name()%>
+                    </div>
+                    <%-- p_id를 인자로 넘겨줘야 함 --%>
+                    <button onclick='location.href="loanjoin?pid=<%=recByAge.get(i).getP_id()%>"' type="button"
+                            class="btn btn-secondary rounded-pill d-flex align-items-center joinBtn">가입
+                    </button>
+                  </div>
+                  <span>이자율 <%=recByAge.get(i).getP_interestrate()%>%</span>
+                </li>
+                <%
+                  }
+                %>
+              </ul>
+              <ul class="recommendList">
+                <li class="recommendTitle mt-3 mb-2"><%=gender%>이 가장 많이 가입한</li>
+                <%
+                  for (int i = 0; i < recByGender.size(); i++) {
+                %>
+                <li>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="productName"><%=recByGender.get(i).getP_name()%>
+                    </div>
+                    <button onclick='location.href="loanjoin?pid=<%=recByGender.get(i).getP_id()%>"' type="button"
+                            class="btn btn-secondary rounded-pill d-flex align-items-center joinBtn">가입
+                    </button>
+                  </div>
+                  <span>이자율 <%=recByGender.get(i).getP_interestrate()%>%</span>
+                </li>
+                <%
+                  }
+                %>
+              </ul>
+              <ul class="recommendList">
+                <li class="recommendTitle mt-3 mb-2"><%=job%> 손님을 위한</li>
+                <%
+                  for (int i = 0; i < recByJob.size(); i++) {
+                %>
+                <li>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="productName"><%=recByJob.get(i).getP_name()%>
+                    </div>
+                    <button onclick='location.href="loanjoin?pid=<%=recByJob.get(i).getP_id()%>"' type="button"
+                            class="btn btn-secondary rounded-pill d-flex align-items-center joinBtn">가입
+                    </button>
+                  </div>
+                  <span>이자율 <%=recByJob.get(i).getP_interestrate()%>%</span>
+                </li>
+                <%
+                  }
+                %>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-span-1 p-4 h-100">
-      <div class="recommendProduct card h-100">
-        <div class="card-body">
-          <span class="componentTitle">추천 <%=category%> 상품</span>
-          <div>
-            <%-- 추천 대출 상품 리스트 --%>
-            <ul class="recommendList">
-              <li class="recommendTitle mt-3 mb-2"><%=ageRange%>대가 가장 많이 가입한</li>
-              <%
-                for (int i = 0; i < recByAge.size(); i++) {
-              %>
-              <li>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="productName"><%=recByAge.get(i).getP_name()%></div>
-                  <%-- p_id를 인자로 넘겨줘야 함 --%>
-                  <button onclick='location.href="loanjoin?pid=<%=recByAge.get(i).getP_id()%>"' type="button" class="btn btn-secondary rounded-pill d-flex align-items-center joinBtn">가입</button>
-                </div>
-                <span>이자율 <%=recByAge.get(i).getP_interestrate()%>%</span>
-              </li>
-              <%
-                }
-              %>
-            </ul>
-            <ul class="recommendList">
-              <li class="recommendTitle mt-3 mb-2"><%=gender%>이 가장 많이 가입한</li>
-              <%
-                for (int i = 0; i < recByGender.size(); i++) {
-              %>
-              <li>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="productName"><%=recByGender.get(i).getP_name()%></div>
-                  <button onclick='location.href="loanjoin?pid=<%=recByGender.get(i).getP_id()%>"' type="button" class="btn btn-secondary rounded-pill d-flex align-items-center joinBtn">가입</button>
-                </div>
-                <span>이자율 <%=recByGender.get(i).getP_interestrate()%>%</span>
-              </li>
-              <%
-                }
-              %>
-            </ul>
-            <ul class="recommendList">
-              <li class="recommendTitle mt-3 mb-2"><%=job%> 손님을 위한</li>
-              <%
-                for (int i = 0; i < recByJob.size(); i++) {
-              %>
-              <li>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="productName"><%=recByJob.get(i).getP_name()%></div>
-                  <button onclick='location.href="loanjoin?pid=<%=recByJob.get(i).getP_id()%>"' type="button" class="btn btn-secondary rounded-pill d-flex align-items-center joinBtn">가입</button>
-                </div>
-                <span>이자율 <%=recByJob.get(i).getP_interestrate()%>%</span>
-              </li>
-              <%
-                }
-              %>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-    crossorigin="anonymous"></script>
-<script>
-    // 자산이 없을 때 빈 도넛 차트를 그리기 위한 플러그인
-    const plugin = {
-        id: 'emptyDoughnut',
-        afterDraw(chart, args, options) {
-            const {datasets} = chart.data;
-            const {color, width, radiusDecrease} = options;
-            let hasData = false;
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+          crossorigin="anonymous"></script>
+  <script>
+      // 자산이 없을 때 빈 도넛 차트를 그리기 위한 플러그인
+      const plugin = {
+          id: 'emptyDoughnut',
+          afterDraw(chart, args, options) {
+              const {datasets} = chart.data;
+              const {color, width, radiusDecrease} = options;
+              let hasData = false;
 
               for (let i = 0; i < datasets.length; i += 1) {
                   const dataset = datasets[i];
@@ -231,7 +246,6 @@ To change this template use File | Settings | File Templates.
 
       data = {
           datasets: [{
-              backgroundColor: ['#BF5AD8', '#9E37D1'],
               data: [<%=accountBalance[0]%>, <%=accountBalance[1]%>]
           }],
           // 라벨의 이름이 툴팁처럼 마우스가 근처에 오면 나타남

@@ -109,11 +109,7 @@ textarea {
 .accountLink {
   text-decoration: none;
   text-underline: none;
-}
-
-.accountLink {
   color: #000;
-  text-decoration: none;
   outline: none
 }
 
