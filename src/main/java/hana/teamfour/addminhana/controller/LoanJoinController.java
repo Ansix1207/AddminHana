@@ -1,8 +1,8 @@
 package hana.teamfour.addminhana.controller;
 
+import hana.teamfour.addminhana.DTO.AccountDTO;
 import hana.teamfour.addminhana.DTO.CustomerSessionDTO;
 import hana.teamfour.addminhana.DTO.ProductDTO;
-import hana.teamfour.addminhana.DTO.ProductJoinDTO;
 import hana.teamfour.addminhana.service.LoanJoinService;
 
 import javax.servlet.RequestDispatcher;
@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 @WebServlet("/customer/loanjoin")
@@ -56,36 +58,42 @@ public class LoanJoinController extends HttpServlet {
                 dispatcher.forward(request, response);
                 break;
             case "POST":
-                System.out.println("Post 진입");
-                ProductJoinDTO productJoinDTO = new ProductJoinDTO();
-                ProductDTO productDTO = new ProductDTO();
+
                 LocalDateTime currentDateTime = LocalDateTime.now();
 
-                productDTO.setP_name(request.getParameter("ACC_P_NAME"));
-                productJoinDTO.setAcc_id(Integer.valueOf(request.getParameter("ACC_ID")));
-                productJoinDTO.setAcc_cid(Integer.valueOf(request.getParameter("ACC_CID")));
-                productJoinDTO.setAcc_date(java.sql.Timestamp.valueOf(currentDateTime));
-                productJoinDTO.setAcc_balance(Integer.valueOf(request.getParameter("ACC_BALANCE")));
-                productJoinDTO.setAcc_password(request.getParameter("ACC_PASSWORD"));
+                Integer acc_id = Integer.valueOf(request.getParameter("ACC_ID"));
+                Integer acc_cid = Integer.valueOf(request.getParameter("ACC_CID"));
+                Timestamp acc_date = Timestamp.valueOf(currentDateTime);
+                Integer acc_balance = Integer.valueOf(request.getParameter("ACC_BALANCE"));
+                String acc_password = request.getParameter("ACC_PASSWORD");
+                Integer acc_pid = Integer.valueOf(request.getParameter("ACC_PID"));
+                String acc_p_category = request.getParameter("ACC_P_CATEGORY");
+                String acc_pname = request.getParameter("ACC_P_NAME");
+                Double acc_interestrate = Double.valueOf(request.getParameter("ACC_INTERESTRATE").replace("%", ""));
+                Integer acc_collateralvalue = Integer.valueOf((int) (Double.valueOf(acc_balance) * Double.valueOf((request.getParameter("ACC_COLLATERALVALUE")))));
+                Integer acc_interest_day = 1;
+                Integer acc_contract_month = Integer.valueOf(request.getParameter("ACC_P_Month").replace("개월", ""));
+                Timestamp acc_maturitydate = java.sql.Timestamp.valueOf(currentDateTime.plusMonths(acc_contract_month));
+                Character acc_isactive = 'Y';
 
-                productDTO.setP_id(Integer.valueOf(request.getParameter("ACC_PID")));
-                productDTO.setP_category(request.getParameter("ACC_P_CATEGORY"));
-                productDTO.setP_interestrate(Double.valueOf((request.getParameter("ACC_INTERESTRATE")).replace("%", "")));
+                AccountDTO accountDTO = new AccountDTO(acc_id, acc_cid, acc_date, acc_balance, acc_password, acc_pid, acc_p_category, acc_pname, acc_interestrate, acc_collateralvalue, acc_interest_day, acc_contract_month, acc_maturitydate, acc_isactive);
 
-                Double least_collateralvalue = Double.valueOf((request.getParameter("ACC_COLLATERALVALUE")).replace("개월", ""));
-                productJoinDTO.setAcc_collateralvalue(0);
-
-                productJoinDTO.setAcc_interest_day(1);
-                productDTO.setP_contract_month(Integer.valueOf(request.getParameter("ACC_P_Month").replace("개월", "")));
-                productJoinDTO.setAcc_maturitydate(java.sql.Timestamp.valueOf(currentDateTime));
-                productJoinDTO.setAcc_isactive('Y');
-                System.out.println(productDTO);
-
-                boolean isSuccess = loanJoinService.insertLoanJoin(productJoinDTO, productDTO);
-                request.setAttribute("isSuccess", isSuccess);
-                System.out.println("POST 요청 처리 끝" + request);
-                response.sendRedirect(request.getContextPath());
-                break;
+                boolean isSuccess = loanJoinService.insertLoanJoin(accountDTO);
+                System.out.println("Controller 결과: " + isSuccess);
+                String res;
+                if (!isSuccess) {
+                    res = "계좌 가입에 실패했습니다";
+                } else {
+                    res = "금융 상품이 등록되었습니다";
+                }
+                request.setAttribute("message", res);
+                response.setContentType("text/html");
+                PrintWriter out = response.getWriter();
+                out.println("<html>");
+                out.println("<body>");
+                out.println("<script>alert('" + res + ".'); window.location.href='" + request.getContextPath() + "';</script>");
+                out.println("</body>");
+                out.println("</html>");
             default:
         }
     }

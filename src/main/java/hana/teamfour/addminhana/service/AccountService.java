@@ -31,7 +31,7 @@ public class AccountService {
     }
 
     private ArrayList<AccountDTO> setAccList(ArrayList<AccountEntity> accountEntities) {
-        ArrayList<AccountDTO> accountDTO = new ArrayList<>();
+        ArrayList<AccountDTO> accountDTOs = new ArrayList<>();
         for (AccountEntity accountEntity : accountEntities) {
             DecimalFormat decimalFormat = new DecimalFormat("#,###.##");
             String acc_balance = decimalFormat.format(accountEntity.getAcc_balance());
@@ -40,10 +40,10 @@ public class AccountService {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             String acc_maturitydate = dateFormat.format(accountEntity.getAcc_maturitydate());
             Integer acc_id = accountEntity.getAcc_id();
-            accountDTO.add(new AccountDTO(acc_balance, acc_pname, acc_interestrate, acc_maturitydate, acc_id));
+            accountDTOs.add(new AccountDTO(acc_balance, acc_pname, acc_interestrate, acc_maturitydate, acc_id));
         }
 
-        return accountDTO;
+        return accountDTOs;
     }
 
     //출금할때 비밀번호로 성공적으로 인증하면 통장 정보(통장 타입(보통예금 통장만), 통장 이름) 을 보여주기 위한 서비스
