@@ -128,7 +128,7 @@ To change this template use File | Settings | File Templates.
                       <span class=" fs-10"> [계좌번호 : <%=account.getAcc_id()%>]</span>
                     </a>
                   </div>
-                  <span>만기일 <%=account.getAcc_maturitydate()%></span>
+                  <span>만기일 <%=account.getAcc_str_maturitydate()%></span>
                   <span>이자율 <%=account.getAcc_interestrate()%>%</span>
                   <span><%=balance%> <%=account.getAcc_str_balance()%>원</span>
                 </li>
