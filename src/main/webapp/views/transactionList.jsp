@@ -20,7 +20,7 @@
   if (tempList != null) {
     transactionList = tempList;
   }
-  Integer transactionsCount = (Integer) request.getAttribute("transactionsCount");
+  Integer transactionCount = (Integer) request.getAttribute("TransactionCount");
   String _page = request.getParameter("page");
   String size = request.getParameter("size");
   String orderBy = request.getParameter("orderBy");
@@ -128,7 +128,7 @@
               </table>
             </div>
             <div class="datatable-bottom">
-              <div class="datatable-info">Showing <%=transactionList.size()%> Transaction of <%=transactionsCount%>
+              <div class="datatable-info">Showing <%=transactionList.size()%> Transaction of <%=transactionCount%>
                 Transactions
               </div>
               <nav class="datatable-pagination">
@@ -151,7 +151,7 @@
       const search = '<%=search %>';
       const orderBy = '<%=orderBy %>';
       const ordering = '<%=ordering %>';
-      const transactionsCount = <%=transactionsCount%>;
+      const transactionCount = <%=transactionCount%>;
       const $pagenation = document.querySelector(".datatable-pagination-list");
       const lastPage = Math.floor(300 / size) + 1;
       let pageListNum = Math.floor((page - 1) / 10) * 10;
