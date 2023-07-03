@@ -1,13 +1,14 @@
 package hana.teamfour.addminhana.service;
 
 import hana.teamfour.addminhana.DAO.TransactionDAO;
-import hana.teamfour.addminhana.DTO.DepositDTO;
-import hana.teamfour.addminhana.DTO.TransferDTO;
-import hana.teamfour.addminhana.DTO.WithdrawDTO;
+import hana.teamfour.addminhana.DTO.*;
 import hana.teamfour.addminhana.Exception.BalanceInsufficientException;
 import hana.teamfour.addminhana.Exception.DepositException;
 import hana.teamfour.addminhana.Exception.TransferException;
 import hana.teamfour.addminhana.entity.TransactionEntity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TransactionService {
     private TransactionDAO transactionDAO;
@@ -164,5 +165,40 @@ public class TransactionService {
         } finally {
             return withdrawDTO;
         }
+    }
+
+    public List<TransactionDTO> getTransactionList() {
+        List<TransactionDTO> transactionDTOList = new ArrayList<>();
+        List<TransactionEntity> transactionEntityList = transactionDAO.findAll();
+        for (TransactionEntity transactionEntity : transactionEntityList) {
+            TransactionDTO transactionDTO = new TransactionDTO(transactionEntity);
+            transactionDTOList.add(transactionDTO);
+        }
+        return transactionDTOList;
+    }
+
+
+    public List<TransactionDTO> getTransactionListByAccId(Integer t_accid) {
+        List<TransactionDTO> transactionDTOList = new ArrayList<>();
+        List<TransactionEntity> transactionEntityList = transactionDAO.findAllByAccId(t_accid);
+        for (TransactionEntity transactionEntity : transactionEntityList) {
+            TransactionDTO transactionDTO = new TransactionDTO(transactionEntity);
+            transactionDTOList.add(transactionDTO);
+        }
+        return transactionDTOList;
+    }
+
+    public List<TransactionDTO> getCustomerListWithPagination(Integer t_accid, PaginationDTO paginationDTO) {
+        List<TransactionDTO> transactionDTOList = new ArrayList<>();
+        List<TransactionEntity> transactionEntityList = transactionDAO.findWithPaginationByAccid(t_accid, paginationDTO);
+        for (TransactionEntity transactionEntity : transactionEntityList) {
+            TransactionDTO customerDTO = new TransactionDTO(transactionEntity);
+            transactionDTOList.add(customerDTO);
+        }
+        return transactionDTOList;
+    }
+
+    public Integer getCountRow(Integer t_accid) {
+        return transactionDAO.countRowsByAccId(t_accid);
     }
 }
